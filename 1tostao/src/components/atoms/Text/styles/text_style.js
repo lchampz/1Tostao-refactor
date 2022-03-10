@@ -7,6 +7,7 @@ font-size:1.9rem;
 font-weight: bold;
 font-family: sans-serif;
 
+
 @media(max-width: 600px){
     font-size: 35px;
 }

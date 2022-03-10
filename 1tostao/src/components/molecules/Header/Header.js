@@ -1,15 +1,17 @@
 import React from 'react';
-
+import Border from '../../atoms/Border';
+import Button from '../../atoms/Button';
 import Text from '../../atoms/Text/Text';
 import {Background, Container} from './styles/header_style'
 
-const Header = () => {
+const Header = (img) => {
     return (
      
-    <Background>
+    <Background bgImg={img}>
         <Container>
             <Text>Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente?</Text>
-          
+            <Border></Border>
+            <Button>Explorar Serviços</Button>
         </Container>
     </Background>
    
