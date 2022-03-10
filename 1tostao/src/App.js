@@ -1,10 +1,17 @@
 import React from 'react';
+import Header from './components/molecules/Header/Header';
 
-import { Home } from './pages/index'
+
+
+
+// import { Home } from './pages/index'
 
 function App() {
   return (
-    <Home />
+    <>
+    <Header>
+    </Header>
+    </>
   );
 }
 
