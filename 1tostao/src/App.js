@@ -4,6 +4,8 @@ import Header from './components/molecules/Header/Header';
 
 
 
+// import { Home } from './pages/index'
+
 function App() {
   return (
     <>
