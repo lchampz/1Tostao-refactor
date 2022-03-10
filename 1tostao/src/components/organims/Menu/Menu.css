@@ -3,8 +3,10 @@
 }
 
 .header{
-    background-color:rgb(10,80,60);
+    background-color:rgba(10, 80, 60, 0);
     height:60px;
+    position:fixed;
+    width:100%;
 }
 
 .item{
