@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
 export const Background = styled.div`
-display: flex;
-flex-direction:column;
-background: url('https://wallpapermemory.com/uploads/456/circuit-wallpaper-1080p-89586.jpg')
+    display: flex;
+    width:100%;
+    height: 100vh;
+    flex-direction:column;
+    background: url('https://images3.alphacoders.com/118/thumb-1920-1185634.jpg');
    
 `
 export const Container = styled.div`
     display:flex;
-    margin: 0 70px;
-    height: 100vh;
+    flex-direction:column;
+    justify-content: center;
     align-items:center;
+    margin: auto;
    
 
     h1{
