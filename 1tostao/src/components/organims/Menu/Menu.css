@@ -1,0 +1,16 @@
+*{
+    margin:0;
+}
+
+.header{
+    background-color:rgb(10,80,60);
+    height:60px;
+}
+
+.item{
+    margin:20px;
+    color:rgb(255, 255, 255);
+    float:right;
+    font-family:arial;
+    font-weight:100;
+}
