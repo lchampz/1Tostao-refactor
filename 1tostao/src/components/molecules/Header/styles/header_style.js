@@ -1,20 +1,25 @@
 import styled from 'styled-components';
+import img from '../../../../assets/img/banner.jpg'
 
 export const Background = styled.div`
+    background-image: url(${img});
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
     width:100%;
     height: 100vh;
     flex-direction:column;
-    background: url('https://images3.alphacoders.com/118/thumb-1920-1185634.jpg');
+    justify-content:center;
+    
    
 `
 export const Container = styled.div`
     display:flex;
     flex-direction:column;
-    justify-content: center;
-    align-items:center;
     margin: auto;
-   
+    align-items:center;
 
     h1{
         display:flex;

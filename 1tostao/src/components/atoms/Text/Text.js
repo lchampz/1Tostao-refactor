@@ -1,9 +1,13 @@
 import React from 'react';
 import {Title} from './styles/text_style';
 
-const Text = ({children, ...restProps}) => {
+const Text = ({children, color, maxwidth, size, weight}) => {
     return ( 
-        <Title>{children}</Title>
+        <Title maxwidthText={maxwidth} 
+        sizeText={size} 
+        weightText={weight} 
+        colorText={color}
+        >{children}</Title>
      );
 }
  
