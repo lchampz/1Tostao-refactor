@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-color:white;
-max-width:640px;
-font-size:1.9rem;
-font-weight: bold;
-font-family: sans-serif;
-
-
-@media(max-width: 600px){
-    font-size: 35px;
-}
+    color: ${({colorText}) => (colorText ? colorText : "#ffffff")};
+    max-width: ${({maxwidthText}) => (maxwidthText ? maxwidthText : "640px")};
+    font-size:${({sizeText}) => (sizeText ? sizeText : "1.9rem")};
+    font-weight: ${({weightText}) => (weightText ? weightText : "bold")};
 
 `
