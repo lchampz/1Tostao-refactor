@@ -11,7 +11,10 @@ const Header = () => {
         <Container>
             <Text>Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente?</Text>
             <Border></Border>
-            <Button>Explorar Serviços</Button>
+            <Button>Explorar Serviços 
+
+            </Button> 
+
         </Container>
     </Background>
    
