@@ -6,7 +6,6 @@ export const Background = styled.div`
     width: 100%;
     justify-content: center;
     flex-direction:column;
-    background-size: contain;
     background: url('https://images3.alphacoders.com/118/thumb-1920-1185634.jpg');
    
 `
