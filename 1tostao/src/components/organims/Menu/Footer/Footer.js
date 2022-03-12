@@ -5,6 +5,7 @@ const Footer = () => {
     return(
         <>
             <FooterStyled>
+                Link
             </FooterStyled>
         </>
     );
