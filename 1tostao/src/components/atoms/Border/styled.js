@@ -5,5 +5,8 @@ export const BorderText = styled.div`
     width: ${({borderWidth}) => (borderWidth ? borderWidth : "30rem")};
     margin: ${({marginBorder}) => (marginBorder ? marginBorder: "20px")};
 
+    @media(max-width: 600px){
+        width:20rem;
+    }
 
 `
