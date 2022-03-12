@@ -41,6 +41,7 @@ export const Content = styled.div`
         background-color: #4F4F4F;
         height: 79px;
         font-weight: bold;
+        font-family: 'Poppins', sans-serif;
         font-size: 1.5rem;
         color: white;
     }
