@@ -1,13 +1,19 @@
 import React from 'react';
+import { Links } from './styledLink.js'
 
-import './LinkStyle.css'
-
-const Link = () => {
+const Link = ({children, float, color, padding, font, size, family}) => {
     return(
-        <div>
-            <h2 className="link">1Tostão</h2>
-            <p className="config">Configurações</p>
-        </div>
+        <>
+            <Links>
+                1Tostão
+            </Links>
+
+            <Links linkSize={size="16px"} 
+            linkLogo={float="right"} >
+                Configurações
+            </Links>
+
+        </>
     );
 }
 

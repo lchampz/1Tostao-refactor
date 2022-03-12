@@ -1,12 +1,12 @@
 import React from 'react';
-import './Botao.css'
+import { Button, Login } from './stlyedBotao.js'
 
-function BotaoMenu(){
+const BotaoMenu = ({children, color, border, radius, width, height, padding}) => {
     return(
         <div>
-            <button className="BotaoMenu">
-                <p className="logar">Logar</p>
-            </button>
+            <Button borderButton={border} >
+                <Login>Logar</Login>
+            </Button>
         </div>
     );
 }
