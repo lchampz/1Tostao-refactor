@@ -1,17 +1,50 @@
-import React from 'react'
 
+import React, { useState } from 'react'
 import Card from '../../atoms/Card'
+import { Wrapper, Arrow } from './styled.js'
 
-import { Wrapper } from './styled.js'
+import Carousel, { consts } from 'react-elastic-carousel'
+const images = require("../../../request/mock/imgs.json")
 
 const CategoryCarroussel = () => {
+    
+    const arrow = ({ type, onClick, isEdge }) => {
+        const pointer = type === consts.PREV ? '<' : '>'
+
+        return(
+            <Arrow onClick={onClick} disabled={isEdge}>
+                {pointer}
+            </Arrow>
+        )
+    }
+
+    const breakpoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+        { width: 850, itemsToShow: 4, itemsToScroll: 1 },
+    ]
+
+    const renderCards = images.map((img, i) => {
+        return(
+            <Card key={i} className={'Card'} url={img.url} >{img.id}</Card>     
+        )  
+    })
 
     return(
         <Wrapper>
-            <Card className={'Card'} bgImg={'https://sportshub.cbsistatic.com/i/r/2019/11/07/04a0f1ab-3a63-408f-aefa-2eebc50ddc65/thumbnail/770x433/b28dcbd21e1c80b8a282bdba6b9340a3/13fb012e-7aff-e911-80cd-fa7ca2e6058b-original.jpg'}>teste</Card>
-            <Card className={'Card'}>teste</Card>
-            <Card className={'Card'}>teste</Card>
-            <Card className={'Card'}>teste</Card>
+            <Carousel renderArrow={arrow}
+                easing="cubic-bezier(1,.15,.55,1.54)"
+                tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
+                transitionMs={700}
+                breakPoints={breakpoints}
+                isRTL={true} 
+                focusOnSelect={true} 
+                itemsToScroll={1} 
+                itemsToShow={4}
+                enableAutoPlay autoPlaySpeed={2000}
+            >
+                {renderCards}
+            </Carousel>
         </Wrapper>
     )
 }

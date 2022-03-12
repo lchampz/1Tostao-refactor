@@ -24,4 +24,3 @@ export const Content = styled.div`
     padding: ${({ contentPadding }) => (contentPadding ? contentPadding+'px' : '10px')};
     background: ${({ bgImg }) => (bgImg ? 'url('+bgImg+')' : '')};
 `
-

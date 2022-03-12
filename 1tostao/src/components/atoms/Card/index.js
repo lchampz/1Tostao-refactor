@@ -9,14 +9,14 @@ const Cards = ({
     children, 
     marginTop, 
     color,
-    bgImg
+    url
 }) => {
 
     return(
         <Card marginTop={marginTop} >
             <Content 
                 color={color}
-                bgImg={bgImg}
+                bgImg={url}
             >
                 {children}
             </Content>
