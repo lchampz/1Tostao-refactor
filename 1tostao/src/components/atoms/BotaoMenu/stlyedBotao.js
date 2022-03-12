@@ -12,6 +12,8 @@ export const Button = styled.button`
     
         &:hover{
             cursor:pointer;
+            border: 3px solid white;
+            transition: ease-in-out 0.3s;
         }
 `;
 
