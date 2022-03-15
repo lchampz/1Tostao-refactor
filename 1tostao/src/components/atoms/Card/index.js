@@ -18,7 +18,7 @@ const Cards = ({
                 color={color}
                 bgImg={url}
             >
-                {children}
+                <div className="label">{children}</div>
             </Content>
         </Card>
     )
