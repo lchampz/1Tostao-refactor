@@ -19,6 +19,6 @@ export const Button = styled.button`
 
 export const Login = styled.p`
     color:white;
-    font-family: arial;
+    font-family: Poppins;
     font-size:16px;
 `;

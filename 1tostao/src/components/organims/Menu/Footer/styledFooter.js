@@ -2,9 +2,18 @@ import styled from 'styled-components';
 
 export const FooterStyled = styled.footer`
     margin:0;
-    position:absolute;
+    bottom:0;
+    padding:250px;
     background-color:#16151A;
-    height:395px;
+    height:700px;
     width:100%;
-    margin-top:20px;
+    padding:30px;
+    margin-top:100px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    flex-direction:row;
+`;
+
+export const MarginText = styled.div`
+    max-width: 400px;
 `;

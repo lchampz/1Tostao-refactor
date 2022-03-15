@@ -1,7 +1,7 @@
 import React from 'react';
 import { Links } from './styledLink.js'
 
-const Link = ({children, float, color, margin, margintop, font, size, family}) => {
+const Link = ({children, float, color, margin, margintop, font, size, fontfamily}) => {
     return(
         <>
             <Links linkMargin={margin="20px"}>
