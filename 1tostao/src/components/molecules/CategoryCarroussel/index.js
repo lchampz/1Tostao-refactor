@@ -28,17 +28,16 @@ const CategoryCarroussel = () => {
         },
         640: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 10,
         },
         768: {
-            slidesPerView: 4,
-            spaceBetween: 40,
+            slidesPerView: 3,
+            spaceBetween: 15,
         },
-        1024: {
+        1300: {
             slidesPerView: 4,
-            spaceBetween: 50,
+            spaceBetween: 20,
         },
-          
     }
 
     const renderCards = images.map((img, i) => {
@@ -49,14 +48,14 @@ const CategoryCarroussel = () => {
         )  
     })
 
-    const swiperRef = React.useRef(null);
-
     return(
         <Wrapper>
             <Swiper 
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                modules={[Navigation, Pagination, Scrollbar, A11y, EffectCoverflow]}
+                effect={"coverflow"}
                 navigation
                 loop={true}
+                centeredSlides={true}
                 slidesPerView={1}
                 grabCursor={true}
                 coverflowEffect={{
@@ -68,7 +67,6 @@ const CategoryCarroussel = () => {
                   }}
                 breakpoints={breakpoints}
                 pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
 
             >
                 {renderCards}
