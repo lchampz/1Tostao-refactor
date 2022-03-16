@@ -57,6 +57,7 @@
     font-family:Poppins;
     margin-top:5px;
     line-height: 25px;
+    font-weight:bold;
 }
 
 .li{
@@ -65,6 +66,7 @@
     font-family:Poppins;
     color:#646771;
     margin-top:15px;
+    font-weight:bold;
 }
 
 .li:hover{
@@ -74,8 +76,9 @@
 .img{
     width:40px;
     margin-left:10px;
-    margin-top:50px;
-    margin-bottom:50px;
+    margin-top:20px;
+    margin-bottom:20px;
+    cursor: pointer;
 }
 
 @media(min-width:392px){
@@ -95,7 +98,7 @@
 
 #row-rod{
     margin:15px;
-    margin-top:70px;
+    margin-top:60px;
     margin-bottom:-30px;
 }
 
