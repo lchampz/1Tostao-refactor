@@ -12,7 +12,6 @@ const Home = () => {
             <Header />
             <CategoryCarroussel />
             <User/>
-                <CategoryCarroussel />
             <Footer />
         </div>   
     )

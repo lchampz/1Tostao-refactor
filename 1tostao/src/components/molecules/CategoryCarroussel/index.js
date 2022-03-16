@@ -2,7 +2,7 @@
 import React from 'react'
 import Card from '../../atoms/Card'
 import { Wrapper, Arrow } from './styled.js'
-import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y} from 'swiper';
+import SwiperCore,{ Navigation, Pagination, A11y} from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react"; 
 
 // swiper bundle styles
@@ -14,9 +14,9 @@ import 'swiper/swiper.min.css'
 // modules styles
 import 'swiper/components/navigation/navigation.min.css'
 import 'swiper/components/pagination/pagination.min.css'
-import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+SwiperCore.use([Navigation, Pagination, A11y])
+
 const images = require("../../../request/mock/imgs.json")
 
 const CategoryCarroussel = () => {
@@ -51,7 +51,7 @@ const CategoryCarroussel = () => {
     return(
         <Wrapper>
             <Swiper 
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                modules={[Navigation, Pagination, A11y]}
                 navigation
                 loop={true}
                 slidesPerView={1}
