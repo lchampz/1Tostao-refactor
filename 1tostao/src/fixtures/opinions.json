@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "description": "O 1Tostão foi bem prático e simples de se utilizar, simplesmente adorei a minha experiência com o site.",
+      "image": "/images/misc/home-tv.jpg",
+      "alt": "Tiger King on Netflix"
+    },
+    {
+      "id": 2,
+      "description": "Salve seus títulos favoritos e sempre tenha algo para assistir.",
+      "image": "/images/misc/home-mobile.jpg",
+      "alt": "Watch on mobile"
+
+    },
+    {
+      "id": 3,
+      "description": "Assista no celular, tablet, Smart TV ou notebook sem pagar a mais por isso.",
+      "image": "/images/misc/home-imac.jpg",
+      "alt": "Money Heist on Netflix"
+    }
+  ]
