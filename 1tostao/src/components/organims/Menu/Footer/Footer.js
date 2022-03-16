@@ -18,8 +18,13 @@ const Footer = ({textAlign, fontsize, padding, weight, flexDirection, float, mar
                             <p className="desc">lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc tempor incididunt ut labore et dolore magna al.</p>
                         </div>
 
-                        <div className="col">
-                            <h1 className="logo">1TOSTÃO</h1>
+                        <div className="col-info">
+                            <h1 className="infos">Serviços</h1>
+                            <p className="desc">lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc tempor incididunt ut labore et dolore magna al.</p>
+                        </div>
+
+                        <div className="col-info">
+                            <h1 className="infos">Empresa</h1>
                             <p className="desc">lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc tempor incididunt ut labore et dolore magna al.</p>
                         </div>
                         

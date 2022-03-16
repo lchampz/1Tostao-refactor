@@ -2,14 +2,11 @@
     box-sizing:border-box;
 }
 
-
-@media(min-width:992px){
-    .container{
-        padding:25px;
-    }
+.container{
+    padding:25px;
 }
 
-@media(min-width:892px){
+@media(min-width:392px){
     .row{
         display:flex;
         flex-wrap:wrap;
@@ -20,14 +17,31 @@
 
 @media(min-width: 576px){
     .col{
-        flex: 0 0 25%;
-        max-width:25%;   
+        flex: 0 0 45%;
+        max-width:40%;   
     }
 }
+
+@media(min-width: 576px){
+    .col-info{
+        flex: 0 0 30%;
+        max-width:30%;   
+    }
+}
+
 .logo{
     color:white;
     font-family: Poppins;
     font-size:50px;
+    text-align:center;
+    margin-top:20px;
+}
+
+.infos{
+    color:white;
+    font-family:Poppins;
+    font-size:35px;
+    margin-top:20px;
     text-align:center;
 }
 

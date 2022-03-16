@@ -9,9 +9,6 @@ export const FooterStyled = styled.footer`
     width:100%;
     padding:30px;
     margin-top:100px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-direction:row;
 `;
 
 export const MarginText = styled.div`
