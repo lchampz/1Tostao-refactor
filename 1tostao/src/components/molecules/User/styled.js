@@ -28,6 +28,11 @@ export const Text = styled.p`
     padding-top: 50px;
     line-height: 1.3;
 
+    @media(max-width:600px){
+        width:300px;
+        font-size:1.5rem;
+    }
+
     .icon{
         margin-left: 10px;
     }
