@@ -58,7 +58,6 @@ const CategoryCarroussel = () => {
                 grabCursor={true}
                 breakpoints={breakpoints}
                 pagination={{ clickable: true }}
-
             >
                 {renderCards}
             </Swiper>
