@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
+    
 `
 
 export const Arrow = styled.div`
@@ -20,3 +21,4 @@ export const Arrow = styled.div`
 
     font-weight: bold;
 `
+

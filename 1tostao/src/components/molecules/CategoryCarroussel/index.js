@@ -2,49 +2,78 @@
 import React from 'react'
 import Card from '../../atoms/Card'
 import { Wrapper, Arrow } from './styled.js'
+import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper';
+import { Swiper, SwiperSlide } from "swiper/react"; 
 
-import Carousel, { consts } from 'react-elastic-carousel'
+// swiper bundle styles
+import 'swiper/swiper-bundle.min.css'
+
+// swiper core styles
+import 'swiper/swiper.min.css'
+
+// modules styles
+import 'swiper/components/navigation/navigation.min.css'
+import 'swiper/components/pagination/pagination.min.css'
+import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+
+SwiperCore.use([Navigation, Pagination, EffectCoverflow, Scrollbar, A11y])
 const images = require("../../../request/mock/imgs.json")
 
 const CategoryCarroussel = () => {
     
-    const arrow = ({ type, onClick, isEdge }) => {
-        const pointer = type === consts.PREV ? '<' : '>'
-
-        return(
-            <Arrow onClick={onClick} disabled={isEdge}>
-                {pointer}
-            </Arrow>
-        )
+    const breakpoints = {
+        400: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+        },
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+        },
+          
     }
-
-    const breakpoints = [
-        { width: 1, itemsToShow: 1 },
-        { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
-        { width: 850, itemsToShow: 4, itemsToScroll: 1 },
-    ]
 
     const renderCards = images.map((img, i) => {
         return(
-            <Card key={i} className={'Card'} url={img.url} >{img.id}</Card>     
+            <SwiperSlide>
+                <Card style={{ width: '100%', height: '100%'}} key={i} className={'Card'} url={img.url} >{img.id}</Card>  
+            </SwiperSlide>   
         )  
     })
 
+    const swiperRef = React.useRef(null);
+
     return(
         <Wrapper>
-            <Carousel renderArrow={arrow}
-                easing="cubic-bezier(1,.15,.55,1.54)"
-                tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
-                transitionMs={700}
-                breakPoints={breakpoints}
-                isRTL={true} 
-                focusOnSelect={true} 
-                itemsToScroll={1} 
-                itemsToShow={4}
-                enableAutoPlay autoPlaySpeed={2000}
+            <Swiper 
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                navigation
+                loop={true}
+                slidesPerView={1}
+                grabCursor={true}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                  }}
+                breakpoints={breakpoints}
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+
             >
                 {renderCards}
-            </Carousel>
+            </Swiper>
+           
         </Wrapper>
     )
 }
