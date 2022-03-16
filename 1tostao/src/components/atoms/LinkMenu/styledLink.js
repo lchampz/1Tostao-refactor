@@ -24,14 +24,19 @@
 import styled from 'styled-components'
 
 export const Links = styled.h2`
+    flex-direction: ${({linkFlex}) => (linkFlex ? linkFlex: "row")};
     float: ${({linkLogo}) => (linkLogo ? linkLogo: "left")};
     color: ${({linkColor}) => (linkColor ? linkColor: "white")};
-    padding: ${({linkPadding}) => (linkPadding ? linkPadding: "20px")};
+    margin-top: ${({linkTop}) => (linkTop ? linkTop: "20px")};
+    margin: ${({linkMargin}) => (linkMargin ? linkMargin: "20px")};
+    padding: ${({linkPadding}) => (linkPadding ? linkPadding: "0")};
+    font-weight: ${({linkWeight}) => (linkWeight ? linkWeight: "normal")};
     font-size: ${({linkSize}) => (linkSize ? linkSize: "20px")};
-    font-family: ${({linkFont}) => (linkFont ? linkFont: "Verdana, Geneva, Tahoma, sans-serif")};
+    font-family: ${({linkFont}) => (linkFont ? linkFont: "Poppins")};
+    text-align: ${({linkAlign}) => (linkAlign ? linkAlign: "right")};
 
         &:hover{
-            cursor:pointer;
+            cursor: ${({linkCursor}) => (linkCursor ? linkCursor: "pointer")};
         }
 `;
 

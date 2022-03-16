@@ -12,11 +12,13 @@ export const Button = styled.button`
     
         &:hover{
             cursor:pointer;
+            border: 3px solid white;
+            transition: ease-in-out 0.3s;
         }
 `;
 
 export const Login = styled.p`
     color:white;
-    font-family: arial;
+    font-family: Poppins;
     font-size:16px;
 `;
