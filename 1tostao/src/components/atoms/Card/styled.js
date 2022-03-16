@@ -24,7 +24,7 @@ export const Content = styled.div`
     align-items: center;
     flex: 1;
     text-align: center;
-    background-color: ${({ bgColor }) => (bgColor ? bgColor : 'white')};
+    background-color: ${({ bgColor }) => (bgColor ? bgColor : 'transparent')};
     color: ${({ color }) => (color ? color : 'black')};
     padding: ${({ contentPadding }) => (contentPadding ? contentPadding+'px' : '10px')};
     background: ${({ bgImg }) => (bgImg ? 'url('+bgImg+')' : '')};
