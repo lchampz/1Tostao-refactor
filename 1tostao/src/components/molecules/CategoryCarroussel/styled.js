@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
+    margin-top: 30px;
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
@@ -10,6 +11,7 @@ export const Wrapper = styled.div`
     .swiper {
         width: 100%;
         height: 100%;
+        background-color: transparent;
     }
 
     .swiper-slide img {
@@ -25,6 +27,7 @@ export const Wrapper = styled.div`
         background: #fff;
         background-position: center;
         background-size: cover;
+        background-color: transparent;
 
         display: -webkit-box;
         display: -ms-flexbox;
