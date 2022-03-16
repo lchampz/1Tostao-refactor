@@ -21,8 +21,26 @@ export const Title = styled.h1`
 
 `
 export const Text = styled.p`
-    width:400px;
-    font-size:1.8rem;  
+    width:480px;
+    font-size:2rem;  
     font-style:italic;
+    margin: 0 auto;
+    padding-top: 50px;
+    line-height: 1.3;
+
+    .icon{
+        margin-left: 10px;
+    }
+
+`
+export const Pane = styled.div`
+width:50%;
+@media (max-width: 1000px){
+    width: 100%;
+    padding: 0 45px;
+    text-align:center;
+}
+`
+export const Image = styled.img`
 
 `
