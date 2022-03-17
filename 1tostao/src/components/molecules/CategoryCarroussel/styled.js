@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 5%;
+    justify-content: left;
+        text-align: left;
+        
 
     .swiper {
         width: 100%;
@@ -43,23 +47,27 @@ export const Wrapper = styled.div`
         align-items: center;
     }
 
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-}
-    
-`
+    .swiper-pagination-bullet {
+        width: 5px;
+        height:5px;
+        text-align: center;
+        line-height: 60px;
+        font-size: 12px;
+        color:#000;
+        opacity: 1;
+        background: rgba(0,0,0,0.2);
+    }
+    .swiper-pagination-bullet-active {
+        color:#fff;
+        background: #24D39A;
+        width: 8px;
+        height: 8px;
+    }
 
-export const Arrow = styled.div`
-    font-size: 30px;
-    color: black;
-    font-family: 'Poppins', sans-serif;
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #24D39A;
+    }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    font-weight: bold;
 `
 

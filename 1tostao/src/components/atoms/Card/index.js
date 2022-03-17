@@ -2,14 +2,16 @@ import React from 'react'
 
 import { 
     Card, 
-    Content
+    Content,
+    Link
 } from './styled.js'
 
 const Cards = ({ 
     children, 
     marginTop, 
     color,
-    url
+    url,
+    link
 }) => {
 
     return(
@@ -18,7 +20,7 @@ const Cards = ({
                 color={color}
                 bgImg={url}
             >
-                <div className="label">{children}</div>
+                <div className="label"><Link href={link}>{children}</Link></div>
             </Content>
         </Card>
     )
