@@ -62,7 +62,7 @@ const CategoryCarroussel = () => {
         Algumas de nossas categorias...
       </Text>
       <Border
-        color="1px solid rgba(108, 108, 108, 1)"
+        color="1px solid #A9A9A9"
         marginBorder="5px"
         width="100%"
       />
