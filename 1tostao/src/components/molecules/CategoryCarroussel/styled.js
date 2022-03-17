@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 5%;
 
     .swiper {
         width: 100%;
@@ -67,18 +68,9 @@ export const Wrapper = styled.div`
         color: #24D39A;
     }
     
-`
+    h1 {
+        margin-right: 20%;
+    }
 
-export const Arrow = styled.div`
-    font-size: 30px;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    font-weight: bold;
 `
 

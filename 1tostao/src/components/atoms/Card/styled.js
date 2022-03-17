@@ -42,7 +42,7 @@ export const Content = styled.div`
         height: 79px;
         font-weight: bold;
         font-family: 'Poppins', sans-serif;
-        font-size: 1.5rem;
+        font-size: 18px;
         color: white;
     }
 `
