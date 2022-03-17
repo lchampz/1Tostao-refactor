@@ -56,6 +56,7 @@ const User = () => {
                     modules={[Navigation, Pagination, A11y]}
                     navigation
                     loop={true}
+                    grabCursor={true}
                     slidesPerView={1}
                     >
                         {renderCards}
