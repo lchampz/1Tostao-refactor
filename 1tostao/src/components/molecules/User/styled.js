@@ -119,7 +119,7 @@ export const Container = styled.div`
 
 `
 export const Image = styled.img`
-    margin:35px 0px 0px 35px;
+    margin:40px 0px 0px 40px;
     max-width:180px;
     border-radius:100px;
 
