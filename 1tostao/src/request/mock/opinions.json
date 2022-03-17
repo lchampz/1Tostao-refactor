@@ -2,20 +2,23 @@
     {
       "id": 1,
       "description": "O 1Tostão foi bem prático e simples de se utilizar, simplesmente adorei a minha experiência com o site.",
-      "image": "../../assets/img/murilo.png",
+      "name": "Murilo Simões",
+      "img": "assets/img/murilo.png",
       "alt": "Murilo"
     },
     {
       "id": 2,
-      "description": "Salve seus títulos favoritos e sempre tenha algo para assistir.",
-      "image": "../../assets/img/murilo.png",
-      "alt": "Murilo"
+      "description": "Eu pensava que para ganhar dinheiro precisava de uma empresa, mas com o 1Tostão as empresas precisam de mim.",
+      "name": "Kaio Exposito",
+      "img": "assets/img/kaioba.png",
+      "alt": "Kaioba"
 
     },
     {
       "id": 3,
-      "description": "Assista no celular, tablet, Smart TV ou notebook sem pagar a mais por isso.",
-      "image": "/assets/img/murilo.png",
-      "alt": "Murilo"
+      "description": "Hoje em dia só utilizo o 1Tostão de site de Freelance, não tem nenhum mais simples e que valha mais a pena que o 1Tostão.",
+      "name": "Victor Hugo",
+      "img": "assets/img/champs.png",
+      "alt": "Victor"
     }
   ]

@@ -5,4 +5,6 @@ export const BorderText = styled.div`
     width: ${({borderWidth}) => (borderWidth ? borderWidth : "90%")};
     margin-top: ${({topBorder}) => (topBorder ? topBorder: "20px")};
     margin-bottom: ${({bottomBorder}) => (bottomBorder ? bottomBorder: "20px")};
+
+
 `
