@@ -54,22 +54,23 @@ export const Container = styled.div`
     }
     
     width:100%;
-    height:400px;
+    height:430px;
     background-color: #ffffff;
     margin-top:45px;
-    box-sizing: border-box;
-    @media (max-width:770px){
+    @media (max-width:1000px){
         flex-direction: column;
-        height:600px;
+        height:700px;
         
     }
+
+
+
     `
     export const Align = styled.div`
     flex-wrap:wrap;
     display:flex;
-    flex-direction:row;
 
-    @media(max-width:770px){
+    @media(max-width:1000px){
         display:block;
     }
     
@@ -84,14 +85,28 @@ export const Container = styled.div`
         .text{
             width:70%
         }
+
+        .name{
+              padding-left:30px;
+              padding-top:20px;
+
+              @media(max-width:1000px){
+                  padding-left: 0;
+              }
+        }
+
+        .star{
+            margin:2px;
+            color: #F8BF61;
+        }
   
-        @media (max-width: 770px){
+        @media (max-width: 1000px){
             width: 100%;
         }
     `
     
     export const Title = styled.h1`
-    max-width:770px;
+    max-width:1000px;
     font-size:2rem;
     font-weight: bold;
     color: #000000;
@@ -101,14 +116,22 @@ export const Container = styled.div`
     
     
     `
+
+    
+export const Div = styled.div`
+    margin-left:100px;
+
+`
+
     export const Text = styled.p`
     width:480px;
     font-size:2rem;  
     font-style:italic;
     padding-top: 50px;
+    padding-left:20px;
     line-height: 1.3;
     
-    @media(max-width:770px){
+    @media(max-width:1000px){
         width:300px;
         font-size:1.5rem;
     }
@@ -119,11 +142,11 @@ export const Container = styled.div`
 
 `
 export const Image = styled.img`
-    margin:40px 0px 0px 40px;
+    margin:30px 0px 0px 30px;
     max-width:180px;
     border-radius:100px;
 
-    @media(max-width:770px){
+    @media(max-width:1000px){
         margin:15px 0 0 0;
     }
 
