@@ -20,23 +20,24 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
 const images = require("../../../request/mock/imgs.json");
 
 const CategoryCarroussel = () => {
+
   const breakpoints = {
     400: {
-      slidesPerView: 1,
-      spaceBetween: 0,
+        slidesPerView: 1,
+        spaceBetween: 0,
     },
     640: {
-      slidesPerView: 2,
-      spaceBetween: 10,
+        slidesPerView: 2,
+        spaceBetween: 10,
     },
     768: {
-      slidesPerView: 3,
-      spaceBetween: 15,
+        slidesPerView: 3,
+        spaceBetween: 10,
     },
     1300: {
-      slidesPerView: 4,
-      spaceBetween: 20,
-    },
+        slidesPerView: 4,
+        spaceBetween: 10,
+    }
   };
 
   const renderCards = images.map((img, i) => {
@@ -47,8 +48,9 @@ const CategoryCarroussel = () => {
           key={i}
           className={"Card"}
           url={img.url}
+          link={img.link}
         >
-          {img.id}
+          {img.nome}
         </Card>
       </SwiperSlide>
     );
@@ -56,7 +58,7 @@ const CategoryCarroussel = () => {
 
   return (
     <Wrapper>
-      <Text size="36px" color="rgba(47, 47, 47, 1)">
+      <Text className="title" size="36px" color="rgba(47, 47, 47, 1)">
         Algumas de nossas categorias...
       </Text>
       <Border
@@ -67,14 +69,13 @@ const CategoryCarroussel = () => {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         navigation
+        breakpoints={breakpoints}
         autoplay={{ 
             delay: 2500,
             disableOnInteraction: false,
         }}
         loop={true}
         slidesPerView={1}
-        grabCursor={true}
-        breakpoints={breakpoints}
         pagination={{ clickable: true }}
       >
         {renderCards}

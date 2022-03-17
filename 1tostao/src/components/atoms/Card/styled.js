@@ -46,3 +46,13 @@ export const Content = styled.div`
         color: white;
     }
 `
+
+export const Link = styled.a`
+    text-decoration: none;
+    color: white;
+    transition: 0.5s color;
+
+    &:hover {
+        color:#24D39A;
+    }
+`
