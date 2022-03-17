@@ -29,13 +29,13 @@ const User = () => {
     
             <SwiperSlide>
                 <User.Align>
-                    <User.Pane>
+                    <User.Pane className="text">
                         <User.Text key={item.id}>
                             "{item.description}"
                             <FontAwesomeIcon className="icon" icon={faPencil} />
                         </User.Text>
                      </User.Pane>
-                    <User.Pane>
+                    <User.Pane className="image">
                             <User.Image src={img} alt={item.alt}></User.Image>
                      </User.Pane>
             </User.Align>
@@ -57,8 +57,6 @@ const User = () => {
                     navigation
                     loop={true}
                     slidesPerView={1}
-                    grabCursor={true}
-                    pagination={{ clickable: true }}
                     >
                         {renderCards}
                     </Swiper>
