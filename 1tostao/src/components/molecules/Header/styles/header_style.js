@@ -9,7 +9,7 @@ export const Background = styled.div`
     background-size: cover;
     display: flex;
     width:100%;
-    height: 100vh;
+    height: 80vh;
     flex-direction:column;
     justify-content:center;
     
