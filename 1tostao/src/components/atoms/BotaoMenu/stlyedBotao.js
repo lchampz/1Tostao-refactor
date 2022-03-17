@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+    transition: ${({hoverButton}) => (hoverButton ? hoverButton: "auto" )};
     background-color: ${({bgButton}) => (bgButton ? bgButton: "rgb(255, 255, 255,0)" )};
     border: ${({borderButton}) => (borderButton ? borderButton: "1px solid white")};
     width: ${({widthButton}) => (widthButton ? widthButton : "105px")};
@@ -9,11 +10,9 @@ export const Button = styled.button`
     color: ${({colorButton}) => (colorButton ? colorButton : "#fff")};
     border-radius: ${({borderButton}) => (borderButton ? borderButton : "5px")};
     float: ${({floatButton}) => (floatButton ? floatButton : "right")};
-    
         &:hover{
             cursor:pointer;
             border: 3px solid white;
-            transition: ease-in-out 0.3s;
         }
 `;
 
