@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 5%;
+    justify-content: left;
+        text-align: left;
+        
 
     .swiper {
         width: 100%;
@@ -64,10 +67,6 @@ export const Wrapper = styled.div`
     .swiper-button-prev,
     .swiper-button-next {
         color: #24D39A;
-    }
-    
-    h1 {
-        margin-right: 20%;
     }
 
 `
