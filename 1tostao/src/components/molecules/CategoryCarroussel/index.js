@@ -2,7 +2,7 @@
 import React from 'react'
 import Card from '../../atoms/Card'
 import { Wrapper, Arrow } from './styled.js'
-import SwiperCore,{ Navigation, Pagination, A11y} from 'swiper';
+import SwiperCore,{ Navigation, Pagination, A11y, Autoplay} from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react"; 
 
 // swiper bundle styles
@@ -15,7 +15,7 @@ import 'swiper/swiper.min.css'
 import 'swiper/components/navigation/navigation.min.css'
 import 'swiper/components/pagination/pagination.min.css'
 
-SwiperCore.use([Navigation, Pagination, A11y])
+SwiperCore.use([Navigation, Pagination, A11y, Autoplay,])
 
 const images = require("../../../request/mock/imgs.json")
 
@@ -36,7 +36,7 @@ const CategoryCarroussel = () => {
         },
         1300: {
             slidesPerView: 4,
-            spaceBetween: 20,
+            spaceBetween: 10,
         },
     }
 
@@ -51,10 +51,14 @@ const CategoryCarroussel = () => {
     return(
         <Wrapper>
             <Swiper 
-                modules={[Navigation, Pagination, A11y]}
+                modules={[Navigation, Pagination, A11y, Autoplay]}
                 navigation
                 loop={true}
                 slidesPerView={1}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
                 grabCursor={true}
                 breakpoints={breakpoints}
                 pagination={{ clickable: true }}
