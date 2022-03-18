@@ -1,15 +1,17 @@
 import React from 'react';
 import Border from '../../atoms/Border';
 import Button from '../../atoms/Button';
-import Text from '../../atoms/Text/Text';
-import {Background, Container} from './styles/header_style'
+import {Background, Container, Title} from './styles/header_style'
+import { Typewriter } from 'typewriting-react';
 
 const Header = () => {
     return (
      
     <Background>
         <Container>
-            <Text>Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente?</Text>
+            <Title>
+                Para que estagiar em uma empresa só, se o <Typewriter cursorClassName={'cursor'} words={['bairro', 'país', 'mundo']} />  todo pode ser o seu cliente?
+            </Title>
             <Border></Border>
             <Button>Explorar Serviços 
 

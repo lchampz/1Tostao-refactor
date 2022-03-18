@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import img from '../../../../../src/assets/img/banner.jpg'
 
+import Text from '../../../atoms/Text/Text';
+
 export const Background = styled.div`
     background-image: url(${img});
     background-repeat: no-repeat;
@@ -29,4 +31,8 @@ export const Container = styled.div`
         margin: 0 30px;
     }
    
+`
+
+export const Title = styled(Text)`
+
 `

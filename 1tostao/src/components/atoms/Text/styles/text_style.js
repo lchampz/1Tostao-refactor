@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
+export const Title = styled.div`
     
     color: ${({colorText}) => (colorText ? colorText : "#ffffff")};
     max-width: ${({maxwidthText}) => (maxwidthText ? maxwidthText : "640px")};
