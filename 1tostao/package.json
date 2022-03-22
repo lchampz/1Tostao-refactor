@@ -17,6 +17,7 @@
     "react-scripts": "5.0.0",
     "styled-components": "^5.3.3",
     "swiper": "^6.8.4",
+    "typewriter": "^7.4.1",
     "typewriting-react": "^1.0.8",
     "web-vitals": "^2.1.4"
   },
