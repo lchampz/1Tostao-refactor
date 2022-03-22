@@ -7,6 +7,7 @@ import face from '../../../../assets/icons/facebook.png'
 import ig from '../../../../assets/icons/instagram.png'
 import git from '../../../../assets/icons/git.png'
 import linkedin from '../../../../assets/icons/linkedin.png'
+import logo from '../../../../assets/img/logo-white.png'
 
 
 import './style.css';
@@ -21,7 +22,7 @@ const Footer = ({width, margintop}) => {
                     <div className="row">
 
                         <div className="col">
-                            <h1 className="logo">1TOSTÃO</h1>
+                            <img src={logo} id="logo" />
                             <p className="desc">Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente? Para ser 1Tostão basta um clique.</p>
                             <div>
                                 <img src={face} className="img" />
