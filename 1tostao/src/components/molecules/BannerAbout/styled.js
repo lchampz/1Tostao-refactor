@@ -46,20 +46,43 @@ export const Button = styled.div`
     width: 242px;
     height: 71px;
 
+    cursor: pointer;
+
     text-align: center;
     align-items: center;
     justify-content: center;
+    background-color: rgba(36, 211, 154, 1);
 
     font-size: 27px;
 
-    background-color: rgba(36, 211, 154, 1);
-    box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    position: relative;
     border-radius: 15px;
     margin-top: -170px;
 
-    @media only screen and (max-width: 1000px) {
-            margin: 0 auto;
-            margin-top: 30px;
-        }
+    transition: all 0.4s ease-in-out;
 
+    @media only screen and (max-width: 1000px) {
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    &:before{
+        content: 'Ler Mais...';
+        color: white;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+        transform: scaleY(90%) !important;
+        transition: all 0.2s ease-in-out;
+        background-color: white;
+        border: 3px solid rgba(36, 211, 154, 1);
+
+        &:before{
+            content: '>>>>>>';
+            font-size: 35px;
+            color: rgba(36, 211, 154, 1);
+            transition: all 0.2s ease-in-out;
+        }
+    }
 `
