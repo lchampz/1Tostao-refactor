@@ -1,13 +1,19 @@
 import React from 'react';
 import Menu from './components/organims/Menu/Menu.js'
 
-import { Home } from './pages/index'
+import Rotas from './routes'
+
+import { BrowserRouter as Router} from 'react-router-dom';
+
+
 
 function App() {
   return (
     <>
+    <Router>
       <Menu />
-      <Home />
+      <Rotas />
+    </Router>
     </>
   );
 }
