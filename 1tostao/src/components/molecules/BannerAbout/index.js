@@ -20,7 +20,7 @@ const BannerAbout = () => {
                 <p>Dessa forma criamos o 1Tostão, sejam muito bem-vindos e esperamos que gostem!</p> 
             </Paragraph>
             
-            <Button>Ler Mais...</Button>
+            <Button onClick="_empty"></Button>
         </Wrapper>
     )
 }
