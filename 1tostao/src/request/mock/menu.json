@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "description": "Logar",
+      "link": "/login",
+      "isBtn": true,
+      "float": "right"
+    },
+    {
+      "id": 2,
+      "description": "Cadastro",
+      "link": "/cadastro",
+      "isBtn": true,
+      "float": "right"
+    },
+    {
+      "id": 3,
+      "description": "Servicos",
+      "link": "/servicos",
+      "isBtn": false,
+      "float": "center"
+    }
+  ]
