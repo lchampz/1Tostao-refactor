@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-left: 5%;
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 2%;
     justify-content: left;
-        text-align: left;
+    text-align: left;
         
 
     .swiper {

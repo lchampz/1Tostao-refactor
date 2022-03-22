@@ -1,8 +1,15 @@
 import React from 'react';  
 import {BorderText} from './styled'
 
-const Border = ({ children, color, width, bottom}) => {
-    return ( <BorderText bottomBorder={bottom} topBorder={"5px"}  borderWidth={width} border={color}>{children}</BorderText> );
+const Border = ({children, color, width, margin, colorBorder, size}) => {
+    return ( 
+        <BorderText  
+            margin={margin}  
+            borderWidth={width} 
+            size={size}
+            color={colorBorder}
+            border={color}>{children}</BorderText> 
+        );
 }
  
 export default Border;
