@@ -43,3 +43,15 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.cursor {
+	background: rgb(255, 255, 255);
+	margin-left: 3px;
+	animation: blink 1s infinite;
+	width: 2px;
+	display: inline-block;
+	margin-bottom: 15px;
+  }
+  
+  @keyframes blink {
+	50% {opacity: 0;}
+  }

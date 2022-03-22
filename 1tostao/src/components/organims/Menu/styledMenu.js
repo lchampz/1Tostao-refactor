@@ -7,4 +7,6 @@ export const Header = styled.header`
     width:100%;
     height:60px;
     background-color:rgb(255, 255, 255, 0);
+
+    z-index: 999;
 `;
