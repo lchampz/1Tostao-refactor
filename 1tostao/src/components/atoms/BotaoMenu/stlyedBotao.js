@@ -10,6 +10,8 @@ export const Button = styled.button`
     color: ${({colorButton}) => (colorButton ? colorButton : "#fff")};
     border-radius: ${({borderButton}) => (borderButton ? borderButton : "5px")};
     float: ${({floatButton}) => (floatButton ? floatButton : "right")};
+    transition: ${({transitionButton}) => (transitionButton ? transitionButton : "ease-in 0.3s")};
+    
         &:hover{
             cursor:pointer;
             border: 3px solid white;
