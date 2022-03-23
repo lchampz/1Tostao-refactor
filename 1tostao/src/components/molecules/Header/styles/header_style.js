@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../../../../../src/assets/img/banner.jpg'
+import img from '../../../../../src/assets/img/banner2.jpg'
 
 import Text from '../../../atoms/Text/Text';
 
