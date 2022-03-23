@@ -4,8 +4,8 @@ import Text from '../../atoms/Text/Text'
 import Img from '../../../assets/img/about_us.png'
 import { useNavigate } from 'react-router-dom'
 
-import { Wrapper, Paragraph, Button, bgCard, titleColor, border, textColor  } from './styled'
-const BannerAbout = () => {
+import { Wrapper, Paragraph, Button  } from './styled'
+const BannerAbout = ({ titleColor, border, textColor, btnBg, bgCard, btnBgHover }) => {
     const navigate = useNavigate();
 
     return(
