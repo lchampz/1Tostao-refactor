@@ -4,7 +4,7 @@ import Header from '../components/molecules/Header/Header.js';
 import CategoryCarroussel from '../components/molecules/CategoryCarroussel'
 import BannerAbout from '../components/molecules/BannerAbout'
 import User from '../components/molecules/User/index.js';
-import Footer from '../components/organims/Menu/Footer/Footer.js';
+import Footer from '../components/organims/Footer/Footer.js';
 
 const Home = () => {
 

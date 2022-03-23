@@ -1,12 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import App from './App';
+import { AuthProvider } from './request/hooks/Auth';
 
 import './reset.css'
 
 
-ReactDOM.render(
-  <App />,
+render(
+  <AuthProvider>
+    <App />
+  </AuthProvider>,
   document.getElementById('root')
 );
 
