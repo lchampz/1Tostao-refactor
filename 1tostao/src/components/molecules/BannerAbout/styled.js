@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     margin: 5% 10% ;
     flex-direction: column;
 
-    background-color: white;
+    background-color: ${({ bgCard }) => ( bgCard ? bgCard : 'white')};
     padding: 50px;
 
     border-radius: 30px;
@@ -18,6 +18,7 @@ export const Paragraph = styled.div`
     padding-top: 40px;
     display:inline-block;
     vertical-align:top;
+    color: ${({ color }) => (color ? color : 'black')};
 
     img {
         width: 300px;
@@ -51,7 +52,8 @@ export const Button = styled.div`
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: rgba(36, 211, 154, 1);
+    background-color: ${({ btnBg }) => ( btnBg ? btnBg : 'rgba(36, 211, 154, 1)')};
+    color: ${({ btnColor }) => (btnColor ? btnColor : 'black')}
 
     font-size: 27px;
 
@@ -75,7 +77,7 @@ export const Button = styled.div`
     &:hover {
         transform: scaleY(90%) !important;
         transition: all 0.2s ease-in-out;
-        background-color: white;
+        background-color: ${({ btnBgHover }) => ( btnBgHover ? btnBgHover : 'white')};
         border: 3px solid rgba(36, 211, 154, 1);
 
         &:before{
