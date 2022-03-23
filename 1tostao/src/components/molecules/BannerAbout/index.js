@@ -2,10 +2,11 @@ import React from 'react'
 import Border from '../../atoms/Border'
 import Text from '../../atoms/Text/Text'
 import Img from '../../../assets/img/about_us.png'
+import { useNavigate } from 'react-router-dom'
 
-import { Wrapper, Paragraph, Button  } from './styled'
-
-const BannerAbout = ({ titleColor, border, textColor, btnBg, bgCard, btnBgHover }) => {
+import { Wrapper, Paragraph, Button, bgCard, titleColor, border, textColor  } from './styled'
+const BannerAbout = () => {
+    const navigate = useNavigate();
 
     return(
         <Wrapper bgCard={bgCard}>
@@ -20,7 +21,7 @@ const BannerAbout = ({ titleColor, border, textColor, btnBg, bgCard, btnBgHover 
                 <p>Dessa forma criamos o 1Tostão, sejam muito bem-vindos e esperamos que gostem!</p> 
             </Paragraph>
             
-            <Button btnBgHover={btnBgHover} btnBg={btnBg} btnColor={textColor} onClick="_empty" ></Button>
+            <Button onClick={() => navigate(`/about`)}></Button>
         </Wrapper>
     )
 }
