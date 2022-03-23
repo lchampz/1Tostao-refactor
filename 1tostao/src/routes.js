@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Home, Login, Register } from './pages'
+import { AboutUs, Home, Login, Register } from './pages'
 
 const Rotas = () => {
 
@@ -9,6 +9,7 @@ const Rotas = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/about" element={<AboutUs/>} />
         </Routes>
     )
 }
