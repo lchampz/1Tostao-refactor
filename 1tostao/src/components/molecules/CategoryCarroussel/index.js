@@ -42,7 +42,7 @@ const CategoryCarroussel = () => {
 
   const renderCards = images.map((img, i) => {
     return (
-      <SwiperSlide>
+      <SwiperSlide key={i}>
         <Card
           style={{ width: "100%", height: "100%" }}
           key={i}
