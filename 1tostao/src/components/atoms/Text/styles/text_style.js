@@ -11,7 +11,7 @@ export const Title = styled.div`
 
     .cursor{
         background-color: #fff;
-        position: fixed;
+        position: absolute;
         font-size: 20px;
         padding-bottom: 6px;
         
