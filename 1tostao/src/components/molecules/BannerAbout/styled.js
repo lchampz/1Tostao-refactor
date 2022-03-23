@@ -53,7 +53,7 @@ export const Button = styled.div`
     align-items: center;
     justify-content: center;
     background-color: ${({ btnBg }) => ( btnBg ? btnBg : 'rgba(36, 211, 154, 1)')};
-    color: ${({ btnColor }) => (btnColor ? btnColor : 'black')}
+    color: ${({ btnColor }) => (btnColor ? btnColor : 'black')};
 
     font-size: 27px;
 
