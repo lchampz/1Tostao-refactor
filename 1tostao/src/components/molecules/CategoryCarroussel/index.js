@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../atoms/Card";
-import { Wrapper, Arrow } from "./styled.js";
+import { Wrapper } from "./styled.js";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Border from "../../atoms/Border";

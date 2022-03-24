@@ -12,7 +12,10 @@ export const themes = [
             btnBg: '#24D39A',
             btnColor: '#000000',
             btnHover: '#FFFFFF',
-            border: 'rgba(47, 47, 47, 1)'
+            border: 'rgba(47, 47, 47, 1)',
+            carouselCard: '#4F4F4F',
+            carouselLabel: '#FFFFFF',
+            carouselHover: '#24D39A'
         }
     },
     {
@@ -25,7 +28,10 @@ export const themes = [
             btnBg: '#24D39A',
             btnColor: '#000000',
             btnHover: '#747474',
-            border: '#FFFFFF'
+            border: '#FFFFFF',
+            carouselCard: '#24D39A',
+            carouselLabel: '#FFFFFF',
+            carouselHover: '#4F4F4F'
         }
     }
 ]
