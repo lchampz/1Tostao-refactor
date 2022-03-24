@@ -9,12 +9,12 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import { useTheme } from './request/hooks/Theme'
 
 function App() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <>
     <Router>
-      <Body >
+      <Body bg={ theme.colors.bg }>
         <Menu/>
         <Rotas />
       </Body>
