@@ -11,7 +11,6 @@ export const Container = styled.div`
     .swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #fff;
         background-position: center;
         background-size: cover;
         background-color: transparent;
@@ -55,7 +54,7 @@ export const Container = styled.div`
     
     width:100%;
     height:430px;
-    background-color: #ffffff;
+    background-color: ${({ bgCard }) => ( bgCard ? bgCard : '#ffffff')};
     margin-top:45px;
     @media (max-width:1000px){
         flex-direction: column;
@@ -109,7 +108,7 @@ export const Container = styled.div`
     max-width:1000px;
     font-size:2rem;
     font-weight: bold;
-    color: #000000;
+    color: ${({ color }) => (color ? color : 'black')};
     padding-top: 35px;
     margin-left:100px;
     display:flex;
@@ -130,6 +129,7 @@ export const Div = styled.div`
     padding-top: 50px;
     padding-left:20px;
     line-height: 1.3;
+    color: ${({ fontColor }) => (fontColor ? fontColor : 'black')};
     
     @media(max-width:1000px){
         width:300px;

@@ -7,7 +7,7 @@ export const themes = [
         name: 'white',
         colors:{
             titleColor: '#2F2F2F',
-            bg:'#FFFFFF',
+            bg:'#F3F3F3',
             fontColor: '#000000',
             btnBg: '#24D39A',
             btnColor: '#000000',
