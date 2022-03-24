@@ -16,21 +16,21 @@ const Menu = ({padding}) => {
     }
 
 
-    const content = document.getElementById("section");
-    document.addEventListener("scroll", () => {
 
+document.addEventListener("scroll", () => {
+    const content = document.getElementById("section");
     let scrolled = document.scrollingElement.scrollTop;
     let position = content.offsetTop;
 
-  if(scrolled > position + 150){
-    content.style.backgroundColor=`rgba(54,54,54)`;
-    content.style.boxShadow=`rgba(0, 0, 0, 0.24) 0px 3px 8px`
-    content.style.transition=`all 0.2s ease-in`;
-    }else if(scrolled > position - 150){
-        content.style.backgroundColor=`rgba(255,255,255, 0)`;
-        content.style.boxShadow=`rgba(0, 0, 0, 0) 0px 0px 0px`
+     if(scrolled > position + 150){
+        content.style.backgroundColor=`rgba(54,54,54)`;
+        content.style.boxShadow=`rgba(0, 0, 0, 0.24) 0px 3px 8px`
         content.style.transition=`all 0.2s ease-in`;
-    }
+        }else if(scrolled > position - 150){
+            content.style.backgroundColor=`rgba(255,255,255, 0)`;
+            content.style.boxShadow=`rgba(0, 0, 0, 0) 0px 0px 0px`
+            content.style.transition=`all 0.2s ease-in`;
+        }
 });
 
 
