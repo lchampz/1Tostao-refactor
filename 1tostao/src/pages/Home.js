@@ -14,8 +14,16 @@ const Home = () => {
     return(
         <div>
             <Header />
-            <CategoryCarroussel />
-            <User/>
+            <CategoryCarroussel 
+                titleColor={theme.colors.titleColor} 
+                border={theme.colors.border} 
+            />
+            <User 
+                border={theme.colors.border} 
+                titleColor={theme.colors.titleColor} 
+                bgCard={theme.colors.secondaryBg} 
+                fontColor={theme.colors.fontColor}
+            />
             <BannerAbout 
                 titleColor={ theme.colors.titleColor } 
                 border={ theme.colors.border } 
