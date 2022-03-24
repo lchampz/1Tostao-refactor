@@ -5,7 +5,7 @@ import Img from '../../../assets/img/about_us.png'
 import { useNavigate } from 'react-router-dom'
 
 import { Wrapper, Paragraph, Button  } from './styled'
-const BannerAbout = ({ titleColor, border, textColor, btnBg, bgCard, btnBgHover }) => {
+const BannerAbout = ({ titleColor, border, textColor, bgCard, btnBgHover }) => {
     const navigate = useNavigate();
 
     return(
@@ -21,7 +21,7 @@ const BannerAbout = ({ titleColor, border, textColor, btnBg, bgCard, btnBgHover 
                 <p>Dessa forma criamos o 1Tostão, sejam muito bem-vindos e esperamos que gostem!</p> 
             </Paragraph>
             
-            <Button onClick={() => navigate(`/about`)}></Button>
+            <Button btnBgHover={btnBgHover} onClick={() => navigate(`/about`)}></Button>
         </Wrapper>
     )
 }
