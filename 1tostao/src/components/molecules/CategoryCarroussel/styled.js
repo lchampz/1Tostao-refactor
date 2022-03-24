@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
+    margin-bottom: 3%;
     margin-top: 2%;
     justify-content: left;
     text-align: left;

@@ -5,9 +5,15 @@ import { Header } from './styledMenu.js'
 import logo from '../../../assets/img/logo-white.png'
 import { Links } from '../../atoms/LinkMenu/styledLink.js'
 import LinkMenu from '../../atoms/LinkMenu/Link.js'
+import { useTheme, changeTheme } from '../../../request/hooks/Theme'
 
 const Menu = ({padding}) => {
     const navigate = useNavigate();
+    const { theme, setTheme, themes } = useTheme()
+    
+    const changeTheme = () => {
+        setTheme(theme.name == 'white' ? themes[1] : themes[0])
+    }
 
     return(
         <>
@@ -18,6 +24,7 @@ const Menu = ({padding}) => {
                 <Botao click={() => navigate(`/login`)}>Login</Botao>
                 <Botao click={() => navigate(`/register`)}>Cadastro</Botao>
                 <Botao click={() => navigate(`/`)}>Home</Botao>
+                <Botao click={changeTheme}>Tema</Botao>
             </Header>
         </>
     );
