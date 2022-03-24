@@ -11,7 +11,7 @@ export const themes = [
             fontColor: '#000000',
             btnBg: '#24D39A',
             btnColor: '#000000',
-            btnHover: '#F3F3F3',
+            btnHover: '#FFFFFF',
             border: 'rgba(47, 47, 47, 1)'
         }
     },
