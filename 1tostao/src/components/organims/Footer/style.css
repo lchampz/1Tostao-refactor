@@ -11,7 +11,8 @@
     color:white;
     font-family: Poppins;
     font-size:50px;
-    margin-top:20px;
+    margin-top: 30px;
+    margin-right: 1rem;
 }
 
 @media(min-width:392px){
