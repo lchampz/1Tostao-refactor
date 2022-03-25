@@ -15,7 +15,7 @@ const Rotas = () => {
     return(
         <Routes>
             {routes.map((routes, i) => (
-                <Route path={routes.path} element={routes.element}/>
+                <Route key={i} path={routes.path} element={routes.element}/>
             ))}
         </Routes>
     )
