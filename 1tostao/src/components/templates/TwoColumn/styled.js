@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 export const First = styled.div`
   width: calc(50% - 130px);
 
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 1100px) {
     filter: blur(5px);
     opacity: 0.4;
   }
