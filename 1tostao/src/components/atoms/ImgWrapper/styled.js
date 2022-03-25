@@ -4,5 +4,6 @@ export const Wrapper = styled.div`
     display: flex;
     width: ${({ width }) => (width ? width : '100px')};
     height: ${({ height }) => (height ? height : '100px')};
-    float: ${({ float }) => (float ? float : '')}
+    float: ${({ float }) => (float ? float : '')};
+    cursor: ${({ cursor }) => (cursor ? cursor : '')};
 `
