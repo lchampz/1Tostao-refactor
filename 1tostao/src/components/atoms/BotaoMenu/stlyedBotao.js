@@ -1,25 +1,23 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-    transition: ${({hoverButton}) => (hoverButton ? hoverButton: "auto" )};
     background-color: ${({bgButton}) => (bgButton ? bgButton: "rgb(255, 255, 255,0)" )};
     border: ${({borderButton}) => (borderButton ? borderButton: "1px solid white")};
-    width: ${({widthButton}) => (widthButton ? widthButton : "105px")};
+    width: ${({widthButton}) => (widthButton ? widthButton : "90px")};
     height: ${({heightButton}) => (heightButton ? heightButton : "40px")};
-    margin: ${({marginButton}) => (marginButton ? marginButton : "10px")};
     color: ${({colorButton}) => (colorButton ? colorButton : "#fff")};
-    border-radius: ${({borderButton}) => (borderButton ? borderButton : "5px")};
-    float: ${({floatButton}) => (floatButton ? floatButton : "right")};
-    transition: ${({transitionButton}) => (transitionButton ? transitionButton : " 0.3s ease-in")};
-    
+    border-radius: ${({borderButton}) => (borderButton ? borderButton : "20px")};
+    transition: ${({transitionButton}) => (transitionButton ? transitionButton : "all 0.1s ease-in")};
+
+    font-family: 'Poppins';
+    font-size:0.9rem;
+    margin-right: 15px;
+
         &:hover{
             cursor:pointer;
-            border: 3px solid white;
+            border: 3px solid #24D39A;
+            color: #24D39A;
         }
+    
 `;
 
-export const Login = styled.p`
-    color:white;
-    font-family: Poppins;
-    font-size:16px;
-`;
