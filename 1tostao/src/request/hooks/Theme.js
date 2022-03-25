@@ -6,7 +6,7 @@ export const themes = [
     {
         name: 'white',
         colors:{
-            titleColor: '#2F2F2F',
+            titleColor: '#2F2F2F', 
             bg:'#F3F3F3',
             fontColor: '#000000',
             btnBg: '#24D39A',
@@ -15,7 +15,9 @@ export const themes = [
             border: 'rgba(47, 47, 47, 1)',
             carouselCard: '#4F4F4F',
             carouselLabel: '#FFFFFF',
-            carouselHover: '#24D39A'
+            carouselHover: '#24D39A',
+            faqBorder: '#24D39A',
+            faqTitle: '#2F2F2F'
         }
     },
     {
@@ -31,7 +33,9 @@ export const themes = [
             border: '#FFFFFF',
             carouselCard: '#24D39A',
             carouselLabel: '#FFFFFF',
-            carouselHover: '#4F4F4F'
+            carouselHover: '#4F4F4F',
+            faqBorder: '#FFFFFF',
+            faqTitle: '#24D39A'
         }
     }
 ]
