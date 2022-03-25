@@ -34,10 +34,11 @@ export const WrapperQuest = styled.div`
 `
 
 export const Answer = styled.div`
-margin-right: 20px;
+    margin-right: 20px;
     margin-top: 15px; 
     color: ${({ color }) => ( color ? color : 'rgba(47, 47, 47, 1)')};
     font-weight: thin;
     font-size: 20px;
+    display: ${({ visible }) => ( visible ? 'inherit' : 'none')};
     
 `

@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Wrapper } from './styled'
 
-const ImgWrapper = ({ url, alt, width, height}) => {
+const ImgWrapper = ({ url, alt, width, height, float, click}) => {
     return (
-        <Wrapper width={width} height={height}>
+        <Wrapper onClick={click} width={width} height={height} float={float}>
             <img src={url} alt={alt}/>
         </Wrapper>
     );
