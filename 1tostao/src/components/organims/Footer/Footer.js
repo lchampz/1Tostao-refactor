@@ -10,7 +10,7 @@ import logo from '../../../assets/img/logo-white.png'
 
 import './style.css';
 
-const Footer = ({width, margintop}) => {
+const Footer = ({width, margintop, border, size, color}) => {
     return(
         <>
         {/* FooterStyled is the Footer */}
@@ -47,7 +47,7 @@ const Footer = ({width, margintop}) => {
                         </div>
                         
                     </div>
-                    <BorderText borderWidth={width="100%"} topBorder={margintop="50px"} />
+                    <BorderText borderWidth={width="100%"} topBorder={margintop="20px"} />
 
                     <div className="row" id="row-rod">
                         <div className="col-rod">

@@ -4,10 +4,19 @@
 
 .container{
     padding:25px;
+
+}
+
+.logo{
+    color:white;
+    font-family: Poppins;
+    font-size:50px;
+    margin-top:20px;
 }
 
 @media(min-width:392px){
     .row{
+
         display:flex;
         flex-wrap:wrap;
         margin-right:-15px;
@@ -35,17 +44,11 @@
     }
 }
 
-.logo{
-    color:white;
-    font-family: Poppins;
-    font-size:50px;
-    margin-top:20px;
-}
 
 .infos{
     color:white;
     font-family:Poppins;
-    font-size:35px;
+    font-size:20px;
     margin-top:20px;
     text-align:left;
 }
@@ -53,19 +56,18 @@
 .desc{
     color:#646771;
     text-align:left;
-    font-size:20px;
+    font-size:13px;
     font-family:Poppins;
-    margin-top:5px;
     line-height: 25px;
     font-weight:bold;
 }
 
 .li{
-    font-size:20px;
+    font-size:12px;
     line-height:20px;
     font-family:Poppins;
     color:#646771;
-    margin-top:15px;
+    margin-top:10px;
     font-weight:bold;
     transition: 0.3s;
 }
@@ -77,9 +79,8 @@
 
 .img{
     width:40px;
-    margin-left:10px;
+    margin-right:10px;
     margin-top:20px;
-    margin-bottom:20px;
     cursor: pointer;
 }
 
@@ -100,7 +101,7 @@
 
 #row-rod{
     margin:15px;
-    margin-top:60px;
+    margin-top:30px;
     margin-bottom:-30px;
 }
 
@@ -117,12 +118,15 @@
         flex:0 40%;
         max-width:40%;
         float:right;
+
     }
 }
 
 .rodapepo{
+
     padding-bottom:10px;
     cursor:pointer;
+    font-size: 0.9rem;
     transition: 0.3s;
 }
 
@@ -131,5 +135,5 @@
 }
 
 #logo{
-    width:280px;
+    width:150px;
 }

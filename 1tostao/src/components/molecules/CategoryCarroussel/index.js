@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../atoms/Card";
-import { Wrapper, Arrow } from "./styled.js";
+import { Wrapper } from "./styled.js";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Border from "../../atoms/Border";
@@ -19,7 +19,7 @@ import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
 const images = require("../../../request/mock/imgs.json");
 
-const CategoryCarroussel = () => {
+const CategoryCarroussel = ({ titleColor, border }) => {
 
   const breakpoints = {
     400: {
@@ -58,11 +58,11 @@ const CategoryCarroussel = () => {
 
   return (
     <Wrapper>
-      <Text className="title" size="36px" color="rgba(47, 47, 47, 1)">
+      <Text className="title" size="36px" color={titleColor}>
         Algumas de nossas categorias...
       </Text>
       <Border
-        color="1px solid #A9A9A9"
+        color={`1px solid ${border}`}
         marginBorder="5px"
         width="100%"
       />

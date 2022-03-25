@@ -38,7 +38,7 @@ export const Content = styled.div`
         width: 100%;
         border-top-right-radius: 24px;
         border-bottom-right-radius: 24px;
-        background-color: #4F4F4F;
+        background-color: ${({ carouselBg }) => (carouselBg ? carouselBg : '#4F4F4F')};
         height: 79px;
         font-weight: bold;
         font-family: 'Poppins', sans-serif;
@@ -49,10 +49,10 @@ export const Content = styled.div`
 
 export const Link = styled.a`
     text-decoration: none;
-    color: white;
+    color: ${({ carouselColor }) => (carouselColor ? carouselColor : '#FFFFFF')};
     transition: 0.5s color;
 
     &:hover {
-        color:#24D39A;
+        color: ${({ carouselHover }) => (carouselHover ? carouselHover : '#24D39A')};
     }
 `

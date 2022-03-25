@@ -11,7 +11,7 @@ export const Background = styled.div`
     background-size: cover;
     display: flex;
     width:100%;
-    height: 80vh;
+    height: 85vh;
     flex-direction:column;
     justify-content:center;
     
@@ -34,5 +34,4 @@ export const Container = styled.div`
 `
 
 export const Title = styled(Text)`
-
 `

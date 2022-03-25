@@ -9,4 +9,5 @@ export const Header = styled.header`
     background-color:rgb(255, 255, 255, 0);
 
     z-index: 999;
+
 `;

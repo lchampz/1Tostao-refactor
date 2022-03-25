@@ -6,14 +6,32 @@ import BannerAbout from '../components/molecules/BannerAbout'
 import User from '../components/molecules/User/index.js';
 import Footer from '../components/organims/Footer/Footer.js';
 
+import { useTheme } from '../request/hooks/Theme'
+
 const Home = () => {
+    const { theme } = useTheme()
 
     return(
         <div>
             <Header />
-            <CategoryCarroussel />
-            <User/>
-            <BannerAbout />
+            <CategoryCarroussel 
+                titleColor={theme.colors.titleColor} 
+                border={theme.colors.border} 
+            />
+            <User 
+                border={theme.colors.border} 
+                titleColor={theme.colors.titleColor} 
+                bgCard={theme.colors.secondaryBg} 
+                fontColor={theme.colors.fontColor}
+            />
+            <BannerAbout 
+                titleColor={ theme.colors.titleColor } 
+                border={ theme.colors.border } 
+                textColor={ theme.colors.fontColor } 
+                btnBg={ theme.colors.btnBg }
+                bgCard={ theme.colors.secondaryBg }
+                btnBgHover={ theme.colors.btnHover }
+            />
             <Footer />
         </div>   
     )

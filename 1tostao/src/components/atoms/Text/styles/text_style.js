@@ -9,4 +9,11 @@ export const Title = styled.div`
     line-height: ${({heightText}) => (heightText ? heightText : "1.1")};
 
 
+    .cursor{
+        background-color: #fff;
+        position: absolute;
+        font-size: 20px;
+        padding-bottom: 6px;
+        
+    }
 `
