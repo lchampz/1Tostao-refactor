@@ -19,9 +19,9 @@ const Quests = () => {
         </WrapperTitle>
         <WrapperQuest>
             <Quest>Lorem Ipsum lorem Ips lorem null lorem?</Quest>
-            <Answer>Sexo Sexo Sexo Sexo Sexo Sexo Sexo Sexo</Answer>
+            <Answer>Lorem Ipsum lorem Ips lorem null lorem</Answer>
             <Quest>Lorem Ipsum lorem Ips lorem null lorem?</Quest>
-            <Answer>Sexo Sexo Sexo Sexo Sexo Sexo Sexo Sexo</Answer>
+            <Answer>Lorem Ipsum lorem Ips lorem null lorem</Answer>
         </WrapperQuest>
     </Wrapper>
   );
