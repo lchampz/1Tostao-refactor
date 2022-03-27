@@ -1,15 +1,13 @@
 import React from 'react'
-import {Container, Card} from '../components/atoms/CardRegister/styled.js'
+import CardLogin from '../components/atoms/CardLogin/index.js'
 
 const Login = () => {
 
     return(
         <>
-            <Container>
-                <Card />
-            </Container>
+            <CardLogin />
         </>   
     )
 }
 
-export default Login
+export default Login;

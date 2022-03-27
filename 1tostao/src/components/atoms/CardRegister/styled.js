@@ -10,7 +10,7 @@ export const Container = styled.div`
     margin-right:auto;
 
     display: flex; 
-    height: 100%;
+    height: ${({heightContainer}) => (heightContainer ? heightContainer: "100%")};
     margin: 0 auto;
     justify-content: center;
     text-align: center;
@@ -24,7 +24,7 @@ export const Card = styled.div`
     margin-top:-50px;
     background-color:white;
     width:640px;
-    height:100%;
+    height: ${({heightCard}) => (heightCard ? heightCard: "100%")};
     border-radius:30px;
     padding:70px;
     box-shadow: 5px 5px 5px rgba(36, 36, 36, 0.471);
