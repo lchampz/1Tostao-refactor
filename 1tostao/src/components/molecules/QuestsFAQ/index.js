@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Border from "../../atoms/Border";
 import Text from "../../atoms/Text/Text";
 import Plus from "../../../assets/img/plus.png";
+import Minus from "../../../assets/img/minus.png";
 
 import { useTheme } from "../../../request/hooks/Theme";
 
@@ -12,24 +13,34 @@ const quests = require("../../../request/mock/quests.json");
 
 const Quests = () => {
   const { theme } = useTheme();
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState({
+    id: '',
+    visibility: false,
+  });
+  const [ icon, setIcon ] = useState(Plus)
 
   const renderQuest = quests.map((quest, i) => {
+    
+    const unvisible = () => {
+      setVisible({ ...visible, id: i, visibility: !visible.visibility })
+      setIcon(icon == Plus ? Minus : Plus)
+    }
+
     return (
       <React.Fragment key={i}>
         <Quest color={theme.colors.fontColor}>
           {quest.quest}
           <ImgWrapper
-            url={Plus}
-            alt={"plus"}
+            url={i == visible.id ? icon : Plus}
+            alt={"iconMinusOrPlus"}
             width={"1rem"}
             height={"30px"}
             float={"right"}
-            click={() => setVisible(!visible)}
+            click={unvisible}
             cursor={'pointer'}
           />
         </Quest>
-        <Answer visible={visible} color={theme.colors.fontColor}>
+        <Answer visible={i === visible.id ? visible.visibility : false} color={theme.colors.fontColor}>
           {quest.answer}
         </Answer>
       </React.Fragment>
