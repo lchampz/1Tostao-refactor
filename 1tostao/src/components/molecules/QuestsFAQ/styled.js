@@ -39,6 +39,9 @@ export const Answer = styled.div`
     color: ${({ color }) => ( color ? color : 'rgba(47, 47, 47, 1)')};
     font-weight: thin;
     font-size: 20px;
-    display: ${({ visible }) => ( visible ? 'inherit' : 'none')};
+    transition: opacity 0.3s ease-in-out, margin-top 0.5s ease-in-out;
+    
+    opacity: ${({ visible }) => ( visible ? '1' : '0')};
+    margin-top: ${({ visible }) => ( visible ? '10px' : '-50px')};
     
 `
