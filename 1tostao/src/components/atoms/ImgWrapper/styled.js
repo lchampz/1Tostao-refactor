@@ -6,4 +6,11 @@ export const Wrapper = styled.div`
     height: ${({ height }) => (height ? height : '100px')};
     float: ${({ float }) => (float ? float : '')};
     cursor: ${({ cursor }) => (cursor ? cursor : '')};
+    margin: ${({ margin }) => (margin ? margin : '')};
+    transform: ${({ transform }) => (transform ? transform : '')};
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
 `

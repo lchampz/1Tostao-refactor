@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Border from "../../atoms/Border";
 import Text from "../../atoms/Text/Text";
-import Plus from "../../../assets/img/plus.png";
-import Minus from "../../../assets/img/minus.png";
+import Plus from "../../../assets/icons/plus.png";
+import Minus from "../../../assets/icons/minus.png";
+import Next from '../../../assets/icons/arrowCircle.png'
 
 import { useTheme } from "../../../request/hooks/Theme";
 
@@ -12,6 +13,12 @@ import ImgWrapper from "../../atoms/ImgWrapper";
 const quests = require("../../../request/mock/quests.json");
 
 const Quests = () => {
+  const [ limit, setLimit ] = useState( {
+    min: 0,
+    max: 4,
+    pages: 2,
+    actualPage: 1
+  })
   const { theme } = useTheme();
   const [visible, setVisible] = useState({
     id: '',
@@ -28,21 +35,24 @@ const Quests = () => {
 
     return (
       <React.Fragment key={i}>
-        <Quest color={theme.colors.fontColor}>
-          {quest.quest}
-          <ImgWrapper
-            url={i == visible.id ? icon : Plus}
-            alt={"iconMinusOrPlus"}
-            width={"1rem"}
-            height={"30px"}
-            float={"right"}
-            click={unvisible}
-            cursor={'pointer'}
-          />
-        </Quest>
-        <Answer visible={i === visible.id ? visible.visibility : false} color={theme.colors.fontColor}>
-          {quest.answer}
-        </Answer>
+        {limit.min <= i && limit.max > i ? 
+        (<>
+          <Quest color={theme.colors.fontColor}>
+              {quest.quest}
+              <ImgWrapper
+                url={i == visible.id ? icon : Plus}
+                alt={"iconMinusOrPlus"}
+                width={"2rem"}
+                height={"30px"}
+                float={"right"}
+                click={unvisible}
+                cursor={'pointer'} />
+            </Quest>
+            <Answer visible={i === visible.id ? visible.visibility : false} color={theme.colors.fontColor}>
+                {quest.answer}
+            </Answer>
+          </>)
+        : null}
       </React.Fragment>
     );
   });
@@ -54,7 +64,18 @@ const Quests = () => {
         <Border colorBorder={theme.colors.faqBorder} size={"2px"} />
       </WrapperTitle>
       <WrapperQuest>{renderQuest}</WrapperQuest>
+      <ImgWrapper 
+        url={Next} 
+        width={'50px'}
+        height={'50px'} 
+        cursor={'pointer'} 
+        margin={'20% 0px 0px 0px'} 
+        float={'left'}
+        transform={ limit.min === 5 ? 'rotate(180deg)'  : null}
+        click={() => setLimit(limit.min === 0 ? {...limit, min: 5, max: 9, actualPage: 2 } : {...limit, min: 0, max: 4, actualPage: 1})} />
+        <div style={{ color: theme.colors.fontColor }}>{limit.actualPage}/{limit.pages}</div>
     </Wrapper>
+
   );
 };
 
