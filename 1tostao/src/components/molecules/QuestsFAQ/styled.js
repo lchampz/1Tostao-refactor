@@ -45,3 +45,29 @@ export const Answer = styled.div`
     margin-top: ${({ visible }) => ( visible ? '10px' : '-50px')};
     
 `
+
+export const WrapperEnd = styled.div`
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+
+    .pagination {
+        float: right; 
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .imgNext { 
+        display: flex;
+        align-items: right;
+        float: right;
+        text-align: right;
+        justify-content: ;
+    }
+
+
+`
