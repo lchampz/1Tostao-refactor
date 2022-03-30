@@ -10,17 +10,13 @@ import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 
 const Menu = ({padding}) => {
-    const [classMenu, setClassMenu] = useState();
+    const [classMenu, setClassMenu] = useState(false);
     const navigate = useNavigate();
     const { theme, setTheme, themes } = useTheme()
     
     const changeTheme = () => {
         setTheme(theme.name === 'white' ? themes[1] : themes[0])
     }
-    
-
-    
-    
     
 document.addEventListener("scroll", () => {
         const content = document.getElementById("section");
@@ -38,23 +34,14 @@ document.addEventListener("scroll", () => {
     }
 });
 
-const handleMenu = () =>{
-    const openMenu = document.getElementById("mobile");
-    const display = document.getElementById("hamburguer");  
-
-    openMenu.addEventListener = ('click', () => {
-        if(display.classList === "off"){
-            setClassMenu("active")
-            display.style.display=`block`;
-            display.classList.add(classMenu);
-        }else if(display.classList === "active"){
-            setClassMenu("off")
-            display.style.display=`none`;
-            display.classList.add(classMenu);
+    const toggleMenu = () => {
+        if(classMenu === true) {
+            setClassMenu(false)
+        } else {
+            setClassMenu(true)
         }
-    })
-}
-    
+    }
+
 return(
     <>
         <Container id="section">
@@ -72,11 +59,11 @@ return(
                  <Botao click={() => navigate(`/login`)}>Login</Botao>
                  <Botao click={() => navigate(`/register`)}>Registrar</Botao>
             </Buttons>
-            <HamburguerMenu id="mobile" onClick={handleMenu} >
+            <HamburguerMenu id="mobile" onClick={toggleMenu} >
                 <FontAwesomeIcon className="icon" icon={faBars} />
             </HamburguerMenu>
         </Container>
-            <MobileMenu id="hamburguer"className='off'>
+            <MobileMenu id="hamburguer" active={classMenu}>
                     <PagesMenu  onClick={() => navigate(`/`)}>Home</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/servicos`)}>Serviços</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/about`)}>Sobre nós</PagesMenu>

@@ -32,7 +32,7 @@ export const Pages = styled.li`
         color: #24D39A;
         cursor: pointer;
     }
-    @media(max-width:840px){
+    @media screen and (max-width:840px){
         display: none;
     }
 
@@ -71,7 +71,7 @@ export const HamburguerMenu = styled.div`
 `
 
 export const MobileMenu = styled.div`
-    display: none;
+    display: ${({ active }) => (active ? 'block' : 'none')};
     position: fixed;
     width: 100%;
     height: 14rem;
@@ -82,11 +82,11 @@ export const MobileMenu = styled.div`
     transition: all 0.1s ease-in;
     background-color: rgba(54,54,54);
     z-index: 997;
-    
-    @media(max-width: 840px){
-        
+
+    @media screen and (min-width: 840px) {
+        display: none;
     }
-    
+
     `
 export const PagesMenu = styled.li`
     margin-top: 15px;
