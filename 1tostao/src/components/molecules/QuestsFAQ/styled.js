@@ -66,7 +66,7 @@ export const WrapperEnd = styled.div`
         align-items: right;
         float: right;
         text-align: right;
-        justify-content: ;
+        
     }
 
 

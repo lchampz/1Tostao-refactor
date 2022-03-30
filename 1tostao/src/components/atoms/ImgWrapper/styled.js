@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     cursor: ${({ cursor }) => (cursor ? cursor : '')};
     margin: ${({ margin }) => (margin ? margin : '')};
     transform: ${({ transform }) => (transform ? transform : '')};
+    transition: all 0.5s ease-in-out;
 
 
     img{
