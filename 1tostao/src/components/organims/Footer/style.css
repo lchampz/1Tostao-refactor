@@ -30,7 +30,8 @@
 @media(min-width: 576px){
 } */
 
-@media(min-width: 576px){
+@media(min-width: 850px){
+    
     .col{
         flex: 0 40%;
         max-width:40%;   
@@ -52,6 +53,8 @@
     font-size:20px;
     margin-top:20px;
     text-align:left;
+    
+    margin-right:3rem;
 }
 
 .desc{
@@ -61,6 +64,7 @@
     font-family:Poppins;
     line-height: 25px;
     font-weight:bold;
+    
 }
 
 .li{
@@ -71,6 +75,10 @@
     margin-top:10px;
     font-weight:bold;
     transition: 0.3s;
+    
+}
+.li:last-child{
+    margin-bottom: 1rem;
 }
 
 .li:hover{
