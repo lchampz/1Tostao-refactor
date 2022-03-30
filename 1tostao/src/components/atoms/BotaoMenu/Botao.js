@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button, Login } from './stlyedBotao.js'
+import { Button } from './stlyedBotao.js'
 
 const BotaoMenu = ({children, color, border, radius, width, height, padding, click}) => {
     return(
         <div>
             <Button onClick={click} borderButton={border} >
-                <Login>{children}</Login>
+                {children}
             </Button>
         </div>
     );
