@@ -34,10 +34,40 @@ export const WrapperQuest = styled.div`
 `
 
 export const Answer = styled.div`
-margin-right: 20px;
+    margin-right: 20px;
     margin-top: 15px; 
     color: ${({ color }) => ( color ? color : 'rgba(47, 47, 47, 1)')};
     font-weight: thin;
     font-size: 20px;
+    transition: opacity 0.3s ease-in-out, margin-top 0.5s ease-in-out;
     
+    opacity: ${({ visible }) => ( visible ? '1' : '0')};
+    margin-top: ${({ visible }) => ( visible ? '10px' : '-50px')};
+    
+`
+
+export const WrapperEnd = styled.div`
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+
+    .pagination {
+        float: right; 
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .imgNext { 
+        display: flex;
+        align-items: right;
+        float: right;
+        text-align: right;
+        
+    }
+
+
 `

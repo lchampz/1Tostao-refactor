@@ -6,7 +6,7 @@ export const Button = styled.button`
     width: ${({widthButton}) => (widthButton ? widthButton : "90px")};
     height: ${({heightButton}) => (heightButton ? heightButton : "40px")};
     color: ${({colorButton}) => (colorButton ? colorButton : "#fff")};
-    border-radius: ${({borderButton}) => (borderButton ? borderButton : "20px")};
+    border-radius: ${({borderRadiusButton}) => (borderRadiusButton ? borderRadiusButton : "20px")};
     transition: ${({transitionButton}) => (transitionButton ? transitionButton : "all 0.1s ease-in")};
 
     font-family: 'Poppins';

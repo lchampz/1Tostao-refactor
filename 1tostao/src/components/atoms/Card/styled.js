@@ -18,6 +18,17 @@ export const Card = styled.div`
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
 `
 
+export const CardInfo = styled.div`
+    margin-top:-50px;
+    background-color:white;
+    width:640px;
+    height: ${({heightCard}) => (heightCard ? heightCard: "100%")};
+    border-radius:30px;
+    padding:70px;
+    box-shadow: 5px 5px 5px rgba(36, 36, 36, 0.471);
+    
+`
+
 export const Content = styled.div`
     display: flex;
     justify-content: center;

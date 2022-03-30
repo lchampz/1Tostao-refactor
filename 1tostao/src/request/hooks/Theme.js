@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext, useEffect } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 
 export const ThemeContext = createContext({});
 
@@ -17,14 +17,20 @@ export const themes = [
             carouselLabel: '#FFFFFF',
             carouselHover: '#24D39A',
             faqBorder: '#24D39A',
-            faqTitle: '#2F2F2F'
+            faqTitle: '#2F2F2F',
+
         }
     },
     {
         name: 'dark',
         colors:{
+<<<<<<< HEAD
             titleColor: '#24D39A',
             bg:'#2b2b2b',
+=======
+            titleColor: '#F1F1F1',
+            bg:'#292929',
+>>>>>>> main
             secondaryBg: '#1c1c1c',
             fontColor: '#FFFFFF',
             btnBg: '#24D39A',
@@ -35,7 +41,7 @@ export const themes = [
             carouselLabel: '#FFFFFF',
             carouselHover: '#4F4F4F',
             faqBorder: '#FFFFFF',
-            faqTitle: '#24D39A'
+            faqTitle: '#24D39A',
         }
     }
 ]
