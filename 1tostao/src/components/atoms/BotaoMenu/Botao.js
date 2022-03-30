@@ -4,7 +4,7 @@ import { Button } from './stlyedBotao.js'
 const BotaoMenu = ({children, color, border, radius, width, height, padding, click}) => {
     return(
         <div>
-            <Button onClick={click} borderButton={border} >
+            <Button onClick={click} borderButton={border} widthButton={width} >
                 {children}
             </Button>
         </div>

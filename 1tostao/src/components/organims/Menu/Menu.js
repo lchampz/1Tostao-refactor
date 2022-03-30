@@ -7,7 +7,7 @@ import { Links } from '../../atoms/LinkMenu/styledLink.js'
 import LinkMenu from '../../atoms/LinkMenu/Link.js'
 import { useTheme} from '../../../request/hooks/Theme'
 
-const Menu = ({padding}) => {
+const Menu = ({padding, width}) => {
     const navigate = useNavigate();
     const { theme, setTheme, themes } = useTheme()
     
@@ -48,7 +48,7 @@ document.addEventListener("scroll", () => {
             </Header>
             <Buttons>
                  <Botao click={() => navigate(`/login`)}>Login</Botao>
-                 <Botao click={() => navigate(`/register`)}>Registrar</Botao>
+                 <Botao click={() => navigate(`/register`)} widthButton={width="120px"}>Registre</Botao>
             </Buttons>
                 
             
