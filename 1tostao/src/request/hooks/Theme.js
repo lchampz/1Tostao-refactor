@@ -24,13 +24,13 @@ export const themes = [
     {
         name: 'dark',
         colors:{
-<<<<<<< HEAD
+
             titleColor: '#24D39A',
             bg:'#2b2b2b',
-=======
+
             titleColor: '#F1F1F1',
             bg:'#292929',
->>>>>>> main
+
             secondaryBg: '#1c1c1c',
             fontColor: '#FFFFFF',
             btnBg: '#24D39A',
