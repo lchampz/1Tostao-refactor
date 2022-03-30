@@ -36,4 +36,19 @@ export const Btn = styled.div`
     }
     
     `
-    
+    export const ButtonCard = styled.button`
+    margin-top: ${({topButton}) => (topButton ? topButton: "20px")};
+    width: ${({widthButton}) => (widthButton ? widthButton: "100%;")};
+    border: 0;
+    outline:0;
+    border-radius: ${({radiusButton}) => (radiusButton ? radiusButton: "25px")};
+    height: ${({heightButton}) => (heightButton ? heightButton: "50px")};
+    background-color: ${({backgroundColorButton}) => (backgroundColorButton ? backgroundColorButton: "rgb(13, 196, 135)")};
+    transition: ${({transitionButton}) => (transitionButton ? transitionButton: "0")};
+    padding:5px;
+
+    &:hover{
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+`

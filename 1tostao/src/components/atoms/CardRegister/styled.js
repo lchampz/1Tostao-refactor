@@ -38,38 +38,3 @@ export const Label = styled.p`
     color: ${({colorLabel}) => (colorLabel ? colorLabel: "black")};
 `
 
-export const Input = styled.input`
-    width:100%;
-    height: 2rem;
-    margin-top:10px;
-    margin-bottom:35px;
-    border-top: ${({borderTop}) => (borderTop ? borderTop: "0")};
-    border-left: ${({borderLeft}) => (borderLeft ? borderLeft: "0")};
-    border-right: ${({borderRight}) => (borderRight ? borderRight: "0")};
-    transition: 0.2s ease-in;
-
-    &:focus{
-        outline:0;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 2px solid rgb(20, 202, 138);
-    }
-`
-
-export const Button = styled.button`
-    margin-top: ${({topButton}) => (topButton ? topButton: "20px")};
-    width: ${({widthButton}) => (widthButton ? widthButton: "100%;")};
-    border: 0;
-    outline:0;
-    border-radius: ${({radiusButton}) => (radiusButton ? radiusButton: "25px")};
-    height: ${({heightButton}) => (heightButton ? heightButton: "50px")};
-    background-color: ${({backgroundColorButton}) => (backgroundColorButton ? backgroundColorButton: "rgb(13, 196, 135)")};
-    transition: ${({transitionButton}) => (transitionButton ? transitionButton: "0")};
-    padding:5px;
-
-    &:hover{
-        transform: scale(1.05);
-        cursor: pointer;
-    }
-`

@@ -23,9 +23,9 @@ export const themes = [
     {
         name: 'dark',
         colors:{
-            titleColor: '#24D39A',
-            bg:'#525252',
-            secondaryBg: '#747474',
+            titleColor: '#F1F1F1',
+            bg:'#292929',
+            secondaryBg: '#1c1c1c',
             fontColor: '#FFFFFF',
             btnBg: '#24D39A',
             btnColor: '#000000',
