@@ -74,7 +74,8 @@ const Quests = () => {
         <Border colorBorder={theme.colors.faqBorder} size={"2px"} />
       </WrapperTitle>
       <WrapperQuest>{renderQuest}</WrapperQuest>
-      <WrapperEnd>
+      {quests.length > 4 ? (<>
+        <WrapperEnd>
         <div className="imgNext">
           <ImgWrapper
             url={Next}
@@ -100,6 +101,8 @@ const Quests = () => {
           {limit.actualPage}/{limit.pages}
         </div>
       </WrapperEnd>
+      </>) : null}
+      
     </Wrapper>
   );
 };
