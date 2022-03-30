@@ -8,7 +8,7 @@ export const Btn = styled.div`
     font-family: ${({familyButton}) => (familyButton ? familyButton : "Poppins")};
     padding: ${({paddingButton}) => (paddingButton ? paddingButton : "12px")};
     transition: ${({transitionButton}) => (transitionButton ? transitionButton : "ease-in 0.3s")};
-    width: ${({widthButton}) => (widthButton ? widthButton : "177px")};
+    width: ${({widthButton}) => (widthButton ? widthButton : "175px")};
     box-sizing: border-box;
 
     .icon{
@@ -23,7 +23,7 @@ export const Btn = styled.div`
         cursor: pointer;
         width:200px;
         border: 1px solid #fff;
-        background-color:rgb(255, 255, 255, 0.67);
+        background-color:rgb(255, 255, 255, 0.7);
         color:#000;
         border-radius: 35px;
 
