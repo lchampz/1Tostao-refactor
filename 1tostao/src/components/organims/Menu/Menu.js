@@ -27,7 +27,7 @@ const Menu = ({padding}) => {
     
     useEffect(() => {
         if(theme.name === 'white') {
-            setStyle({ bg: '#FFFFFF', color: 'black' })
+            setStyle({ bg: '#E1E1E1', color: 'black' })
             setLogo(blackLogo)
         } else {
             setStyle({bg: '#343434' ,  color: '#FFFFFF' })
