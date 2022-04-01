@@ -1,22 +1,20 @@
-import React from 'react'
-import { AuthProvider } from '../request/hooks/Auth'
-import { ThemeProvider } from '../request/hooks/Theme'
-import { LoadingProvider } from '../request/hooks/Loading'
+import React from "react";
+import { AuthProvider } from "../request/hooks/Auth";
+import { ThemeProvider } from "../request/hooks/Theme";
+import { LoadingProvider } from "../request/hooks/Loading";
 
 const Providers = ({ children }) => {
+  return (
+    <>
+      <AuthProvider>
+        <ThemeProvider>
+          <LoadingProvider>
+              {children}
+            </LoadingProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    </>
+  );
+};
 
-    return(
-        <>
-            <AuthProvider>
-                <LoadingProvider>
-                    <ThemeProvider>
-                        {children}
-                    </ThemeProvider>
-                </LoadingProvider> 
-            </AuthProvider>
-        </>
-    )
-}
-
-export default Providers
-
+export default Providers;
