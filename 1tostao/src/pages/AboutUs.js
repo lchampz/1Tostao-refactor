@@ -12,7 +12,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
             <Container topContainer={paddingTop="12rem"}>
                 <Linha>
                     <Col>
-                        <Title children={children="sobre nós"} sizeText={fontSize="60px"} />
+                        <Title children={children="Sobre nós"} sizeText={fontSize="60px"} bottomText={marginBottom="30px"} />
                         <Paragrafo>Somos um grupo de estudantes que ousamos sonhar alto!</Paragrafo>
                         <br />
                         <Paragrafo>

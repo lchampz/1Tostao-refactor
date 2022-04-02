@@ -33,5 +33,19 @@ export const Col = styled.div`
         padding-right: 15px;
         padding-top: ${({colTop}) => (colTop ? colTop : "auto")};
         padding-bottom: ${({colBottom}) => (colBottom ? colBottom : "auto")};
+        transition: 0.2s ease-in;
+        animation: fade 3s ease;
     }
+
+    @keyframes fade {
+        from {
+            transform: scale(1.02);
+            opacity: 0;
+        }
+        to{
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
 `

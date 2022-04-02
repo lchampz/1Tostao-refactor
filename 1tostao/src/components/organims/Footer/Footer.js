@@ -26,7 +26,7 @@ const Footer = ({width, margintop, border, size, color}) => {
                             <div>
                                 <img src={face} className="img" alt="facebook" />
                                 <img src={ig} className="img" alt="instagram" />
-                                <img src={git} className="img" alt="git" />
+                                <img src={git} className="img" alt="github" />
                                 <img src={linkedin} className="img" alt="linkedin" />
                             </div>
                         </div>
