@@ -1,18 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
-import { AuthProvider } from './request/hooks/Auth';
-import { ThemeProvider } from './request/hooks/Theme';
-
+import Providers from './providers';
 import './reset.css'
 
-
 render(
-  <ThemeProvider>
-  <AuthProvider>
+  <Providers>
     <App />
-  </AuthProvider>
-  </ThemeProvider>,
+  </Providers>
+    ,
   document.getElementById('root')
 );
 

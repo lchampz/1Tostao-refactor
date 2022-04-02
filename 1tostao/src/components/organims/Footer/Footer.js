@@ -6,11 +6,12 @@ import ig from '../../../assets/icons/instagram.png'
 import git from '../../../assets/icons/git.png'
 import linkedin from '../../../assets/icons/linkedin.png'
 import logo from '../../../assets/img/logo-white.png'
-
+import { useNavigate } from 'react-router-dom'
 
 import './style.css';
 
 const Footer = ({width, margintop, border, size, color}) => {
+    const navigate = useNavigate();
     return(
         <>
         {/* FooterStyled is the Footer */}
@@ -35,6 +36,7 @@ const Footer = ({width, margintop, border, size, color}) => {
                             <ul>
                                 <li className="li">Categorias</li>
                                 <li className="li">Suporte</li>
+                                <li className="li" onClick={() => navigate(`/faq`)}>FAQ</li>
                             </ul>
                         </div>
 
