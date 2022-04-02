@@ -30,7 +30,7 @@ export const themes = [
             fontColor: '#FFFFFF',
             btnBg: '#FFFFFF',
             btnColor: '#000000',
-            btnHover: '#121212',
+            btnHover: '#1c1c1c',
             border: '#FFFFFF',
             carouselCard: '#FFFFFF',
             carouselLabel: '#242424',
