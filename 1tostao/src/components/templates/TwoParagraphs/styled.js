@@ -17,7 +17,9 @@ export const First = styled.div`
   width: ${({ widthFirst }) => (widthFirst ? widthFirst : '50%')} ;
   margin-left: 3rem;
   
-
+  @media screen and (max-width: 1100px) {
+      margin-left: 0;
+    }
 `
 
 export const Second = styled.div`
