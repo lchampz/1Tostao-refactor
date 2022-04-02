@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Botao from '../../atoms/BotaoMenu/Botao'
 import { useNavigate } from 'react-router-dom'
-import { Header, Pages, Buttons, Container, HamburguerMenu, MobileMenu, PagesMenu} from './styledMenu.js'
+import { Header, Pages, Buttons, Container, HamburguerMenu, MobileMenu, PagesMenu, Config, Theme} from './styledMenu.js'
 import logoWhite from '../../../assets/img/logo-white.png'
 import blackLogo from '../../../assets/img/blackLogo.png'
 import { Links } from '../../atoms/LinkMenu/styledLink.js'
 import LinkMenu from '../../atoms/LinkMenu/Link.js'
 import { useTheme} from '../../../request/hooks/Theme'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faArrowDown, faCog, faAngleDown, faAngleLeft} from '@fortawesome/free-solid-svg-icons'
 
 const Menu = ({padding}) => {
     const [classMenu, setClassMenu] = useState(false);
+    const [config, setConfig] = useState(false);
     const navigate = useNavigate();
     const { theme, setTheme, themes } = useTheme()
     const [ scroll, setScroll ] = useState(false)
@@ -27,7 +28,7 @@ const Menu = ({padding}) => {
     
     useEffect(() => {
         if(theme.name === 'white') {
-            setStyle({ bg: '#FFFFFF', color: 'black' })
+            setStyle({ bg: '#E1E1E1', color: 'black' })
             setLogo(blackLogo)
         } else {
             setStyle({bg: '#343434' ,  color: '#FFFFFF' })
@@ -55,6 +56,14 @@ const Menu = ({padding}) => {
         }
     }
 
+    const toggleConfig = () => {
+        if(config === true) {
+            setConfig(false)
+        } else {
+            setConfig(true)
+        }
+    }
+
 return(
     <>
         <Container bg={scroll ? style.bg : 'rgb(255, 255, 255, 0)'} color={style.color} shadow={scroll ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'rgb(255, 255, 255, 0)'} id="section">
@@ -66,8 +75,16 @@ return(
                         <Pages onClick={() => navigate(`/`)}>Home</Pages>
                         <Pages onClick={() => navigate(`/servicos`)}>Serviços</Pages>
                         <Pages onClick={() => navigate(`/about`)}>Sobre nós</Pages>
-                        <Pages onClick={changeTheme}>Tema</Pages>
+                       
                 </Header>
+                <Theme config={config} bg={style.bg} color={style.color} >
+                    <Pages className="tema" onClick={changeTheme}>Tema</Pages>
+                </Theme>
+                <Config config={config}>
+                    <FontAwesomeIcon className="arrowLeft" onClick={toggleConfig} icon={faAngleLeft} />
+                    <FontAwesomeIcon className="arrow" onClick={toggleConfig} icon={faAngleDown} />
+                    <FontAwesomeIcon className="config" onClick={toggleConfig} icon={faCog} />
+                </Config>
             <Buttons>
                  <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/login`)}>Login</Botao>
                  <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/register`)}>Registrar</Botao>
@@ -80,7 +97,8 @@ return(
                     <PagesMenu  onClick={() => navigate(`/`)}>Home</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/servicos`)}>Serviços</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/about`)}>Sobre nós</PagesMenu>
-                    <PagesMenu onClick={changeTheme}>Tema</PagesMenu>
+                    <PagesMenu onClick={() => navigate(`/login`)}>Login</PagesMenu>
+                    <PagesMenu onClick={() => navigate(`/register`)}>Registrar</PagesMenu>
             </MobileMenu>
         </>
     );
