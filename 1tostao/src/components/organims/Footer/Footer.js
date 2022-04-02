@@ -20,13 +20,13 @@ const Footer = ({width, margintop, border, size, color}) => {
                     <div className="row">
 
                         <div className="col">
-                            <img src={logo} id="logo" />
+                            <img src={logo} id="logo" alt="logo" />
                             <p className="desc">Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente? Para ser 1Tostão basta um clique.</p>
                             <div>
-                                <img src={face} className="img" />
-                                <img src={ig} className="img" />
-                                <img src={git} className="img" />
-                                <img src={linkedin} className="img" />
+                                <img src={face} className="img" alt="facebook" />
+                                <img src={ig} className="img" alt="instagram" />
+                                <img src={git} className="img" alt="git" />
+                                <img src={linkedin} className="img" alt="linkedin" />
                             </div>
                         </div>
 

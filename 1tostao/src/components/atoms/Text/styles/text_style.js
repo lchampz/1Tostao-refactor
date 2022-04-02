@@ -8,6 +8,7 @@ export const Title = styled.div`
     font-weight: ${({weightText}) => (weightText ? weightText : "bold")};
     line-height: ${({heightText}) => (heightText ? heightText : "1.1")};
     margin-bottom: ${({bottomText}) => (bottomText ? bottomText: "auto")};
+    text-align: ${({alignText}) => (alignText ? alignText : "left")};
 
     .cursor{
         background-color: #fff;
@@ -16,4 +17,9 @@ export const Title = styled.div`
         padding-bottom: 6px;
         
     }
+`
+export const Paragrafo = styled.p`
+    color: ${({parCor}) => (parCor ? parCor: "#fff")};
+    font-size: ${({parSize}) => (parSize ? parSize: "16px")};
+    line-height: ${({linePar}) => (linePar ? linePar: "2.2")};
 `
