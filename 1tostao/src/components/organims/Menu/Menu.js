@@ -77,10 +77,10 @@ return(
                         <Pages onClick={() => navigate(`/about`)}>Sobre nós</Pages>
                        
                 </Header>
-                <Theme on={config} bg={style.bg} color={style.color} >
+                <Theme config={config} bg={style.bg} color={style.color} >
                     <Pages className="tema" onClick={changeTheme}>Tema</Pages>
                 </Theme>
-                <Config on={config}>
+                <Config config={config}>
                     <FontAwesomeIcon className="arrowLeft" onClick={toggleConfig} icon={faAngleLeft} />
                     <FontAwesomeIcon className="arrow" onClick={toggleConfig} icon={faAngleDown} />
                     <FontAwesomeIcon className="config" onClick={toggleConfig} icon={faCog} />

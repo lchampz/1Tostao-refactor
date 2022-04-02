@@ -42,7 +42,7 @@ export const Pages = styled.li`
 `
 
 export const Theme = styled.div`
-    display: ${({ on }) => (on ? 'flex' : 'none')};
+    display: ${({ config }) => (config ? 'flex' : 'none')};
     height: 100px;
     width: 140px;
     background-color: ${({ bg }) => (bg ? bg : 'rgb(255, 255, 255, 0)')};
@@ -57,6 +57,13 @@ export const Theme = styled.div`
 
     @media(max-width:960px){
         width: 200px;
+    }
+
+    @media(max-width:600px){
+        width: 700px;
+    }
+    @media(max-width:400px){
+        width: 1000px;
     }
 
     .tema{
@@ -74,17 +81,17 @@ align-items: center;
 transition: all 0.3s ease-in;
 
     @media(max-width:960px){
-        margin-right: 3rem;
+        margin-right: 1.8rem;
     }
     .arrowLeft{
         font-size: 1.5rem;
-        display: ${({ on }) => (on ? 'block' : 'none')}
+        display: ${({ config }) => (config ? 'block' : 'none')}
         
        
     }
     .arrow{
         font-size: 1.5rem;
-        display: ${({ on }) => (on ? 'none' : 'flex')}
+        display: ${({ config }) => (config ? 'none' : 'block')}
         
     }
     .config{
@@ -140,7 +147,7 @@ export const MobileMenu = styled.div`
     position: fixed;
     width: 100%;
     right: 0;
-    height: 15.05rem;
+    height: 15rem;
     text-align: center;
     justify-content: center;
     align-items: center;
