@@ -1,21 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../components/organims/Footer/Footer'
 import { Container, Linha, Col } from '../components/atoms/Container/styled'
 import {Title, Paragrafo} from '../components/atoms/Text/styles/text_style'
+import { useTheme } from '../request/hooks/Theme'
 import aboutUs from '../assets/img/aboutUs.png'
 import graph from '../assets/img/graph.png'
 
 const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBottom, paddingTop, paddingBottom, maxWidth, display, flex, flexDirection, alignContent, lineHeight}) => {
+
+    const { theme, setTheme, themes } = useTheme()
+    const [ style, setStyle] = useState({
+        bg: '#343434',
+        color: '#000'
+    })
+
+    const changeTheme = () => {
+        setTheme(theme.name === 'white' ? themes[1] : themes[0])
+    }
+
+    useEffect(() => {
+        if(theme.name === 'white') {
+            setStyle({ bg: '#E1E1E1', color: 'black' })
+        } else {
+            setStyle({bg: '#343434' ,  color: '#FFFFFF' })
+        }
+    }, [theme])
 
     return(
         <>
             <Container topContainer={paddingTop="12rem"}>
                 <Linha>
                     <Col>
-                        <Title children={children="Sobre nós"} sizeText={fontSize="60px"} bottomText={marginBottom="30px"} />
-                        <Paragrafo>Somos um grupo de estudantes que ousamos sonhar alto!</Paragrafo>
+                        <Title colorText={style.color} children={children="Sobre nós"} sizeText={fontSize="60px"} bottomText={marginBottom="30px"} />
+                        <Paragrafo parCor={style.color} >Somos um grupo de estudantes que ousamos sonhar alto!</Paragrafo>
                         <br />
-                        <Paragrafo>
+                        <Paragrafo parCor={style.color} >
                             Queríamos desenvolver uma plataforma, que além de abrangente
                             fosse útil para todos os públicos.
                             Essa plataforma não irá apenas atender os consumidores, porém ela irá atender
@@ -23,7 +42,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
                             ou até mesmo aqueles que vieram a perder os seus empregos na pandemia
                         </Paragrafo>
                         <br />
-                        <Paragrafo>
+                        <Paragrafo parCor={style.color} >
                             Além de dar a oportunidade para se tornar conhecido no mundo dos
                             Freelancers, iremos expor e divulgar seus trabalhos e projetos.
                         </Paragrafo>
@@ -41,13 +60,13 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
                         <img src={graph} alt="graph" width="100%" />
                     </Col>
                     <Col colTop={paddingTop="20px"}>
-                        <Title children={children="Benefícios"} sizeText={fontSize="60px"} alignText={textAlign="center"} bottomText={marginBottom="30px"} />
-                        <Paragrafo linePar={lineHeight="1.4"}>
+                        <Title colorText={style.color} children={children="Benefícios"} sizeText={fontSize="60px"} alignText={textAlign="center"} bottomText={marginBottom="30px"} />
+                        <Paragrafo parCor={style.color} linePar={lineHeight="1.4"}>
                         ✅ Como citado anteriormente, iremos realizar toda a divulgação necessária,
                             para seu projeto ser visado. 
                         </Paragrafo>
                         <br />
-                        <Paragrafo>
+                        <Paragrafo parCor={style.color} >
                         ✅ Não recolhemos taxas a cada trabalho/projeto realizado. 
                             Compensando muito mais para o  Freelancer.
                         </Paragrafo>
@@ -60,7 +79,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
             <Container>
                 
                     <Col>
-                        <Title children={children="Confira mais benefícios"} sizeText={fontSize="60px"} alignText={textAlign="center"} />
+                        <Title colorText={style.color} children={children="Confira mais benefícios"} sizeText={fontSize="60px"} alignText={textAlign="center"} />
                     </Col>
                 
             </Container>
