@@ -21,7 +21,7 @@ const Home = () => {
                 titleColor={theme.colors.titleColor} 
                 border={theme.colors.border} 
             />
-            <AnimationOnScroll animateIn="animate__bounceIn">
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce={true}>
                 <User 
                     border={theme.colors.border} 
                     titleColor={theme.colors.titleColor} 
@@ -29,6 +29,7 @@ const Home = () => {
                     fontColor={theme.colors.fontColor}
                 />
             </AnimationOnScroll>
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce={true}>
                 <BannerAbout 
                     titleColor={ theme.colors.titleColor } 
                     border={ theme.colors.border } 
@@ -37,6 +38,8 @@ const Home = () => {
                     bgCard={ theme.colors.secondaryBg }
                     btnBgHover={ theme.colors.btnHover }
                 />
+            </AnimationOnScroll>
+            
                 <Footer />
             
         </div>   
