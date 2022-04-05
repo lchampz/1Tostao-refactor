@@ -8,8 +8,8 @@ export const Container = styled.div`
 
     margin-left: auto;
     margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    // padding-left: 15px;
+    // padding-right: 15px;
     height:100vh;
     padding-top: ${({topContainer}) => (topContainer ? topContainer : "auto")};
     padding-bottom: ${({bottomContainer}) => (bottomContainer ? bottomContainer : "52rem")};
@@ -23,6 +23,8 @@ export const Container = styled.div`
 export const Linha = styled.div`
     display: ${({rowDisplay}) => (rowDisplay ? rowDisplay : "flex")};
     flex-wrap: ${({rowWrap}) => (rowWrap ? rowWrap : "wrap")};
+    background-color: ${({linhaCor}) => (linhaCor ? linhaCor : "#e6e6e6")};
+    padding: ${({paddingLinha}) => (paddingLinha ? paddingLinha : "25px")};
 `
 
 export const Col = styled.div`

@@ -6,7 +6,7 @@ import { useTheme } from '../request/hooks/Theme'
 import aboutUs from '../assets/img/aboutUs.png'
 import graph from '../assets/img/graph.png'
 
-const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBottom, paddingTop, paddingBottom, maxWidth, display, flex, flexDirection, alignContent, lineHeight}) => {
+const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBottom, paddingTop, paddingBottom, maxWidth, display, flex, flexDirection, alignContent, lineHeight, backgroundColor}) => {
 
     const { theme, setTheme, themes } = useTheme()
     const [ style, setStyle] = useState({
@@ -20,16 +20,16 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
 
     useEffect(() => {
         if(theme.name === 'white') {
-            setStyle({ bg: '#E1E1E1', color: 'black' })
+            setStyle({ bg: '#c9c9c9', color: 'black' })
         } else {
-            setStyle({bg: '#343434' ,  color: '#FFFFFF' })
+            setStyle({bg: '#1c1c1c' ,  color: '#FFFFFF' })
         }
     }, [theme])
 
     return(
         <>
             <Container topContainer={paddingTop="12rem"}>
-                <Linha>
+                <Linha linhaCor={style.bg}>
                     <Col>
                         <Title colorText={style.color} children={children="Sobre nós"} sizeText={fontSize="60px"} bottomText={marginBottom="30px"} />
                         <Paragrafo parCor={style.color} >Somos um grupo de estudantes que ousamos sonhar alto!</Paragrafo>
@@ -55,7 +55,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
             </Container>
             
             <Container>
-                <Linha>
+                <Linha linhaCor={style.bg} >
                     <Col colTop={paddingTop="20px"}>
                         <img src={graph} alt="graph" width="100%" />
                     </Col>
