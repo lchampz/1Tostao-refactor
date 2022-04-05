@@ -2,20 +2,22 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 @media(min-width:676px){
-    max-width:640px;
+    max-width: ${({widthContainer}) => (widthContainer ? widthContainer: "640px")};
 }
     padding-left:15px;
     padding-right:15px;
     margin-left:auto;
     margin-right:auto;
 
-    display: flex; 
-    height: ${({heightContainer}) => (heightContainer ? heightContainer: "100%")};
-    margin: 0 auto;
+    display: ${({displayContainer}) => (displayContainer ? displayContainer: "flex")};
+    align-content: ${({alignContentContainer}) => (alignContentContainer ? alignContentContainer: "normal")};
+    flex: ${({flexContainer}) => (flexContainer ? flexContainer: "0 0 50%")};
+    flex-direction: ${({flexDirectionCont}) => (flexDirectionCont ? flexDirectionCont: "column")}
+    height: ${({heightContainer}) => (heightContainer ? heightContainer: "100vh")};
+    margin: ${({marginContainer}) => (marginContainer ? marginContainer: "0 auto")};
     justify-content: center;
     text-align: center;
-    padding-top: 14rem;
-
+    padding-top: ${({topContainer}) => (topContainer ? topContainer: "14rem")};
 
 }
 `
