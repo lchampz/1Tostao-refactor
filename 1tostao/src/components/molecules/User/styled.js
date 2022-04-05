@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
+
+const op = keyframes`
+    0% { opacity: 0},
+    100% { opacity: 1 }
+`;
 
 export const Container = styled.div`
 
@@ -62,7 +68,7 @@ export const Container = styled.div`
         
     }
 
-
+    animation: ${op} 1.8s ease-in;
 
     `
     export const Align = styled.div`

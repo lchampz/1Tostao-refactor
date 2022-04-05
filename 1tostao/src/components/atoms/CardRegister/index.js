@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container, Card, Input, Label, Button, variavel } from './styled.js'
+import { Container, Label } from './styled.js'
+import { CardInfo } from '../Card/styled.js'
+import { ButtonCard } from '../Button/styled.js'
+import { Input } from '../Input/styled.js'
 import {Title} from '../Text/styles/text_style.js';
 
 
@@ -11,7 +14,7 @@ const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, tran
     return page === 1 ?(
         <>
         <Container>
-            <Card>
+            <CardInfo>
                 <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
                     Cadastro
                 </Title>
@@ -23,15 +26,15 @@ const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, tran
                     <Input placeholder="Digite seu CPF" />
                     <Label>Senha</Label>
                     <Input placeholder="Digite sua senha" />
-                <Button onClick={() => setPage(2)}  transitionButton={transition="0.2s ease-in-out"}>
+                <ButtonCard onClick={() => setPage(2)}  transitionButton={transition="0.2s ease-in-out"}>
                     <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Avançar</Label>
-                </Button>
+                </ButtonCard>
                 <Label>Já tem uma conta? Entrar</Label>
-            </Card>
+            </CardInfo>
         </Container>        
         </>
     ) : (<><Container>
-        <Card>
+        <CardInfo>
             <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
                 Cadastro parte 2
             </Title>
@@ -39,11 +42,11 @@ const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, tran
                 <Input placeholder="teste" />
                 <Label>teste</Label>
                 <Input placeholder="teste" />
-            <Button onClick={() => setPage(1)}  transitionButton={transition="0.2s ease-in-out"}>
+            <ButtonCard onClick={() => setPage(1)}  transitionButton={transition="0.2s ease-in-out"}>
                 <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Voltar!</Label>
-            </Button>
+            </ButtonCard>
             <Label>Já tem uma conta? Entrar</Label>
-        </Card>
+        </CardInfo>
     </Container>  </>);
 };
 

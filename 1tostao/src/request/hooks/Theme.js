@@ -24,13 +24,13 @@ export const themes = [
     {
         name: 'dark',
         colors:{
-            titleColor: '#24D39A',
-            bg:'#242424',
-            secondaryBg: '#121212',
+            titleColor: '#F1F1F1',
+            bg:'#292929',
+            secondaryBg: '#1c1c1c',
             fontColor: '#FFFFFF',
             btnBg: '#FFFFFF',
             btnColor: '#000000',
-            btnHover: '#121212',
+            btnHover: '#1c1c1c',
             border: '#FFFFFF',
             carouselCard: '#FFFFFF',
             carouselLabel: '#242424',

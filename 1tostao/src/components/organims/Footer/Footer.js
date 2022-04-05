@@ -6,11 +6,12 @@ import ig from '../../../assets/icons/instagram.png'
 import git from '../../../assets/icons/git.png'
 import linkedin from '../../../assets/icons/linkedin.png'
 import logo from '../../../assets/img/logo-white.png'
-
+import { useNavigate } from 'react-router-dom'
 
 import './style.css';
 
 const Footer = ({width, margintop, border, size, color}) => {
+    const navigate = useNavigate();
     return(
         <>
         {/* FooterStyled is the Footer */}
@@ -20,13 +21,13 @@ const Footer = ({width, margintop, border, size, color}) => {
                     <div className="row">
 
                         <div className="col">
-                            <img src={logo} id="logo" />
+                            <img src={logo} id="logo" alt="logo" />
                             <p className="desc">Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente? Para ser 1Tostão basta um clique.</p>
                             <div>
-                                <img src={face} className="img" />
-                                <img src={ig} className="img" />
-                                <img src={git} className="img" />
-                                <img src={linkedin} className="img" />
+                                <img src={face} className="img" alt="facebook" />
+                                <img src={ig} className="img" alt="instagram" />
+                                <img src={git} className="img" alt="github" />
+                                <img src={linkedin} className="img" alt="linkedin" />
                             </div>
                         </div>
 
@@ -35,6 +36,7 @@ const Footer = ({width, margintop, border, size, color}) => {
                             <ul>
                                 <li className="li">Categorias</li>
                                 <li className="li">Suporte</li>
+                                <li className="li" onClick={() => navigate(`/faq`)}>FAQ</li>
                             </ul>
                         </div>
 
