@@ -1,4 +1,11 @@
 import styled from 'styled-components'
+import { keyframes } from 'styled-components'
+
+const op = keyframes`
+    0% { opacity: 0},
+    100% { opacity: 1 }
+`;
+
 
 export const Wrapper = styled.div`
     display: flex;
@@ -10,6 +17,8 @@ export const Wrapper = styled.div`
 
     border-radius: 30px;
     box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.1);
+
+    animation: ${op} 2.4s ease-in;
 `
 
 export const Paragraph = styled.div`
