@@ -20,7 +20,7 @@ const FAQ = () => {
                     <Quests />
                 }
             />
-            <Footer />
+            <Footer needMargin={true}/>
         </div>
     );
 }

@@ -1,53 +1,48 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Container, Label } from './styled.js'
-import { CardInfo } from '../Card/styled.js'
-import { ButtonCard } from '../Button/styled.js'
-import { Input } from '../Input/styled.js'
-import {Title} from '../Text/styles/text_style.js';
+
+import ImgWrapper from '../ImgWrapper'
+import { Container, Wrapper, WrapperInput, Button, Label } from './styled.js'
+import Logo from '../../../assets/img/logo.png'
+import bg from '../../../assets/img/Background.png'
+import Text from '../Text/Text'
+import Input from '../Input'
+import User from '../../../assets/icons/user.png'
+import Cpf from '../../../assets/icons/cpf.png'
+import Email from '../../../assets/icons/email.png'
+import Lock from '../../../assets/icons/padlock.png'
 
 
-const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, transition }) => {
-    const navigate = useNavigate();
-    const [page, setPage] = useState(1)
-
-    return page === 1 ?(
+const CardRegister = ({  }) => {
+    //const [ page, setPage ] = useState(1)
+   
+    return (
         <>
-        <Container>
-            <CardInfo>
-                <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
-                    Cadastro
-                </Title>
-                    <Label>Nome de usuário</Label>
-                    <Input placeholder="Digite seu nome de usuário" />
-                    <Label>Email</Label>
-                    <Input placeholder="Digite seu email" />
-                    <Label>CPF</Label>
-                    <Input placeholder="Digite seu CPF" />
-                    <Label>Senha</Label>
-                    <Input placeholder="Digite sua senha" />
-                <ButtonCard onClick={() => setPage(2)}  transitionButton={transition="0.2s ease-in-out"}>
-                    <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Avançar</Label>
-                </ButtonCard>
-                <Label>Já tem uma conta? Entrar</Label>
-            </CardInfo>
-        </Container>        
+        <Container bgImg={bg}>
+            <Wrapper>
+                <ImgWrapper url={Logo} width={'15%'} height={'15%'} margin={'30px 155px 0px 0px'}/>
+
+                <Text color="rgba(51, 51, 51, 1)" size={'24px'}>Cadastro</Text>
+
+                <WrapperInput>
+                    <Label className="label">Nome de Usuário</Label>
+                    <Input icon={User} className="input" placeholder="Digite seu nome de usuário"/>
+                
+                    <Label marginRight="72%" className="label">Email</Label>
+                    <Input icon={Email} className="input" placeholder="Digite seu email"/>
+                
+                    <Label marginRight="75%" className="label">Cpf</Label>
+                    <Input icon={Cpf} className="input" placeholder="Digite seu CPF"/>
+
+                    <Label marginRight="71%" className="label">Senha</Label>
+                    <Input icon={Lock} className="input" placeholder="Digite sua senha"/>
+                </WrapperInput>
+
+                <Button>Avançar</Button>
+                <p>Já tem uma conta? Entrar</p>
+            </Wrapper>
+        </Container>
         </>
-    ) : (<><Container>
-        <CardInfo>
-            <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
-                Cadastro parte 2
-            </Title>
-                <Label>teste</Label>
-                <Input placeholder="teste" />
-                <Label>teste</Label>
-                <Input placeholder="teste" />
-            <ButtonCard onClick={() => setPage(1)}  transitionButton={transition="0.2s ease-in-out"}>
-                <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Voltar!</Label>
-            </ButtonCard>
-            <Label>Já tem uma conta? Entrar</Label>
-        </CardInfo>
-    </Container>  </>);
+    ) 
 };
 
 export default CardRegister;

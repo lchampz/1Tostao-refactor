@@ -10,12 +10,12 @@ import { useNavigate } from 'react-router-dom'
 
 import './style.css';
 
-const Footer = ({width, margintop, border, size, color}) => {
+const Footer = ({width, margintop, border, size, color, needMargin}) => {
     const navigate = useNavigate();
     return(
         <>
         {/* FooterStyled is the Footer */}
-            <FooterStyled>
+            <FooterStyled needMargin={needMargin}>
 
                 <div className="container">
                     <div className="row">
