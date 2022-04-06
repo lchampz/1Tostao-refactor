@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 
 export const Input = styled.input`
-    width: ${({widthInput}) => (widthInput ? widthInput: "100%")};
+    width: ${({widthInput}) => (widthInput ? widthInput: "200%")};
     height: 2rem;
-    margin-top:10px;
-    margin-bottom:35px;
     border-top: ${({borderTop}) => (borderTop ? borderTop: "0")};
     border-left: ${({borderLeft}) => (borderLeft ? borderLeft: "0")};
     border-right: ${({borderRight}) => (borderRight ? borderRight: "0")};
     transition: 0.2s ease-in;
+    padding-right: ${({paddingRight}) => (paddingRight ? paddingRight: "7rem")};
+    margin-top: 5px;
+    padding-left: 30px;
+    border-bottom: 2px solid #D9D9D9;
 
     &:focus{
         outline:0;
@@ -17,4 +19,18 @@ export const Input = styled.input`
         border-right: 0;
         border-bottom: 2px solid rgb(20, 202, 138);
     }
+`
+
+export const WrapperInput = styled.div`
+    display: flex;
+    width: 80%;
+    margin-bottom: 4rem;
+
+    .img {
+        display: block;
+        position: absolute;
+        margin-right: 10px;
+        margin-top: -3px;
+    }
+
 `

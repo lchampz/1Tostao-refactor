@@ -9,5 +9,5 @@ export const FooterStyled = styled.footer`
     height:100%;
     width:100%;
     padding:30px;
-    margin-top:100px;
+    margin-top:${({ needMargin }) => (needMargin ? '100px' : '')}
 `;

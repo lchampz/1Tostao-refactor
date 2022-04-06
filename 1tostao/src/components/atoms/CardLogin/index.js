@@ -10,18 +10,7 @@ const CardLogin = ({color, textAlign, marginTop, marginBottom, fontSize, height,
     const navigate = useNavigate();
     return(
         <>
-           <Container heightContainer={height="100vh"}>
-               <CardInfo heightCard={height="fit-content"}>
-                   <Title colorText={color="black"} bottomText={marginBottom="90px"} sizeText={fontSize="50px"} >Área de Login</Title>
-                   <Label>Email</Label>
-                   <Input placeholder="Insira seu Email" />
-                   <Label>Senha</Label>
-                   <Input placeholder="Insira sua senha "/>
-                   <ButtonCard onClick={() => navigate(`/`)} transitionButton={transition="0.2s ease-in-out"}>
-                       <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"}>Logar</Label>
-                   </ButtonCard>
-               </CardInfo>
-           </Container>
+        
         </>
     );
 }
