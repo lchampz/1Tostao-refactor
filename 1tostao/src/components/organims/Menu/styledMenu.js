@@ -52,18 +52,19 @@ export const Theme = styled.div`
     justify-content: center;
     transition: all 0.4s ease-in;
     margin-right: 5px;
+    margin-left: 5px;
     z-index: 996;
     border-radius: 0px 0px 40px 40px;
 
     @media(max-width:960px){
-        width: 200px;
+        width: 220px;
     }
 
     @media(max-width:600px){
-        width: 700px;
+        width: 650px;
     }
-    @media(max-width:400px){
-        width: 1000px;
+    @media(max-width:470px){
+        width: 2400px;
     }
 
     .tema{
