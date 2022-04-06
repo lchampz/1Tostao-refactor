@@ -30,7 +30,7 @@ const CardRegister = ({  }) => {
                     <Label marginRight="72%" className="label">Email</Label>
                     <Input icon={Email} className="input" placeholder="Digite seu email"/>
                 
-                    <Label marginRight="75%" className="label">Cpf</Label>
+                    <Label marginRight="75%" className="label">CPF</Label>
                     <Input icon={Cpf} className="input" placeholder="Digite seu CPF"/>
 
                     <Label marginRight="71%" className="label">Senha</Label>

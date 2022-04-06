@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    height: 110vh;
+    height: 120vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,6 +28,10 @@ export const Wrapper = styled.div`
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
     margin-bottom: 5rem;
+
+    @media screen and (max-width:1280px) {
+        margin-bottom: 8rem;
+    }
 
     @media screen and (max-width: 500px) {
         margin-top: 15rem;
