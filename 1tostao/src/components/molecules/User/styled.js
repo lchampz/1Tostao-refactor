@@ -119,6 +119,9 @@ export const Container = styled.div`
     margin-left:100px;
     display:flex;
     
+    @media(max-width:1000px){
+        margin-left: 50px;
+    }
     
     `
 
@@ -126,6 +129,9 @@ export const Container = styled.div`
 export const Div = styled.div`
     margin-left:100px;
 
+    @media(max-width:1000px){
+        margin-left: 50px;
+    }
 `
 
     export const Text = styled.p`

@@ -78,7 +78,7 @@ export const Theme = styled.div`
 export const Config = styled.div`
 display: flex;
 align-items: center;
-transition: all 0.3s ease-in;
+transition: all 0.2s ease-in;
 
     @media(max-width:960px){
         margin-right: 1.8rem;
