@@ -37,6 +37,12 @@ export const Wrapper = styled.div`
     p {
         font-size: 14px;
         padding-bottom: 15px; 
+
+        &:hover {
+            cursor: pointer;
+            color: #24D39A;
+            font-weight: bold;
+        }
     }
 `
 
@@ -76,6 +82,16 @@ export const Button = styled.div`
     margin-top: -2.8rem;
     margin-bottom: 0.8rem;
     border-radius: 3rem;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+        color: #24D39A;
+        background-color: white;
+        border: 3px solid #24D39A;
+        font-weight: bold;
+
+    }
+
 `
 
 
