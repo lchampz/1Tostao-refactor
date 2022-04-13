@@ -12,7 +12,7 @@ export const Container = styled.div`
     background-attachment: fixed;
     background-size: cover;
     
-    
+    transition: all 0.8 ease-in-out;
 `
 
 export const Wrapper = styled.div`
@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
 
 export const WrapperInput = styled.div`
     display: flex;
-    margin-top: 4rem;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop : '4rem')};
     align-items: center;
     height: 100%; 
     width: 100%;
@@ -64,6 +64,7 @@ export const WrapperInput = styled.div`
 `
 
 export const Label = styled.label`
+    display: ${({ display }) => (display ? display : '')};
     text-align: left;
     justify-content: left;
     margin-top: -2rem;

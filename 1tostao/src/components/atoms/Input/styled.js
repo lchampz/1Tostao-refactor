@@ -22,7 +22,7 @@ export const Input = styled.input`
 `
 
 export const WrapperInput = styled.div`
-    display: flex;
+    display: ${({ display }) => (display ? display : 'flex')};
     width: 80%;
     margin-bottom: 4rem;
 
