@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
+
+const op = keyframes`
+    0% { opacity: 0},
+    100% { opacity: 1 }
+`;
 
 export const Container = styled.div`
 
@@ -62,7 +68,7 @@ export const Container = styled.div`
         
     }
 
-
+    animation: ${op} 1.8s ease-in;
 
     `
     export const Align = styled.div`
@@ -113,6 +119,9 @@ export const Container = styled.div`
     margin-left:100px;
     display:flex;
     
+    @media(max-width:1000px){
+        margin-left: 50px;
+    }
     
     `
 
@@ -120,6 +129,9 @@ export const Container = styled.div`
 export const Div = styled.div`
     margin-left:100px;
 
+    @media(max-width:1000px){
+        margin-left: 50px;
+    }
 `
 
     export const Text = styled.p`

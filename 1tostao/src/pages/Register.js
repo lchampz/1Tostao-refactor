@@ -7,7 +7,7 @@ const Register = () => {
     return(
         <>
             <CardRegister />
-            <Footer/>
+            <Footer />
         </>   
     )
 }

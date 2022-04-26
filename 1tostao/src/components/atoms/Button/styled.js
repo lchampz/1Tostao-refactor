@@ -8,13 +8,16 @@ export const Btn = styled.div`
     font-family: ${({familyButton}) => (familyButton ? familyButton : "Poppins")};
     padding: ${({paddingButton}) => (paddingButton ? paddingButton : "12px")};
     transition: ${({transitionButton}) => (transitionButton ? transitionButton : "ease-in 0.3s")};
-    width: ${({widthButton}) => (widthButton ? widthButton : "175px")};
+    width: ${({widthButton}) => (widthButton ? widthButton : "170px")};
+    text-align: center;
     box-sizing: border-box;
 
     .icon{
-        opacity:0;
+
+        font-size: 0;
         display:flex;
         float:right;
+        align-items: center;
         transition: ease-in 0.3s;
         color:#000;
     }
@@ -29,7 +32,8 @@ export const Btn = styled.div`
 
         
         .icon{
-            opacity:1;
+            font-size: 1rem;
+            margin-left: 15px;
         }
         
         
@@ -48,7 +52,6 @@ export const Btn = styled.div`
     padding:5px;
 
     &:hover{
-        transform: scale(1.05);
         cursor: pointer;
     }
 `

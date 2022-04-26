@@ -1,42 +1,103 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-@media(min-width:676px){
-    max-width: ${({widthContainer}) => (widthContainer ? widthContainer: "640px")};
-}
-    padding-left:15px;
-    padding-right:15px;
-    margin-left:auto;
-    margin-right:auto;
-
-    display: ${({displayContainer}) => (displayContainer ? displayContainer: "flex")};
-    align-content: ${({alignContentContainer}) => (alignContentContainer ? alignContentContainer: "normal")};
-    flex: ${({flexContainer}) => (flexContainer ? flexContainer: "0 0 50%")};
-    flex-direction: ${({flexDirectionCont}) => (flexDirectionCont ? flexDirectionCont: "column")}
-    height: ${({heightContainer}) => (heightContainer ? heightContainer: "100vh")};
-    margin: ${({marginContainer}) => (marginContainer ? marginContainer: "0 auto")};
+    height: 120vh;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    text-align: center;
-    padding-top: ${({topContainer}) => (topContainer ? topContainer: "14rem")};
-
-}
+   
+    background: ${({ bgImg }) => (bgImg ? 'url('+bgImg+')' : '')};
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    
+    transition: all 0.8 ease-in-out;
 `
 
-export const Card = styled.div`
-    margin-top:-50px;
-    background-color:white;
-    width:640px;
-    height: ${({heightCard}) => (heightCard ? heightCard: "100%")};
-    border-radius:30px;
-    padding:70px;
-    box-shadow: 5px 5px 5px rgba(36, 36, 36, 0.471);
+export const Wrapper = styled.div`
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1.5rem; 
+    margin-right: 1.5rem ;
+    margin-top: 10rem;
+    width: 30rem;
+    height: 37rem;
+    background-color: white;
+    box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
+    margin-bottom: 5rem;
+
+    @media screen and (max-width:1280px) {
+        margin-bottom: 8rem;
+    }
+
+    @media screen and (max-width: 500px) {
+        margin-top: 15rem;
+        margin-bottom: 11rem;
+    }
+
+    p {
+        font-size: 14px;
+        padding-bottom: 15px; 
+
+        &:hover {
+            cursor: pointer;
+            color: #24D39A;
+            font-weight: bold;
+        }
+    }
+`
+
+export const WrapperInput = styled.div`
+    display: flex;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop : '4rem')};
+    align-items: center;
+    height: 100%; 
+    width: 100%;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    flex: 1;
+
+`
+
+export const Label = styled.label`
+    display: ${({ display }) => (display ? display : '')};
+    text-align: left;
+    justify-content: left;
+    margin-top: -2rem;
+    color: #333333;
+    font-size: 14px;
+    margin-right: ${({ marginRight }) => (marginRight ? marginRight : '55%')};
     
 `
 
-export const Label = styled.p`
-    font-weight:500;
-    font-size: ${({sizeLabel}) => (sizeLabel ? sizeLabel: "16px")};
-    text-align: ${({alignLabel}) => (alignLabel ? alignLabel: "left")};
-    color: ${({colorLabel}) => (colorLabel ? colorLabel: "black")};
+export const Button = styled.div`
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    background-color: #24D39A;
+    color: white;
+    height: 5rem;
+    margin-top: -2.8rem;
+    margin-bottom: 0.8rem;
+    border-radius: 3rem;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+        color: #24D39A;
+        background-color: white;
+        border: 3px solid #24D39A;
+        font-weight: bold;
+
+    }
+
 `
+
+
 

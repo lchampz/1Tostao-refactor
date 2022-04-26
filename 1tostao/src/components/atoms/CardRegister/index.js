@@ -1,53 +1,167 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Container, Label } from './styled.js'
-import { CardInfo } from '../Card/styled.js'
-import { ButtonCard } from '../Button/styled.js'
-import { Input } from '../Input/styled.js'
-import {Title} from '../Text/styles/text_style.js';
+import React, { useEffect, useState } from "react";
 
+import ImgWrapper from "../ImgWrapper";
+import { Container, Wrapper, WrapperInput, Button, Label } from "./styled.js";
+import Logo from "../../../assets/img/logo.png";
+import bg from "../../../assets/img/Background.png";
+import Text from "../Text/Text";
+import InputRegister from "../InputRegister";
+import User from "../../../assets/icons/user.png";
+import Cpf from "../../../assets/icons/cpf.png";
+import Email from "../../../assets/icons/email.png";
+import Lock from "../../../assets/icons/padlock.png";
 
-const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, transition }) => {
-    const navigate = useNavigate();
-    const [page, setPage] = useState(1)
+const CardRegister = ({}) => {
+  const [tab, setTab] = useState(1);
+  const [data, setData] = useState({
+    user: "",
+    email: "",
+    cpf: "",
+    pass: "",
+    name: "",
+    lastname: "",
+    rg: "",
+    birthday: "",
+    tell: "",
+    state: "",
+    city: "",
+  });
 
-    return page === 1 ?(
-        <>
-        <Container>
-            <CardInfo>
-                <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
-                    Cadastro
-                </Title>
-                    <Label>Nome de usuário</Label>
-                    <Input placeholder="Digite seu nome de usuário" />
-                    <Label>Email</Label>
-                    <Input placeholder="Digite seu email" type="email" />
-                    <Label>CPF</Label>
-                    <Input placeholder="Digite seu CPF" type="number" />
-                    <Label>Senha</Label>
-                    <Input placeholder="Digite sua senha" />
-                <ButtonCard onClick={() => setPage(2)}  transitionButton={transition="0.2s ease-in-out"}>
-                    <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Avançar</Label>
-                </ButtonCard>
-                <Label>Já tem uma conta? Entrar</Label>
-            </CardInfo>
-        </Container>        
-        </>
-    ) : (<><Container>
-        <CardInfo>
-            <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
-                Cadastro parte 2
-            </Title>
-                <Label>Data de nascimento</Label>
-                <Input placeholder="Insira sua data de nascimento" />
-                <Label>Telefone</Label>
-                <Input placeholder="Insira seu número de telefone" />
-            <ButtonCard onClick={() => setPage(1)}  transitionButton={transition="0.2s ease-in-out"}>
-                <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Voltar!</Label>
-            </ButtonCard>
-            <Label>Já tem uma conta? Entrar</Label>
-        </CardInfo>
-    </Container>  </>);
+  useEffect(() => {
+    setData({
+      user: "",
+      email: "",
+      cpf: "",
+      pass: "",
+      name: "",
+      lastname: "",
+      rg: "",
+      birthday: "",
+      tell: "",
+      state: "",
+      city: "",
+    });
+  }, []);
+
+  function switchTab() {
+    setTab(tab === 1 ? 2 : 1);
+    console.log(data);
+  }
+
+  return (
+    <>
+      <Container bgImg={bg}>
+        <Wrapper>
+          <ImgWrapper
+            url={Logo}
+            width={"15%"}
+            height={"15%"}
+            margin={"30px 155px 0px 0px"}
+          />
+
+          <Text color="rgba(51, 51, 51, 1)" size={"24px"}>
+            {tab === 1 ? 'Cadastro' : 'Falta pouco!'}
+          </Text>
+
+          <WrapperInput marginTop={tab === 2 ? '2rem' : '4rem'}>
+            <InputRegister
+              label={"Nome de Usuário"}
+              display={tab === 2 ? "none" : "flex"}
+              icon={User}
+              value={data.user}
+              onChange={(e) => setData({ ...data, user: e.target.value })}
+              placeholder="Digite seu nome de usuário"
+            />
+
+            <InputRegister
+              label={"Email"}
+              marginRight="72%"
+              display={tab === 2 ? "none" : "flex"}
+              icon={Email}
+              value={data.user}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              placeholder="Digite seu email"
+            />
+
+            <InputRegister
+              label={"CPF"}
+              marginRight="75%"
+              display={tab === 2 ? "none" : "flex"}
+              icon={Cpf}
+              value={data.cpf}
+              onChange={(e) => setData({ ...data, cpf: e.target.value })}
+              placeholder="Digite seu CPF"
+            />
+
+            <InputRegister
+              label={"Senha"}
+              marginRight="71%"
+              display={tab === 2 ? "none" : "flex"}
+              icon={Lock}
+              value={data.pass}
+              onChange={(e) => setData({ ...data, pass: e.target.value })}
+              placeholder="Digite sua senha"
+            />
+
+            <InputRegister
+              label={"Nome"}
+              display={tab === 1 ? "none" : "flex"}
+              marginRight="71%"
+              icon={User}
+              value={data.pass}
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+              placeholder="Digite seu nome"
+            />
+
+            <InputRegister 
+              label={'Sobrenome'} 
+              display={tab === 1 ? "none" : "flex"} 
+              icon={User}
+              marginRight={'62.5%'}
+              value={data.pass} 
+              onChange={(e) => setData({ ...data, pass: e.target.value })}
+              placeholder="Digite sua senha" 
+            />
+
+            <InputRegister 
+              label={'RG'} 
+              display={tab === 1 ? "none" : "flex"} 
+              icon={User}
+              marginRight={'75%'}
+              value={data.rg} 
+              onChange={(e) => setData({ ...data, rg: e.target.value })}
+              placeholder="Digite seu RG" 
+            />
+
+            <InputRegister 
+              label={'Data de nascimento'} 
+              display={tab === 1 ? "none" : "flex"} 
+              icon={User}
+              marginRight={'49%'}
+              type={'date'}
+              value={data.birthday} 
+              onChange={(e) => setData({ ...data, birthday: e.target.value })}
+              placeholder="Exemplo: 01/09/2003" 
+            />
+
+            <InputRegister 
+              label={'Telefone'} 
+              display={tab === 1 ? "none" : "flex"} 
+              icon={User}
+              marginRight={'67%'}
+              value={data.rg} 
+              onChange={(e) => setData({ ...data, rg: e.target.value })}
+              placeholder="Exemplo: (11) 99999-9999" 
+            />
+          </WrapperInput>
+          <Button onClick={() => switchTab()}>
+            {tab === 1 ? "Avançar" : "Finalizar!"}
+          </Button>
+          {tab !== 1 ? null : <p>Já tem uma conta? Entrar</p>}
+        </Wrapper>
+      </Container>
+    </>
+  );
 };
 
 export default CardRegister;
