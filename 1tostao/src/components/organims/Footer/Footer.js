@@ -43,7 +43,7 @@ const Footer = ({width, margintop, border, size, color}) => {
                         <div className="col-info">
                             <h1 className="infos">Empresa</h1>
                             <ul>
-                                <li className="li">Sobre nós</li>
+                                <a href="#tes"><li className="li" onClick={() => navigate(`/about`)}>Sobre nós</li></a>
                                 <li className="li">Ajude-nos</li>
                             </ul>
                         </div>

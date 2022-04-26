@@ -21,9 +21,9 @@ const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, tran
                     <Label>Nome de usuário</Label>
                     <Input placeholder="Digite seu nome de usuário" />
                     <Label>Email</Label>
-                    <Input placeholder="Digite seu email" />
+                    <Input placeholder="Digite seu email" type="email" />
                     <Label>CPF</Label>
-                    <Input placeholder="Digite seu CPF" />
+                    <Input placeholder="Digite seu CPF" type="number" />
                     <Label>Senha</Label>
                     <Input placeholder="Digite sua senha" />
                 <ButtonCard onClick={() => setPage(2)}  transitionButton={transition="0.2s ease-in-out"}>
@@ -38,10 +38,10 @@ const CardRegister = ({ children, color, fontSize, textAlign, marginBottom, tran
             <Title colorText={color="black"} sizeText={fontSize="50px"} bottomText={marginBottom="90px"}>
                 Cadastro parte 2
             </Title>
-                <Label>teste</Label>
-                <Input placeholder="teste" />
-                <Label>teste</Label>
-                <Input placeholder="teste" />
+                <Label>Data de nascimento</Label>
+                <Input placeholder="Insira sua data de nascimento" />
+                <Label>Telefone</Label>
+                <Input placeholder="Insira seu número de telefone" />
             <ButtonCard onClick={() => setPage(1)}  transitionButton={transition="0.2s ease-in-out"}>
                 <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"} >Voltar!</Label>
             </ButtonCard>

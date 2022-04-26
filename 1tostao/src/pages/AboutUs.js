@@ -20,7 +20,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
 
     useEffect(() => {
         if(theme.name === 'white') {
-            setStyle({ bg: '#c9c9c9', color: 'black' })
+            setStyle({ bg: '#e8e8e8', color: 'black' })
         } else {
             setStyle({bg: '#1c1c1c' ,  color: '#FFFFFF' })
         }
@@ -28,7 +28,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
 
     return(
         <>
-            <Container topContainer={paddingTop="12rem"}>
+            <Container id="tes" topContainer={paddingTop="12rem"}>
                 <Linha linhaCor={style.bg}>
                     <Col>
                         <Title colorText={style.color} children={children="Sobre nós"} sizeText={fontSize="60px"} bottomText={marginBottom="30px"} />
