@@ -36,7 +36,6 @@ export const Col = styled.div`
         width: ${({colWidth}) => (colWidth ? colWidth : "100%")};
         padding-left: 15px;
         padding-right: 15px;
-        padding:20px;
         transition: 0.2s ease-in;
         animation: fade 3s ease;
     }

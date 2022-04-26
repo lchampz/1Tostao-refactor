@@ -49,7 +49,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
                     </Col>
 
                     <Col>
-                        <img src={aboutUs} alt="img" width="100%" />
+                        <img src={aboutUs} alt="imagem ilustrativa sobre uma pessoa segurando uma lupa" width="90%" />
                     </Col>
                 </Linha>
             </Container>
@@ -57,7 +57,7 @@ const AboutUs = ({width, height, children, fontSize, textAlign, margin, marginBo
             <Container>
                 <Linha linhaCor={style.bg} >
                     <Col colTop={paddingTop="20px"}>
-                        <img src={graph} alt="graph" width="100%" />
+                        <img src={graph} alt="imagem ilustrativa de uma pessoa mostrando um gráfico" width="100%" />
                     </Col>
                     <Col colTop={paddingTop="20px"}>
                         <Title colorText={style.color} children={children="Benefícios"} sizeText={fontSize="60px"} alignText={textAlign="center"} bottomText={marginBottom="30px"} />
