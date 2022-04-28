@@ -8,6 +8,7 @@ export const Title = styled.div`
     font-weight: ${({weightText}) => (weightText ? weightText : "bold")};
     line-height: ${({heightText}) => (heightText ? heightText : "1.1")};
     margin-bottom: ${({bottomText}) => (bottomText ? bottomText: "auto")};
+    margin-top: ${({marginTop}) => (marginTop ? marginTop : "auto")};
     text-align: ${({alignText}) => (alignText ? alignText : "auto")};
 
     .cursor{

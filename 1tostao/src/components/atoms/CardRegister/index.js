@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 import ImgWrapper from "../ImgWrapper";
-import { Container, Wrapper, WrapperInput, Button, Label } from "./styled.js";
+import {
+  Container,
+  Wrapper,
+  WrapperInput,
+  Button,
+  WrapperSelect,
+} from "./styled.js";
 import Logo from "../../../assets/img/logo.png";
 import bg from "../../../assets/img/Background.png";
 import Text from "../Text/Text";
@@ -10,60 +16,102 @@ import User from "../../../assets/icons/user.png";
 import Cpf from "../../../assets/icons/cpf.png";
 import Email from "../../../assets/icons/email.png";
 import Lock from "../../../assets/icons/padlock.png";
+import Datepicker from "../Datepicker";
+import Select from "../Select";
+import { getStates } from "../../../request/utils/getStates";
+import { getCities } from "../../../request/utils/getCities";
 
 const CardRegister = ({}) => {
   const [tab, setTab] = useState(1);
   const [data, setData] = useState({
-    user: "",
-    email: "",
-    cpf: "",
-    pass: "",
-    name: "",
-    lastname: "",
-    rg: "",
-    birthday: "",
-    tell: "",
-    state: "",
-    city: "",
+    user: null,
+    email: null,
+    cpf: null,
+    pass: null,
+    name: null,
+    lastname: null,
+    rg: null,
+    birthday: null,
+    tell: null,
+    state: null,
+    city: null,
   });
+  const [states, setStates] = useState();
+  const [cities, setCities] = useState()
+  const [options, setOptions] = useState({});
 
   useEffect(() => {
     setData({
-      user: "",
-      email: "",
-      cpf: "",
-      pass: "",
-      name: "",
-      lastname: "",
-      rg: "",
-      birthday: "",
-      tell: "",
-      state: "",
-      city: "",
+      user: null,
+      email: null,
+      cpf: null,
+      pass: null,
+      name: null,
+      lastname: null,
+      rg: null,
+      birthday: null,
+      tell: null,
+      state: null,
+      city: null,
     });
+
+    getStates(setStates);
+    getCities(setCities);
   }, []);
 
   function switchTab() {
     setTab(tab === 1 ? 2 : 1);
     console.log(data);
+    // trocar isso para a função do botão avançar
+    let estados = [];
+    states.map((states) => {
+      estados.push({ label: states.nome, value: states.sigla });
+    });
+
+    let cidades = [];
+    cities.map((city) => {
+      cidades.push({ label: city.nome, value: city.nome });
+    });
+    setOptions({ES: estados, CT: cidades});
   }
 
+  const dateFormatAux = (date) => {
+    let d = new Date(date);
+
+    let month = "" + (d.getMonth() + 1);
+    let day = "" + d.getDate();
+    let year = d.getFullYear();
+
+    if (month.length < 2) {
+      month = "0" + month;
+    }
+    if (day.length < 2) {
+      day = "0" + day;
+    }
+
+    return [day, month, year].join("/");
+  };
   return (
     <>
       <Container bgImg={bg}>
         <Wrapper>
-          <ImgWrapper
-            url={Logo}
-            width={"15%"}
-            height={"15%"}
-            margin={"30px 155px 0px 0px"}
-          />
-
-          <Text color="rgba(51, 51, 51, 1)" size={"24px"}>
-            {tab === 1 ? 'Cadastro' : 'Falta pouco!'}
+          {tab === 1 ? (
+            <ImgWrapper
+              url={Logo}
+              width={"15%"}
+              height={"15%"}
+              margin={"30px 155px 0px 0px"}
+            />
+          ) : null}
+          <Text
+            color="rgba(51, 51, 51, 1)"
+            size={"24px"}
+            marginTop={tab === 2 ? "2rem" : "0rem"}
+          >
+            {tab === 1 ? "Cadastro" : "Falta pouco!"}
           </Text>
 
-          <WrapperInput marginTop={tab === 2 ? '2rem' : '4rem'}>
+          <WrapperInput marginTop={tab === 2 ? "2rem" : "4rem"}>
             <InputRegister
               label={"Nome de Usuário"}
               display={tab === 2 ? "none" : "flex"}
@@ -113,48 +161,69 @@ const CardRegister = ({}) => {
               placeholder="Digite seu nome"
             />
 
-            <InputRegister 
-              label={'Sobrenome'} 
-              display={tab === 1 ? "none" : "flex"} 
+            <InputRegister
+              label={"Sobrenome"}
+              display={tab === 1 ? "none" : "flex"}
               icon={User}
-              marginRight={'62.5%'}
-              value={data.pass} 
+              marginRight={"62.5%"}
+              value={data.pass}
               onChange={(e) => setData({ ...data, pass: e.target.value })}
-              placeholder="Digite sua senha" 
+              placeholder="Digite sua senha"
             />
 
-            <InputRegister 
-              label={'RG'} 
-              display={tab === 1 ? "none" : "flex"} 
+            <InputRegister
+              label={"RG"}
+              display={tab === 1 ? "none" : "flex"}
               icon={User}
-              marginRight={'75%'}
-              value={data.rg} 
+              marginRight={"75%"}
+              value={data.rg}
               onChange={(e) => setData({ ...data, rg: e.target.value })}
-              placeholder="Digite seu RG" 
+              placeholder="Digite seu RG"
             />
 
-            <InputRegister 
-              label={'Data de nascimento'} 
-              display={tab === 1 ? "none" : "flex"} 
-              icon={User}
-              marginRight={'49%'}
-              type={'date'}
-              value={data.birthday} 
-              onChange={(e) => setData({ ...data, birthday: e.target.value })}
-              placeholder="Exemplo: 01/09/2003" 
+            <Datepicker
+              label={"Data de nascimento"}
+              selected={data.birthday}
+              paddingRight={data.birthday === null ? null : "11rem"}
+              onChange={(date) => setData({ ...data, birthday: date })}
+              placeholder={
+                !data.birthday
+                  ? "Exemplo: 09/09/1999"
+                  : `${dateFormatAux(data.birthday)}`
+              }
+              display={tab === 1 ? "none" : "flex"}
             />
 
-            <InputRegister 
-              label={'Telefone'} 
-              display={tab === 1 ? "none" : "flex"} 
+            <InputRegister
+              label={"Telefone"}
+              display={tab === 1 ? "none" : "flex"}
               icon={User}
-              marginRight={'67%'}
-              value={data.rg} 
+              marginTop={'0rem'}
+              marginRight={"67%"}
+              value={data.rg}
               onChange={(e) => setData({ ...data, rg: e.target.value })}
-              placeholder="Exemplo: (11) 99999-9999" 
+              placeholder="Exemplo: (11) 99999-9999"
             />
+            <WrapperSelect>
+              <Select
+                display={tab === 1 ? "none" : "flex"}
+                placeholder="Estado: São Paulo"
+                marginRight={"1rem"}
+                onChange={(e) => setData({...data, state: e.value})}
+                options={options.ES}
+              />
+              <Select
+                display={tab === 1 ? "none" : "flex"}
+                placeholder="Cidade: São Paulo"
+                options={options.CT}
+                onChange={(e) => setData({...data, city: e.value})}
+              />
+            </WrapperSelect>
           </WrapperInput>
-          <Button onClick={() => switchTab()}>
+          <Button
+            style={tab === 2 ? { marginBottom: "2rem" } : null}
+            onClick={() => switchTab()}
+          >
             {tab === 1 ? "Avançar" : "Finalizar!"}
           </Button>
           {tab !== 1 ? null : <p>Já tem uma conta? Entrar</p>}
