@@ -101,6 +101,7 @@ export const Button = styled.div`
 
 export const WrapperSelect = styled.div`
     display: flex;
+    margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : null)} ;
     
 `
 

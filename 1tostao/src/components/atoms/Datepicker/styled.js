@@ -43,6 +43,7 @@ export const Button = styled.button`
 
     p {
         margin-right: 105px;
+        white-space: nowrap;
     }
 ` 
 

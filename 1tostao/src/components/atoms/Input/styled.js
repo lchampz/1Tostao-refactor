@@ -8,7 +8,7 @@ export const Input = styled.input`
     border-right: ${({borderRight}) => (borderRight ? borderRight: "0")};
     transition: 0.2s ease-in;
     padding-right: ${({paddingRight}) => (paddingRight ? paddingRight: "7rem")};
-    margin-top: 5px;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop : '5px')} ;
     padding-left: 30px;
     border-bottom: 2px solid #D9D9D9;
 
@@ -24,7 +24,7 @@ export const Input = styled.input`
 export const WrapperInput = styled.div`
     display: ${({ display }) => (display ? display : 'flex')};
     width: 80%;
-    margin-bottom: 4rem;
+    margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : '4rem')} ;
 
     .img {
         display: block;
