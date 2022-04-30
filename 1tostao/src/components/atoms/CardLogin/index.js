@@ -1,13 +1,18 @@
 import react from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container, Label } from '../CardRegister/styled.js'
-import {CardInfo} from '../Card/styled.js'
-import { ButtonCard } from '../Button/styled.js'
 import { Input } from '../Input/styled.js'
 import {Title} from '../Text/styles/text_style.js'
+import Text from "../Text/Text"
+import ImgWrapper from '../ImgWrapper'
 import { useState } from 'react'
+import Logo from '../../../assets/img/logo.png'
+import InputRegister from '../InputRegister';
+import { Container, Wrapper, WrapperInput, Button, Label } from "../CardRegister/styled.js";
+import bg from "../../../assets/img/Background.png";
+import Email from "../../../assets/icons/email.png";
+import Lock from "../../../assets/icons/padlock.png";
 
-const CardLogin = ({color, textAlign, marginTop, marginBottom, fontSize, height, transition}) => {
+const CardLogin = ({fontSize, color, height, width, marginBottom}) => {
     const navigate = useNavigate();
 
         const [name, setName] = useState()
@@ -15,17 +20,16 @@ const CardLogin = ({color, textAlign, marginTop, marginBottom, fontSize, height,
 
     return(
         <>
-           <Container>
-               <CardInfo heightCard={height="fit-content"}>
-                   <Title colorText={color="black"} bottomText={marginBottom="90px"} sizeText={fontSize="50px"} >Área de Login</Title>
-                   <Label>Email</Label>
-                   <Input placeholder="Insira seu Email" onChange={(e) => setName(e.target.value)} />
-                   <Label>Senha</Label>
-                   <Input placeholder="Insira sua senha" onChange={(e) => setPassword(e.target.value)} />
-                   <ButtonCard onClick={() => navigate(`/`)} transitionButton={transition="0.2s ease-in-out"}>
-                       <Label colorLabel={color="white"} sizeLabel={fontSize="20px"} alignLabel={textAlign="center"}>Logar</Label>
-                   </ButtonCard>
-               </CardInfo>
+           <Container bgImg={bg}>
+               <Wrapper heightWrapper={height="fit-content"}>
+                   <ImgWrapper imgHeight={height="100%;"} url={Logo} margin={"30px 155px 0px 0px"} />
+                   <Title colorText={color="black"} bottomText={marginBottom="90px"} sizeText={fontSize="20px"}>
+                       Login
+                   </Title>
+                   <InputRegister icon={Email} label="Email" display={"flex"} onChange={(e) => setName(e.target.value)} placeholder="Insira seu email" />
+                   <InputRegister icon={Lock} label="Senha" display={"flex"} onChange={(e) => setPassword(e.target.value)} placeholder="Insira sua senha" />
+                   <Button heightButton={height="60px"}>Logar</Button>
+               </Wrapper>
            </Container>
         </>
     );

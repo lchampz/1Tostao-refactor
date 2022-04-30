@@ -8,7 +8,8 @@ export const Label = styled.label`
     color: #333333;
     font-size: 14px;
     margin-right: ${({ marginRight }) => (marginRight ? marginRight : '55%')};
-
+    width: ${({widthInputRegister}) => (widthInputRegister ? widthInputRegister: "auto")};
+    height: ${({heighInputRegister}) => (heighInputRegister ? heighInputRegister: "auto")};
     transition: all 0.8 ease-in-out;
     
 `

@@ -16,7 +16,7 @@ export const Container = styled.div`
     margin-bottom: ${({mbottomContainer}) => (mbottomContainer ? mbottomContainer : "auto")};
     width: ${({widthContainer}) => (widthContainer ? widthContainer : "90%")};
     display:grid;
-    justify-content:center;
+    // justify-content:center;
 `
 
 export const Linha = styled.div`

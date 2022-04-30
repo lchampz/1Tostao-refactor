@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    height: 120vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,8 +23,8 @@ export const Wrapper = styled.div`
     margin-left: 1.5rem; 
     margin-right: 1.5rem ;
     margin-top: 10rem;
-    width: 30rem;
-    height: 37rem;
+    width: ${({widthWrapper}) => (widthWrapper ? widthWrapper: "30rem")};
+    height: ${({heightWrapper}) => (heightWrapper ? heightWrapper: "37rem")};
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
     margin-bottom: 5rem;
@@ -83,7 +83,7 @@ export const Button = styled.div`
     width: 80%;
     background-color: #24D39A;
     color: white;
-    height: 5rem;
+    height: ${({heightButton}) => (heightButton ? heightButton: "5rem")};
     margin-top: -2.8rem;
     margin-bottom: 0.8rem;
     border-radius: 3rem;
@@ -92,8 +92,8 @@ export const Button = styled.div`
     &:hover {
         color: #24D39A;
         background-color: white;
-        border: 3px solid #24D39A;
-        font-weight: bold;
+        border: 2px solid #24D39A;
+        
 
     }
 
