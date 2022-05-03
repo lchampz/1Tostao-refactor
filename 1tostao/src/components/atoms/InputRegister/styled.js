@@ -11,5 +11,4 @@ export const Label = styled.label`
     width: ${({widthInputRegister}) => (widthInputRegister ? widthInputRegister: "auto")};
     height: ${({heighInputRegister}) => (heighInputRegister ? heighInputRegister: "auto")};
     transition: all 0.8 ease-in-out;
-    
 `

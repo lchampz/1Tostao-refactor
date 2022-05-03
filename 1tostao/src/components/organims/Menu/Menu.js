@@ -68,7 +68,7 @@ return(
     <>
         <Container bg={scroll ? style.bg : 'rgb(255, 255, 255, 0)'} color={style.color} shadow={scroll ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'rgb(255, 255, 255, 0)'} id="section">
                 <Links onClick={() => navigate(`/`)} linkTop={padding}>
-                     <img  src={logo} className="logo"/>
+                     <img src={logo} className="logo"/>
                 </Links>
  
                 <Header id="links">

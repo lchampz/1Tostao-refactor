@@ -15,5 +15,6 @@ export const Wrapper = styled.div`
     img{
         width: ${({ imgWidth }) => (imgWidth ? imgWidth : '')};
         height: ${({ imgHeight }) => (imgHeight ? imgHeight : '')};
+        pointer-events:none;
     }
 `

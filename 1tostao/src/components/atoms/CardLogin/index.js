@@ -18,6 +18,8 @@ const CardLogin = ({fontSize, color, height, width, marginBottom}) => {
         const [name, setName] = useState()
         const [password, setPassword] = useState()
 
+        console.log([name, password]);
+
     return(
         <>
            <Container bgImg={bg}>

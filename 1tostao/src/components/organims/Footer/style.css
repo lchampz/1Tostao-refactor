@@ -34,7 +34,7 @@
     
     .col{
         flex: 0 40%;
-        max-width:40%;   
+        max-width:40%;
     }
 }
 
@@ -91,6 +91,7 @@
     margin-right:10px;
     margin-top:20px;
     cursor: pointer;
+    
 }
 
 @media(min-width:392px){

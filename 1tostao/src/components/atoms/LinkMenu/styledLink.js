@@ -33,7 +33,6 @@ export const Links = styled.div`
     font-size: ${({linkSize}) => (linkSize ? linkSize: "20px")};
     font-family: ${({linkFont}) => (linkFont ? linkFont: "Poppins")};
     text-align: ${({linkAlign}) => (linkAlign ? linkAlign: "right")};
-    
 
         &:hover{
             cursor: ${({linkCursor}) => (linkCursor ? linkCursor: "pointer")};

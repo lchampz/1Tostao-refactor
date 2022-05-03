@@ -31,6 +31,7 @@ export const WrapperInput = styled.div`
         position: absolute;
         margin-right: 10px;
         margin-top: -3px;
+        pointer-events: none;
     }
 
 `

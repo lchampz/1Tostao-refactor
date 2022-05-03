@@ -12,6 +12,7 @@ import './style.css';
 
 const Footer = ({width, margintop, border, size, color, needMargin}) => {
     const navigate = useNavigate();
+
     return(
         <>
         {/* FooterStyled is the Footer */}
