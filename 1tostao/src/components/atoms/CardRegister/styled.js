@@ -1,4 +1,12 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
+
+const shake = keyframes`
+  0% { transform: translateX(0); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}`
 
 export const Container = styled.div`
     height: 120vh;
@@ -28,6 +36,7 @@ export const Wrapper = styled.div`
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
     margin-bottom: 5rem;
+    animation: ${({ animation }) => (animation ? css`${shake} 0.3s linear infinite;` : null )}
 
     @media screen and (max-width:1280px) {
         margin-bottom: 8rem;
@@ -48,6 +57,8 @@ export const Wrapper = styled.div`
             font-weight: bold;
         }
     }
+
+    
 `
 
 export const WrapperInput = styled.div`

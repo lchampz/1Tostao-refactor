@@ -21,6 +21,9 @@ import Datepicker from "../Datepicker";
 import Select from "../Select";
 import { getStates } from "../../../request/utils/getStates";
 import { getCities } from "../../../request/utils/getCities";
+import { useNavigate } from 'react-router-dom'
+import { useRegex } from "../../../request/hooks/Regex";
+import Modal from '../ModalConfirm'
 
 const CardRegister = ({}) => {
   const [tab, setTab] = useState(1);
@@ -38,9 +41,17 @@ const CardRegister = ({}) => {
     city: null,
   });
   const [states, setStates] = useState();
-  const [cities, setCities] = useState()
+  const [cities, setCities] = useState();
   const [options, setOptions] = useState({});
-  const [ error, setError ] = useState(false)
+  const [error, setError] = useState({
+    shake: false,
+    msg: false,
+  });
+  const [ modal, setModal ] = useState(false)
+  const navigate = useNavigate();
+  const { regexTypes } = useRegex();
+  const [ code, setCode ] = useState(null)
+  
 
   useEffect(() => {
     setData({
@@ -62,14 +73,12 @@ const CardRegister = ({}) => {
   }, []);
 
   const isNull = (value) => {
-    if((value === null) || (!value) || (value === undefined) || (value === '')) {
-      setError(true)
-      return true
+    if (value === null || !value || value === undefined || value === "") {
+      return true;
     } else {
-      setError(false)
-      return false
+      return false;
     }
-  }
+  };
 
   function verify(param) {
     let estados = [];
@@ -81,31 +90,52 @@ const CardRegister = ({}) => {
     cities.map((city) => {
       cidades.push({ label: city.nome, value: city.nome });
     });
-    setOptions({ES: estados, CT: cidades});
+    setOptions({ ES: estados, CT: cidades });
 
-    if(param === 1) {
-      isNull(data.user)
-      isNull(data.email)
-      isNull(data.cpf)
-      isNull(data.pass)
+    if (param === 1) {
+      if (
+        isNull(data.user) ||
+        !regexTypes.cpf.test(data.cpf) ||
+        !regexTypes.email.test(data.email) ||
+        !regexTypes.pass.test(data.pass) 
+      ) {
+        setError({ ...error, msg: true, shake: true });
+        setTimeout(() => setError({ msg: true, shake: false }), 500);
+        return true;
+        
+      } else {
+        setError({ ...error, msg: false });
+        setTab(2);
+      }
     }
 
-    if(param === 2) {
-      isNull(data.name) 
-      isNull(data.lastname)
-      isNull(data.rg)
-      isNull(data.birthday)
-      isNull(data.tell)
-      isNull(data.state)
-      isNull(data.city)
+    if (param === 2) {
+      if (
+        isNull(data.name) ||
+        isNull(data.lastname) ||
+        isNull(data.rg) ||
+        isNull(data.birthday) ||
+        !regexTypes.tell.test(data.tell) ||
+        isNull(data.state) ||
+        isNull(data.city)
+      ) {
+        setError({ ...error, msg: true, shake: true });
+        setTimeout(() => setError({ msg: true, shake: false }), 500);
+        return true;
+      } else {
+        setError({ ...error, msg: false });
+        setModal(true);
+        return false;
+      }
     }
-    
   }
 
-  function switchTab() {
-    setTab(tab === 1 ? 2 : 1);
-    console.log(data);
-    // trocar isso para a função do botão avançar
+  function checkCode(param) {
+    if(isNull(param)) {
+      setModal(true)
+    } else {
+      setModal(false)
+    }
   }
 
   const dateFormatAux = (date) => {
@@ -127,7 +157,7 @@ const CardRegister = ({}) => {
   return (
     <>
       <Container bgImg={bg}>
-        <Wrapper>
+        <Wrapper animation={error.shake}>
           {tab === 1 ? (
             <ImgWrapper
               url={Logo}
@@ -139,17 +169,21 @@ const CardRegister = ({}) => {
           <Text
             color="rgba(51, 51, 51, 1)"
             size={"24px"}
-            marginTop={tab === 2 ? (error === true ? '0.3rem' : '2rem') : "0rem"}
+            marginTop={
+              tab === 2 ? (error.msg === true ? "0.3rem" : "2rem") : "0rem"
+            }
           >
             {tab === 1 ? "Cadastro" : "Falta pouco!"}
           </Text>
-          {error && (<Text
-            color="#E84545"
-            size={"13px"}
-            marginTop={tab === 2? '1rem' : "0.5rem"}
-          >
-            [ERRO]
-          </Text>)}
+          {error.msg && (
+            <Text
+              color="#E84545"
+              size={"13px"}
+              marginTop={tab === 2 ? "1rem" : "0.5rem"}
+            >
+              Preencha os campos corretamente!
+            </Text>
+          )}
 
           <WrapperInput marginTop={tab === 2 ? "2rem" : "4rem"}>
             <InputRegister
@@ -187,10 +221,11 @@ const CardRegister = ({}) => {
               display={tab === 2 ? "none" : "flex"}
               icon={Lock}
               value={data.pass}
+              type={"password"}
               onChange={(e) => setData({ ...data, pass: e.target.value })}
               placeholder="Digite sua senha"
             />
-
+            {/* Tab2 */}
             <InputRegister
               label={"Nome"}
               display={tab === 1 ? "none" : "flex"}
@@ -224,6 +259,7 @@ const CardRegister = ({}) => {
             <Datepicker
               label={"Data de nascimento"}
               selected={data.birthday}
+              color={data.birthday ? "black" : null}
               paddingRight={data.birthday === null ? null : "11rem"}
               onChange={(date) => setData({ ...data, birthday: date })}
               placeholder={
@@ -241,23 +277,23 @@ const CardRegister = ({}) => {
               marginRight={"67%"}
               value={data.tell}
               onChange={(e) => setData({ ...data, tell: e.target.value })}
-              placeholder="Exemplo: (11) 99999-9999"
-              marginBottom={'1rem'}
+              placeholder="Exemplo: 11 99999-9999"
+              marginBottom={"1rem"}
             />
 
-            <WrapperSelect marginBottom={tab === 2 ? '4rem' : null}> 
+            <WrapperSelect marginBottom={tab === 2 ? "4rem" : null}>
               <Select
                 display={tab === 1 ? "none" : "flex"}
                 placeholder="Estado"
                 marginRight={"1rem"}
-                onChange={(e) => setData({...data, state: e.value})}
+                onChange={(e) => setData({ ...data, state: e.value })}
                 options={options.ES}
               />
               <Select
                 display={tab === 1 ? "none" : "flex"}
                 placeholder="Cidade"
                 options={options.CT}
-                onChange={(e) => setData({...data, city: e.value})}
+                onChange={(e) => setData({ ...data, city: e.value })}
               />
             </WrapperSelect>
           </WrapperInput>
@@ -267,8 +303,9 @@ const CardRegister = ({}) => {
           >
             {tab === 1 ? "Avançar" : "Finalizar!"}
           </Button>
-          {tab !== 1 ? null : <p>Já tem uma conta? Entrar</p>}
+          {tab !== 1 ? null : <p onClick={() => navigate(`/login`)}>Já tem uma conta? Entrar</p>}
         </Wrapper>
+        <Modal display={modal} value={code} onChange={(e) => setCode(e.target.value)} onClick={() => checkCode(code)}/>
       </Container>
     </>
   );

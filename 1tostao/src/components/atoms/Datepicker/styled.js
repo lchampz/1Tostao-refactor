@@ -16,7 +16,6 @@ export const WrapperDatepicker = styled.div`
 `
 
 export const Button = styled.button`
-    color: rgb(96, 95, 95, 0.95);
     background-color: white;
     width: ${({widthInput}) => (widthInput ? widthInput: "100%")};
     height: 2rem;
@@ -37,13 +36,10 @@ export const Button = styled.button`
         border-bottom: 2px solid rgb(20, 202, 138);
     }
 
-    &:hover{
-        color: rgb(96, 95, 95, 0.95);
-    }
-
     p {
         margin-right: 105px;
         white-space: nowrap;
+        color: ${({color}) => (color ? color : 'rgb(96, 95, 95, 0.95)')};
     }
 ` 
 

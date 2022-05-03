@@ -16,14 +16,15 @@ const Datepicker = ({
   marginRight,
   label,
   paddingRight,
-  isClearable
+  isClearable,
+  color
 }) => {
   const CustomInput = React.forwardRef(({ children, onClick }, ref) => (
     <>
       <Label className="label" display={display} marginRight={marginRight}>
         {label}
       </Label>
-      <Button onClick={onClick} ref={ref} paddingRight={paddingRight}>
+      <Button onClick={onClick} ref={ref} paddingRight={paddingRight} color={color}>
         <ImgWrapper
           url={Calendar}
           width="20px"
@@ -48,7 +49,7 @@ const Datepicker = ({
         showYearDropdown
         dropdownMode="select"
         customInput={
-          <CustomInput paddingRight={paddingRight} children={placeholder ? placeholder : ''} />
+          <CustomInput paddingRight={paddingRight} children={placeholder ? placeholder : ''} color={color}/>
         }
       />
     </WrapperDatepicker>
