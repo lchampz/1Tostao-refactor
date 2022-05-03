@@ -11,7 +11,8 @@ const InputRegister = ({
   onChange,
   placeholder,
   marginRight,
-  type
+  type,
+  marginBottom
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const InputRegister = ({
         {label}
       </Label>
       <Input
+        marginBottom={marginBottom}
         display={display}
         icon={icon}
         value={value}
