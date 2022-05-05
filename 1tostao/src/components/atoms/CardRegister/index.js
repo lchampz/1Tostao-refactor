@@ -91,7 +91,6 @@ const CardRegister = ({}) => {
       cidades.push({ label: city.nome, value: city.nome });
     });
     setOptions({ ES: estados, CT: cidades });
-    console.log(data);
 
     if (param === 1) {
       if (
@@ -343,7 +342,7 @@ const CardRegister = ({}) => {
               data.name,
               data.rg,
               data.tell,
-              data.username,
+              data.user,
               data.lastname,
               data.birthday,
               data.city
