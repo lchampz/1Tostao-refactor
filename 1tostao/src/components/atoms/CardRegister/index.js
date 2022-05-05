@@ -9,7 +9,7 @@ import {
   WrapperSelect,
 } from "./styled.js";
 import Logo from "../../../assets/img/logo.png";
-import bg from "../../../assets/img/Background.png";
+import bg from "../../../assets/img/background.jpg";
 import Text from "../Text/Text";
 import InputRegister from "../InputRegister";
 import User from "../../../assets/icons/user.png";
@@ -21,9 +21,10 @@ import Datepicker from "../Datepicker";
 import Select from "../Select";
 import { getStates } from "../../../request/utils/getStates";
 import { getCities } from "../../../request/utils/getCities";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { useRegex } from "../../../request/hooks/Regex";
-import Modal from '../ModalConfirm'
+import Modal from "../ModalConfirm";
+import { createUser } from "../../../services/AuthService";
 
 const CardRegister = ({}) => {
   const [tab, setTab] = useState(1);
@@ -47,11 +48,10 @@ const CardRegister = ({}) => {
     shake: false,
     msg: false,
   });
-  const [ modal, setModal ] = useState(false)
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const { regexTypes } = useRegex();
-  const [ code, setCode ] = useState(null)
-  
+  const [code, setCode] = useState(undefined);
 
   useEffect(() => {
     setData({
@@ -91,18 +91,18 @@ const CardRegister = ({}) => {
       cidades.push({ label: city.nome, value: city.nome });
     });
     setOptions({ ES: estados, CT: cidades });
+    console.log(data);
 
     if (param === 1) {
       if (
         isNull(data.user) ||
         !regexTypes.cpf.test(data.cpf) ||
         !regexTypes.email.test(data.email) ||
-        !regexTypes.pass.test(data.pass) 
+        !regexTypes.pass.test(data.pass)
       ) {
         setError({ ...error, msg: true, shake: true });
         setTimeout(() => setError({ msg: true, shake: false }), 500);
         return true;
-        
       } else {
         setError({ ...error, msg: false });
         setTab(2);
@@ -130,12 +130,35 @@ const CardRegister = ({}) => {
     }
   }
 
-  function checkCode(param) {
-    if(isNull(param)) {
-      setModal(true)
-    } else {
-      setModal(false)
-    }
+  function checkCode(
+    email,
+    password,
+    state,
+    cpf,
+    name,
+    rg,
+    tell,
+    uid,
+    username,
+    lastname,
+    niver,
+    city
+  ) {
+    createUser(
+      email,
+      password,
+      state,
+      cpf,
+      name,
+      rg,
+      tell,
+      uid,
+      username,
+      lastname,
+      niver,
+      city
+    );
+    setModal(false);
   }
 
   const dateFormatAux = (date) => {
@@ -303,9 +326,30 @@ const CardRegister = ({}) => {
           >
             {tab === 1 ? "Avançar" : "Finalizar!"}
           </Button>
-          {tab !== 1 ? null : <p onClick={() => navigate(`/login`)}>Já tem uma conta? Entrar</p>}
+          {tab !== 1 ? null : (
+            <p onClick={() => navigate(`/login`)}>Já tem uma conta? Entrar</p>
+          )}
         </Wrapper>
-        <Modal display={modal} value={code} onChange={(e) => setCode(e.target.value)} onClick={() => checkCode(code)}/>
+        <Modal
+          display={modal}
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          onClick={() =>
+            checkCode(
+              data.email,
+              data.pass,
+              data.state,
+              data.cpf,
+              data.name,
+              data.rg,
+              data.tell,
+              data.username,
+              data.lastname,
+              data.birthday,
+              data.city
+            )
+          }
+        />
       </Container>
     </>
   );
