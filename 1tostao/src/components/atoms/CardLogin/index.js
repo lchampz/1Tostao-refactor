@@ -45,7 +45,7 @@ const CardLogin = ({color, textAlign, marginTop, marginBottom, fontSize, height,
                         />
                     </WrapperInput>
                         <p className='esquecer' onClick={() => navigate(`/`)}>Já tem uma conta? Entrar</p>
-                        <Button style={{display:"none"}} >Entrar</Button>
+                        <Button  >Entrar</Button>
                         <p className='cadastro' onClick={() => navigate(`/register`)}>Não tem uma conta? Cadastre-se agora!</p>
                 </Wrapper>
             </Container>
