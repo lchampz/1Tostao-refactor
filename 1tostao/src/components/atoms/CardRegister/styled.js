@@ -6,7 +6,7 @@ const shake = keyframes`
   50% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
   100% { transform: translateX(0); }
-}`
+`
 
 export const Container = styled.div`
     height: 120vh;
@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
     margin-bottom: 5rem;
-    animation: ${({ animation }) => (animation ? css`${shake} 0.3s linear infinite;` : null )}
+    animation: ${({ animation }) => (animation ? css`${shake} 0.3s linear infinite;` : null )};
 
     @media screen and (max-width:1280px) {
         margin-bottom: 8rem;
@@ -47,9 +47,29 @@ export const Wrapper = styled.div`
         margin-bottom: 11rem;
     }
 
-    p {
+    p.login {
         font-size: 14px;
         padding-bottom: 15px; 
+
+        &:hover {
+            cursor: pointer;
+            color: #24D39A;
+            font-weight: bold;
+        }
+    }
+    p.cadastro {
+        font-size: 14px;
+
+        &:hover {
+            cursor: pointer;
+            color: #24D39A;
+            font-weight: bold;
+        }
+    }
+    p.esquecer {
+        font-size: 14px;
+        float:right;
+
 
         &:hover {
             cursor: pointer;

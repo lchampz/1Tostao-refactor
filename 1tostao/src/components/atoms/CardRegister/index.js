@@ -326,7 +326,7 @@ const CardRegister = ({}) => {
             {tab === 1 ? "Avançar" : "Finalizar!"}
           </Button>
           {tab !== 1 ? null : (
-            <p onClick={() => navigate(`/login`)}>Já tem uma conta? Entrar</p>
+            <p className="login" onClick={() => navigate(`/login`)}>Já tem uma conta? Entrar</p>
           )}
         </Wrapper>
         <Modal
