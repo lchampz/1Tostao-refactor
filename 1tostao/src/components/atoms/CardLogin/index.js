@@ -6,14 +6,14 @@ import {WrapperInput, Container, Wrapper} from './styled';
 import Email from "../../../assets/icons/email.png";
 import Lock from "../../../assets/icons/padlock.png";
 import InputRegister from '../InputRegister/index.js'
-import {signInWithEmailAndPassword,  getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import {auth} from '../../../services/Firebase'
+import {signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const CardLogin = () => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
  
     const navigate = useNavigate();
-
 
 
 const login = async () => {
@@ -23,24 +23,18 @@ const login = async () => {
       loginEmail,
       loginPassword
     );
-    console.log(user.loginEmail);
+    console.log(user);
   } catch (error) {
     console.log(error.message);
   }
 };
 
-const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-    if (user) {
-        const uid = user.uid;
-    }else{
-        console.log("não")
-    }
-    });
-    const logout = async () => {
-        if(loginEmail){
+const logout = async () => {
+        if(loginEmail.length > 1){
             await signOut(auth);
             console.log("Deslogado!")
+            setLoginEmail("")
+            setLoginPassword("")
         }else{
             console.log("Não tem ninguem logado!")
         }
