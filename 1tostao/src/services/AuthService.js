@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import db, { auth } from "./Firebase";
 import { addDoc, collection } from "firebase/firestore";
 
@@ -11,25 +11,25 @@ async function createUserFirestore(
     niver, city
 ) {
   try {
-    const docRef = await addDoc(collection(db, "users"), {
-      email: email,
-      senha: password,
-      estado: state,
-      cpf: cpf,
-      nome: name,
-      rg: rg,
-      uid: uid,
-      username: username,
-      sobrenome: lastname,
-      ADM: false,
-      tell: tell,
-      niver: niver,
-      cidade: city,
-      autenticado: false,
-    });
-    console.log("Document written with ID: ", docRef.id);
+      const docRef = await addDoc(collection(db, "users"), {
+          email: email,
+          senha: password,
+          estado: state,
+          cpf: cpf,
+          nome: name,
+          rg: rg,
+          uid: uid,
+          username: username,
+          sobrenome: lastname,
+          ADM: false,
+          tell: tell,
+          niver: niver,
+          cidade: city,
+          autenticado: false,
+      }
+    );
   } catch (e) {
-    console.log("Error adding document: ", e);
+    console.log("[ERROR]: ", e);
   }
 }
 
@@ -69,3 +69,4 @@ export async function createUser(
     console.log(err);
   }
 }
+
