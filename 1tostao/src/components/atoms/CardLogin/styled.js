@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const Form = styled.div`
+
+`
+export const InputEmail = styled.input`
+
+`
+export const InputSenha = styled.input`
+`
+
 export const Container = styled.div`
     height: 120vh;
     display: flex;
@@ -11,7 +20,6 @@ export const Container = styled.div`
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
-    
     transition: all 0.8 ease-in-out;
 `
 export const Wrapper = styled.div`
@@ -21,12 +29,12 @@ export const Wrapper = styled.div`
     align-items: center;
     margin-left: 1.5rem; 
     margin-right: 1.5rem ;
-    margin-top: 10rem;
+    margin-top: 1rem;
     width: 30rem;
     height: 37rem;
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
-    margin-bottom: 5rem;
+
 
     @media screen and (max-width:1280px) {
         margin-bottom: 8rem;
@@ -72,7 +80,31 @@ export const Wrapper = styled.div`
 `
 
 
+export const Botao = styled.button`
+display: flex;
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    width: 80%;
+    background-color: #24D39A;
+    color: white;
+    height: 5rem;
+    margin-top: -2.8rem;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 3rem;
+    transition: all 0.3s ease-in;
 
+    &:hover {
+        color: #24D39A;
+        background-color: white;
+        border: 3px solid #24D39A;
+        font-weight: bold;
+
+    }
+`
 
 export const WrapperInput = styled.div`
     width: 100%;
@@ -81,5 +113,9 @@ export const WrapperInput = styled.div`
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    padding-top: 17rem;
+    padding-top: 7rem;
+`
+export const TextLogin = styled.p`
+    font-size: 1.6rem;
+    font-weight: bold;
 `

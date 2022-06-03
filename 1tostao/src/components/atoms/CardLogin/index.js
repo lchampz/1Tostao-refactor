@@ -1,75 +1,97 @@
-import react, { useState } from 'react'
+import react, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button  } from '../CardRegister/styled.js'
 import bg from "../../../assets/img/background.jpg";
-import {WrapperInput, Container, Wrapper} from './styled';
+import Logo from "../../../assets/img/logo.png";
+import ImgWrapper from '../ImgWrapper/index.js';
+import {WrapperInput, Botao, Container, Wrapper, Form, TextLogin} from './styled';
+import GoogleButton from "react-google-button"
 import Email from "../../../assets/icons/email.png";
 import Lock from "../../../assets/icons/padlock.png";
 import InputRegister from '../InputRegister/index.js'
-import {auth} from '../../../services/Firebase'
-import {signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useUserAuth } from '../../../request/hooks/Auth.js';
 
 const CardLogin = () => {
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
- 
+
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const {logIn, googleSignIn} = useUserAuth();
     const navigate = useNavigate();
+    const { logOut, user } = useUserAuth();
 
-
-const login = async () => {
-  try {
-    const user = await signInWithEmailAndPassword(
-      auth,
-      loginEmail,
-      loginPassword
-    );
-    console.log(user);
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const logout = async () => {
-        if(loginEmail.length > 1){
-            await signOut(auth);
-            console.log("Deslogado!")
-            setLoginEmail("")
-            setLoginPassword("")
-        }else{
-            console.log("Não tem ninguem logado!")
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        setError("");
+        try{
+            await logIn(email,password);
+            navigate("/");
+        } catch (err){
+            setError(err.message);
         }
     };
 
+    const handleGoogleSignIn = async(e) => {
+        e.preventDefault();
+        try{
+            await googleSignIn();
+            navigate("/");
+        } catch (error){
+            console.log(error.message);
+        }
+    }
 
-
-
+    const handleLogout = async () => {
+        try {
+          await logOut();
+          navigate("/");
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
 
     return(
         <>
+            
             <Container bgImg={bg}>
-                <Wrapper>
-                    <WrapperInput>
-                        <InputRegister
-                            onChange={(event) => {setLoginEmail(event.target.value)}}
-                            label={"Email"}
-                            marginRight="72%"
-                            icon={Email}
-                            placeholder="Digite seu email"
-                        />
-                        <InputRegister
-                            label={"Senha"}
-                            marginRight="71%"
-                            icon={Lock}
-                            type={"password"}
-                            onChange={(event) => {setLoginPassword(event.target.value)}}
-                            placeholder="Digite sua senha"
-                        />
-                    </WrapperInput>
-                        <Button onClick={login}>Entrar</Button>
-                        <Button onClick={logout}>Deslogar</Button>
-                        {/* <Button onClick={checkLogin}>Checar se te alguem logado</Button> */}
 
-                </Wrapper>
+               <Form onSubmit={handleSubmit}>
+                   
+                    <Wrapper>
+                    <ImgWrapper
+                    url={Logo}
+                    width={"15%"}
+                    height={"15%"}
+                    margin={"30px 155px 0px 0px"}
+                    />
+                    <TextLogin>Login</TextLogin>
+                        <WrapperInput>
+
+                        <InputRegister
+                            label={"Email"}
+                            type="email"
+                            marginRight="72%"
+                            placeholder="Email"
+                            icon={Email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            />
+                        <InputRegister
+                           label={"Senha"}
+                           type="password"
+                           marginRight="71%"
+                           placeholder="Senha"
+                           icon={Lock}
+                           onChange={(e) => setPassword(e.target.value)}
+                           />
+                        </WrapperInput>
+
+                <Botao onClick={handleSubmit} type="Submit" >Login</Botao>
+                
+            <GoogleButton className="g-btn"
+            type="dark"
+            onClick={handleGoogleSignIn}/>
+            </Wrapper>
+            </Form>
             </Container>
         </>
     );
