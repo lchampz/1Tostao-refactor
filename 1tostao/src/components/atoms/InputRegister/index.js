@@ -1,7 +1,7 @@
 import React from "react";
 
 import Input from "../Input";
-import { Label } from "./styled";
+import { Label, WrapperTooltip, ReqPass } from "./styled";
 
 const InputRegister = ({
   display,
@@ -12,23 +12,56 @@ const InputRegister = ({
   placeholder,
   marginRight,
   type,
-  marginBottom
+  marginBottom,
+  tooltip,
+  visible,
+  onFocus,
+  onBlur,
+  charValid,
+  especialValid,
+  mascValid,
+  minValid,
+  numValid,
 }) => {
   return (
     <>
       <Label className="label" display={display} marginRight={marginRight}>
         {label}
       </Label>
-      <Input
-        marginBottom={marginBottom}
-        display={display}
-        icon={icon}
-        value={value}
-        type={type || 'text'}
-        className="input"
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+      {tooltip ? (
+        <>
+          <Input
+            onFocus={onFocus}
+            onBlur={onBlur}
+            marginBottom={marginBottom}
+            display={display}
+            icon={icon}
+            value={value}
+            type={type || "text"}
+            className="input"
+            onChange={onChange}
+            placeholder={placeholder}
+          />
+          <WrapperTooltip visible={visible}>
+            <ReqPass valid={charValid || false}>- Mínimo 8 caracteres</ReqPass>
+            <ReqPass valid={especialValid || false}>- Um caractere especial</ReqPass>
+            <ReqPass valid={mascValid || false}>- uma letra maiuscula</ReqPass>
+            <ReqPass valid={minValid || false}>- Uma letra minuscula</ReqPass>
+            <ReqPass valid={numValid || false}>- Um número</ReqPass>
+          </WrapperTooltip>
+        </>
+      ) : (
+        <Input
+          marginBottom={marginBottom}
+          display={display}
+          icon={icon}
+          value={value}
+          type={type || "text"}
+          className="input"
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      )}
     </>
   );
 };

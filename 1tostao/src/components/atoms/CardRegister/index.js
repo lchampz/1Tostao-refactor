@@ -52,6 +52,14 @@ const CardRegister = ({}) => {
   const navigate = useNavigate();
   const { regexTypes } = useRegex();
   const [code, setCode] = useState(undefined);
+  const [ visible, setVisible ] = useState(false)
+  const [ valid, setValid ] = useState({
+    num: false,
+    length: false,
+    min: false,
+    masc: false,
+    especial: false
+  })
 
   useEffect(() => {
     setData({
@@ -71,6 +79,18 @@ const CardRegister = ({}) => {
     getStates(setStates);
     getCities(setCities);
   }, []);
+
+  const isValid = (pass) => {
+    let password = data.pass || '' 
+
+    setValid({
+      num: regexTypes.num.test(pass),
+      min: regexTypes.min.test(pass),
+      especial: regexTypes.especial.test(pass),
+      masc: regexTypes.masc.test(pass),
+      length: password.length >= 7
+    })
+  }
 
   const isNull = (value) => {
     if (value === null || !value || value === undefined || value === "") {
@@ -176,6 +196,7 @@ const CardRegister = ({}) => {
 
     return [day, month, year].join("/");
   };
+
   return (
     <>
       <Container bgImg={bg}>
@@ -244,8 +265,21 @@ const CardRegister = ({}) => {
               icon={Lock}
               value={data.pass}
               type={"password"}
-              onChange={(e) => setData({ ...data, pass: e.target.value })}
+              onChange={(e) => {
+                  setData({ ...data, pass: e.target.value })
+                  isValid(e.target.value)
+                }
+              }
               placeholder="Digite sua senha"
+              tooltip
+              onFocus={() => setVisible(true)}
+              onBlur={() => setVisible(false)}
+              charValid={valid.length}
+              especialValid={valid.especial}
+              mascValid={valid.masc}
+              minValid={valid.min}
+              numValid={valid.num}
+              visible={visible}
             />
             {/* Tab2 */}
             <InputRegister
@@ -265,7 +299,7 @@ const CardRegister = ({}) => {
               marginRight={"62.5%"}
               value={data.lastname}
               onChange={(e) => setData({ ...data, lastname: e.target.value })}
-              placeholder="Digite sua senha"
+              placeholder="Digite seu sobrenome"
             />
 
             <InputRegister
