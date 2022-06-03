@@ -87,7 +87,7 @@ display: flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.05rem;
     width: 80%;
     background-color: #24D39A;
     color: white;

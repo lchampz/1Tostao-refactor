@@ -51,7 +51,7 @@ const CardLogin = () => {
       };
 
     return(
-        <>
+    <>
             
             <Container bgImg={bg}>
 
@@ -85,15 +85,15 @@ const CardLogin = () => {
                            />
                         </WrapperInput>
 
-                <Botao onClick={handleSubmit} type="Submit" >Login</Botao>
-                
-            <GoogleButton className="g-btn"
-            type="dark"
-            onClick={handleGoogleSignIn}/>
+                    <Botao onClick={handleSubmit} type="Submit" >Login</Botao>
+                    
+                <GoogleButton className="g-btn"
+                type="dark"
+                onClick={handleGoogleSignIn}/>
             </Wrapper>
-            </Form>
-            </Container>
-        </>
+        </Form>
+     </Container>
+    </>
     );
 }
 
