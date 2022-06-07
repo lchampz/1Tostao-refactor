@@ -55,7 +55,6 @@ export const Wrapper = styled.div`
 
     p.login {
         font-size: 14px;
-        margin-top:-3rem;
         margin-bottom:1.5rem;
 
         &:hover {
@@ -81,8 +80,9 @@ export const Botao = styled.button`
     background-color: #24D39A;
     color: white;
     height: 5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     border: none;
+    margin-top:-2.5rem;
     border-radius: 3rem;
     transition: all 0.3s ease-in;
 
