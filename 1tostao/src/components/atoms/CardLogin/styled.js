@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
     margin-left: 1.5rem; 
     margin-right: 1.5rem ;
     margin-top: 1rem;
-    width: 30rem;
+    width: 100%;
     height: 37rem;
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
@@ -42,6 +42,7 @@ export const Wrapper = styled.div`
     }
 
     @media screen and (max-width: 500px) {
+        width:22rem;
         margin-top: 15rem;
         margin-bottom: 11rem;
     }
