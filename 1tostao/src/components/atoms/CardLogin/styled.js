@@ -39,6 +39,7 @@ export const Wrapper = styled.div`
     @media screen and (max-width:1280px) {
         margin-bottom: 8rem;
         margin-top: 12rem;
+        
     }
 
     @media screen and (max-width: 500px) {
@@ -49,7 +50,8 @@ export const Wrapper = styled.div`
 
     p.login {
         font-size: 14px;
-        padding-bottom: 15px; 
+        margin-top:-3rem;
+        margin-bottom:1.5rem;
 
         &:hover {
             cursor: pointer;
@@ -57,33 +59,14 @@ export const Wrapper = styled.div`
             font-weight: bold;
         }
     }
-    p.cadastro {
-        font-size: 14px;
-
-        &:hover {
-            cursor: pointer;
-            color: #24D39A;
-            font-weight: bold;
-        }
-    }
-    p.esquecer {
-        font-size: 14px;
-        float:right;
-
-
-        &:hover {
-            cursor: pointer;
-            color: #24D39A;
-            font-weight: bold;
-        }
-    }
+  
 
     
 `
 
 
 export const Botao = styled.button`
-display: flex;
+    display: flex;
     text-align: center;
     cursor: pointer;
     align-items: center;
@@ -93,8 +76,7 @@ display: flex;
     background-color: #24D39A;
     color: white;
     height: 5rem;
-    margin-top: -2.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border: none;
     border-radius: 3rem;
     transition: all 0.3s ease-in;
@@ -112,10 +94,10 @@ export const WrapperInput = styled.div`
     width: 100%;
     flex-direction: column;
     display: flex;
-    margin: 0 auto;
     justify-content: center;
     align-items: center;
     padding-top: 7rem;
+ 
 `
 export const TextLogin = styled.p`
     font-size: 1.6rem;

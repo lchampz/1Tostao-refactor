@@ -84,7 +84,7 @@ const CardLogin = () => {
                            onChange={(e) => setPassword(e.target.value)}
                            />
                         </WrapperInput>
-
+                        <p className="login" onClick={() => navigate(`/register`)}>Já tem uma conta? Entrar</p>
                     <Botao onClick={handleSubmit} type="Submit" >Login</Botao>
                     
                 <GoogleButton className="g-btn"
