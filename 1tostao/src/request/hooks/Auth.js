@@ -6,6 +6,7 @@ import {
     signOut,
     GoogleAuthProvider,
     signInWithPopup,
+    sendEmailVerification
   } from "firebase/auth";
 import { auth } from '../../services/Firebase';
 
@@ -33,6 +34,14 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
           console.log("Auth", currentuser);
           setUser(currentuser);
+          if(!currentuser.emailVerified) {
+            sendEmailVerification(currentuser)
+            .then(() => {
+              window.datalayer.push({	
+                user: currentuser,
+              })
+            })
+          }
         });
     
         return () => {

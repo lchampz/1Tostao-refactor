@@ -367,7 +367,7 @@ const CardRegister = ({}) => {
           display={modal}
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          onClick={() =>
+          onClick={() => {
             checkCode(
               data.email,
               data.pass,
@@ -381,6 +381,8 @@ const CardRegister = ({}) => {
               data.birthday,
               data.city
             )
+            navigate(`/login`)
+          }
           }
         />
       </Container>
