@@ -21,14 +21,14 @@ export const Container = styled.div`
     background-attachment: fixed;
     background-size: cover;
     transition: all 0.8 ease-in-out;
+    
 `
 export const Wrapper = styled.div`
     border-radius: 1rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 1.5rem; 
-    margin-right: 1.5rem ;
     margin-top: 1rem;
     width: 100%;
     height: 37rem;
