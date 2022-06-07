@@ -25,12 +25,11 @@ export const Container = styled.div`
 `
 export const Wrapper = styled.div`
     border-radius: 1rem;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
-    width: 100%;
+    width: 30rem;
     height: 37rem;
     background-color: white;
     box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
