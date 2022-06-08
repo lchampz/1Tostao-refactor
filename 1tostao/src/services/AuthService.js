@@ -25,9 +25,10 @@ async function createUserFirestore(
           tell: tell,
           niver: niver,
           cidade: city,
-          autenticado: false,
       }
-    );
+    )
+    console.log('[SUCCESS] ID: ', docRef.id)
+    ;
   } catch (e) {
     console.log("[ERROR]: ", e);
   }
