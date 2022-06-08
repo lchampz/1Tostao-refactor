@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { AboutUs, Home, Login, Register, Servicos, FAQ  } from './pages'
+import { AboutUs, Home, Login, Register, Servicos, FAQ, Profile  } from './pages'
 
 
 const Rotas = () => {
@@ -12,6 +12,7 @@ const Rotas = () => {
         { path: '/about', name: 'About', element: <AboutUs />},
         { path: '/faq', name: 'FAQ', element: <FAQ />},
         { path: '/servicos', name: 'Servicos', element: <Servicos />},
+        { path: '/profile', name: 'Profile', element: <Profile />},
     ]
 
     return(

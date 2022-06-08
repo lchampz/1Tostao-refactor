@@ -4,3 +4,4 @@ export { default as AboutUs } from './AboutUs';
 export { default as Register } from './Register';
 export { default as Servicos } from './Servicos';
 export { default as FAQ } from './FAQ';
+export { default as Profile } from './Profile';

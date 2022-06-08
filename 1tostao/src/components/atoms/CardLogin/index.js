@@ -1,4 +1,4 @@
-import react, { useState} from 'react'
+import react, { useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import bg from "../../../assets/img/background.jpg";
 import Logo from "../../../assets/img/logo.png";
@@ -20,12 +20,16 @@ const CardLogin = () => {
     const navigate = useNavigate();
     const { logOut, user } = useUserAuth();
 
+   useEffect(() => {
+        navigate("/profile")
+   }, [user])
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         setError("");
         try{
             await logIn(email,password);
-            navigate("/");
+            navigate("/profile");
         } catch (err){
             setError(err.message);
         }
@@ -35,7 +39,7 @@ const CardLogin = () => {
         e.preventDefault();
         try{
             await googleSignIn();
-            navigate("/");
+            navigate("/profile");
         } catch (error){
             console.log(error.message);
         }
