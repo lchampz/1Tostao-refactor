@@ -22,7 +22,7 @@ const Footer = ({width, margintop, border, size, color, needMargin}) => {
 
                         <div className="col">
                             <img src={logo} id="logo" alt="logo" />
-                            <p className="desc">Para que estagiar em uma empresa só, se o mundo todo pode ser o seu cliente? Para ser 1Tostão basta um clique.</p>
+                            <p className="desc">Para que trabalhar em uma empresa só, se o mundo todo pode ser o seu cliente? Para ser 1Tostão basta um clique.</p>
                             <div>
                                 <img src={face} className="img" alt="facebook" />
                                 <img src={ig} className="img" alt="instagram" />

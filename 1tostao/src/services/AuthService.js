@@ -25,6 +25,7 @@ async function createUserFirestore(
           tell: tell,
           niver: niver,
           cidade: city,
+          firstAcces: true,
       }
     )
     console.log('[SUCCESS] ID: ', docRef.id)

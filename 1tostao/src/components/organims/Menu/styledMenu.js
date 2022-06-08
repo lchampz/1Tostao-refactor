@@ -78,6 +78,7 @@ export const Theme = styled.div`
 
 export const Config = styled.div`
 display: flex;
+margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft : '0px')};
 align-items: center;
 transition: all 0.2s ease-in;
 
