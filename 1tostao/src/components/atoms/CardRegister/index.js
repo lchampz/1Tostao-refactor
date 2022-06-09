@@ -64,9 +64,6 @@ const CardRegister = ({}) => {
     especial: false
   })
 
-  useEffect(() => {
-    navigate("/profile")
-  }, [user])
 
 
   useEffect(() => {

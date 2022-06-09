@@ -20,9 +20,6 @@ const CardLogin = () => {
     const navigate = useNavigate();
     const { logOut, user } = useUserAuth();
 
-   useEffect(() => {
-        navigate("/profile")
-   }, [user])
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -45,14 +42,6 @@ const CardLogin = () => {
         }
     }
 
-    const handleLogout = async () => {
-        try {
-          await logOut();
-          navigate("/");
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
 
     return(
     <>
