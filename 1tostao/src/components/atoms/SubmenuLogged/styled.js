@@ -33,7 +33,12 @@ export const WrapperHeader = styled.div`
 
 export const WrapperBody = styled.div`
     display: flex;
-
+    width: 110%;
+    margin-left: -1rem;
+    height: 8.3rem;
+    background-color: #323232;
+    
+    margin-top: 1rem; 
 `
 
 export const WrapperFooter = styled.div`
@@ -41,14 +46,15 @@ export const WrapperFooter = styled.div`
 `
 
 export const Profile = styled.div`
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: row;
 `
 
 export const Name = styled.div`
     font-weight: bold;
-    font-size: 23px;
-    margin-top: 1rem;
+    font-size: 25px;
+    margin-top: 1.3rem;
     margin-left: 2rem;
 `
 
@@ -81,8 +87,9 @@ export const Box = styled.div`
 
 export const Line = styled.div`
     height: 3px;
-    width: 83%;
+    width: 27%;
     background-color: #323232;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop+'px' : '0')};
 `
 
 export const Close = styled.span`
@@ -90,8 +97,46 @@ export const Close = styled.span`
     color: red;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: -3rem;
     
     @media screen and (min-width: 1500px) {
         margin-top: 2rem;
     }
+`
+
+export const Card = styled.div`
+    margin: 0 auto;
+    border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius+'px' : '5px')};
+    overflow: hidden;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop+'px' : '10px')};
+
+    margin-left: ${({ marginLeft }) => (marginLeft ? marginLeft+'px' : '10px')};
+    margin-right: ${({ marginRight }) => (marginRight ? marginRight+'px' : '10px')};
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    height: 7rem;
+    width: 5rem;
+
+    box-shadow: 1px 4px 13px 3px rgba(0, 0, 0, 0.25);
+
+    background: ${({ bgImg }) => (bgImg ? 'url('+bgImg+')' : '')};
+`
+
+export const P = styled.span`
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+`
+
+export const Social = styled.span`
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+
+    .p {
+        margin-top: 20px;
+    }
+
 `

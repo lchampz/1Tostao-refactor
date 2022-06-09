@@ -36,7 +36,7 @@ const Quests = () => {
   const renderQuest = quests.map((quest, i) => {
     const unvisible = () => {
       setVisible({ ...visible, id: i, visibility: !visible.visibility });
-      setIcon(icon == Plus ? Minus : Plus);
+      setIcon(icon === Plus ? Minus : Plus);
     };
 
     return (
@@ -46,7 +46,7 @@ const Quests = () => {
             <Quest color={theme.colors.fontColor}>
               {quest.quest}
               <ImgWrapper
-                url={i == visible.id ? icon : Plus}
+                url={i === visible.id ? icon : Plus}
                 alt={"iconMinusOrPlus"}
                 width={"2rem"}
                 height={"30px"}
