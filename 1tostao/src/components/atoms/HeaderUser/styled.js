@@ -12,9 +12,7 @@ export const Banner = styled.div`
 
 export const MenuUser = styled.div`
     display: flex;
-    flex-direction: row;
     align-items: center;
-    position: relative;
     
 `
 export const Username = styled.p`
@@ -24,7 +22,7 @@ export const Username = styled.p`
  
 `
 export const UserImg = styled.img`
-    width: 150px;
+    width: 100px;
     border-radius: 100px;
     margin-left: 10rem;
     
