@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import bg from "../../../assets/img/background.jpg";
-import { Banner, Username, MenuUser, UserImg } from './styled'
-import profile from './../../../assets/img/profile.png'
+import panic from "../../../assets/img/panic.jpg";
+import { Banner, Wrapper, Sections, AboutUser, Username, MenuImg, MenuUser, Mensagem, Contratar, UserImg } from './styled'
+import profilePic from './../../../assets/img/profile.png'
 import { useUserAuth } from '../../../request/hooks/Auth.js';
 import { useNavigate} from 'react-router-dom'
 import db from '../../../services/Firebase'
-import {collection, doc, getDocs, where, query} from 'firebase/firestore';
+import {collection, getDocs, where, query} from 'firebase/firestore';
 
 const HeaderUser = () => {
     const { logOut, user } = useUserAuth();
     const navigate = useNavigate();
-    const [users, setUsers] = useState();
-
-
+    const [profile, setProfile] = useState();
+    
+    const getUsers = async () => {
+      const docRef = query(collection(db, "users"), where("uid", "==", user.uid));
+      const querySnapshot = await getDocs(docRef);
+      querySnapshot.forEach((doc) => {
+        setProfile(doc.data());
+      })
+    }
+    
     if(!user){
         navigate("/")
+    }else{
+      getUsers();
     }
 
 
@@ -28,37 +37,29 @@ const HeaderUser = () => {
       };
 
 
-      // useEffect(() => {
-      //   const getUsers = async () => {
-      //     const data = await getDocs(userCollectionRef);
-      //   console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      //   };
-      //   getUsers();
-      // }, []);
-
-      
-      useEffect(() => {
-        const getUsers = async () => {
-          const docRef = query(collection(db, "users"), where("uid", "==", user.uid));
-          const querySnapshot = await getDocs(docRef);
-          querySnapshot.forEach((doc) => {
-            console.log(doc.id, "=> ", doc.data());
-          })
-        }
-        getUsers();
-      })
+   
       
       
 
 
     return ( 
         <>
-            <Banner bgImg={bg}>
-            </Banner>
+            <Banner bgImg={panic}/>
+            <Wrapper>
+            <MenuImg>
+                <UserImg src={profilePic}/> 
+            </MenuImg>
             <MenuUser>
-               <UserImg src= {profile}/> 
-                <Username>{user && user.email}</Username>
+                <Username>{profile && profile.username}</Username>
+                <Mensagem>Enviar mensagem</Mensagem>
+                <Contratar>Contratar</Contratar>
             </MenuUser>
+            <AboutUser>
+              <Sections>Portfólio</Sections>
+              <Sections>Sobre</Sections>
+            </AboutUser>
+            </Wrapper>
+               
             <button onClick={handleLogout}>Logout</button>
         </>
      );
