@@ -21,6 +21,10 @@ export const MenuImg = styled.div`
     `
 export const MenuUser = styled.div`
      display: flex;
+     @media (max-width:765px){
+        display:block;
+    }
+
 `
 export const Username = styled.p`
     font-size: 1.5rem;
@@ -28,6 +32,10 @@ export const Username = styled.p`
     margin-left: 17rem;
     margin-bottom: 2rem;
     margin-top: 1.3rem;
+
+    @media (max-width: 600px){
+        margin-left: 11rem;
+    }
  
 `
 export const UserImg = styled.img`
@@ -35,11 +43,16 @@ export const UserImg = styled.img`
     position: absolute;
     border-radius: 100px;
     margin-left: 8rem;
+
+    @media (max-width: 600px){
+        margin-left: 2rem;
+    }
     
 
 `
 
 export const Contratar = styled.button`
+    margin-top: 1.1rem;
     height: 2rem;
     width: 8rem;
     border: 1px solid #000;
@@ -47,13 +60,21 @@ export const Contratar = styled.button`
     border-radius: 10px;
     font-size: 1rem;
     transition: 0.1s all ease-in;
-    margin-top: 1.3rem;
     margin-left: auto;
     margin-right: 12rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
     @media (max-width:1280px){
         margin-right: 8rem;
+       
+    }
+
+    @media (max-width:765px){
+        margin-right: 0rem;
+    }
+
+    @media (max-width: 445px){
+        margin-left: 10rem;
     }
 
    &:hover {
@@ -76,6 +97,15 @@ export const Mensagem = styled.button`
     background-color: #474a51;
     border: none;
 
+    @media (max-width: 765px){
+        margin-left: 17rem;
+        margin-right: 1rem;
+        margin-top: 0;
+    }
+
+    @media (max-width: 600px){
+        margin-left: 10rem;
+    }
     &:hover{
         cursor: pointer;
         color:#eeeeee;
