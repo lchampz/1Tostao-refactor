@@ -40,10 +40,10 @@ const HeaderUser = () => {
             <Banner bgImg={panic}/>
             <Wrapper>
             <MenuImg>
-                <UserImg src={profilePic}/> 
+                <UserImg src={user && user.photoURL ? user && user.photoURL : profilePic}/> 
             </MenuImg>
             <MenuUser>
-                <Username>{profile && profile.username}</Username>
+                <Username>{profile && profile.username ?profile && profile.username : user && user.displayName}</Username>
                 <Mensagem>Enviar mensagem</Mensagem>
                 <Contratar>Contratar</Contratar>
             </MenuUser>
