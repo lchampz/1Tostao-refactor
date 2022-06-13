@@ -37,7 +37,7 @@ const CardRegister = ({}) => {
         navigate("/profile")
     }
     }
-    Redirect()
+    Redirect();
 });
 
   const [tab, setTab] = useState(1);

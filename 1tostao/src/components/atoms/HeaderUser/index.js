@@ -20,11 +20,16 @@ const HeaderUser = () => {
       })
     }
     
-    if(!user){
-        navigate("/")
-    }else{
-      getUsers();
-    }
+    useEffect(() => {
+      const Redirect = () => {
+        if(!user){
+          navigate("/")
+      }else{
+        getUsers();
+      }
+      }
+      Redirect()
+  });
 
     const handleLogout = async () => {
         try {
