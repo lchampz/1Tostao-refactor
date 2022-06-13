@@ -80,7 +80,7 @@ export const Contratar = styled.button`
    &:hover {
         color: #24D39A;
         background-color: white;
-        border: 3px solid #24D39A;
+        border: 2px solid #24D39A;
         font-weight: bold;
         cursor: pointer;
 
