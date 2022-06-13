@@ -44,18 +44,18 @@ const HeaderUser = () => {
         <>
             <Banner bgImg={panic}/>
               <Wrapper>
-              <MenuImg>
-                  <UserImg src={user && user.photoURL ? user && user.photoURL : profilePic}/> 
-              </MenuImg>
-              <MenuUser>
-                  <Username>{profile && profile.username ?profile && profile.username : user && user.displayName}</Username>
-                  <Mensagem>Enviar mensagem</Mensagem>
-                  <Contratar>Contratar</Contratar>
-              </MenuUser>
-              <AboutUser>
-                <Sections>Portfólio</Sections>
-                <Sections>Sobre</Sections>
-              </AboutUser>
+                <MenuImg>
+                    <UserImg src={user && user.photoURL ? user && user.photoURL : profilePic}/> 
+                </MenuImg>
+                <MenuUser>
+                    <Username>{profile && profile.username ?profile && profile.username : user && user.displayName}</Username>
+                    <Mensagem>Enviar mensagem</Mensagem>
+                    <Contratar>Contratar</Contratar>
+                </MenuUser>
+                <AboutUser>
+                  <Sections>Portfólio</Sections>
+                  <Sections>Sobre</Sections>
+                </AboutUser>
             </Wrapper>
                
             <button onClick={handleLogout}>Logout</button>
