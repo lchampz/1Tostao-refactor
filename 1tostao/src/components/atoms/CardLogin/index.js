@@ -20,6 +20,14 @@ const CardLogin = () => {
     const navigate = useNavigate();
     const { logOut, user } = useUserAuth();
 
+    useEffect(() => {
+        const Redirect = () => {
+          if(user){
+            navigate("/profile")
+        }
+        }
+        Redirect()
+    });
 
     const handleSubmit = async(e) => {
         e.preventDefault();

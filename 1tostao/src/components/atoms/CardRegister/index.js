@@ -30,6 +30,16 @@ import { useUserAuth } from "../../../request/hooks/Auth";
 
 const CardRegister = ({}) => {
   const {user} = useUserAuth();
+  
+  useEffect(() => {
+    const Redirect = () => {
+      if(user){
+        navigate("/profile")
+    }
+    }
+    Redirect()
+});
+
   const [tab, setTab] = useState(1);
   const [data, setData] = useState({
     user: null,
