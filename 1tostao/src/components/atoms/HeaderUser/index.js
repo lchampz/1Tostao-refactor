@@ -26,7 +26,6 @@ const HeaderUser = () => {
       getUsers();
     }
 
-
     const handleLogout = async () => {
         try {
           await logOut();
@@ -35,12 +34,6 @@ const HeaderUser = () => {
           console.log(error.message);
         }
       };
-
-
-   
-      
-      
-
 
     return ( 
         <>
