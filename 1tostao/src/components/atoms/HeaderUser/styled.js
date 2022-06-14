@@ -21,7 +21,7 @@ export const MenuImg = styled.div`
     `
 export const MenuUser = styled.div`
      display: flex;
-     @media (max-width:765px){
+     @media (max-width:845px){
         display:block;
     }
 
@@ -69,7 +69,7 @@ export const Contratar = styled.button`
        
     }
 
-    @media (max-width:765px){
+    @media (max-width:845px){
         margin-right: 0rem;
     }
 
@@ -97,7 +97,7 @@ export const Mensagem = styled.button`
     background-color: #474a51;
     border: none;
 
-    @media (max-width: 765px){
+    @media (max-width: 845px){
         margin-left: 17rem;
         margin-right: 1rem;
         margin-top: 0;
@@ -120,11 +120,17 @@ export const Sections = styled.h2`
 
     &:first-child { margin-left: 6rem; }
     &:hover{
-        border-bottom: 1px solid #eee;
         cursor: pointer;
     }
 `
 export const AboutUser = styled.div`
     margin-top: 5rem;
     display: flex;
+`
+export const Jobs = styled.div`
+
+`
+
+export const About = styled.div`
+
 `
