@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import panic from "../../../assets/img/banner2.jpg";
-import { Banner, Jobs, About, Wrapper, Sections, AboutUser, Username, MenuImg, MenuUser, Mensagem, Contratar, UserImg } from './styled'
+import twitter from "../../../assets/img/twitter_verde.png";
+import instagram from "../../../assets/img/instagram_verde.png";
+import email from "../../../assets/img/email_verde.png";
+import avaliacoes from "../../../assets/img/avaliacoes.png";
+import { Banner, Jobs, About, Wrapper, AboutInfo, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, MenuUser, Mensagem, Contratar, UserImg } from './styled'
 import profilePic from './../../../assets/img/profile.png'
 import { useUserAuth } from '../../../request/hooks/Auth.js';
 import { useNavigate} from 'react-router-dom'
@@ -61,7 +65,33 @@ const HeaderUser = () => {
                 </Jobs> 
                 : 
                 <About>
-                   <h1>Sobre</h1>
+                  <AboutInfos>
+
+                  <AboutInfo>
+                     <h1 className="title">Sobre {user && user.displayName ? user && user.displayName : profile && profile.username}</h1>
+                     <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                     <p className="data">Membro desde: 15 de março de 2022</p>
+                  </AboutInfo>
+                  <AboutContact>
+                    <h1 className="title">Contato</h1>
+                    <div className='contacts'>
+                      <div className="redesS">
+                        <img className="redes" alt="twitter" src={twitter}/>
+                        <img className="redes" alt="email" src={email}/>
+                        <img className="redes" alt="instagram" src={instagram}/>
+                      </div>
+                      <div className='infos'>
+                          <p className="infoC">{profile && profile.tell ? profile && profile.tell : "973628945"}</p>
+                          <p className="infoC">{user && user.email}</p>
+                          <p className="infoC">{user && user.displayName ? user && user.displayName : profile && profile.username}</p>
+                      </div>
+                    </div>
+                  </AboutContact>
+                  </AboutInfos>
+                  <Avaliatons>
+                     <h1 className='title'>Avaliações(139)</h1>
+                     <img className='imageA' alt="avaliacoes" src={avaliacoes}/>
+                  </Avaliatons>
                 </About> }
             </Wrapper>
                

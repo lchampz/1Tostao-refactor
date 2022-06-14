@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    height: 70vh;
+    height: 100%;
 `
 export const Banner = styled.div`
     height: 60vh;
@@ -117,7 +117,7 @@ export const Sections = styled.h2`
     font-size: 1.2rem;
     color: #24D39A;
     margin-right:3rem;
-
+    margin-bottom: 2.5rem;
     &:first-child { margin-left: 6rem; }
     &:hover{
         cursor: pointer;
@@ -132,5 +132,93 @@ export const Jobs = styled.div`
 `
 
 export const About = styled.div`
+   
+`
+export const AboutInfos = styled.div`
+ display: flex;
+`
 
+export const AboutInfo = styled.div`
+    color:#24D39A;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
+    width: 70%;
+    height: 350px;
+
+
+    .title{
+        margin-top: 2rem;
+        margin-left: 3rem;
+        font-size: 1.4rem;
+       
+    }
+    .desc{
+        color:#bdbebd;
+        margin-top: 2rem;
+        margin-left: 3rem;
+        margin-right: 6rem;
+        font-size: 1.2rem;
+        max-height: 100px;
+        max-width: 65rem;
+
+
+    }
+    .data{
+        color:#24D39A;
+        margin-left: 3rem;
+        font-size: 1rem;
+        margin-top: 8rem;
+        
+    }
+`
+export const AboutContact = styled.div`
+    color:#24D39A;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    width: 30%;
+    height: 350px;
+
+    .contacts{
+        display: flex;
+        flex-direction: row;
+    }
+    .title{
+        margin-top: 2rem;
+        margin-left: 2rem;
+        font-size: 1.4rem;
+    }
+    .redesS{
+        display: flex;
+        flex-direction: column;
+    }
+    .infoC{
+        &:first-child { margin-top:0.8rem}
+        margin-bottom: 3.8rem;
+        font-size: 1rem;
+
+        
+    }
+    .redes{
+        margin-right: 2rem;
+        &:first-child { margin-top:1.32rem }
+        margin-bottom: 2.5rem;
+        width: 2.3rem;
+        margin-left: 2rem;
+    }
+`
+export const Avaliatons = styled.div`
+    .title{
+        color:#24D39A;
+        margin-top: 2.5rem;
+        margin-left: 3rem;
+        font-size: 1.4rem;
+    }
+    .imageA{
+        opacity: 0.4;
+        width: 20rem;
+        margin: 0 auto;
+        display: flex;
+    }
+   
 `
