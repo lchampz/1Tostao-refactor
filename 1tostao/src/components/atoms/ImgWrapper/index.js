@@ -15,6 +15,7 @@ const ImgWrapper = ({
   transform,
   imgHeight,
   imgWidth,
+  padding
 }) => {
   return (
     <Wrapper
@@ -28,6 +29,7 @@ const ImgWrapper = ({
       cursor={cursor}
       margin={margin}
       transform={transform}
+      padding={padding}
     >
       <img src={url} alt={alt} />
     </Wrapper>

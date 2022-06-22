@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     padding: 0;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 120%;
     height: 100%;
 
 `
@@ -21,6 +21,7 @@ export const StickyMenu = styled.div`
     margin-top: 90vh;
     display: ${({ display }) => (display ? 'flex' : 'none')};
     background-color: #191919;
+    overflow-y: scroll;
 `
 
 export const WrapperHeader = styled.div`
@@ -35,14 +36,19 @@ export const WrapperBody = styled.div`
     display: flex;
     width: 110%;
     margin-left: -1rem;
-    height: 8.3rem;
+    min-height: 170px;
     background-color: #323232;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     
     margin-top: 1rem; 
 `
 
 export const WrapperFooter = styled.div`
     display: flex;
+    
+    width: 100%;
 `
 
 export const Profile = styled.div`
@@ -70,7 +76,7 @@ export const Box = styled.div`
     display: flex;
     margin-left: -1rem;
     margin-right: 2rem;
-    width: 6.1rem;
+    width: 7.6rem;
     height: 3rem;
     border-radius: 7px;
     align-items: center;
@@ -79,7 +85,7 @@ export const Box = styled.div`
     font-size: 11px;
     
     p{
-        margin-left: 10px;
+        margin-left: 11px;
         font-size: 35px;
         font-weight: bold;
     }
@@ -87,7 +93,7 @@ export const Box = styled.div`
 
 export const Line = styled.div`
     height: 3px;
-    width: 27%;
+    width: 85%;
     background-color: #323232;
     margin-top: ${({ marginTop }) => (marginTop ? marginTop+'px' : '0')};
 `
@@ -99,7 +105,7 @@ export const Close = styled.span`
     cursor: pointer;
     margin-bottom: -3rem;
     
-    @media screen and (min-width: 1500px) {
+    @media screen and (min-height: 950px) {
         margin-top: 2rem;
     }
 `
@@ -127,16 +133,71 @@ export const Card = styled.div`
 export const P = styled.span`
     font-weight: bold;
     font-size: 14px;
-    margin-top: 15px;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop+'px' : '15px')};
 `
 
 export const Social = styled.span`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 1rem;
+    background-color: #323232;
+    width: 100%;
+    padding-right: 2rem
+    width: 110%;
+    margin-left: -1rem;
+    padding-left: 1rem;
+    height: 100%;
 
-    .p {
-        margin-top: 20px;
+    .span {
+        display: flex;
+        flex-direction: row;
     }
 
+`
+
+export const Text = styled.span`
+    font-size: 13px;
+    align-items: center;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+`
+
+export const Infobox = styled.div`
+    background-color: #323232;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop+'px' : '1rem')};
+    width: 85%;
+    padding: 17px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    &:last-child {
+        margin-bottom: 3rem;
+    }
+`
+
+export const Arrow = styled.div`
+    margin: 0 auto;
+    display: flex;
+    padding-top: 3rem;
+    font-size: 40px;
+    margin-right: 3rem;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30%;
+    padding-left: ${({ left }) => (left ? '20px' : '')};
+    
+    &:hover{
+        color: #24D39A; 
+    }
+`
+
+export const Circle = styled.div`
+    background-color: ${({ active }) => (active ? '#24D39A' : '#C4C4C4')};
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0.7rem;
+    margin-left: 0rem;
 `

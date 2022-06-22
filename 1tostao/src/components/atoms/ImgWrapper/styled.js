@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     transform: ${({ transform }) => (transform ? transform : '')};
     position: ${({ position }) => (position ? position : '')}
     transition: all 0.5s ease-in-out;
+    padding: ${({ padding }) => (padding ? padding : '')}
 
 
     img{
