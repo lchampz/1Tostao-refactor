@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import avaliacoes from "../../../assets/img/avaliacoes.png";
+
 
 export const Wrapper = styled.div`
     height: 100%;
@@ -30,7 +32,7 @@ export const Username = styled.p`
     font-size: 1.5rem;
     color:#eee;
     margin-left: 17rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-top: 1.3rem;
 
     @media (max-width: 600px){
@@ -73,9 +75,6 @@ export const Contratar = styled.button`
         margin-right: 0rem;
     }
 
-    @media (max-width: 445px){
-        margin-left: 10rem;
-    }
 
    &:hover {
         color: #24D39A;
@@ -104,8 +103,10 @@ export const Mensagem = styled.button`
     }
 
     @media (max-width: 600px){
-        margin-left: 10rem;
+        margin-left: 1.7rem;
     }
+
+
     &:hover{
         cursor: pointer;
         color:#eeeeee;
@@ -117,14 +118,14 @@ export const Sections = styled.h2`
     font-size: 1.2rem;
     color: #24D39A;
     margin-right:3rem;
-    margin-bottom: 2.5rem;
-    &:first-child { margin-left: 6rem; }
+    margin-bottom: 2rem;
+    &:first-child { margin-left: 3rem; }
     &:hover{
         cursor: pointer;
     }
 `
 export const AboutUser = styled.div`
-    margin-top: 5rem;
+    margin-top: 3rem;
     display: flex;
 `
 export const Jobs = styled.div`
@@ -136,6 +137,11 @@ export const About = styled.div`
 `
 export const AboutInfos = styled.div`
  display: flex;
+ @media screen and (max-width:850px) {
+       flex-direction:column;
+
+        
+    }
 `
 
 export const AboutInfo = styled.div`
@@ -143,10 +149,12 @@ export const AboutInfo = styled.div`
     border-top: 1px solid #808080;
     border-bottom: 1px solid #808080;
     border-right: 1px solid #808080;
-    width: 70%;
-    height: 350px;
-
-
+    width: 60%;
+    height: 300px;
+    @media screen and (max-width:850px) {
+        width:100%;
+        
+    }
     .title{
         margin-top: 2rem;
         margin-left: 3rem;
@@ -158,9 +166,18 @@ export const AboutInfo = styled.div`
         margin-top: 2rem;
         margin-left: 3rem;
         margin-right: 6rem;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         max-height: 100px;
         max-width: 65rem;
+
+        @media (max-width: 520px){
+            font-size: 0.8rem;
+    }
+    @media (max-width: 400px){
+            font-size: 0.7rem;
+    }
+
+
 
 
     }
@@ -168,7 +185,7 @@ export const AboutInfo = styled.div`
         color:#24D39A;
         margin-left: 3rem;
         font-size: 1rem;
-        margin-top: 8rem;
+        margin-top: 5rem;
         
     }
 `
@@ -176,25 +193,31 @@ export const AboutContact = styled.div`
     color:#24D39A;
     border-top: 1px solid #808080;
     border-bottom: 1px solid #808080;
-    width: 30%;
-    height: 350px;
+    width: 40%;
+    height: 300px;
+    @media screen and (max-width:850px) {
+        width:100%;
+    }
 
     .contacts{
         display: flex;
         flex-direction: row;
+        
     }
     .title{
         margin-top: 2rem;
-        margin-left: 2rem;
+        margin-left: 3rem;
         font-size: 1.4rem;
     }
     .redesS{
         display: flex;
         flex-direction: column;
+    
     }
     .infoC{
         &:first-child { margin-top:0.8rem}
         margin-bottom: 3.8rem;
+        
         font-size: 1rem;
 
         
@@ -204,10 +227,20 @@ export const AboutContact = styled.div`
         &:first-child { margin-top:1.32rem }
         margin-bottom: 2.5rem;
         width: 2.3rem;
-        margin-left: 2rem;
+        margin-left: 3rem;
     }
 `
 export const Avaliatons = styled.div`
+    background-image: url(${avaliacoes});
+    background-repeat: no-repeat;
+    background-size: 25rem;
+    background-position: center center;
+
+    @media screen and (max-width:550px) {
+        background-size: 18rem;
+        
+    }
+
     .title{
         color:#24D39A;
         margin-top: 2.5rem;
@@ -217,8 +250,14 @@ export const Avaliatons = styled.div`
     .imageA{
         opacity: 0.4;
         width: 20rem;
-        margin: 0 auto;
+        z-index: 0;
         display: flex;
+        margin: 0 auto;
+
     }
    
+`
+
+export const Reviews = styled.div`
+    height: 80vh;
 `
