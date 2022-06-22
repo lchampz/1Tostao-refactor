@@ -25,8 +25,21 @@ import { useNavigate } from "react-router-dom";
 import { useRegex } from "../../../request/hooks/Regex";
 import Modal from "../ModalConfirm";
 import { createUser } from "../../../services/AuthService";
+import { useUserAuth } from "../../../request/hooks/Auth";
+
 
 const CardRegister = ({}) => {
+  const {user} = useUserAuth();
+  
+  useEffect(() => {
+    const Redirect = () => {
+      if(user){
+        navigate("/profile")
+    }
+    }
+    Redirect();
+});
+
   const [tab, setTab] = useState(1);
   const [data, setData] = useState({
     user: null,
@@ -60,6 +73,8 @@ const CardRegister = ({}) => {
     masc: false,
     especial: false
   })
+
+
 
   useEffect(() => {
     setData({
@@ -196,6 +211,7 @@ const CardRegister = ({}) => {
 
     return [day, month, year].join("/");
   };
+
 
   return (
     <>

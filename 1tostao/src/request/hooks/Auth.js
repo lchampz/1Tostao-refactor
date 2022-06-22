@@ -9,12 +9,15 @@ import {
     sendEmailVerification
   } from "firebase/auth";
 import { auth } from '../../services/Firebase';
+import db from '../../services/Firebase'
+import {collection, getDocs, where, query} from 'firebase/firestore';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-
-    const [user, setUser] = useState({});
+  
+  const [user, setUser] = useState({});
+  const [profile, setProfile] = useState();
 
     function logIn(email, password) {
       return signInWithEmailAndPassword(auth, email, password);
@@ -29,6 +32,15 @@ export const AuthProvider = ({ children }) => {
         const googleAuthProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleAuthProvider);
       }
+
+      const getUsers = async () => {
+        const docRef = query(collection(db, "users"), where("uid", "==", user.uid));
+        const querySnapshot = await getDocs(docRef);
+        querySnapshot.forEach((doc) => {
+          setProfile(doc.data());
+        })
+      }
+
     
       useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
@@ -49,8 +61,9 @@ export const AuthProvider = ({ children }) => {
         };
       }, []); 
 
+      getUsers();
     return(
-        <AuthContext.Provider value={{user,logIn, signUp, logOut, googleSignIn}}>
+        <AuthContext.Provider value={{profile, user, getUsers,logIn, signUp, logOut, googleSignIn}}>
             {children}
         </AuthContext.Provider>
     )
