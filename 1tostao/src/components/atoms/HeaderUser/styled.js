@@ -31,9 +31,9 @@ export const MenuUser = styled.div`
 export const Username = styled.p`
     font-size: 1.5rem;
     color:#eee;
-    margin-left: 17rem;
-    margin-bottom: 1rem;
-    margin-top: 1.3rem;
+    margin-left: ${({marginLe}) => (marginLe  ? marginLe : "17rem")};
+    margin-bottom:${({marginB}) => (marginB  ? marginB : "1rem")};
+    margin-top: ${({marginT}) => (marginT  ? marginT : "1.3rem")};
 
     @media (max-width: 600px){
         margin-left: 11rem;
@@ -41,10 +41,10 @@ export const Username = styled.p`
  
 `
 export const UserImg = styled.img`
-    width: 120px;
-    position: absolute;
+    width: ${({width}) => (width  ? width : "120px")};
+    position: ${({position}) => (position  ? position : "relative")};
     border-radius: 100px;
-    margin-left: 8rem;
+    margin-left: ${({marginL}) => (marginL  ? marginL : "8rem")};
 
     @media (max-width: 600px){
         margin-left: 2rem;
@@ -153,6 +153,7 @@ export const AboutInfo = styled.div`
     height: 300px;
     @media screen and (max-width:850px) {
         width:100%;
+        border-right: 0px;
         
     }
     .title{
@@ -233,31 +234,100 @@ export const AboutContact = styled.div`
 export const Avaliatons = styled.div`
     background-image: url(${avaliacoes});
     background-repeat: no-repeat;
-    background-size: 25rem;
+    background-size: 22rem;
     background-position: center center;
 
-    @media screen and (max-width:550px) {
-        background-size: 18rem;
+    display:flex;
+    flex-direction: row;
+
+    @media screen and (max-width:845px) {
+        background-size: 0;
+        flex-direction: column;
+        
+    }
+    @media screen and (max-width:500px) {
+        background-size: 0;
         
     }
 
-    .title{
-        color:#24D39A;
-        margin-top: 2.5rem;
-        margin-left: 3rem;
-        font-size: 1.4rem;
-    }
-    .imageA{
-        opacity: 0.4;
-        width: 20rem;
-        z-index: 0;
-        display: flex;
-        margin: 0 auto;
 
-    }
+    
    
 `
 
 export const Reviews = styled.div`
-    height: 80vh;
+    height: 100%;
+    margin-top: 5rem;
+    margin-left: -8rem;
+
+    display: flex;
+    flex-direction: column;
+  
+    
+    &:nth-child(even){
+        width: 50%;
+
+        @media screen and (max-width: 845px) {
+           margin-left: 3.5rem;
+           margin-bottom: -8rem;
+        }
+   
+        
+    }
+    &:nth-child(odd){
+        margin-left: 10rem;
+        
+        @media screen and (max-width: 845px) {
+           margin-left: 3rem;
+        }
+
+    }
+
+    .data{
+        color:#fff;
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+`
+export const WrapperAvaliation = styled.div`
+        &:first-child{
+            margin-top: 2rem;
+            @media screen and (max-width: 845px){
+                margin-top:0;
+            }
+        }
+        margin-bottom: 5rem;
+
+        .star{
+            margin-right: 0.2rem;
+            color:yellow;
+            margin-bottom: 0.5rem;
+        }
+`
+
+
+export const Title = styled.div`
+    .title{
+            color:#24D39A;
+            margin-top: 2.5rem;
+            margin-left: 7rem;
+            font-size: 1.4rem;
+            
+            @media screen and (max-width:845px) {
+                margin-left: 4rem;
+            }
+        }
+`
+export const TitleAvaliation = styled.h1`
+    color:#24D39A;
+    font-size: 1.1rem;
+    
+`
+
+export const UserAva = styled.div`
+    display:flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 `
