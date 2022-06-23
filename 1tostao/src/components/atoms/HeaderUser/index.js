@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUserAuth } from '../../../request/hooks/Auth.js';
 import { useNavigate} from 'react-router-dom'
 
-const HeaderUser = ({width, position, marginL, marginLe, marginT, marginB}) => {
+const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, marginLe, marginT, marginB}) => {
     const { logOut, user, profile } = useUserAuth();
     const navigate = useNavigate();
     const [tab, setTab] = useState(1);
@@ -52,7 +52,7 @@ const HeaderUser = ({width, position, marginL, marginLe, marginT, marginB}) => {
                     <UserImg width={width} position={"absolute"} marginL={marginL} src={user && user.photoURL ? user && user.photoURL : profilePic}/> 
                 </MenuImg>
                 <MenuUser>
-                    <Username marginB={marginB} marginT={marginT} marginLe={marginLe}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
+                    <Username marginMedia={marginMedia} marginB={marginB} marginT={marginT} marginLe={marginLe}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                     <Mensagem>Enviar mensagem</Mensagem>
                     <Contratar>Contratar</Contratar>
                 </MenuUser>
@@ -102,8 +102,8 @@ const HeaderUser = ({width, position, marginL, marginLe, marginT, marginB}) => {
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
-                              <Username marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
                       </WrapperAvaliation>
@@ -116,8 +116,8 @@ const HeaderUser = ({width, position, marginL, marginLe, marginT, marginB}) => {
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
-                              <Username marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
                       </WrapperAvaliation>
@@ -132,8 +132,8 @@ const HeaderUser = ({width, position, marginL, marginLe, marginT, marginB}) => {
                         <FontAwesomeIcon className="star" icon={faStar} />
                           <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
-                              <Username marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
                       </WrapperAvaliation>
@@ -146,8 +146,8 @@ const HeaderUser = ({width, position, marginL, marginLe, marginT, marginB}) => {
                         <FontAwesomeIcon className="star" icon={faStar} />
                           <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
-                              <Username marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
                       </WrapperAvaliation>

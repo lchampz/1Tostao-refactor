@@ -34,9 +34,10 @@ export const Username = styled.p`
     margin-left: ${({marginLe}) => (marginLe  ? marginLe : "17rem")};
     margin-bottom:${({marginB}) => (marginB  ? marginB : "1rem")};
     margin-top: ${({marginT}) => (marginT  ? marginT : "1.3rem")};
+    white-space: nowrap;
 
     @media (max-width: 600px){
-        margin-left: 11rem;
+        margin-left: ${({marginMedia}) => (marginMedia  ? marginMedia : "11rem")};
     }
  
 `
@@ -47,7 +48,7 @@ export const UserImg = styled.img`
     margin-left: ${({marginL}) => (marginL  ? marginL : "8rem")};
 
     @media (max-width: 600px){
-        margin-left: 2rem;
+        margin-left: ${({marginLMedia}) => (marginLMedia  ? marginLMedia : "2rem")};
     }
     
 
@@ -268,14 +269,17 @@ export const Reviews = styled.div`
         width: 50%;
 
         @media screen and (max-width: 845px) {
-           margin-left: 3.5rem;
-           margin-bottom: -8rem;
+            width: 100%;
+            padding-left: 11rem;
+           margin-bottom: -5rem;
         }
    
         
     }
     &:nth-child(odd){
-        margin-left: 10rem;
+        
+        margin-left: 15rem;
+        margin-right: 2rem;
         
         @media screen and (max-width: 845px) {
            margin-left: 3rem;
@@ -286,6 +290,7 @@ export const Reviews = styled.div`
     .data{
         color:#fff;
         font-size: 1rem;
+        white-space: nowrap;
         font-style: italic;
     }
 
@@ -303,6 +308,7 @@ export const WrapperAvaliation = styled.div`
             margin-right: 0.2rem;
             color:yellow;
             margin-bottom: 0.5rem;
+      
         }
 `
 
@@ -311,15 +317,16 @@ export const Title = styled.div`
     .title{
             color:#24D39A;
             margin-top: 2.5rem;
-            margin-left: 7rem;
+            margin-left: 3rem;
             font-size: 1.4rem;
             
             @media screen and (max-width:845px) {
-                margin-left: 4rem;
+                margin-left: 3rem;
             }
         }
 `
 export const TitleAvaliation = styled.h1`
+    white-space: nowrap;
     color:#24D39A;
     font-size: 1.1rem;
     
