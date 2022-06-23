@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Wrapper,
   Icon,
@@ -28,14 +28,18 @@ import mail from '../../../assets/icons/mailIconGreen.png'
 import insta from '../../../assets/icons/instaIconGreen.png'
 import ImgWrapper from "../ImgWrapper";
 import { useUserAuth } from '../../../request/hooks/Auth'
-import Carousel, { consts } from 'react-elastic-carousel';
+import Carousel from 'react-elastic-carousel';
 
 const images = require("../../../request/mock/imgs.json");
 
-const Submenu = ({ imgUser, instagram, face, email, github, name, twitter }) => {
+const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
   const [visible, setVisible] = useState(false);
   const img = imgUser || iconUser;
   const { user } = useUserAuth()
+
+  const slider = useRef(null)
+  const NextArrow = ({ children }) => { return( <Arrow onClick={() => slider.current.slideNext() }>{children}</Arrow>)}
+  const PrevArrow = ({ children }) => { return( <Arrow onClick={() => slider.current.slidePrev() }>{children}</Arrow>)}
 
   const renderCards = images.map((img, i) => {
     return (
@@ -49,19 +53,16 @@ const Submenu = ({ imgUser, instagram, face, email, github, name, twitter }) => 
     );
   });
 
-  const Arrows = ({ type, onClick, isEdge }) => {
-    let pointer = type === consts.PREV ? '<' : '>'
-    let id = type === consts.PREV ? 'btn-prev' : 'btn-next'
+  const Arrows = ({}) => {
     return (
-      <Arrow left={consts.PREV} onClick={onClick} disabled={isEdge} id={id}>
-        {pointer}
-      </Arrow>
+      <></>
     )
   }
 
   const Pagination = ({ pages, activePage, onClick }) => {
     return (
       <Row>
+        <PrevArrow>{'<'}</PrevArrow>
         {pages.map(page => {
           const isActivePage = activePage === page
           return (
@@ -72,6 +73,7 @@ const Submenu = ({ imgUser, instagram, face, email, github, name, twitter }) => 
             />
           )
         })}
+        <NextArrow>{'>'}</NextArrow>
       </Row>
       )
     }
@@ -101,19 +103,21 @@ const Submenu = ({ imgUser, instagram, face, email, github, name, twitter }) => 
           <P>Últimos trabalhos postados</P>
           <WrapperBody>
             <Carousel
+              ref={slider}
               style={{ marginRight: '10%' }}  
               easing="cubic-bezier(1,.15,.55,1.54)"
               tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
               transitionMs={700}
-              itemsToScroll={1} 
-              itemsToShow={1} 
+              itemsToScroll={2} 
+              itemsToShow={2} 
               enableAutoPlay 
-              autoPlaySpeed={1500}
+              autoPlaySpeed={5500}
               renderArrow={Arrows}
               renderPagination={Pagination}
             >
               {renderCards}
             </Carousel>
+            
           </WrapperBody>
           <Line marginTop={15}/>
           <P>Redes sociais</P>

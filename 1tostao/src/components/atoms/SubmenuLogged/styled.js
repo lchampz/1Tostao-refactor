@@ -180,11 +180,11 @@ export const Arrow = styled.div`
     display: flex;
     padding-top: 3rem;
     font-size: 40px;
-    margin-right: 3rem;
+    margin-right: 0.78rem;
     align-items: center;
     text-align: center;
+    margin-top: -3.3rem;
     cursor: pointer;
-    margin-top: 30%;
     padding-left: ${({ left }) => (left ? '20px' : '')};
     
     &:hover{
