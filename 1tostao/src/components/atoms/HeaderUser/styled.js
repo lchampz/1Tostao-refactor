@@ -34,7 +34,7 @@ export const Username = styled.p`
     margin-left: ${({marginLe}) => (marginLe  ? marginLe : "17rem")};
     margin-bottom:${({marginB}) => (marginB  ? marginB : "1rem")};
     margin-top: ${({marginT}) => (marginT  ? marginT : "1.3rem")};
-    white-space: nowrap;
+ 
 
     @media (max-width: 600px){
         margin-left: ${({marginMedia}) => (marginMedia  ? marginMedia : "11rem")};
@@ -257,7 +257,7 @@ export const Avaliatons = styled.div`
         @media screen and (max-width: 900px) {
             width: 100%;
             padding-left: 11rem;
-        margin-bottom: -5rem;
+             margin-bottom: -5rem;
         }
     }
     .direita{
@@ -271,6 +271,7 @@ export const Avaliatons = styled.div`
            margin-left: 3rem;
            
         }
+        
     }
     
    
