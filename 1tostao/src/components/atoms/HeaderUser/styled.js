@@ -23,7 +23,7 @@ export const MenuImg = styled.div`
     `
 export const MenuUser = styled.div`
      display: flex;
-     @media (max-width:845px){
+     @media (max-width:900px){
         display:block;
     }
 
@@ -72,7 +72,7 @@ export const Contratar = styled.button`
        
     }
 
-    @media (max-width:845px){
+    @media (max-width:900px){
         margin-right: 0rem;
     }
 
@@ -97,7 +97,7 @@ export const Mensagem = styled.button`
     background-color: #474a51;
     border: none;
 
-    @media (max-width: 845px){
+    @media (max-width: 900px){
         margin-left: 17rem;
         margin-right: 1rem;
         margin-top: 0;
@@ -138,7 +138,7 @@ export const About = styled.div`
 `
 export const AboutInfos = styled.div`
  display: flex;
- @media screen and (max-width:850px) {
+ @media screen and (max-width:900px) {
        flex-direction:column;
 
         
@@ -152,7 +152,7 @@ export const AboutInfo = styled.div`
     border-right: 1px solid #808080;
     width: 60%;
     height: 300px;
-    @media screen and (max-width:850px) {
+    @media screen and (max-width:900px) {
         width:100%;
         border-right: 0px;
         
@@ -197,7 +197,7 @@ export const AboutContact = styled.div`
     border-bottom: 1px solid #808080;
     width: 40%;
     height: 300px;
-    @media screen and (max-width:850px) {
+    @media screen and (max-width:900px) {
         width:100%;
     }
 
@@ -241,7 +241,7 @@ export const Avaliatons = styled.div`
     display:flex;
     flex-direction: row;
 
-    @media screen and (max-width:845px) {
+    @media screen and (max-width:900px) {
         background-size: 0;
         flex-direction: column;
         
@@ -268,7 +268,7 @@ export const Reviews = styled.div`
     &:nth-child(even){
         width: 50%;
 
-        @media screen and (max-width: 845px) {
+        @media screen and (max-width: 900px) {
             width: 100%;
             padding-left: 11rem;
            margin-bottom: -5rem;
@@ -281,7 +281,7 @@ export const Reviews = styled.div`
         margin-left: 15rem;
         margin-right: 4rem;
         
-        @media screen and (max-width: 845px) {
+        @media screen and (max-width: 900px) {
            margin-left: 3rem;
         }
 
@@ -298,7 +298,7 @@ export const Reviews = styled.div`
 export const WrapperAvaliation = styled.div`
         &:first-child{
             margin-top: 2rem;
-            @media screen and (max-width: 845px){
+            @media screen and (max-width: 900px){
                 margin-top:0;
             }
         }
@@ -320,7 +320,7 @@ export const Title = styled.div`
             margin-left: 3rem;
             font-size: 1.4rem;
             
-            @media screen and (max-width:845px) {
+            @media screen and (max-width:900px) {
                 margin-left: 3rem;
             }
         }
