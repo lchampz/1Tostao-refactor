@@ -93,7 +93,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                     <Title>
                      <h1 className='title'>Avaliações(139)</h1>
                     </Title>
-                    <Reviews>
+                    <Reviews className='esquerda'>
                       <WrapperAvaliation>
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <FontAwesomeIcon className="star" icon={faStar} />
@@ -123,7 +123,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                       </WrapperAvaliation>
                        {/* apagar */}
                     </Reviews>
-                    <Reviews>
+                    <Reviews className='direita'>
                       <WrapperAvaliation>
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <FontAwesomeIcon className="star" icon={faStar} />

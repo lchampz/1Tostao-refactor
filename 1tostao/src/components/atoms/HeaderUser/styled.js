@@ -251,7 +251,27 @@ export const Avaliatons = styled.div`
         
     }
 
+    .esquerda{
+        width: 50%;
 
+        @media screen and (max-width: 900px) {
+            width: 100%;
+            padding-left: 11rem;
+        margin-bottom: -5rem;
+        }
+    }
+    .direita{
+        margin-left: 15rem;
+        margin-right: 4rem;
+        
+        @media screen and (max-width: 960px) {
+           margin-left: 10rem;
+        }
+        @media screen and (max-width: 900px) {
+           margin-left: 3rem;
+           
+        }
+    }
     
    
 `
@@ -264,28 +284,6 @@ export const Reviews = styled.div`
     display: flex;
     flex-direction: column;
   
-    
-    &:nth-child(even){
-        width: 50%;
-
-        @media screen and (max-width: 900px) {
-            width: 100%;
-            padding-left: 11rem;
-           margin-bottom: -5rem;
-        }
-   
-        
-    }
-    &:nth-child(odd){
-        
-        margin-left: 15rem;
-        margin-right: 4rem;
-        
-        @media screen and (max-width: 900px) {
-           margin-left: 3rem;
-        }
-
-    }
 
     .data{
         color:#fff;
