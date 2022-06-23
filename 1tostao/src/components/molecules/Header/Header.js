@@ -10,7 +10,7 @@ const Header = () => {
     <Background>
         <Container>
             <Title>
-                Para que estagiar em uma empresa só, se o <Typewriter cursorClassName={'cursor'} words={['bairro', 'país', 'mundo']} />  todo pode ser o seu cliente?
+                Para que trabalhar em uma empresa só, se o <Typewriter cursorClassName={'cursor'} words={['bairro', 'país', 'mundo']} />  todo pode ser o seu cliente?
             </Title>
             <Border></Border>
             <Button>Explorar Serviços 

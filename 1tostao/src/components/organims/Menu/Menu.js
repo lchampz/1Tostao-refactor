@@ -7,8 +7,10 @@ import blackLogo from '../../../assets/img/blackLogo.png'
 import { Links } from '../../atoms/LinkMenu/styledLink.js'
 import LinkMenu from '../../atoms/LinkMenu/Link.js'
 import { useTheme} from '../../../request/hooks/Theme'
+import { useUserAuth } from '../../../request/hooks/Auth'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faArrowDown, faCog, faAngleDown, faAngleLeft} from '@fortawesome/free-solid-svg-icons'
+import SubmenuLogged from '../../atoms/SubmenuLogged'
 
 const Menu = ({padding}) => {
     const [classMenu, setClassMenu] = useState(false);
@@ -21,6 +23,7 @@ const Menu = ({padding}) => {
         color: '#FFFFFF'
     })
     const [ logo, setLogo ] = useState(logoWhite)
+    const { user } = useUserAuth()
     
     const changeTheme = () => {
         setTheme(theme.name === 'white' ? themes[1] : themes[0])
@@ -80,14 +83,18 @@ return(
                 <Theme config={config} bg={style.bg} color={style.color} >
                     <Pages className="tema" onClick={changeTheme}>Tema</Pages>
                 </Theme>
-                <Config config={config}>
+                <Config config={config} >
                     <FontAwesomeIcon className="arrowLeft" onClick={toggleConfig} icon={faAngleLeft} />
                     <FontAwesomeIcon className="arrow" onClick={toggleConfig} icon={faAngleDown} />
                     <FontAwesomeIcon className="config" onClick={toggleConfig} icon={faCog} />
                 </Config>
             <Buttons>
-                 <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/login`)}>Login</Botao>
-                 <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/register`)}>Registrar</Botao>
+            {user ? <SubmenuLogged /> :
+                <>
+                <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/login`)}>Login</Botao>
+                <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/register`)}>Registrar</Botao>
+                </>
+            }
             </Buttons>
             <HamburguerMenu id="mobile" onClick={toggleMenu} color={style.color}>
                 <FontAwesomeIcon className="icon" icon={faBars} />
@@ -97,8 +104,12 @@ return(
                     <PagesMenu  onClick={() => navigate(`/`)}>Home</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/servicos`)}>Serviços</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/about`)}>Sobre nós</PagesMenu>
-                    <PagesMenu onClick={() => navigate(`/login`)}>Login</PagesMenu>
-                    <PagesMenu onClick={() => navigate(`/register`)}>Registrar</PagesMenu>
+                    {user ? <SubmenuLogged /> : (
+                        <>
+                        <PagesMenu onClick={() => navigate(`/login`)}>Login</PagesMenu>
+                        <PagesMenu onClick={() => navigate(`/register`)}>Registrar</PagesMenu>
+                        </>
+                    )}
             </MobileMenu>
         </>
     );

@@ -48,11 +48,6 @@ export const AuthProvider = ({ children }) => {
           setUser(currentuser);
           if(!currentuser.emailVerified) {
             sendEmailVerification(currentuser)
-            .then(() => {
-              window.datalayer.push({	
-                user: currentuser,
-              })
-            })
           }
         });
     
