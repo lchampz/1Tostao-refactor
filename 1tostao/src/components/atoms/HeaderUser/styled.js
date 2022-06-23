@@ -279,7 +279,7 @@ export const Reviews = styled.div`
     &:nth-child(odd){
         
         margin-left: 15rem;
-        margin-right: 2rem;
+        margin-right: 4rem;
         
         @media screen and (max-width: 845px) {
            margin-left: 3rem;
