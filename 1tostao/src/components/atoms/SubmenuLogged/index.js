@@ -27,7 +27,7 @@ import tt from '../../../assets/icons/twitterIconGreen.png'
 import mail from '../../../assets/icons/mailIconGreen.png'
 import insta from '../../../assets/icons/instaIconGreen.png'
 import ImgWrapper from "../ImgWrapper";
-import { useUserAuth } from '../../../request/hooks/Auth'
+import { useNavigate } from "react-router-dom";
 import Carousel from 'react-elastic-carousel';
 
 const images = require("../../../request/mock/imgs.json");
@@ -35,8 +35,7 @@ const images = require("../../../request/mock/imgs.json");
 const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
   const [visible, setVisible] = useState(false);
   const img = imgUser || iconUser;
-  const { user } = useUserAuth()
-
+  const navigate = useNavigate();
   const slider = useRef(null)
   const NextArrow = ({ children }) => { return( <Arrow onClick={() => slider.current.slideNext() }>{children}</Arrow>)}
   const PrevArrow = ({ children }) => { return( <Arrow onClick={() => slider.current.slidePrev() }>{children}</Arrow>)}
@@ -111,7 +110,7 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
               itemsToScroll={2} 
               itemsToShow={2} 
               enableAutoPlay 
-              autoPlaySpeed={5500}
+              autoPlaySpeed={10000}
               renderArrow={Arrows}
               renderPagination={Pagination}
             >
@@ -132,7 +131,7 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
           <Line marginTop={30}/>
           <WrapperFooter>
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <Infobox>Conta<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
+              <Infobox onClick={() => navigate(`/profile`)}>Conta<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
               <Infobox>Assistência<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
               <Infobox>Segurança<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
             </div>

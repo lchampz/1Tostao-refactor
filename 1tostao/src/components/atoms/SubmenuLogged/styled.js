@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     width: 120%;
     height: 100%;
 
+    color: white;
 `
 
 export const Icon = styled.div`
@@ -163,15 +164,24 @@ export const Text = styled.span`
 `
 
 export const Infobox = styled.div`
-    background-color: #323232;
+    background-color: ${({ bg }) => (bg ? bg : '#323232')};
     margin-top: ${({ marginTop }) => (marginTop ? marginTop+'px' : '1rem')};
     width: 85%;
     padding: 17px;
     font-weight: bold;
     white-space: nowrap;
+    transition: all 0.5s ease-in-out;
 
     &:last-child {
         margin-bottom: 3rem;
+    }
+
+    &:hover {
+        cursor: pointer;
+        padding-left: 20px;
+        background-color: transparent;
+        border: 2px solid #323232;
+        color: #24D39A;
     }
 `
 
