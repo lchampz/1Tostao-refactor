@@ -34,8 +34,10 @@ export const Username = styled.p`
     margin-left: ${({marginLe}) => (marginLe  ? marginLe : "17rem")};
     margin-bottom:${({marginB}) => (marginB  ? marginB : "1rem")};
     margin-top: ${({marginT}) => (marginT  ? marginT : "1.3rem")};
- 
-
+    white-space:nowrap;
+    @media screen and (max-width:870px){
+        white-space: normal;
+    }
     @media (max-width: 600px){
         margin-left: ${({marginMedia}) => (marginMedia  ? marginMedia : "11rem")};
     }
