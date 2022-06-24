@@ -33,17 +33,17 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
         }
       };
 
-      const switchTab = () => {
-        if(tab === 1){
-          setTab(2);
-        }
-      }
-      const switchTab2 = () => {
-        if(tab === 2){
-          setTab(1);
-        }
-      }
+      function switchTab(param){
+        switch(param) {
+          case 1: 
+            setTab(1)
+          break;
 
+          case 2: 
+            setTab(2)
+          break;
+        }
+      }
     return ( 
         <>
             <Banner bgImg={panic}/>
@@ -57,8 +57,8 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                     <Contratar>Contratar</Contratar>
                 </MenuUser>
                 <AboutUser>
-                  <Sections onClick={switchTab2} style={tab === 1 ? {borderBottom: "1px solid #eee"} : {border:"none"}}>Portfólio</Sections>
-                  <Sections  style={tab === 2 ? {borderBottom: "1px solid #eee"} : {border:"none"}} onClick={switchTab}>Sobre</Sections>
+                  <Sections onClick={() => switchTab(1)} style={tab === 1 ? {borderBottom: "1px solid #eee"} : {border:"none"}}>Portfólio</Sections>
+                  <Sections  style={tab === 2 ? {borderBottom: "1px solid #eee"} : {border:"none"}} onClick={() => switchTab(2)}>Sobre</Sections>
                 </AboutUser>
                 {tab === 1 ? 
                 <Jobs>

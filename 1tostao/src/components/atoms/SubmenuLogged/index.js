@@ -34,7 +34,7 @@ const images = require("../../../request/mock/imgs.json");
 
 const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
   const [visible, setVisible] = useState(false);
-  const img = imgUser || iconUser;
+  const img = imgUser === null ? iconUser : imgUser;
   const navigate = useNavigate();
   const slider = useRef(null)
   const NextArrow = ({ children }) => { return( <Arrow onClick={() => slider.current.slideNext() }>{children}</Arrow>)}
@@ -92,7 +92,7 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
           <WrapperHeader>
               <Profile>
                   <ImgWrapper width="4rem" height="4rem" url={img}/>
-                  <Name>{name || 'Kaio'}</Name>
+                  <Name>{name || 'username'}</Name>
               </Profile>
               <Row>
                   <Box><p>2</p>anos de conta</Box><Box><p>11</p>Trabalhos feitos</Box>
@@ -122,16 +122,16 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
           <P>Redes sociais</P>
           <WrapperFooter>
             <Social>
-              <Row><ImgWrapper width="1.6rem" height="1.6rem" url={git} /><Text>{github || '@opai_kaio_esposito'}</Text></Row>
-              <Row><ImgWrapper width="1.3rem" height="1.3rem" url={insta} /><Text>{instagram || '@Kaio_esposito'}</Text></Row>
-              <Row><ImgWrapper width="1.3rem" height="1.3rem" url={mail} /><Text>{email || 'Kaiocesposito@hotmail.com'}</Text></Row>
-              <Row><ImgWrapper width="1.5rem" height="1.5rem" url={tt} /><Text>{twitter || '@Kaio_esposito'}</Text></Row>
+              { github !== null ? <Row><ImgWrapper width="1.6rem" height="1.6rem" url={git} /><Text>{github || '@git_name'}</Text></Row> : null}
+              { instagram !== null ? <Row><ImgWrapper width="1.3rem" height="1.3rem" url={insta} /><Text>{instagram || '@insta_name'}</Text></Row> : null}
+              <Row><ImgWrapper width="1.3rem" height="1.3rem" url={mail} /><Text>{email || 'mail@mail.com'}</Text></Row>
+              { twitter !== null ? <Row><ImgWrapper width="1.5rem" height="1.5rem" url={tt} /><Text>{twitter || '@twitter_name'}</Text></Row> : null }
             </Social>
           </WrapperFooter>
           <Line marginTop={30}/>
           <WrapperFooter>
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <Infobox onClick={() => navigate(`/profile`)}>Conta<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
+              <Infobox onClick={() => navigate(`/profile`)}>Perfil<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
               <Infobox>Assistência<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
               <Infobox>Segurança<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
             </div>

@@ -6,7 +6,7 @@ import logoWhite from '../../../assets/img/logo-white.png'
 import blackLogo from '../../../assets/img/blackLogo.png'
 import { Links } from '../../atoms/LinkMenu/styledLink.js'
 import LinkMenu from '../../atoms/LinkMenu/Link.js'
-import { useTheme} from '../../../request/hooks/Theme'
+import { useTheme } from '../../../request/hooks/Theme'
 import { useUserAuth } from '../../../request/hooks/Auth'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faArrowDown, faCog, faAngleDown, faAngleLeft} from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +23,7 @@ const Menu = ({padding}) => {
         color: '#FFFFFF'
     })
     const [ logo, setLogo ] = useState(logoWhite)
-    const { user } = useUserAuth()
+    const { user, profile } = useUserAuth()
     
     const changeTheme = () => {
         setTheme(theme.name === 'white' ? themes[1] : themes[0])
@@ -89,7 +89,15 @@ return(
                     <FontAwesomeIcon className="config" onClick={toggleConfig} icon={faCog} />
                 </Config>
             <Buttons>
-            {user ? <SubmenuLogged /> :
+            {user ? 
+            <SubmenuLogged 
+                imgUser={user && user.photoURL ? user && user.photoURL : null} 
+                instagram={profile && profile.instagram || null} 
+                email={profile && profile.email || null} 
+                github={profile && profile.github || null} 
+                name={user && user.displayName ? user && user.displayName : profile && profile.username || null}
+                twitter={profile && profile.twitter || null}
+            /> :
                 <>
                 <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/login`)}>Login</Botao>
                 <Botao border={`1px solid ${style.color}`} color={style.color} click={() => navigate(`/register`)}>Registrar</Botao>
