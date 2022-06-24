@@ -34,8 +34,10 @@ export const Username = styled.p`
     margin-left: ${({marginLe}) => (marginLe  ? marginLe : "17rem")};
     margin-bottom:${({marginB}) => (marginB  ? marginB : "1rem")};
     margin-top: ${({marginT}) => (marginT  ? marginT : "1.3rem")};
-    white-space: nowrap;
-
+    white-space:nowrap;
+    @media screen and (max-width:870px){
+        white-space: normal;
+    }
     @media (max-width: 600px){
         margin-left: ${({marginMedia}) => (marginMedia  ? marginMedia : "11rem")};
     }
@@ -251,7 +253,28 @@ export const Avaliatons = styled.div`
         
     }
 
+    .esquerda{
+        width: 50%;
 
+        @media screen and (max-width: 900px) {
+            width: 100%;
+            padding-left: 11rem;
+             margin-bottom: -5rem;
+        }
+    }
+    .direita{
+        margin-left: 15rem;
+        margin-right: 4rem;
+        
+        @media screen and (max-width: 960px) {
+           margin-left: 10rem;
+        }
+        @media screen and (max-width: 900px) {
+           margin-left: 3rem;
+           
+        }
+        
+    }
     
    
 `
@@ -264,28 +287,6 @@ export const Reviews = styled.div`
     display: flex;
     flex-direction: column;
   
-    
-    &:nth-child(even){
-        width: 50%;
-
-        @media screen and (max-width: 900px) {
-            width: 100%;
-            padding-left: 11rem;
-           margin-bottom: -5rem;
-        }
-   
-        
-    }
-    &:nth-child(odd){
-        
-        margin-left: 15rem;
-        margin-right: 4rem;
-        
-        @media screen and (max-width: 900px) {
-           margin-left: 3rem;
-        }
-
-    }
 
     .data{
         color:#fff;
