@@ -93,7 +93,7 @@ return(
             <SubmenuLogged 
                 imgUser={user && user.photoURL ? user && user.photoURL : null} 
                 instagram={profile && profile.instagram || null} 
-                email={profile && profile.email || null} 
+                email={user && user.email || null} 
                 github={profile && profile.github || null} 
                 name={user && user.displayName ? user && user.displayName : profile && profile.username || null}
                 twitter={profile && profile.twitter || null}

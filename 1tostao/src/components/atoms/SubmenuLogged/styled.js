@@ -62,7 +62,7 @@ export const Name = styled.div`
     font-weight: bold;
     font-size: 25px;
     margin-top: 1.3rem;
-    margin-left: 2rem;
+    margin-left: 0.5rem;
 `
 
 export const Row = styled.div`
