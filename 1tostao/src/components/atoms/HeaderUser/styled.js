@@ -131,9 +131,7 @@ export const AboutUser = styled.div`
     margin-top: 3rem;
     display: flex;
 `
-export const Jobs = styled.div`
-
-`
+// ABOUTS
 
 export const About = styled.div`
    
@@ -339,3 +337,61 @@ export const UserAva = styled.div`
     margin-top: 1rem;
     margin-bottom: 1rem;
 `
+
+// JOBS
+
+export const Jobs = styled.div`
+
+`
+export const JobsFilter = styled.div`
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    margin-left: 3rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    .seletor{
+    
+        background-color: #747474;
+        color:#fff;
+        width: 225px;
+        font-size: 1.3rem;
+        border-radius:5px;
+    }
+    .option:hover{
+        background-color: red;
+    }
+    .seletor:first-child{
+        margin-right: 1rem;
+    }
+    .seletor:last-child{
+        margin-right: 7.5rem;
+    }
+
+    @media screen and (max-width:530px) {
+        flex-direction: column;
+        .seletor:first-child{
+            margin-bottom: 1rem;
+        }
+    }
+    
+   
+   
+   
+`
+export const JobsWrapper = styled.div`
+
+`
+
+export const Job = styled.div``
+
+export const JobComments = styled.p``
+
+export const JobImage = styled.img``
+
+export const JobLikes = styled.p``
+
+
+

@@ -3,7 +3,7 @@ import panic from "../../../assets/img/banner2.jpg";
 import twitter from "../../../assets/img/twitter_verde.png";
 import instagram from "../../../assets/img/instagram_verde.png";
 import email from "../../../assets/img/email_verde.png";
-import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, WrapperAvaliation, Mensagem, Contratar, UserImg } from './styled'
+import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, WrapperAvaliation, Mensagem, Contratar, UserImg, Job, JobComments, JobImage, JobLikes, JobsFilter, JobsWrapper } from './styled'
 import profilePic from './../../../assets/img/profile.png'
 import {faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -62,7 +62,38 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                 </AboutUser>
                 {tab === 1 ? 
                 <Jobs>
-                   <h1>Portfólio</h1>
+                   <JobsFilter>
+                   <select className="seletor">
+                      <option className= "option" value="0">Todas Categorias</option>
+                      <option className= "option" value="1">Fotografia</option>
+                      <option className= "option" value="2">Programação</option>
+                      <option className= "option" value="3">Artes</option>
+                      <option className= "option" value="4">Edição</option>
+                      <option className= "option" value="5">Aulas</option>
+                      <option className= "option" value="6">Desenhos</option>
+                      <option className= "option" value="7">Narração</option>
+                      <option className= "option" value="8">Produção Audio-Visual</option>
+                  </select>
+
+                   <select className="seletor">
+                      <option className='option' value="0">Mais Populares</option>
+                      <option className='option' value="1">Fotografia</option>
+                      <option className='option' value="2">Programação</option>
+                      <option className='option' value="3">Artes</option>
+                      <option className='option' value="4">Edição</option>
+                      <option className='option' value="5">Aulas</option>
+                      <option className='option' value="6">Desenhos</option>
+                      <option className='option' value="7">Narração</option>
+                      <option className='option' value="8">Produção Audio-Visual</option>
+                  </select>
+                   </JobsFilter>
+                    <JobsWrapper>
+                      <Job>
+                        <JobImage/>
+                        <JobLikes></JobLikes>
+                        <JobComments></JobComments>
+                      </Job>
+                    </JobsWrapper>
                 </Jobs> 
                 : 
                 <About>
