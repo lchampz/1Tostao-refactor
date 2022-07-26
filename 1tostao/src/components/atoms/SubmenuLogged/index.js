@@ -132,8 +132,8 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
           <WrapperFooter>
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <Infobox onClick={() => navigate(`/profile`)}>Perfil<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
-              <Infobox>Assistência<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
-              <Infobox>Segurança<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
+              <Infobox onClick={() => navigate(`/support`)}>Suporte<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
+              <Infobox onClick={() => navigate(`/dashboard`)}>Dashboard<ImgWrapper margin={'-24px 0px 0px 210px'} width="1.6rem" height="1.6rem" url={window} /></Infobox>
             </div>
           </WrapperFooter>
         </WrapperHeader>

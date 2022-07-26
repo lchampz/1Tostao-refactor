@@ -5,3 +5,6 @@ export { default as Register } from './Register';
 export { default as Servicos } from './Servicos';
 export { default as FAQ } from './FAQ';
 export { default as Profile } from './Profile';
+export { default as Support } from './Support';
+export { default as Category } from './Category';
+export { default as Dashboard } from './Dashboard';

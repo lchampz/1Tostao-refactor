@@ -34,8 +34,8 @@ const Footer = ({width, margintop, border, size, color, needMargin}) => {
                         <div className="col-info">
                             <h1 className="infos">Serviços</h1>
                             <ul>
-                                <li className="li">Categorias</li>
-                                <li className="li">Suporte</li>
+                                <li className="li" onClick={() => navigate(`/categories`)}>Categorias</li>
+                                <li className="li" onClick={() => navigate(`/support`)}>Suporte</li>
                                 <li className="li" onClick={() => navigate(`/faq`)}>FAQ</li>
                             </ul>
                         </div>
@@ -49,7 +49,7 @@ const Footer = ({width, margintop, border, size, color, needMargin}) => {
                         </div>
                         
                     </div>
-                    <BorderText borderWidth={width="100%"} topBorder={margintop="20px"} />
+                    <BorderText borderWidth={width} topBorder={margintop} />
 
                     <div className="row" id="row-rod">
                         <div className="col-rod">

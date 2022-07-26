@@ -18,6 +18,7 @@ export const themes = [
             carouselHover: '#24D39A',
             faqBorder: '#24D39A',
             faqTitle: '#2F2F2F',
+            cardSupportBg: '#FFFFFF',
 
         }
     },
@@ -37,6 +38,7 @@ export const themes = [
             carouselHover: '#24D39A',
             faqBorder: '#FFFFFF',
             faqTitle: '#24D39A',
+            cardSupportBg: '#525252'
         }
     }
 ]
