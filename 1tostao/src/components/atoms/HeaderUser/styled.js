@@ -353,16 +353,15 @@ export const JobsFilter = styled.div`
 
 
     .seletor{
-    
+        cursor: pointer;
         background-color: #747474;
         color:#fff;
         width: 225px;
         font-size: 1.3rem;
         border-radius:5px;
     }
-    .option:hover{
-        background-color: red;
-    }
+    
+ 
     .seletor:first-child{
         margin-right: 1rem;
     }
@@ -382,16 +381,66 @@ export const JobsFilter = styled.div`
    
 `
 export const JobsWrapper = styled.div`
-
+    margin-left:3rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    @media screen and (max-width:596px) {
+        justify-content: center;
+    }
 `
 
-export const Job = styled.div``
+export const Job = styled.div`
+    margin-right: 4rem;
+    
 
-export const JobComments = styled.p``
+  .numbers{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3rem;
+  }
+  .heart{
+    color:#c51104;
+    font-size: 1.1rem;
+}
+.comment{
+    font-size: 1.1rem;
+    color:	#A9A9A9;
+}
+`
 
-export const JobImage = styled.img``
+export const JobComments = styled.p`
+    font-size: 1.1rem;
+    color: #fff;
+    margin-right: 5px;
+`
 
-export const JobLikes = styled.p``
+export const JobImage = styled.img`
+    width: 275px;
+    @media screen and (max-width:750px) {
+        width: 200px;
+    }
+    @media screen and (max-width:596px) {
+        width: 250px;
+    }
+`
+
+export const JobLikes = styled.p`
+
+font-size: 1.1rem;
+    color: #fff;
+    margin-right: 12.4rem;
+    margin-left: 5px;
+    margin-bottom: 3rem;
+   
+    @media screen and (max-width:750px) {
+        margin-right: 7.5rem;
+    }
+    @media screen and (max-width:596px) {
+        margin-right: 10.7rem;
+    }
+    
+`
 
 
 

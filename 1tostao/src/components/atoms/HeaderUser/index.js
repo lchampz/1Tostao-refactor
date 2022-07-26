@@ -5,7 +5,7 @@ import instagram from "../../../assets/img/instagram_verde.png";
 import email from "../../../assets/img/email_verde.png";
 import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, WrapperAvaliation, Mensagem, Contratar, UserImg, Job, JobComments, JobImage, JobLikes, JobsFilter, JobsWrapper } from './styled'
 import profilePic from './../../../assets/img/profile.png'
-import {faStar } from "@fortawesome/free-solid-svg-icons";
+import {faStar, faHeart, faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUserAuth } from '../../../request/hooks/Auth.js';
 import { useNavigate} from 'react-router-dom'
@@ -74,7 +74,6 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                       <option className= "option" value="7">Narração</option>
                       <option className= "option" value="8">Produção Audio-Visual</option>
                   </select>
-
                    <select className="seletor">
                       <option className='option' value="0">Mais Populares</option>
                       <option className='option' value="1">Fotografia</option>
@@ -89,9 +88,40 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                    </JobsFilter>
                     <JobsWrapper>
                       <Job>
-                        <JobImage/>
-                        <JobLikes></JobLikes>
-                        <JobComments></JobComments>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
                       </Job>
                     </JobsWrapper>
                 </Jobs> 
