@@ -350,6 +350,7 @@ export const UserAva = styled.div`
 
 export const Jobs = styled.div`
 
+
 `
 export const JobsFilter = styled.div`
     margin-top: 1rem;
@@ -448,6 +449,41 @@ export const JobLikes = styled.p`
         margin-right: 10.7rem;
     }
     
+`
+
+export const Pagination = styled.div`
+    display: flex;
+    justify-content: center;
+
+    ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size:1rem;
+
+    @media screen and (max-width: 450px) {
+        font-size: 0.8rem;
+    }
+}
+
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: #fff;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+ul.pagination li a.active {
+    background-color: #24D39A;
+    color: white;
+    border-radius: 5px;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #808080;}
 `
 
 

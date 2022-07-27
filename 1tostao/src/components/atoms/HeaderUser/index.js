@@ -3,7 +3,7 @@ import panic from "../../../assets/img/banner2.jpg";
 import twitter from "../../../assets/img/twitter_verde.png";
 import instagram from "../../../assets/img/instagram_verde.png";
 import email from "../../../assets/img/email_verde.png";
-import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, WrapperAvaliation, Mensagem, Contratar, UserImg, Job, JobComments, JobImage, JobLikes, JobsFilter, JobsWrapper } from './styled'
+import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, Pagination, WrapperAvaliation, Mensagem, Contratar, UserImg, Job, JobComments, JobImage, JobLikes, JobsFilter, JobsWrapper } from './styled'
 import profilePic from './../../../assets/img/profile.png'
 import {faStar, faHeart, faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -124,6 +124,19 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         </div>
                       </Job>
                     </JobsWrapper>
+                    <Pagination>
+                      <ul className="pagination">
+                        <li><a href="#">«</a></li>
+                        <li><a className="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">»</a></li>
+                      </ul>
+                    </Pagination>
                 </Jobs> 
                 : 
                 <About>
@@ -168,21 +181,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
                       </WrapperAvaliation>
-                       {/* apagar */}
-                      <WrapperAvaliation>
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
-                          <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
-                              <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
-                          </UserAva>
-                          <p className='data'>02 de dezembro de 2022</p>
-                      </WrapperAvaliation>
-                       {/* apagar */}
+                       
                     </Reviews>
                     <Reviews className='direita'>
                       <WrapperAvaliation>
@@ -198,22 +197,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
                       </WrapperAvaliation>
-                       {/* apagar */}
-                      <WrapperAvaliation>
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                        <FontAwesomeIcon className="star" icon={faStar} />
-                          <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
-                          <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
-                              <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
-                          </UserAva>
-                          <p className='data'>02 de dezembro de 2022</p>
-                      </WrapperAvaliation>
-
-                      {/* apagar */}
+                       
                     </Reviews>
                   </Avaliatons>
                 </About> }
