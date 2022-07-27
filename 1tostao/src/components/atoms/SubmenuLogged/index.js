@@ -34,7 +34,7 @@ const images = require("../../../request/mock/imgs.json");
 
 const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
   const [visible, setVisible] = useState(false);
-  const img = imgUser === null ? iconUser : imgUser;
+  const img = iconUser;
   const navigate = useNavigate();
   const slider = useRef(null)
   const NextArrow = ({ children }) => { return( <Arrow onClick={() => slider.current.slideNext() }>{children}</Arrow>)}

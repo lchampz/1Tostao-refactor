@@ -49,7 +49,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
             <Banner bgImg={panic}/>
               <Wrapper>
                 <MenuImg>
-                    <UserImg width={width} position={"absolute"} marginL={marginL} src={user && user.photoURL ? user && user.photoURL : profilePic}/> 
+                    <UserImg width={width} position={"absolute"} marginL={marginL} src={profilePic}/> 
                 </MenuImg>
                 <MenuUser>
                     <Username marginMedia={marginMedia} marginB={marginB} marginT={marginT} marginLe={marginLe}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
@@ -163,7 +163,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
@@ -177,7 +177,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
@@ -193,7 +193,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                           <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
@@ -207,7 +207,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                           <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
