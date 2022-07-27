@@ -4,21 +4,23 @@ import user from '../../../assets/icons/userIconGreen.png'
 import email from '../../../assets/icons/emailIconGreen.png'
 import ImgWrapper from '../ImgWrapper'
 import { useTheme } from "../../../request/hooks/Theme";
+import { useNavigate } from "react-router-dom";
 
 const CardSupport = () => {
     const { theme } = useTheme();
-    
+    const navigate = useNavigate()
+
     return (
         <Wrapper>
             <Title color={theme.colors.fontColor}>Olá! Como podemos te ajudar?</Title>
             <WrapperCards>
-                <Card bgColor={theme.colors.cardSupportBg}>
+                <Card bgColor={theme.colors.cardSupportBg} onClick={() => navigate(`/support/myaccount`)}>
                     <Content color={theme.colors.fontColor}>
                         <ImgWrapper margin={'0px 0px 35px 0px'} url={user} alt={'userImg'}/>
                         <p>Minha conta</p>
                     </Content>
                 </Card>
-                <Card bgColor={theme.colors.cardSupportBg}>
+                <Card bgColor={theme.colors.cardSupportBg} onClick={() => navigate(`/support/send`)}>
                     <Content color={theme.colors.fontColor}>
                         <ImgWrapper margin={'0px 0px 35px 56px'} url={email} alt={'emailImg'}/>
                         <p>Enviar mensagem aos Devs</p>
