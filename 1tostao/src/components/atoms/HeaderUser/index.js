@@ -3,9 +3,9 @@ import panic from "../../../assets/img/banner2.jpg";
 import twitter from "../../../assets/img/twitter_verde.png";
 import instagram from "../../../assets/img/instagram_verde.png";
 import email from "../../../assets/img/email_verde.png";
-import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, WrapperAvaliation, Mensagem, Contratar, UserImg } from './styled'
+import { Banner, Jobs, About, Wrapper, Title, AboutInfo, Reviews, TitleAvaliation, AboutInfos, AboutContact, Avaliatons, Sections, AboutUser, Username, MenuImg, UserAva, MenuUser, WrapperAvaliation, Mensagem, Contratar, UserImg, Job, JobComments, JobImage, JobLikes, JobsFilter, JobsWrapper } from './styled'
 import profilePic from './../../../assets/img/profile.png'
-import {faStar } from "@fortawesome/free-solid-svg-icons";
+import {faStar, faHeart, faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUserAuth } from '../../../request/hooks/Auth.js';
 import { useNavigate} from 'react-router-dom'
@@ -49,7 +49,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
             <Banner bgImg={panic}/>
               <Wrapper>
                 <MenuImg>
-                    <UserImg width={width} position={"absolute"} marginL={marginL} src={user && user.photoURL ? user && user.photoURL : profilePic}/> 
+                    <UserImg width={width} position={"absolute"} marginL={marginL} src={profilePic}/> 
                 </MenuImg>
                 <MenuUser>
                     <Username marginMedia={marginMedia} marginB={marginB} marginT={marginT} marginLe={marginLe}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
@@ -62,7 +62,68 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                 </AboutUser>
                 {tab === 1 ? 
                 <Jobs>
-                   <h1>Portfólio</h1>
+                   <JobsFilter>
+                   <select className="seletor">
+                      <option className= "option" value="0">Todas Categorias</option>
+                      <option className= "option" value="1">Fotografia</option>
+                      <option className= "option" value="2">Programação</option>
+                      <option className= "option" value="3">Artes</option>
+                      <option className= "option" value="4">Edição</option>
+                      <option className= "option" value="5">Aulas</option>
+                      <option className= "option" value="6">Desenhos</option>
+                      <option className= "option" value="7">Narração</option>
+                      <option className= "option" value="8">Produção Audio-Visual</option>
+                  </select>
+                   <select className="seletor">
+                      <option className='option' value="0">Mais Populares</option>
+                      <option className='option' value="1">Fotografia</option>
+                      <option className='option' value="2">Programação</option>
+                      <option className='option' value="3">Artes</option>
+                      <option className='option' value="4">Edição</option>
+                      <option className='option' value="5">Aulas</option>
+                      <option className='option' value="6">Desenhos</option>
+                      <option className='option' value="7">Narração</option>
+                      <option className='option' value="8">Produção Audio-Visual</option>
+                  </select>
+                   </JobsFilter>
+                    <JobsWrapper>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                      <Job>
+                        <JobImage src={profilePic}/>
+                        <div className='numbers'>
+                        <FontAwesomeIcon className="heart" icon={faHeart} />
+                          <JobLikes>10</JobLikes>
+                          <JobComments>10</JobComments>
+                        <FontAwesomeIcon className="comment" icon={faComment} />
+                        </div>
+                      </Job>
+                    </JobsWrapper>
                 </Jobs> 
                 : 
                 <About>
@@ -102,7 +163,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
@@ -116,7 +177,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                         <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
@@ -132,7 +193,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                           <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>
@@ -146,7 +207,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                         <FontAwesomeIcon className="star" icon={faStar} />
                           <TitleAvaliation>"Demora e baixa qualidade!"</TitleAvaliation>
                           <UserAva>
-                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={user && user.photoURL ? user && user.photoURL : profilePic}/>    
+                              <UserImg marginLMedia={"0rem"} width={'5rem'} position={"relative"} marginL={"0"} src={profilePic}/>    
                               <Username marginMedia={"1rem"} marginB={"0"} marginT={"1.5rem"} marginLe={"1rem"}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                           </UserAva>
                           <p className='data'>02 de dezembro de 2022</p>

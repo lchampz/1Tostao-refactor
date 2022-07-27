@@ -77,6 +77,9 @@ export const Contratar = styled.button`
     @media (max-width:900px){
         margin-right: 0rem;
     }
+    @media (max-width:310px){
+        margin-left: 1.8rem;
+    }
 
 
    &:hover {
@@ -108,6 +111,9 @@ export const Mensagem = styled.button`
     @media (max-width: 600px){
         margin-left: 1.7rem;
     }
+    @media (max-width: 310px){
+        margin-top:1rem;
+    }
 
 
     &:hover{
@@ -131,9 +137,7 @@ export const AboutUser = styled.div`
     margin-top: 3rem;
     display: flex;
 `
-export const Jobs = styled.div`
-
-`
+// ABOUTS
 
 export const About = styled.div`
    
@@ -167,12 +171,14 @@ export const AboutInfo = styled.div`
     }
     .desc{
         color:#bdbebd;
-        margin-top: 2rem;
+        margin-top: 1.3rem;
         margin-left: 3rem;
         margin-right: 6rem;
         font-size: 1.1rem;
         max-height: 100px;
         max-width: 65rem;
+        text-align: justify;
+        text-justify: inter-word;
 
         @media (max-width: 520px){
             font-size: 0.8rem;
@@ -339,3 +345,110 @@ export const UserAva = styled.div`
     margin-top: 1rem;
     margin-bottom: 1rem;
 `
+
+// JOBS
+
+export const Jobs = styled.div`
+
+`
+export const JobsFilter = styled.div`
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    margin-left: 3rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    .seletor{
+        cursor: pointer;
+        background-color: #747474;
+        color:#fff;
+        width: 225px;
+        font-size: 1.3rem;
+        border-radius:5px;
+    }
+    
+ 
+    .seletor:first-child{
+        margin-right: 1rem;
+    }
+    .seletor:last-child{
+        margin-right: 7.5rem;
+    }
+
+    @media screen and (max-width:530px) {
+        flex-direction: column;
+        .seletor:first-child{
+            margin-bottom: 1rem;
+        }
+    }
+    
+   
+   
+   
+`
+export const JobsWrapper = styled.div`
+    margin-left:4rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    @media screen and (max-width:596px) {
+        justify-content: center;
+    }
+`
+
+export const Job = styled.div`
+    margin-right: 4rem;
+    
+
+  .numbers{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3rem;
+  }
+  .heart{
+    color:#c51104;
+    font-size: 1.1rem;
+}
+.comment{
+    font-size: 1.1rem;
+    color:	#A9A9A9;
+}
+`
+
+export const JobComments = styled.p`
+    font-size: 1.1rem;
+    color: #fff;
+    margin-right: 5px;
+`
+
+export const JobImage = styled.img`
+    width: 275px;
+    @media screen and (max-width:750px) {
+        width: 200px;
+    }
+    @media screen and (max-width:596px) {
+        width: 250px;
+    }
+`
+
+export const JobLikes = styled.p`
+
+    font-size: 1.1rem;
+    color: #fff;
+    margin-right: 12.4rem;
+    margin-left: 5px;
+    margin-bottom: 3rem;
+   
+    @media screen and (max-width:750px) {
+        margin-right: 7.5rem;
+    }
+    @media screen and (max-width:596px) {
+        margin-right: 10.7rem;
+    }
+    
+`
+
+
+
