@@ -45,8 +45,10 @@ export const Title = styled.span`
     color: ${({ color }) => (color ? color : 'white')};
     font-size: 64px;
     font-weight: bold;
-    margin: 0 auto;
-    
+
+    @media only screen and (max-width: 1000px) {
+        font-size: 44px;
+    }
 `
 
 export const Content = styled.div`
