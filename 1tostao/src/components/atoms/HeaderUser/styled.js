@@ -77,6 +77,9 @@ export const Contratar = styled.button`
     @media (max-width:900px){
         margin-right: 0rem;
     }
+    @media (max-width:310px){
+        margin-left: 1.8rem;
+    }
 
 
    &:hover {
@@ -107,6 +110,9 @@ export const Mensagem = styled.button`
 
     @media (max-width: 600px){
         margin-left: 1.7rem;
+    }
+    @media (max-width: 310px){
+        margin-top:1rem;
     }
 
 
@@ -165,12 +171,14 @@ export const AboutInfo = styled.div`
     }
     .desc{
         color:#bdbebd;
-        margin-top: 2rem;
+        margin-top: 1.3rem;
         margin-left: 3rem;
         margin-right: 6rem;
         font-size: 1.1rem;
         max-height: 100px;
         max-width: 65rem;
+        text-align: justify;
+        text-justify: inter-word;
 
         @media (max-width: 520px){
             font-size: 0.8rem;
@@ -381,7 +389,7 @@ export const JobsFilter = styled.div`
    
 `
 export const JobsWrapper = styled.div`
-    margin-left:3rem;
+    margin-left:4rem;
     margin-right: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -427,7 +435,7 @@ export const JobImage = styled.img`
 
 export const JobLikes = styled.p`
 
-font-size: 1.1rem;
+    font-size: 1.1rem;
     color: #fff;
     margin-right: 12.4rem;
     margin-left: 5px;
