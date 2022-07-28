@@ -1,7 +1,10 @@
+import React from 'react';
+import Contact from '../components/molecules/ContactLayout';
+
 const Send = () => {
     return (
     <div>
-        send
+        <Contact/>
     </div>);
 }
  
