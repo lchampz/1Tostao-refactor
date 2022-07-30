@@ -127,36 +127,7 @@ export const ButtonDiv = styled.div`
     align-items: center;
 
 `
-export const Ativado = styled.input`
-    margin-top: 1rem;
-    color: ${({ color }) => (color ? color : '#24d39a')};
-    background: none;
-    cursor: pointer;
-    border: 3px solid #24d39a;
-    margin-top: 2rem;
-    width: 175px;
-    height: 30px;
-    font-size: 16px;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: 0.1s all ease-in;
-    margin-bottom: 2rem;
-
-
-    @media screen and (max-width:500px) {
-        margin-top: 2rem;
-        border: 3px solid #24d39a;
-        color:#24d39a;
-    }
-    @media screen and (max-width:430px) {
-        margin-bottom: 1rem;
-        margin-top: 1.6rem;
-   
-    }
-  
-    
-`
-export const Desativado = styled.input`
+export const Botao = styled.input`
     margin-top: 1rem;
     color: ${({ color }) => (color ? color : '#A9A9A9')};
     background: none;

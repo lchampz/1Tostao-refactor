@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import {Wrapper, Send, Card, Forms, Ativado, Desativado, ButtonDiv,  FormMessage, Message, Label} from './styled'
+import {Wrapper, Send, Card, Forms, Botao, ButtonDiv,  FormMessage, Message, Label} from './styled'
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -9,9 +9,6 @@ const Contact = () => {
     const [assunto, setAssunto] = useState("");
     const [mensagem, setMensagem] = useState("");
     const aviso = document.getElementById("aviso");
-
- 
-    
     const sendEmail = (e) => {
         e.preventDefault();
                 emailjs.sendForm('service_sjivoln', 'template_k0l3cdu', form.current, 'IZ9MwYC4-q08MezXL')
@@ -28,7 +25,6 @@ const Contact = () => {
             });
 
     };
-    
     return ( 
         <>
             <Wrapper>
@@ -43,7 +39,7 @@ const Contact = () => {
                                 <Label>Mensagem</Label>
                                 <Message onChange={(e) => setMensagem(e.target.value)} value={mensagem} name="message" autoComplete='off' ></Message>
                                 <ButtonDiv>
-                                    {email.length && assunto.length && mensagem.length > 1 ? <Ativado id="botao" className="ativado" type="submit" placeholder='Enviar' />: <Desativado id="botao" type="submit" className='desativado' placeholder='Enviar' disabled/>}
+                                    {email.length && assunto.length && mensagem.length > 1 ? <Botao id="botao" className="ativado" type="submit" placeholder='Enviar'  style={{color: "#24d39a", border: "3px solid #24d39a", cursor:"pointer"}} />: <Botao id="botao" type="submit" className='desativado' placeholder='Enviar' disabled/>}
                                 </ButtonDiv>
                         </Forms>
                     </form>
@@ -53,8 +49,6 @@ const Contact = () => {
          
         </>
      );
-     
 }
-
  
 export default Contact;
