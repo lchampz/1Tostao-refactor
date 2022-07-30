@@ -2,11 +2,18 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    #aviso{
+        color: #24d39a;
+        font-weight: bold;
+        font-size: 1.6;
+        margin-bottom: 2rem;
+    }
 `
 
 export const Send = styled.p`
@@ -31,22 +38,20 @@ export const Send = styled.p`
 export const Card = styled.div`
     background-color: #525252;
     width: 450px;
-    height: 450px;
+    height: 510px;
     border: 1px solid #525252;
     border-radius: 1.5rem;
     margin: 2rem;
     display: flex;
     justify-content: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 
     @media screen and (max-width:500px) {
         width: 400px;
-        height: 400px;
     }
     @media screen and (max-width:430px) {
         width: 325px;
-        height: 325px;
     }
     
 
@@ -122,11 +127,40 @@ export const ButtonDiv = styled.div`
     align-items: center;
 
 `
-export const Botao = styled.button`
+export const Ativado = styled.input`
+    margin-top: 1rem;
+    color: ${({ color }) => (color ? color : '#24d39a')};
+    background: none;
     cursor: pointer;
+    border: 3px solid #24d39a;
+    margin-top: 2rem;
+    width: 175px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.1s all ease-in;
+    margin-bottom: 2rem;
+
+
+    @media screen and (max-width:500px) {
+        margin-top: 2rem;
+        border: 3px solid #24d39a;
+        color:#24d39a;
+    }
+    @media screen and (max-width:430px) {
+        margin-bottom: 1rem;
+        margin-top: 1.6rem;
+   
+    }
+  
+    
+`
+export const Desativado = styled.input`
     margin-top: 1rem;
     color: ${({ color }) => (color ? color : '#A9A9A9')};
     background: none;
+    cursor: auto;
     border: 3px solid #A9A9A9;
     margin-top: 2rem;
     width: 175px;
@@ -137,19 +171,15 @@ export const Botao = styled.button`
     transition: 0.1s all ease-in;
     margin-bottom: 2rem;
 
+   
     @media screen and (max-width:500px) {
         margin-top: 2rem;
-        
     }
     @media screen and (max-width:430px) {
         margin-bottom: 1rem;
-        margin-top: 1rem;
-        
+        margin-top: 1.6rem;
+   
     }
   
-    &:hover{
-        border: 3px solid #24d39a;
-        color: #24d39a;
-        
-    }
+    
 `

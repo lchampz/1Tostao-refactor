@@ -1,22 +1,34 @@
-import React, { useRef, useState } from 'react';
-import {Wrapper, Send, Card, Forms,Botao, ButtonDiv,  FormMessage, Message, Label} from './styled'
+import React, { useRef, useState, useEffect } from 'react';
+import {Wrapper, Send, Card, Forms, Ativado, Desativado, ButtonDiv,  FormMessage, Message, Label} from './styled'
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   
     const form = useRef();
+    const [email, setEmail] = useState("");
+    const [assunto, setAssunto] = useState("");
+    const [mensagem, setMensagem] = useState("");
+    const aviso = document.getElementById("aviso");
 
+ 
+    
     const sendEmail = (e) => {
         e.preventDefault();
-
-        emailjs.sendForm('service_sjivoln', 'template_k0l3cdu', form.current, 'IZ9MwYC4-q08MezXL')
-        .then((result) => {
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
-        });
+                emailjs.sendForm('service_sjivoln', 'template_k0l3cdu', form.current, 'IZ9MwYC4-q08MezXL')
+                .then((result) => {
+                aviso.innerHTML = "Mensagem enviada com sucesso!";
+                setEmail("");
+                setAssunto("");
+                setMensagem("");
+            }, (error) => {
+                aviso.innerHTML = "Erro ao enviar mensagem! Preencha todos os campos corretamente.";
+                setEmail("");
+                setAssunto("");
+                setMensagem("");
+            });
 
     };
+    
     return ( 
         <>
             <Wrapper>
@@ -24,19 +36,25 @@ const Contact = () => {
                 <Card>
                     <form ref={form} onSubmit={sendEmail}>
                         <Forms>
+                                <Label>Seu email</Label>
+                                <FormMessage type="email" onChange={(e) => setEmail(e.target.value) } value={email} name="user_email" autoComplete='off' ></FormMessage>
                                 <Label>Assunto</Label>
-                                <FormMessage type="text" name="user_name"></FormMessage>
+                                <FormMessage type="text" onChange={(e) => setAssunto(e.target.value)} value={assunto} name="user_name" autoComplete='off' ></FormMessage>
                                 <Label>Mensagem</Label>
-                                <Message name="message"></Message>
+                                <Message onChange={(e) => setMensagem(e.target.value)} value={mensagem} name="message" autoComplete='off' ></Message>
                                 <ButtonDiv>
-                                    <Botao>Enviar</Botao>
+                                    {email.length && assunto.length && mensagem.length > 1 ? <Ativado id="botao" className="ativado" type="submit" placeholder='Enviar' />: <Desativado id="botao" type="submit" className='desativado' placeholder='Enviar' disabled/>}
                                 </ButtonDiv>
                         </Forms>
                     </form>
                 </Card>
+                    <p id='aviso'></p>
             </Wrapper>
+         
         </>
      );
+     
 }
+
  
 export default Contact;

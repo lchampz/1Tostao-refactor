@@ -93,7 +93,7 @@
     cursor: pointer;
 }
 
-@media(min-width:392px){
+@media(min-width:10px){
     .rodapepo{
         color:#646771;
         flex: 0 100%;
