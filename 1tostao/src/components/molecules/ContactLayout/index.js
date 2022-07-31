@@ -14,11 +14,13 @@ const Contact = () => {
                 emailjs.sendForm('service_sjivoln', 'template_k0l3cdu', form.current, 'IZ9MwYC4-q08MezXL')
                 .then((result) => {
                 aviso.innerHTML = "Mensagem enviada com sucesso!";
+                e.target.reset();
                 setEmail("");
                 setAssunto("");
                 setMensagem("");
             }, (error) => {
                 aviso.innerHTML = "Erro ao enviar mensagem! Preencha todos os campos corretamente.";
+                e.target.reset();
                 setEmail("");
                 setAssunto("");
                 setMensagem("");
