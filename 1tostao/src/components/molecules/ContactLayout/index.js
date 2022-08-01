@@ -13,7 +13,7 @@ const Contact = () => {
         e.preventDefault();
                 emailjs.sendForm('service_sjivoln', 'template_k0l3cdu', form.current, 'IZ9MwYC4-q08MezXL')
                 .then((result) => {
-                aviso.innerHTML = "Mensagem enviada com sucesso!";
+                aviso.innerHTML = "Mensagem enviada! Entraremos em contato em breve.";
                 e.target.reset();
                 setEmail("");
                 setAssunto("");
@@ -41,7 +41,7 @@ const Contact = () => {
                                 <Label>Mensagem</Label>
                                 <Message onChange={(e) => setMensagem(e.target.value)} value={mensagem} name="message" autoComplete='off' ></Message>
                                 <ButtonDiv>
-                                    {email.length && assunto.length && mensagem.length > 1 ? <Botao id="botao" className="ativado" type="submit" placeholder='Enviar'  style={{color: "#24d39a", border: "3px solid #24d39a", cursor:"pointer"}} />: <Botao id="botao" type="submit" className='desativado' placeholder='Enviar' disabled/>}
+                                    {email.length && assunto.length && mensagem.length > 0 ? <Botao id="botao" className="ativado" type="submit" placeholder='Enviar'  style={{color: "#24d39a", border: "3px solid #24d39a", cursor:"pointer"}} />: <Botao id="botao" type="submit" className='desativado' placeholder='Enviar' disabled/>}
                                 </ButtonDiv>
                         </Forms>
                     </form>

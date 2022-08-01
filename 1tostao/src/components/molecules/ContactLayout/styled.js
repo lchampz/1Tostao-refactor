@@ -7,12 +7,16 @@ export const Wrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
 
     #aviso{
         color: #24d39a;
         font-weight: bold;
         font-size: 1.6;
         margin-bottom: 2rem;
+        width: 350px;
+        text-align: center;
+
     }
 `
 
@@ -52,6 +56,7 @@ export const Card = styled.div`
     }
     @media screen and (max-width:430px) {
         width: 325px;
+        margin: 1rem;
     }
     
 
