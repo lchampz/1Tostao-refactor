@@ -47,7 +47,7 @@ export const Wrapper = styled.div`
         margin-bottom: 11rem;
     }
     @media screen and (max-width: 400px) {
-        width:19rem;
+        width:21rem;
         margin-top: 15rem;
         margin-bottom: 11rem;
     }

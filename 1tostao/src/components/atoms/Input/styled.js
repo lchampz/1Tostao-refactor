@@ -7,7 +7,7 @@ export const Input = styled.input`
     border-left: ${({borderLeft}) => (borderLeft ? borderLeft: "0")};
     border-right: ${({borderRight}) => (borderRight ? borderRight: "0")};
     transition: 0.2s ease-in;
-    padding-right: ${({paddingRight}) => (paddingRight ? paddingRight: "7rem")};
+    /* padding-right: ${({paddingRight}) => (paddingRight ? paddingRight: "7rem")}; */
     margin-top: ${({ marginTop }) => (marginTop ? marginTop : '5px')} ;
     padding-left: 30px;
     border-bottom: 2px solid #D9D9D9;

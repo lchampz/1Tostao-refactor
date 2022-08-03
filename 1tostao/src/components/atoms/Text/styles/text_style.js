@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Title = styled.div`
     
+
     color: ${({colorText}) => (colorText ? colorText : "#ffffff")};
     max-width: ${({maxwidthText}) => (maxwidthText ? maxwidthText : "640px")};
     font-size:${({sizeText}) => (sizeText ? sizeText : "1.8rem")};
@@ -10,6 +11,7 @@ export const Title = styled.div`
     margin-bottom: ${({bottomText}) => (bottomText ? bottomText: "auto")};
     margin-top: ${({marginTop}) => (marginTop ? marginTop : "auto")};
     text-align: ${({alignText}) => (alignText ? alignText : "auto")};
+    width: ${({widthh}) => (widthh ? widthh : "auto")};
 
     .cursor{
         background-color: #fff;

@@ -14,6 +14,7 @@ const InputRegister = ({
   type,
   marginBottom,
   tooltip,
+  paddingRight,
   visible,
   onFocus,
   onBlur,
@@ -34,6 +35,7 @@ const InputRegister = ({
             onFocus={onFocus}
             onBlur={onBlur}
             marginBottom={marginBottom}
+         
             display={display}
             icon={icon}
             value={value}

@@ -70,6 +70,7 @@ const CardLogin = () => {
 
                         <InputRegister
                             label={"Email"}
+                         
                             type="email"
                             marginRight="72%"
                             placeholder="Email"
@@ -78,6 +79,7 @@ const CardLogin = () => {
                             />
                         <InputRegister
                            label={"Senha"}
+                           
                            type="password"
                            marginRight="71%"
                            placeholder="Senha"
