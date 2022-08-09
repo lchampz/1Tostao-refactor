@@ -34,9 +34,7 @@ export const WrapperItems = styled.div`
 export const WrapperInputs = styled.div`
     display: flex;
     flex-direction: column;
-    
     margin-left: ${({ marginLeft }) => (marginLeft)};
-
 
     @media only screen and (max-width: 750px) {
         margin: 0 auto;
@@ -48,11 +46,16 @@ export const WrapperInputs = styled.div`
 export const WrapperBtns = styled.div`
     display: flex;
     flex-direction: column;
-    
-    @media only screen and (max-width: 750px) {
+
+    @media only screen and (max-width: 1050px) {
+        margin-left: 4rem;
+    }
+    @media only screen and (max-width: 650px) {
+        margin-left: 0;
         margin: 0 auto;
         align-items: center;
     }
+
 `
 
 export const Input = styled.input`
@@ -100,27 +103,27 @@ export const IconEmpty = styled.div`
 export const Button = styled.div`
     width: 170px;
     height: 40px;
-    background-color: #24d39a;
-    color: white;
+    background-color: ${({ disabled }) => (!disabled ? '#24d39a' : 'rgba(36, 211, 154, 0.5)')} ;
+    color: #828282;
     margin-top: 1rem;
     border-radius: 40px;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    cursor: pointer;
+    cursor: ${({ disabled }) => (!disabled ? 'pointer' : 'not-allowed')}; 
     transition: all 0.3s linear;
-    margin-bottom: 15rem;
 
     &:hover{
-        border: 3px solid #24d39a;
-        background-color: transparent;
-        color: #24d39a;
-        -webkit-box-shadow: 1px 1px 18px -6px rgba(36,211,154,0.31); 
-        box-shadow: 1px 1px 18px -6px rgba(36,211,154,0.31);
+        border: ${({ disabled }) => (!disabled ? '3px solid #24d39a' : '')};
+        background-color: ${({ disabled }) => (!disabled ? 'transparent' : 'rgba(36, 211, 154, 0.5)')};
+        color: ${({ disabled }) => (!disabled ? '#24d39a' : '#828282')};;
+        -webkit-box-shadow: ${({ disabled }) => (!disabled ? '1px 1px 18px -6px rgba(36,211,154,0.31)' : '')} 
+        box-shadow: ${({ disabled }) => (!disabled ? '1px 1px 18px -6px rgba(36,211,154,0.31)' : '')} 
+        
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 1200px) {
         margin-bottom: 1rem;
     }
 
