@@ -5,7 +5,7 @@ import {
   Button
 } from "./styled";
 
-const Modal = ({ display, cancel, confirm, children, size  }) => {
+const Modal = ({ display, cancel, confirm, children, size, bgColor, bgColorSecondary  }) => {
 
   return (
     display && (
@@ -13,8 +13,8 @@ const Modal = ({ display, cancel, confirm, children, size  }) => {
         <Wrapper>
           {children}
           <span style={{display: 'flex', width: '100%', height: '100%' }}>
-            <Button size={size} left bgColor={'#FA6D6D'} onClick={cancel}>Cancelar</Button>
-            <Button size={size} onClick={confirm}>Salvar</Button>
+            <Button size={size} left bgColor={bgColor || '#FA6D6D'} onClick={cancel}>Cancelar</Button>
+            <Button size={size} onClick={confirm} bgColor={'#24D39A' && bgColorSecondary}>Confirmar</Button>
           </span>
         </Wrapper>
       </Background>

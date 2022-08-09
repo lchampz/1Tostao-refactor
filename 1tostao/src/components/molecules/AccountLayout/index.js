@@ -15,6 +15,7 @@ import { useUserAuth } from "../../../request/hooks/Auth";
 import ImgWrapper from "../../atoms/ImgWrapper";
 import ModalSave from '../../atoms/ModalSave'
 import ModalAlter from '../../atoms/ModalAlter'
+import ModalDelete from '../../atoms/ModalDelete'
 
 const AccountLayout = () => {
   const { user, profile } = useUserAuth();
@@ -82,11 +83,12 @@ const AccountLayout = () => {
             <Button disabled>Salvar</Button>
           )}
           <AlterBtn onClick={() => setVisible({...visible, alter: true})} color={"#E4D54B"}>Alterar minha senha</AlterBtn>
-          <AlterBtn color={"#E44B4B"}>Deletar minha conta</AlterBtn>
+          <AlterBtn onClick={() => setVisible({...visible, delete: true})} color={"#E44B4B"}>Deletar minha conta</AlterBtn>
         </WrapperBtns>
       </WrapperItems>
       <ModalSave cancel={() => setVisible({...visible, save: false})} confirm={''} display={visible.save}/>
       <ModalAlter cancel={() => setVisible({...visible, alter: false})} display={visible.alter}/>
+      <ModalDelete cancel={() => setVisible({...visible, delete: false})} display={visible.delete}/>
     </Wrapper>
   );
 };

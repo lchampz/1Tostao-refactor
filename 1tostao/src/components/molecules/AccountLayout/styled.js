@@ -46,20 +46,14 @@ export const WrapperInputs = styled.div`
 export const WrapperBtns = styled.div`
     display: flex;
     flex-direction: column;
-    
-    @media only screen and (max-width: 750px) {
+
+    @media only screen and (max-width: 1050px) {
+        margin-left: 4rem;
+    }
+    @media only screen and (max-width: 650px) {
         margin-left: 0;
         margin: 0 auto;
         align-items: center;
-    }
-
-    @media only screen and (max-width: 870px) {
-        margin-left: 0;
-        
-    }
-
-    @media only screen and (max-width: 1040px) {
-        margin-left: 4rem;
     }
 
 `
@@ -110,7 +104,7 @@ export const Button = styled.div`
     width: 170px;
     height: 40px;
     background-color: ${({ disabled }) => (!disabled ? '#24d39a' : 'rgba(36, 211, 154, 0.5)')} ;
-    color: white;
+    color: #828282;
     margin-top: 1rem;
     border-radius: 40px;
     display: flex;
@@ -123,7 +117,7 @@ export const Button = styled.div`
     &:hover{
         border: ${({ disabled }) => (!disabled ? '3px solid #24d39a' : '')};
         background-color: ${({ disabled }) => (!disabled ? 'transparent' : 'rgba(36, 211, 154, 0.5)')};
-        color: ${({ disabled }) => (!disabled ? '#24d39a' : 'white')};;
+        color: ${({ disabled }) => (!disabled ? '#24d39a' : '#828282')};;
         -webkit-box-shadow: ${({ disabled }) => (!disabled ? '1px 1px 18px -6px rgba(36,211,154,0.31)' : '')} 
         box-shadow: ${({ disabled }) => (!disabled ? '1px 1px 18px -6px rgba(36,211,154,0.31)' : '')} 
         
