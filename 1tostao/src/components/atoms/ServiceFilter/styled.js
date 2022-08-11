@@ -140,6 +140,8 @@ export const Filters = styled.div`
 `
 
 export const FilterMenu = styled.div`
+  display: flex;
+  flex-direction: column;
   z-index: 999;
   background-color: #fff;
   width: 50%;
@@ -149,8 +151,6 @@ export const FilterMenu = styled.div`
   top: 0;
   right: -100%;
   transition: 850ms;
-  display: flex;
-  flex-direction: column;
   
   @media screen and (max-width: 650px) {
       width: 100%;
@@ -325,7 +325,7 @@ export const Remove = styled.h1`
   margin-left: 1rem;
   font-weight:bold;
   cursor: pointer;
-  @media screen and (max-width:650px) {
+  @media screen and (max-width:980px) {
       margin-left: 0.2rem;
      
     }
