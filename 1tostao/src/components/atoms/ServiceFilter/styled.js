@@ -325,6 +325,9 @@ export const Remove = styled.h1`
   margin-left: 1rem;
   font-weight:bold;
   cursor: pointer;
-
+  @media screen and (max-width:650px) {
+      margin-left: 0.2rem;
+     
+    }
 `
 
