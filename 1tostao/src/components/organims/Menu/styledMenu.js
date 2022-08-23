@@ -145,40 +145,38 @@ export const HamburguerMenu = styled.div`
 `
 
 export const MobileMenu = styled.div`
-    display: ${({ active }) => (active ? 'block' : 'none')};
+    display: flex;
     position: fixed;
-    width: 100%;
-    right: 0;
-    height: 15rem;
+    width: 50%;
+    flex-direction: column;
+    height: 100%;
     text-align: center;
     justify-content: center;
     align-items: center;
-    padding-top: 35px;
     background-color: ${({ bg }) => (bg ? bg : '')};
     color: ${({ color }) => (color ? color : '')};
     z-index: 997;
-    -webkit-transform: ${({active}) => (active ? 'translate(0, 0)' : 'translate(100%, 0)')};
-    transform: ${({active}) => (active ? 'translate(0, 0)' : 'translate(100%, 0)')};
-    transition: transform all 0.3s ease-out;
+    top: 0;
+    right: -100%;
+    transition: 850ms;
 
     @media screen and (min-width: 960px) {
         display: none;
     }
+    @media screen and (max-width:650px ) {
+        width: 100%;
+    }
 
     `
 export const PagesMenu = styled.li`
-    margin-top: 15px;
+    margin-top: 1rem;
     border-bottom: 1px solid #737373;
     padding-bottom: 5px;
     font-size: 0.9rem;
-    transition: all 0.1s ease-in;
     list-style-type: none;
 
-    &:first-child{
-        padding-top: 25px;
-    }
     &:last-child{
-        border-bottom: 4px solid #818181;
+        border-bottom: 1px solid #818181;
     }
 
     &:hover{

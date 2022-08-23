@@ -51,13 +51,7 @@ const Menu = ({padding}) => {
         }
     });
 
-    const toggleMenu = () => {
-        if(classMenu === true) {
-            setClassMenu(false)
-        } else {
-            setClassMenu(true)
-        }
-    }
+    const setMobileMenu = () => setClassMenu(!classMenu);
 
     const toggleConfig = () => {
         if(config === true) {
@@ -104,12 +98,12 @@ return(
                 </>
             }
             </Buttons>
-            <HamburguerMenu id="mobile" onClick={toggleMenu} color={style.color}>
+            <HamburguerMenu id="mobile" onClick={setMobileMenu} color={style.color}>
                 <FontAwesomeIcon className="icon" icon={faBars} />
             </HamburguerMenu>
         </Container>
-            <MobileMenu bg={style.bg} color={style.color} id="hamburguer" active={classMenu}>
-                    <PagesMenu  onClick={() => navigate(`/`)}>Home</PagesMenu>
+            {classMenu === false ? <MobileMenu></MobileMenu> : <MobileMenu style={{right:"0", transition:"350ms"}} bg={style.bg} color={style.color} id="hamburguer" >
+                    <PagesMenu onClick={() => navigate(`/`)}>Home</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/servicos`)}>Serviços</PagesMenu>
                     <PagesMenu onClick={() => navigate(`/about`)}>Sobre nós</PagesMenu>
                     {user ? <SubmenuLogged /> : (
@@ -118,7 +112,7 @@ return(
                         <PagesMenu onClick={() => navigate(`/register`)}>Registrar</PagesMenu>
                         </>
                     )}
-            </MobileMenu>
+            </MobileMenu>}
         </>
     );
 
