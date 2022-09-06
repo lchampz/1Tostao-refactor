@@ -10,18 +10,16 @@ import { useTheme } from './request/hooks/Theme';
 
 function App() {
   const { theme } = useTheme();
-  function reload(){
-    window.location.reload();
-   }
+  
 
   return (
     <>
     <AuthProvider >
-      <Router onClick={reload} >
+      <Router forceRefresh={true} >
         <Loading />
         <Body bg={ theme.colors.bg }>
           <Menu/>
-          <Rotas  />
+          <Rotas/>
         </Body>
       </Router>
     </AuthProvider>

@@ -1,11 +1,9 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { AboutUs, Home, Login, Register, Servicos, FAQ, Profile, Category, Support, Dashboard, Account, Send } from './pages'
 
 
 const Rotas = () => {
-
-    
 
     const routes = [
         { path: '/', name: 'Home', element: <Home/>},
