@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import aboutUs from '../../../assets/img/aboutUs.png'
+import { useNavigate } from 'react-router-dom';
 import graph from '../../../assets/img/graph.png'
 import {Container, Title, Img, CenterBorda, Text,Row, Column, Sobre, Borda, Video, Orientation} from './styled'
 
 const About= ( marginB, marginR, marginL, flex) => {
+
+
     return ( 
     <>
         <Container>

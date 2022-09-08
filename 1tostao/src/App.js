@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
 import Menu from './components/organims/Menu/Menu.js'
 import Rotas from './routes'
@@ -10,17 +10,18 @@ import { useTheme } from './request/hooks/Theme';
 
 function App() {
   const { theme } = useTheme();
-
-
+  function reload(){
+    window.location.reload();
+   }
 
   return (
     <>
     <AuthProvider >
-      <Router>
+      <Router onClick={reload} >
         <Loading />
         <Body bg={ theme.colors.bg }>
           <Menu/>
-          <Rotas />
+          <Rotas  />
         </Body>
       </Router>
     </AuthProvider>

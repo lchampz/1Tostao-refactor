@@ -22,7 +22,6 @@ const ServiceFilter = () => {
     const setArrowOrientation3 = () => setArrow3(!arrow3);
     const setArrowOrientation4 = () => setArrow4(!arrow4);
     const setArrowOrientation5 = () => setArrow5(!arrow5);
-    const [ordem, setOrdem] = useState(0);
 
     
     
@@ -41,7 +40,7 @@ const ServiceFilter = () => {
                     </Wrapper>
                 </Filter>
                     <Filtered>
-                        <h1 id="filter" >Filtrado por:</h1>
+                        <h1 id="filter">Filtrado por:</h1>
                         <Filters>
                             <ImgWrapper url={x} width="15px" height="15px" margin={'0px 15px 0px 10px'} cursor="pointer"/>
                             <h1 id="filtered">Programação</h1>
@@ -64,7 +63,7 @@ const ServiceFilter = () => {
                             </ApliedFilters>
                         <Title>
                             <Titles style={{fontSize:"1.2rem"}} >Ordenar Por</Titles>
-                            {arrow ? <FontAwesomeIcon className='flecha' onClick={setArrowOrientation} icon={faArrowUp} style={{cursor:"pointer", fontSize:"1.2rem"}} /> : <FontAwesomeIcon className='flecha' onClick={setArrowOrientation} icon={faArrowDown} style={{cursor:"pointer", fontSize:"1.2rem"}} /> }
+                            {arrow ? <FontAwesomeIcon className='flecha' onClick={setArrowOrientation} icon={faArrowUp} style={{cursor:"pointer", fontSize:"1.4rem"}} /> : <FontAwesomeIcon className='flecha' onClick={setArrowOrientation} icon={faArrowDown} style={{cursor:"pointer", fontSize:"1.4rem"}} /> }
                         </Title>
                         {arrow ? 
                         <Ordenado>
@@ -76,7 +75,7 @@ const ServiceFilter = () => {
                         : ""}
                        <Title>
                             <Titles style={{fontSize:"1.2rem"}}>Filtrar Por</Titles>
-                            {arrow2 ? <FontAwesomeIcon className='flecha' onClick={setArrowOrientation2} icon={faArrowUp} style={{cursor:"pointer", fontSize:"1.2rem"}} /> : <FontAwesomeIcon className='flecha' onClick={setArrowOrientation2} icon={faArrowDown} style={{cursor:"pointer", fontSize:"1.2rem"}} /> }
+                            {arrow2 ? <FontAwesomeIcon className='flecha' onClick={setArrowOrientation2} icon={faArrowUp} style={{cursor:"pointer", fontSize:"1.4rem"}} /> : <FontAwesomeIcon className='flecha' onClick={setArrowOrientation2} icon={faArrowDown} style={{cursor:"pointer", fontSize:"1.4rem"}} /> }
                        </Title>
                        {arrow2 ?
                        <>

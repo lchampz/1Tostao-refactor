@@ -5,8 +5,10 @@ import { AboutUs, Home, Login, Register, Servicos, FAQ, Profile, Category, Suppo
 
 const Rotas = () => {
 
+    
+
     const routes = [
-        { path: '/', name: 'Home', element: <Home />},
+        { path: '/', name: 'Home', element: <Home/>},
         { path: '/login', name: 'Login', element: <Login />},
         { path: '/register', name: 'Register', element: <Register />},
         { path: '/about', name: 'About', element: <AboutUs />},
@@ -20,8 +22,9 @@ const Rotas = () => {
         { path: '/support/myaccount', name: 'Account', element: <Account />},
     ]
 
+       
     return(
-        <Routes>
+        <Routes >
             {routes.map((routes, i) => (
                 <Route key={i} path={routes.path} element={routes.element}/>
             ))}
