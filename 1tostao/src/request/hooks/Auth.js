@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   
   const [user, setUser] = useState({});
   const [profile, setProfile] = useState();
+  const [service, setService] = useState();
 
     function logIn(email, password) {
       return signInWithEmailAndPassword(auth, email, password);
@@ -40,6 +41,13 @@ export const AuthProvider = ({ children }) => {
           setProfile(doc.data());
         })
       }
+      const getServices = async () => {
+        const docRef = query(collection(db, "servicos"));
+        const querySnapshot = await getDocs(docRef);
+        querySnapshot.forEach((doc) => {
+          setService(doc.data());
+        })
+      }
 
     
       useEffect(() => {
@@ -58,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
       getUsers();
     return(
-        <AuthContext.Provider value={{profile, user, getUsers,logIn, signUp, logOut, googleSignIn}}>
+        <AuthContext.Provider value={{profile, service, user, getUsers,logIn, signUp, logOut, googleSignIn}}>
             {children}
         </AuthContext.Provider>
     )

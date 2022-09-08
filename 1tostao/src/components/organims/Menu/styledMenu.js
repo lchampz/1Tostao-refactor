@@ -25,6 +25,7 @@ export const Header = styled.div`
 
 export const Pages = styled.li`
     font-size: 0.9rem;
+    
     margin-right: 40px;
     margin-left: 15px;
     display: block;
@@ -174,9 +175,12 @@ export const PagesMenu = styled.li`
     padding-bottom: 5px;
     font-size: 0.9rem;
     list-style-type: none;
-
+  
     &:last-child{
         border-bottom: 1px solid #818181;
+    }
+    &:first-child{
+        margin-top:5rem;
     }
 
     &:hover{

@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   border-bottom: 1px solid #eee;
+
 `
 export const Filter = styled.div`
   display: flex;
