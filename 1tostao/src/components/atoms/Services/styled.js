@@ -28,14 +28,14 @@ export const Service = styled.div`
     flex-direction: column;
     justify-content: center;
     border-radius: 25px;
-    width: 275px;
+    width: 265px;
     margin-right:1.5rem;
     margin-top:3rem;
     border: 3px solid #d0d0d0;
     height: 250px;
     transition: 50ms all ease-in;
     background-color: #484848;
-    box-shadow:rgba(0, 0, 0, 0.1)  8px 8px 10px;
+    box-shadow:rgba(0, 0, 0, 0.2)  8px 8px 10px;
     
     @media screen and (max-width:1280px){
         margin-right:4rem;
@@ -72,7 +72,7 @@ export const ServiceImage = styled.img`
     border-radius: 7px;
     height: 150px;
     transition: 0.1s all ease-in;
-    box-shadow:rgba(0, 0, 0, 0.40)  5px 5px 10px;
+    box-shadow:rgba(0, 0, 0, 0.4)  5px 5px 10px;
   
 `
 
