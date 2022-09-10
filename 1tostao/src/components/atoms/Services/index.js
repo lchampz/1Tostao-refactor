@@ -4,57 +4,44 @@ import service1 from "../../../assets/img/service1.png";
 import service2 from "../../../assets/img/service2.png";
 import service3 from "../../../assets/img/service3.png";
 import profilePic from './../../../assets/img/profile.png'
-import { useUserAuth } from '../../../request/hooks/Auth.js';
+import { useService } from '../../../request/hooks/Services.js';
+import {useUserAuth} from '../../../request/hooks/Auth'
+
 const Services = () => {
-    const { user, profile } = useUserAuth();
+    const {service } = useService();
+    const {user } = useUserAuth();
+ 
+    console.log(service)
     return ( 
         <Container>
             <ServiceWrapper>
-                <Service>
-                    <ServiceTitle>Eu vou programar em HTML</ServiceTitle>
-                    <div style={{display:"flex", flexDirection:"row", width:"250px", justifyContent:"flex-end"}}>
-                        <ServicePrice>
-                            <Price>R$20,00</Price>
-                        </ServicePrice>
-                    </div>
-                    <ServiceImage src={service1}/>
-
-                    <InfoService>
-                        <ClientImg src={user && user.photoURL ? user && user.photoURL : profilePic}/>
-                        <ClientName>{user && user.displayName ? user && user.displayName : profile && profile.username}</ClientName>
-                        <p id="avaliacao">3,6</p>
-                    </InfoService>
+            {service?.map(item => {
+                return(
+            <Service key={item.id}>
+                   
+                            <ServiceTitle>{item.nome}</ServiceTitle>
+                            <div style={{display:"flex", flexDirection:"row", width:"250px", justifyContent:"flex-end"}}>
+                                <ServicePrice>
+                                    <Price>R${item.preco}</Price>
+                                </ServicePrice>
+                            </div>
+                            <ServiceImage src={service1}/>
+        
+                            <InfoService>
+                                <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
+                                    <ClientImg src={user && user.photoURL ? user && user.photoURL : profilePic}/>
+                                    <ClientName>{item.autor}</ClientName>
+                                </div>
+                                <p id="avaliacao">3,6</p>
+                            </InfoService>
+                    
                 </Service>
-                <Service>
-                    <ServiceTitle>Eu vou programar em HTML</ServiceTitle>
-                    <div style={{display:"flex", flexDirection:"row", width:"250px", justifyContent:"flex-end"}}>
-                        <ServicePrice>
-                            <Price>R$20,00</Price>
-                        </ServicePrice>
-                    </div>
-                    <ServiceImage src={service2}/>
 
-                    <InfoService>
-                        <ClientImg src={user && user.photoURL ? user && user.photoURL : profilePic}/>
-                        <ClientName>{user && user.displayName ? user && user.displayName : profile && profile.username}</ClientName>
-                        <p id="avaliacao">3,6</p>
-                    </InfoService>
-                </Service>
-                <Service>
-                    <ServiceTitle>Eu vou programar em HTML</ServiceTitle>
-                    <div style={{display:"flex", flexDirection:"row", width:"250px", justifyContent:"flex-end"}}>
-                        <ServicePrice>
-                            <Price>R$20,00</Price>
-                        </ServicePrice>
-                    </div>
-                    <ServiceImage src={service3}/>
-
-                    <InfoService>
-                        <ClientImg src={user && user.photoURL ? user && user.photoURL : profilePic}/>
-                        <ClientName>{user && user.displayName ? user && user.displayName : profile && profile.username}</ClientName>
-                        <p id="avaliacao">3,6</p>
-                    </InfoService>
-                </Service>
+                )
+            }
+                 )}  
+                 
+               
             </ServiceWrapper>
         </Container>
      );

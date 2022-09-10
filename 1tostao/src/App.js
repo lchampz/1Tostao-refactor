@@ -6,6 +6,7 @@ import { Body } from './styled.js';
 import Loading from './components/organims/Loading';
 import { AuthProvider } from './request/hooks/Auth.js';
 import { useTheme } from './request/hooks/Theme';
+import { ServiceProvider } from './request/hooks/Services.js';
 
 
 function App() {
@@ -17,14 +18,17 @@ function App() {
   return (
     <>
     <AuthProvider >
-      <Router onClick={reload} >
-        <Loading />
-        <Body bg={ theme.colors.bg }>
-          <Menu/>
-          <Rotas  />
-        </Body>
-      </Router>
+      <ServiceProvider>
+        <Router onClick={reload} >
+          <Loading />
+            <Body bg={ theme.colors.bg }>
+              <Menu/>
+              <Rotas  />
+            </Body>
+          </Router>
+        </ServiceProvider>
     </AuthProvider>
+
     </>
   );
 }

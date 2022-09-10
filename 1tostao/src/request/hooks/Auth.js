@@ -41,13 +41,17 @@ export const AuthProvider = ({ children }) => {
           setProfile(doc.data());
         })
       }
-      const getServices = async () => {
-        const docRef = query(collection(db, "servicos"));
-        const querySnapshot = await getDocs(docRef);
-        querySnapshot.forEach((doc) => {
-          setService(doc.data());
-        })
-      }
+
+      const docRef = collection(db, "servicos");
+      useEffect(() => {
+        const getServices = async () => {
+          const data = await getDocs(docRef);
+          setService((data.docs.map((doc) => ({...doc.data(), id:doc.id}))));
+        }
+        getServices();
+      }, [])
+    
+
 
     
       useEffect(() => {
