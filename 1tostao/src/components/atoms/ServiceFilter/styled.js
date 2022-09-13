@@ -3,18 +3,19 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: #403b3b;
   width: 100%;
-  height: 50vh;
+  height: 350px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
   border-bottom: 1px solid #eee;
 `;
 export const Filter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  margin-top: 6rem;
   width: 100%;
   padding-bottom: 1rem;
   .img {

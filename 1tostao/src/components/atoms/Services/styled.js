@@ -29,7 +29,7 @@ export const Service = styled.div`
   justify-content: center;
   border-radius: 25px;
   width: 265px;
-  margin-right: 1.5rem;
+  margin: 1.5rem;
   margin-top: 3rem;
   border: 3px solid #d0d0d0;
   height: 250px;
@@ -37,9 +37,6 @@ export const Service = styled.div`
   background-color: #484848;
   box-shadow: rgba(0, 0, 0, 0.2) 8px 8px 10px;
 
-  @media screen and (max-width: 1280px) {
-    margin-right: 4rem;
-  }
   @media screen and (max-width: 1000px) {
     margin-right: 1.5rem;
   }
