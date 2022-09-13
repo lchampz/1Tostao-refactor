@@ -52,11 +52,7 @@ const Services = () => {
                     alignItems: "center",
                   }}
                 >
-                  <ClientImg
-                    src={
-                      user && user.photoURL ? user && user.photoURL : profilePic
-                    }
-                  />
+                  <ClientImg src={profilePic} />
                   <ClientName>{item.autor}</ClientName>
                 </div>
                 <p id="avaliacao">3,6</p>
