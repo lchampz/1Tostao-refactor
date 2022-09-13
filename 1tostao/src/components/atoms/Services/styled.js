@@ -74,6 +74,7 @@ export const ClientImg = styled.img`
   margin-right: 0.5rem;
   width: 35px;
   border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 8px 8px 10px;
 `;
 
 export const ClientName = styled.h3`
