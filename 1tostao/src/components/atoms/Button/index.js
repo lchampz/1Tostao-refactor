@@ -3,7 +3,7 @@ import { Btn } from './styled'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
-const Button = ({children, color, border, radius, weight, family, padding, width}) => {
+const Button = ({children, color, border, radius, weight, family, padding, width, click}) => {
     return (
             <Btn colorButton={color} 
                 borderButton={border} 
@@ -12,6 +12,7 @@ const Button = ({children, color, border, radius, weight, family, padding, width
                 familyButton={family} 
                 paddingButton={padding}
                 widthButton={width}
+                onClick={click}
             >
                 {children}
                 <FontAwesomeIcon className="icon" icon={faArrowRight}/>

@@ -54,7 +54,7 @@ const HeaderUser = ({width, position, marginL, marginMedia, marginLMedia, margin
                 <MenuUser>
                     <Username marginMedia={marginMedia} marginB={marginB} marginT={marginT} marginLe={marginLe}>{user && user.displayName ? user && user.displayName : profile && profile.username}</Username>
                     <Mensagem>Enviar mensagem</Mensagem>
-                    <Contratar>Contratar</Contratar>
+                    {profile ? <Contratar onClick={() => navigate('/profile/registerService')}>Cadastrar Serviço</Contratar> : <Contratar>Contratar</Contratar>}
                 </MenuUser>
                 <AboutUser>
                   <Sections onClick={() => switchTab(1)} style={tab === 1 ? {borderBottom: "1px solid #eee"} : {border:"none"}}>Portfólio</Sections>

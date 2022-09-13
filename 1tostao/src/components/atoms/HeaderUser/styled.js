@@ -58,7 +58,6 @@ export const UserImg = styled.img`
 
 export const Contratar = styled.button`
     margin-top: 1.1rem;
-    height: 2rem;
     width: 8rem;
     border: 1px solid #000;
     background-color: #24D39A;

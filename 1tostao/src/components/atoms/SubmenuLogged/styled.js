@@ -13,16 +13,15 @@ export const Wrapper = styled.div`
 
 export const Icon = styled.div`
     display: ${({ display }) => (display ? 'flex' : 'none')};
-    cursor: pointer;
 `
 
 export const StickyMenu = styled.div`
     min-width: 30rem;
     height:110vh;
     margin-top: 90vh;
-    display: ${({ display }) => (display ? 'flex' : 'none')};
     background-color: #191919;
     overflow-y: scroll;
+    display: ${({ display }) => (display ? 'flex' : 'none')};
 `
 
 export const WrapperHeader = styled.div`

@@ -83,6 +83,7 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
           width="2rem"
           height="2rem"
           margin="0px 50px 0px 0px"
+          cursor={'pointer'}
           url={img}
         />
       </Icon>
