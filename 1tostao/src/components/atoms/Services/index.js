@@ -22,7 +22,6 @@ const Services = () => {
   const { service } = useService();
   const { user } = useUserAuth();
 
-  console.log(service);
   return (
     <Container>
       <ServiceWrapper>
