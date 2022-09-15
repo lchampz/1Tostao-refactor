@@ -21,11 +21,12 @@ import {
   Wrapper,
 } from "./styled";
 import lupa from "../../../assets/img/lupa.png";
-import filter from "../../../assets/img/filter.png";
+import filterr from "../../../assets/img/filter.png";
 import downArrow from "../../../assets/img/downArrow.png";
 import x from "../../../assets/img/delete.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown, faX } from "@fortawesome/free-solid-svg-icons";
+import { useService } from "../../../request/hooks/Services";
 
 const ServiceFilter = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -40,6 +41,10 @@ const ServiceFilter = () => {
   const setArrowOrientation3 = () => setArrow3(!arrow3);
   const setArrowOrientation4 = () => setArrow4(!arrow4);
   const setArrowOrientation5 = () => setArrow5(!arrow5);
+  const { filter, getServicesFiltered, removeFilter } = useService();
+  const [border, setBorder] = useState();
+  const [filtrado, setFiltrado] = useState(0);
+  const [filtragem, setFiltragem] = useState();
 
   return (
     <>
@@ -56,7 +61,7 @@ const ServiceFilter = () => {
             <Search placeholder="Encontre o seu serviço..." />
             <DropDown onClick={showSideBar}>
               <ImgWrapper
-                url={filter}
+                url={filterr}
                 width="25px"
                 height="25px"
                 margin={"0px 0px 0px 20px"}
@@ -71,19 +76,29 @@ const ServiceFilter = () => {
             </DropDown>
           </Wrapper>
         </Filter>
-        <Filtered>
-          <h1 id="filter">Filtrado por:</h1>
-          <Filters>
-            <ImgWrapper
-              url={x}
-              width="15px"
-              height="15px"
-              margin={"0px 15px 0px 10px"}
-              cursor="pointer"
-            />
-            <h1 id="filtered">Programação</h1>
-          </Filters>
-        </Filtered>
+        {filtrado === 1 ? (
+          <Filtered>
+            <h1 id="filter">Filtrado por:</h1>
+            <Filters
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setFiltrado(0);
+                removeFilter();
+              }}
+            >
+              <ImgWrapper
+                url={x}
+                width="15px"
+                height="15px"
+                margin={"0px 15px 0px 10px"}
+                cursor="pointer"
+              />
+              <h1 id="filtered">{filtragem}</h1>
+            </Filters>
+          </Filtered>
+        ) : (
+          ""
+        )}
         <h1
           style={{
             fontSize: "2.2rem",
@@ -191,20 +206,76 @@ const ServiceFilter = () => {
               </Title>
               {arrow4 ? (
                 <Categorias>
-                  <p className="categoria">Desenho</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Narração</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Produção audio-visual</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Fotografia</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Programação</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Artes</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Edição</p>
-                  <input className="checkbox" type="checkbox"></input>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Desenho");
+                      setFiltragem("Desenho");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Desenho
+                  </p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Narração");
+                      setFiltragem("Narração");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Narração
+                  </p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Produção audio-visual");
+                      setFiltragem("Produção audio-visual");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Produção audio-visual
+                  </p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Fotografia");
+                      setFiltragem("Fotografia");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Fotografia
+                  </p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Programação");
+                      setFiltragem("Programação");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Programação
+                  </p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Artes");
+                      setFiltragem("Artes");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Artes
+                  </p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("categoria", "Edição");
+                      setFiltragem("Edição");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Edição
+                  </p>
                 </Categorias>
               ) : (
                 ""
@@ -229,18 +300,60 @@ const ServiceFilter = () => {
               </Title>
               {arrow3 ? (
                 <Categorias>
-                  <p className="categoria">No mesmo dia</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Até 1 dia</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Até 2 dias</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Até 3 dias</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Até uma semana</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">Até um mês</p>
-                  <input className="checkbox" type="checkbox"></input>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("entrega", 1);
+                      setFiltragem("Até 1 dia");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até 1 dia
+                  </p>
+
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("entrega", 2);
+                      setFiltragem("Até 2 dias");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até 2 dias
+                  </p>
+
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("entrega", 3);
+                      setFiltragem("Até 3 dias");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até 3 dias
+                  </p>
+
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("entrega", 7);
+                      setFiltragem("Até uma semana");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até uma semana
+                  </p>
+
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFiltered("entrega", 30);
+                      setFiltragem("Até um mês");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até um mês
+                  </p>
                 </Categorias>
               ) : (
                 ""
@@ -265,18 +378,22 @@ const ServiceFilter = () => {
               </Title>
               {arrow5 ? (
                 <Categorias>
-                  <p className="categoria">Até R$20,00</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">R$20,00 à R$40,00</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">R$40,00 à R$60,00</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">R$60,00 à R$80,00</p>
-                  <input className="checkbox" type="checkbox"></input>
-                  <p className="categoria">R$80,00 à R$100,00</p>
-                  <input className="checkbox" type="checkbox"></input>
+                  <p
+                    className="categoria"
+                    onClick={() => getServicesFiltered("preco", 20)}
+                  >
+                    Até R$20,00
+                  </p>
+
+                  <p className="categoria">Até R$40,00</p>
+
+                  <p className="categoria">Até R$60,00</p>
+
+                  <p className="categoria">Até R$80,00</p>
+
+                  <p className="categoria">Até R$100,00</p>
+
                   <p className="categoria">Mais de R$100,00</p>
-                  <input className="checkbox" type="checkbox"></input>
                 </Categorias>
               ) : (
                 ""
@@ -287,8 +404,9 @@ const ServiceFilter = () => {
           )}
 
           <Buttons>
-            <Aplicar type="submit" value="Aplicar" />
-            <Remove>Remover Filtros X</Remove>
+            <Remove onClick={removeFilter} style={{ marginBottom: "1rem" }}>
+              Remover Filtros X
+            </Remove>
           </Buttons>
         </FilterMenu>
       )}

@@ -49,7 +49,7 @@ export const Service = styled.div`
 
 export const InfoService = styled.div`
   margin-top: 0.4rem;
-  width: 92%;
+  width: 93%;
   display: flex;
   flex-direction: row;
   align-items: center;

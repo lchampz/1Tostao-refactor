@@ -251,8 +251,7 @@ export const Categorias = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin-left: 2rem;
-  margin-right: 5rem;
+  margin-left: 3rem;
 
   @media screen and (max-width: 650px) {
     margin-left: 1rem;
@@ -260,6 +259,14 @@ export const Categorias = styled.div`
   }
   .categoria {
     margin-top: 1rem;
+    border-bottom: 3px solid gray;
+    border-radius: 3px;
+    margin-right: 2rem;
+
+    &:hover {
+      border-bottom: 3px solid rgb(20, 202, 138);
+      cursor: pointer;
+    }
   }
   .checkbox {
     margin-top: 1.15rem;
@@ -299,7 +306,6 @@ export const Aplicar = styled.input`
 `;
 export const Remove = styled.h1`
   color: gray;
-  margin-left: 1rem;
   font-weight: bold;
   cursor: pointer;
   @media screen and (max-width: 980px) {
