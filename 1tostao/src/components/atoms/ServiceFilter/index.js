@@ -207,7 +207,7 @@ const ServiceFilter = () => {
                 className="ordenado3"
                 onClick={() => {
                   sortByPriceMaior();
-                  setFiltragem("Preço Maior-Maior");
+                  setFiltragem("Preço Maior-Menor");
                   setFiltrado(1);
                 }}
               >
