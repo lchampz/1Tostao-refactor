@@ -3,15 +3,17 @@ import {
   Container,
   ServiceWrapper,
   Service,
-  Price,
+  Item,
   ServicePrice,
   InfoService,
   ClientImg,
   ClientName,
   ServiceTitle,
+  Text,
   ServiceImage,
+  ServiceCategory,
 } from "./styled";
-import service1 from "../../../assets/img/service1.png";
+import service1 from "../../../assets/img/service2.png";
 import profilePic from "./../../../assets/img/profile.png";
 import { useService } from "../../../request/hooks/Services.js";
 import { useUserAuth } from "../../../request/hooks/Auth";
@@ -34,8 +36,11 @@ const Services = () => {
                       justifyContent: "flex-end",
                     }}
                   >
+                    <ServiceCategory>
+                      <Item>R${item.preco}</Item>
+                    </ServiceCategory>
                     <ServicePrice>
-                      <Price>R${item.preco}</Price>
+                      <Item>R${item.preco}</Item>
                     </ServicePrice>
                   </div>
                   <ServiceImage src={service1} />
@@ -89,9 +94,10 @@ const Services = () => {
                     }}
                   >
                     <ServicePrice>
-                      <Price>R${item.preco}</Price>
+                      <Item>R${item.preco}</Item>
                     </ServicePrice>
                   </div>
+
                   <ServiceImage src={service1} />
 
                   <InfoService>
@@ -127,6 +133,11 @@ const Services = () => {
                       ⭐
                     </p>
                   </InfoService>
+                  <div>
+                    <ServiceCategory>
+                      <Text>{item.categoria}</Text>
+                    </ServiceCategory>
+                  </div>
                 </Service>
               );
             })}
