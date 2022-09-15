@@ -1,7 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 import db from "../../services/Firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+  OrderByDirection,
+} from "firebase/firestore";
 
 export const ServiceContext = createContext({});
 
@@ -44,6 +51,20 @@ export const ServiceProvider = ({ children }) => {
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
+  const sortByPriceMenor = async () => {
+    const searched = query(docRef, orderBy("preco"));
+    const servicesFiltered = await getDocs(searched);
+    setFilter(
+      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
+  };
+  const sortByPriceMaior = async () => {
+    const searched = query(docRef, orderBy("preco", "desc"));
+    const servicesFiltered = await getDocs(searched);
+    setFilter(
+      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
+  };
 
   const removeFilter = () => {
     setFilter(undefined);
@@ -58,6 +79,8 @@ export const ServiceProvider = ({ children }) => {
         getServiceSearch,
         getServicesFilteredByPrice,
         removeFilter,
+        sortByPriceMenor,
+        sortByPriceMaior,
       }}
     >
       {children}

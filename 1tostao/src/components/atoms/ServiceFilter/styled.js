@@ -237,6 +237,42 @@ export const Ordenado = styled.div`
       color: rgb(20, 202, 138);
     }
   }
+  .ordenado1 {
+    margin-left: 1.8rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    @media screen and (max-width: 650px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    &:hover {
+      color: rgb(20, 202, 138);
+    }
+  }
+  .ordenado2 {
+    margin-left: 1.8rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    @media screen and (max-width: 650px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    &:hover {
+      color: rgb(20, 202, 138);
+    }
+  }
+  .ordenado3 {
+    margin-left: 1.8rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    @media screen and (max-width: 650px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    &:hover {
+      color: rgb(20, 202, 138);
+    }
+  }
 `;
 
 export const ApplyFilters = styled.div`

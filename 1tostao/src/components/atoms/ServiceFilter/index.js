@@ -46,10 +46,13 @@ const ServiceFilter = () => {
     removeFilter,
     getServiceSearch,
     getServicesFilteredByPrice,
+    sortByPriceMenor,
+    sortByPriceMaior,
   } = useService();
   const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
   const [filtragem, setFiltragem] = useState();
+
   return (
     <>
       <Container>
@@ -137,18 +140,29 @@ const ServiceFilter = () => {
           <Title>
             <Titles style={{ fontSize: "1.2rem" }}>Filtros Aplicados</Titles>
           </Title>
-          <ApliedFilters>
-            <h2 id="applied-filter">Preço Menor-Maior</h2>
-            <FontAwesomeIcon
-              icon={faX}
-              style={{
-                cursor: "pointer",
-                marginTop: "1rem",
-                marginRight: "2rem",
-                fontSize: "0.9rem",
+          {filtrado === 1 ? (
+            <ApliedFilters
+              onClick={() => {
+                setFiltrado(0);
+                removeFilter();
               }}
-            />
-          </ApliedFilters>
+            >
+              <h1 id="applied-filter">{filtragem}</h1>
+              <FontAwesomeIcon
+                icon={faX}
+                style={{
+                  cursor: "pointer",
+                  marginTop: "1rem",
+                  marginRight: "2rem",
+                  fontSize: "0.9rem",
+                }}
+              />
+            </ApliedFilters>
+          ) : (
+            <ApliedFilters>
+              <h1 id="applied-filter">Nenhum filtro aplicado!</h1>
+            </ApliedFilters>
+          )}
           <Title>
             <Titles style={{ fontSize: "1.2rem" }}>Ordenar Por</Titles>
             {arrow ? (
@@ -169,10 +183,36 @@ const ServiceFilter = () => {
           </Title>
           {arrow ? (
             <Ordenado>
-              <h2 className="ordenado">Mais Recentes</h2>
-              <h2 className="ordenado">Melhor Avaliação</h2>
-              <h2 className="ordenado">Preço Menor-Maior</h2>
-              <h2 className="ordenado">Preço Maior-Menor</h2>
+              <h2
+                className="ordenado"
+                onClick={() => {
+                  setFiltragem("Mais Recentes");
+                  setFiltrado(1);
+                }}
+              >
+                Mais Recentes
+              </h2>
+              {/* <h2 className="ordenado1">Melhor Avaliação</h2> */}
+              <h2
+                className="ordenado2"
+                onClick={() => {
+                  sortByPriceMenor();
+                  setFiltragem("Preço Menor-Maior");
+                  setFiltrado(1);
+                }}
+              >
+                Preço Menor-Maior
+              </h2>
+              <h2
+                className="ordenado3"
+                onClick={() => {
+                  sortByPriceMaior();
+                  setFiltragem("Preço Maior-Maior");
+                  setFiltrado(1);
+                }}
+              >
+                Preço Maior-Menor
+              </h2>
             </Ordenado>
           ) : (
             ""
