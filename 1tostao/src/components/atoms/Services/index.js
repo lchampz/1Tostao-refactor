@@ -36,9 +36,6 @@ const Services = () => {
                       justifyContent: "flex-end",
                     }}
                   >
-                    <ServiceCategory>
-                      <Item>R${item.preco}</Item>
-                    </ServiceCategory>
                     <ServicePrice>
                       <Item>R${item.preco}</Item>
                     </ServicePrice>
@@ -78,6 +75,11 @@ const Services = () => {
                       ⭐
                     </p>
                   </InfoService>
+                  <div>
+                    <ServiceCategory>
+                      <Text>{item.categoria}</Text>
+                    </ServiceCategory>
+                  </div>
                 </Service>
               );
             })

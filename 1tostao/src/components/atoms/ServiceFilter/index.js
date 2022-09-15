@@ -504,7 +504,14 @@ const ServiceFilter = () => {
           )}
 
           <Buttons>
-            <Remove onClick={removeFilter} style={{ marginBottom: "1rem" }}>
+            <Remove
+              onClick={() => {
+                removeFilter();
+                setFiltrado(0);
+                removeFilter();
+              }}
+              style={{ marginBottom: "1rem" }}
+            >
               Remover Filtros X
             </Remove>
           </Buttons>
