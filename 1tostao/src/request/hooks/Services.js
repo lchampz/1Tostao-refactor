@@ -25,6 +25,25 @@ export const ServiceProvider = ({ children }) => {
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
+  const getServicesFilteredByPrice = async (sinal, valor) => {
+    const filtered = query(docRef, where("preco", sinal, valor));
+    const servicesFiltered = await getDocs(filtered);
+    setFilter(
+      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
+  };
+
+  const getServiceSearch = async (text) => {
+    const searched = query(
+      docRef,
+      where("nome", "<=", text + "~"),
+      where("nome", ">=", text)
+    );
+    const servicesFiltered = await getDocs(searched);
+    setFilter(
+      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
+  };
 
   const removeFilter = () => {
     setFilter(undefined);
@@ -32,7 +51,14 @@ export const ServiceProvider = ({ children }) => {
 
   return (
     <ServiceContext.Provider
-      value={{ service, filter, getServicesFiltered, removeFilter }}
+      value={{
+        service,
+        filter,
+        getServicesFiltered,
+        getServiceSearch,
+        getServicesFilteredByPrice,
+        removeFilter,
+      }}
     >
       {children}
     </ServiceContext.Provider>

@@ -41,11 +41,15 @@ const ServiceFilter = () => {
   const setArrowOrientation3 = () => setArrow3(!arrow3);
   const setArrowOrientation4 = () => setArrow4(!arrow4);
   const setArrowOrientation5 = () => setArrow5(!arrow5);
-  const { filter, getServicesFiltered, removeFilter } = useService();
+  const {
+    getServicesFiltered,
+    removeFilter,
+    getServiceSearch,
+    getServicesFilteredByPrice,
+  } = useService();
   const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
   const [filtragem, setFiltragem] = useState();
-
   return (
     <>
       <Container>
@@ -58,7 +62,14 @@ const ServiceFilter = () => {
               margin={"0px 0px 0px 10px"}
               cursor="pointer"
             />
-            <Search placeholder="Encontre o seu serviço..." />
+            <Search
+              type="text"
+              onChange={(e) => {
+                getServiceSearch(e.target.value);
+              }}
+              placeholder="Encontre o seu serviço..."
+            />
+
             <DropDown onClick={showSideBar}>
               <ImgWrapper
                 url={filterr}
@@ -380,20 +391,69 @@ const ServiceFilter = () => {
                 <Categorias>
                   <p
                     className="categoria"
-                    onClick={() => getServicesFiltered("preco", 20)}
+                    onClick={() => {
+                      getServicesFilteredByPrice("<=", 20);
+                      setFiltragem("Até R$20,00");
+                      setFiltrado(1);
+                    }}
                   >
                     Até R$20,00
                   </p>
 
-                  <p className="categoria">Até R$40,00</p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFilteredByPrice("<=", 40);
+                      setFiltragem("Até R$40,00");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até R$40,00
+                  </p>
 
-                  <p className="categoria">Até R$60,00</p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFilteredByPrice("<=", 60);
+                      setFiltragem("Até R$60,00");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até R$60,00
+                  </p>
 
-                  <p className="categoria">Até R$80,00</p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFilteredByPrice("<=", 80);
+                      setFiltragem("Até R$80,00");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até R$80,00
+                  </p>
 
-                  <p className="categoria">Até R$100,00</p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFilteredByPrice("<=", 100);
+                      setFiltragem("Até R$100,00");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Até R$100,00
+                  </p>
 
-                  <p className="categoria">Mais de R$100,00</p>
+                  <p
+                    className="categoria"
+                    onClick={() => {
+                      getServicesFilteredByPrice(">", 100);
+                      setFiltragem("Mais de R$100,00");
+                      setFiltrado(1);
+                    }}
+                  >
+                    Mais de R$100,00
+                  </p>
                 </Categorias>
               ) : (
                 ""

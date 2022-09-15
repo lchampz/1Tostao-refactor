@@ -18,8 +18,6 @@ import { useUserAuth } from "../../../request/hooks/Auth";
 
 const Services = () => {
   const { service, filter } = useService();
-  const { user } = useUserAuth();
-  console.log(filter);
   return (
     <Container>
       <ServiceWrapper>
