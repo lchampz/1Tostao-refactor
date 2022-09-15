@@ -23,8 +23,8 @@ export const ServiceWrapper = styled.div`
 `;
 
 export const Service = styled.div`
-  align-items: center;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   border-radius: 25px;
@@ -33,6 +33,7 @@ export const Service = styled.div`
   margin-top: 3rem;
   border: 3px solid #d0d0d0;
   height: 250px;
+  cursor: pointer;
   transition: 50ms all ease-in;
   background-color: #25282b;
   box-shadow: rgba(0, 0, 0, 0.2) 8px 8px 10px;
@@ -59,7 +60,8 @@ export const InfoService = styled.div`
 export const ServiceTitle = styled.h1`
   margin-bottom: 0.5rem;
   text-align: center;
-  width: 250px;
+  font-size: 15px;
+  width: 235px;
 `;
 
 export const ServiceImage = styled.img`
@@ -99,10 +101,8 @@ export const ServicePrice = styled.div`
 
 export const Item = styled.p``;
 export const ServiceCategory = styled.div`
-  position: absolute;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  position: absolute;
   align-items: center;
   justify-content: center;
   background-color: rgb(1, 160, 138);
