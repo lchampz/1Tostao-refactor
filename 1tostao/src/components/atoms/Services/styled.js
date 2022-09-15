@@ -106,9 +106,9 @@ export const ServiceCategory = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgb(1, 160, 138);
-  height: 30px;
+  height: 33px;
   color: #000;
-  box-shadow: rgba(4, 4, 4, 1) 5px 5px 2.6px;
+  box-shadow: rgba(4, 4, 4, 1) 5px 5px 2.2px;
   width: 120px;
   font-weight: bold;
 `;
