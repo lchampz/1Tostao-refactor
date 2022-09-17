@@ -17,15 +17,11 @@ export const Filter = styled.div`
   justify-content: center;
   margin-top: 6rem;
   width: 100%;
-  padding-bottom: 1rem;
+
   .img {
     display: block;
     position: block;
     z-index: 999;
-  }
-
-  @media screen and (max-width: 480px) {
-    margin-top: 2rem;
   }
 `;
 export const Wrapper = styled.div`
@@ -106,6 +102,7 @@ export const Filtered = styled.div`
   color: #fff;
   @media screen and (max-width: 480px) {
     margin-top: 2rem;
+    padding-top: 1rem;
   }
 
   #filter {

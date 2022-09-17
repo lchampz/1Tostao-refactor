@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-color: #403b3b;
   padding-bottom: 2rem;
   padding-top: 1rem;
+  height: 100%;
 `;
 
 export const ServiceWrapper = styled.div`

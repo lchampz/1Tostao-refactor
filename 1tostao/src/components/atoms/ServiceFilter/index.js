@@ -27,6 +27,7 @@ import x from "../../../assets/img/delete.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown, faX } from "@fortawesome/free-solid-svg-icons";
 import { useService } from "../../../request/hooks/Services";
+import { reload } from "firebase/auth";
 
 const ServiceFilter = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -47,6 +48,7 @@ const ServiceFilter = () => {
     getServiceSearch,
     getServicesFilteredByPrice,
     sortByPriceMenor,
+    getServicesFilteredByTime,
     sortByPriceMaior,
   } = useService();
   const [border, setBorder] = useState();
@@ -56,6 +58,17 @@ const ServiceFilter = () => {
   return (
     <>
       <Container>
+        <h1
+          style={{
+            fontSize: "2.2rem",
+            color: "#eee",
+            marginTop: "1rem",
+            marginBottom: "-2.5rem",
+            marginLeft: "0",
+          }}
+        >
+          Serviços
+        </h1>
         <Filter>
           <Wrapper>
             <ImgWrapper
@@ -113,17 +126,6 @@ const ServiceFilter = () => {
         ) : (
           ""
         )}
-        <h1
-          style={{
-            fontSize: "2.2rem",
-            color: "#eee",
-            marginTop: "2rem",
-            marginBottom: "-1.5rem",
-            marginLeft: "0",
-          }}
-        >
-          Serviços
-        </h1>
       </Container>
       {sideBar === false ? (
         <FilterMenu></FilterMenu>
@@ -188,6 +190,7 @@ const ServiceFilter = () => {
                 onClick={() => {
                   setFiltragem("Mais Recentes");
                   setFiltrado(1);
+                  showSideBar();
                 }}
               >
                 Mais Recentes
@@ -199,6 +202,7 @@ const ServiceFilter = () => {
                   sortByPriceMenor();
                   setFiltragem("Preço Menor-Maior");
                   setFiltrado(1);
+                  showSideBar();
                 }}
               >
                 Preço Menor-Maior
@@ -209,6 +213,7 @@ const ServiceFilter = () => {
                   sortByPriceMaior();
                   setFiltragem("Preço Maior-Menor");
                   setFiltrado(1);
+                  showSideBar();
                 }}
               >
                 Preço Maior-Menor
@@ -263,6 +268,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Desenho");
                       setFiltragem("Desenho");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Desenho
@@ -273,6 +279,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Narração");
                       setFiltragem("Narração");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Narração
@@ -283,6 +290,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Produção audio-visual");
                       setFiltragem("Produção audio-visual");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Produção audio-visual
@@ -293,6 +301,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Fotografia");
                       setFiltragem("Fotografia");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Fotografia
@@ -303,6 +312,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Programação");
                       setFiltragem("Programação");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Programação
@@ -313,6 +323,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Artes");
                       setFiltragem("Artes");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Artes
@@ -323,6 +334,7 @@ const ServiceFilter = () => {
                       getServicesFiltered("categoria", "Edição");
                       setFiltragem("Edição");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Edição
@@ -354,9 +366,10 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("entrega", 1);
+                      getServicesFilteredByTime(1);
                       setFiltragem("Até 1 dia");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até 1 dia
@@ -365,9 +378,10 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("entrega", 2);
+                      getServicesFilteredByTime(2);
                       setFiltragem("Até 2 dias");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até 2 dias
@@ -376,9 +390,10 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("entrega", 3);
+                      getServicesFilteredByTime(3);
                       setFiltragem("Até 3 dias");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até 3 dias
@@ -387,9 +402,10 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("entrega", 7);
+                      getServicesFilteredByTime(7);
                       setFiltragem("Até uma semana");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até uma semana
@@ -398,9 +414,10 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("entrega", 30);
+                      getServicesFilteredByTime(30);
                       setFiltragem("Até um mês");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até um mês
@@ -435,6 +452,7 @@ const ServiceFilter = () => {
                       getServicesFilteredByPrice("<=", 20);
                       setFiltragem("Até R$20,00");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até R$20,00
@@ -446,6 +464,7 @@ const ServiceFilter = () => {
                       getServicesFilteredByPrice("<=", 40);
                       setFiltragem("Até R$40,00");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até R$40,00
@@ -457,6 +476,7 @@ const ServiceFilter = () => {
                       getServicesFilteredByPrice("<=", 60);
                       setFiltragem("Até R$60,00");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até R$60,00
@@ -468,6 +488,7 @@ const ServiceFilter = () => {
                       getServicesFilteredByPrice("<=", 80);
                       setFiltragem("Até R$80,00");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até R$80,00
@@ -479,6 +500,7 @@ const ServiceFilter = () => {
                       getServicesFilteredByPrice("<=", 100);
                       setFiltragem("Até R$100,00");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Até R$100,00
@@ -490,6 +512,7 @@ const ServiceFilter = () => {
                       getServicesFilteredByPrice(">", 100);
                       setFiltragem("Mais de R$100,00");
                       setFiltrado(1);
+                      showSideBar();
                     }}
                   >
                     Mais de R$100,00

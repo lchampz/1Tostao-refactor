@@ -1,14 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 import db from "../../services/Firebase";
-import {
-  collection,
-  getDocs,
-  orderBy,
-  query,
-  where,
-  OrderByDirection,
-} from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 
 export const ServiceContext = createContext({});
 
@@ -32,6 +25,13 @@ export const ServiceProvider = ({ children }) => {
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
+  const getServicesFilteredByTime = async (valor) => {
+    const filtered = query(docRef, where("entrega", "<=", valor));
+    const servicesFiltered = await getDocs(filtered);
+    setFilter(
+      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
+  };
   const getServicesFilteredByPrice = async (sinal, valor) => {
     const filtered = query(docRef, where("preco", sinal, valor));
     const servicesFiltered = await getDocs(filtered);
@@ -43,14 +43,16 @@ export const ServiceProvider = ({ children }) => {
   const getServiceSearch = async (text) => {
     const searched = query(
       docRef,
-      where("nome", "<=", text + "~"),
+      where("nome", "<=", text + "\uf8ff"),
       where("nome", ">=", text)
     );
+
     const servicesFiltered = await getDocs(searched);
     setFilter(
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
+
   const sortByPriceMenor = async () => {
     const searched = query(docRef, orderBy("preco"));
     const servicesFiltered = await getDocs(searched);
@@ -81,6 +83,7 @@ export const ServiceProvider = ({ children }) => {
         removeFilter,
         sortByPriceMenor,
         sortByPriceMaior,
+        getServicesFilteredByTime,
       }}
     >
       {children}
