@@ -40,7 +40,7 @@ const Services = () => {
                       <Item>R${item.preco}</Item>
                     </ServicePrice>
                   </div>
-                  <ServiceImage src={service1} />
+                  <ServiceImage alt={item.desc} src={service1} />
 
                   <InfoService>
                     <div
@@ -100,7 +100,7 @@ const Services = () => {
                     </ServicePrice>
                   </div>
 
-                  <ServiceImage src={service1} />
+                  <ServiceImage alt={item.desc} src={service1} />
 
                   <InfoService>
                     <div

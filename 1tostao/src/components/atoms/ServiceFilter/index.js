@@ -265,13 +265,13 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Desenho");
-                      setFiltragem("Desenho");
+                      getServicesFiltered("categoria", "Arte");
+                      setFiltragem("Arte");
                       setFiltrado(1);
                       showSideBar();
                     }}
                   >
-                    Desenho
+                    Arte
                   </p>
                   <p
                     className="categoria"
