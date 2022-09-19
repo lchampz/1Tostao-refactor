@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Content, Link } from "./styled.js";
 import { useTheme } from "../../../request/hooks/Theme";
 
-const Cards = ({ children, marginTop, color, url, link }) => {
+const Cards = ({ children, marginTop, color, url, link, alt }) => {
   const { theme } = useTheme();
 
   return (
@@ -15,7 +15,7 @@ const Cards = ({ children, marginTop, color, url, link }) => {
             carouselHover={theme.colors.carouselHover}
             href={link}
           >
-            {children}
+            {children}<img alt={alt} src={url} style={url ? { display: 'none' } : { display: 'flex' }} />
           </Link>
         </div>
       </Content>

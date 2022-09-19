@@ -1,5 +1,10 @@
 import { addDoc, collection } from "firebase/firestore";
 import db from "./Firebase";
+import { getStorage, ref, uploadString } from "firebase/storage";
+import { encodeBase64 } from '../request/utils/base64'
+
+const storage = getStorage();
+const storageRef = ref(storage, 'imgs');
 
 export async function createService(
     autor, categoria, desc, entrega, img, nome, preco, uid
@@ -28,4 +33,12 @@ export async function createService(
   } catch (e) {
     console.log("[ERROR]: ", e);
   }
+}
+
+export async function uploadImg(code) {
+  const base64 = await encodeBase64(code)
+
+  uploadString(storageRef, base64, 'base64').then((snapshot) => {
+    console.log('Uploaded a base64 string!', snapshot);
+  });
 }

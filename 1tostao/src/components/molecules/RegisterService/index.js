@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Wrapper,
   WrapperTitle,
@@ -13,9 +13,11 @@ import {
 import MyDropzone from "../../atoms/Dropzone";
 import { useUserAuth } from "../../../request/hooks/Auth";
 import { createService } from "../../../services/InsertService";
+import { useDrop } from "../../../request/hooks/Dropzone";
 
 const RegisterService = () => {
   const { profile } = useUserAuth();
+  const { dropzone } = useDrop();
 
   const [data, setData] = useState({
     nome: null,
@@ -23,7 +25,7 @@ const RegisterService = () => {
     desc: null,
     entrega: 1,
     categoria: null,
-    img: "",
+    img: null,
     preco: null,
     uid: profile?.uid,
   });
@@ -43,6 +45,21 @@ const RegisterService = () => {
     }
   };
 
+  const handleSubmit = () => {
+    console.log({
+        autor: data.autor,
+        cat: data.categoria,
+        desc: data.desc,
+        entrega: data.entrega,
+        drop: dropzone,
+        nome: data.nome,
+        preco: data.preco,
+        uid: data.uid
+    }
+        
+      )
+  }
+
   return (
     <Wrapper>
       <WrapperTitle>Registre um novo serviço</WrapperTitle>
@@ -53,7 +70,7 @@ const RegisterService = () => {
           onChange={(e) => setData({ ...data, nome: e.target.value })}
         />
         <Label>Imagem do serviço:</Label>
-        <MyDropzone />
+        <MyDropzone/>
         <Label>Descrição do serviço:</Label>
         <Input
           placeholder="Faça uma breve descrição sobre o serviço..."
@@ -96,18 +113,7 @@ const RegisterService = () => {
         </WrapperWarning>
         {data.nome && data.preco && data.desc && data.categoria ? (
           <BtnRegister
-            onClick={() =>
-              newService(
-                data.autor,
-                data.categoria,
-                data.desc,
-                data.entrega,
-                data.img,
-                data.nome,
-                data.preco,
-                data.uid
-              )
-            }
+            onClick={handleSubmit}
           >
             Registrar serviço
           </BtnRegister>
