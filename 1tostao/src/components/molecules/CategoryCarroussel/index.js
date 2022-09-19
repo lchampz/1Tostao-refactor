@@ -46,6 +46,7 @@ const CategoryCarroussel = ({ titleColor, border }) => {
         <Card
           style={{ width: "100%", height: "100%" }}
           key={i}
+          alt={img.alt}
           className={"Card"}
           url={img.url}
           link={img.link}
