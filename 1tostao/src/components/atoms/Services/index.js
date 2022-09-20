@@ -19,7 +19,7 @@ import { useService } from "../../../request/hooks/Services.js";
 import { useUserAuth } from "../../../request/hooks/Auth";
 
 const Services = () => {
-  const { service } = useService();
+  const { service, filter } = useService();
   const { user } = useUserAuth();
 
   return (
