@@ -166,7 +166,7 @@ const ServiceFilter = () => {
             </ApliedFilters>
           )}
           <Title>
-            <Titles style={{ fontSize: "1.2rem" }}>Ordenar Por</Titles>
+            <Titles onClick={setArrowOrientation} style={{ fontSize: "1.2rem", cursor:"pointer" }}>Ordenar Por</Titles>
             {arrow ? (
               <FontAwesomeIcon
                 className="flecha"
@@ -223,7 +223,7 @@ const ServiceFilter = () => {
             ""
           )}
           <Title>
-            <Titles style={{ fontSize: "1.2rem" }}>Filtrar Por</Titles>
+            <Titles onClick={setArrowOrientation2} style={{ fontSize: "1.2rem", cursor:"pointer" }}>Filtrar Por</Titles>
             {arrow2 ? (
               <FontAwesomeIcon
                 className="flecha"
@@ -243,7 +243,7 @@ const ServiceFilter = () => {
           {arrow2 ? (
             <>
               <Title style={{ marginTop: "1.6rem" }}>
-                <Titles style={{ fontSize: "1rem" }}>Categorias</Titles>
+                <Titles onClick={setArrowOrientation4} style={{ fontSize: "1rem", cursor:"pointer" }}>Categorias</Titles>
                 {arrow4 ? (
                   <FontAwesomeIcon
                     className="flecha"
@@ -344,7 +344,7 @@ const ServiceFilter = () => {
                 ""
               )}
               <Title style={{ marginTop: "1rem" }}>
-                <Titles style={{ fontSize: "1rem" }}>Tempo de Entrega</Titles>
+                <Titles onClick={setArrowOrientation3} style={{ fontSize: "1rem", cursor:"pointer" }}>Tempo de Entrega</Titles>
                 {arrow3 ? (
                   <FontAwesomeIcon
                     className="flecha"
@@ -427,7 +427,7 @@ const ServiceFilter = () => {
                 ""
               )}
               <Title style={{ marginTop: "0.8rem" }}>
-                <Titles style={{ fontSize: "1rem" }}>Preço</Titles>
+                <Titles onClick={setArrowOrientation5} style={{ fontSize: "1rem", cursor:"pointer" }}>Preço</Titles>
                 {arrow5 ? (
                   <FontAwesomeIcon
                     className="flecha"
@@ -531,7 +531,7 @@ const ServiceFilter = () => {
               onClick={() => {
                 removeFilter();
                 setFiltrado(0);
-                removeFilter();
+                showSideBar();
               }}
               style={{ marginBottom: "1rem" }}
             >
