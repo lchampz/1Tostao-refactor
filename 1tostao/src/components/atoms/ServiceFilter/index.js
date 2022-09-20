@@ -287,13 +287,13 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Produção audio-visual");
-                      setFiltragem("Produção audio-visual");
+                      getServicesFiltered("categoria", "Outros");
+                      setFiltragem("Outros");
                       setFiltrado(1);
                       showSideBar();
                     }}
                   >
-                    Produção audio-visual
+                    Outros
                   </p>
                   <p
                     className="categoria"
@@ -320,13 +320,13 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Artes");
-                      setFiltragem("Artes");
+                      getServicesFiltered("categoria", "Aulas");
+                      setFiltragem("Aulas");
                       setFiltrado(1);
                       showSideBar();
                     }}
                   >
-                    Artes
+                    Aulas
                   </p>
                   <p
                     className="categoria"
