@@ -19,7 +19,9 @@ import { useService } from "../../../request/hooks/Services.js";
 import { useUserAuth } from "../../../request/hooks/Auth";
 
 const Services = () => {
-  const { service, filter } = useService();
+  const { service } = useService();
+  const { user } = useUserAuth();
+
   return (
     <Container>
       <ServiceWrapper>

@@ -21,7 +21,7 @@ const About= ( marginB, marginR, marginL, flex) => {
                         <About.Text>Além de dar a oportunidade para se tornar conhecido no mundo dos Freelancers, iremos expor e divulgar seus trabalhos e projetos.</About.Text>
                     </div>
                     <Column >
-                       <About.Img src={aboutUs}/> 
+                       <About.Img src={aboutUs} alt={'Ícone de diversas pessoas sobre uma luneta'}/> 
                     </Column>
                 </Orientation>
             </Sobre>
@@ -39,7 +39,7 @@ const About= ( marginB, marginR, marginL, flex) => {
                         <About.Text>✅ Segurança e sigilo</About.Text>
                 </div>
                 <Row>
-                       <About.Img marginL="0" src={graph}/> 
+                       <About.Img marginL="0" src={graph} alt={"Empresários em uma reunião de negócios mostrando gráficos"} /> 
                 </Row>
           
                 </Orientation>

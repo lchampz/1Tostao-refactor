@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Container, Thumb, ThumbsContainer, Img, ThumbInner } from './styled'
+import { useDrop } from '../../../request/hooks/Dropzone'
+import { encodeBase64 } from '../../../request/utils/base64'
 
 const MyDropzone = () => {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(['']);
+  const { dropzone, setDropzone } = useDrop()
   const {
     getRootProps,
     getInputProps,
@@ -16,7 +19,7 @@ const MyDropzone = () => {
     setFiles(acceptedFiles.map(file => Object.assign(file, {
       preview: URL.createObjectURL(file)
     })));
-  }},);
+  }});
 
   const thumbs = files.map(file => (
     <Thumb key={file.name}>
@@ -29,8 +32,12 @@ const MyDropzone = () => {
     </Thumb>
   ));
 
-  useEffect(() =>{
-    console.log(files)
+  useEffect(() => {
+    console.log('files: ', files)
+    if(!files) encodeBase64(files).then((response) => {setDropzone(response)})
+    setDropzone(files)
+    const data = encodeBase64(dropzone)
+    console.log(data)
   }, [files])
 
   useEffect(() => {
@@ -40,7 +47,7 @@ const MyDropzone = () => {
   return (
     <>
       <Container {...getRootProps({isFocused,isDragAccept,isDragReject})}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} value={''} type='file'/>
         {
           isDragActive ?
             <p>Adicione...</p> :

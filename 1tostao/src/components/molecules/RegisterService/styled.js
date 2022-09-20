@@ -73,21 +73,67 @@ export const WrapperWarning = styled.label`
 
 export const BtnRegister = styled.label`
     width: 13rem;
-    cursor: pointer;
     height: 4rem;
-    border: 3px solid #24D39A;
+    border: ${({ disabled }) => (disabled ? '3px solid #808080' : '3px solid #24D39A')};
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
-    color: white;
+    color: ${({ disabled }) => (disabled ? '#808080' : 'white')};
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 2rem;
     transition: all 0.5s ease-in-out;
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
     &:hover {
-        border: 3px solid white;
+        border: ${({ disabled }) => (disabled ? '' : '3px solid white')};
     }
 `
+
+export const Slider = styled.input`
+  -webkit-appearance: none;
+  width: 96.5%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-bottom: 1rem;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%; 
+        background: #04AA6D;
+        cursor: pointer;
+    }
+
+    &::-webkit-slider-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #04AA6D;
+        cursor: pointer;
+    }
+`
+
+export const Delivery = styled.div`
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #04AA6D;
+    margin-bottom: 1rem;
+
+    p{
+        margin-left: 10px;
+        color: white;
+    }
+` 
