@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
   background-color: #403b3b;
   padding-bottom: 2rem;
+  justify-content: center;
   padding-top: 1rem;
-  height: 100%;
+  min-height:50vh;
+  max-height: 100%;
 `;
 
 export const ServiceWrapper = styled.div`
@@ -15,8 +16,8 @@ export const ServiceWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content:center;
   #avaliacao {
     font-size: 0.8rem;
     font-weight: bold;
