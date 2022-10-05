@@ -345,3 +345,21 @@ export const Remove = styled.h1`
     margin-left: 0.2rem;
   }
 `;
+
+export const FoundServices = styled.div`
+  color: #fff;
+  border: 1px solid #fff;
+  height: 30px;
+  min-width: 200px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+  @media screen and (max-width: 480px) {
+    margin-top: -2rem;
+  }
+`;

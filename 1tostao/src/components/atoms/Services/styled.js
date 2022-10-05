@@ -6,18 +6,18 @@ export const Container = styled.div`
   padding-bottom: 2rem;
   justify-content: center;
   padding-top: 1rem;
-  min-height:50vh;
+  min-height: 50vh;
   max-height: 100%;
 `;
 
 export const ServiceWrapper = styled.div`
-  width: 80%;
+  width: 85%;
   color: #eee;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   #avaliacao {
     font-size: 0.8rem;
     font-weight: bold;
@@ -119,3 +119,17 @@ export const Text = styled.p`
   align-items: center;
   text-align: center;
 `;
+export const ServicosEspecializados = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  height: 60vh;
+  background-color: #403b3b;
+`;
+
+export const TitleEspecializados = styled.h1`
+  margin-top: 1rem;
+  color: #eee;
+  font-size: 1.7rem;
+`;
+
+export const WrapperEspecializados = styled.div``;

@@ -5,18 +5,17 @@ import {
   Filter,
   Filtered,
   FilterMenu,
-  Aplicar,
   Remove,
   Buttons,
   Categorias,
   ApliedFilters,
   Ordenado,
   Titles,
-  Close,
   Title,
   Text,
   Filters,
   DropDown,
+  FoundServices,
   Search,
   Wrapper,
 } from "./styled";
@@ -46,6 +45,7 @@ const ServiceFilter = () => {
     getServicesFiltered,
     removeFilter,
     getServiceSearch,
+    filter,
     getServicesFilteredByPrice,
     sortByPriceMenor,
     getServicesFilteredByTime,
@@ -54,6 +54,28 @@ const ServiceFilter = () => {
   const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
   const [filtragem, setFiltragem] = useState();
+
+  const servicesNumber = () => {
+    if (filter?.length === 0) {
+      return (
+        <FoundServices>
+          <p>{filter?.length} Serviços Encontrados</p>
+        </FoundServices>
+      );
+    } else if (filter?.length === 1) {
+      return (
+        <FoundServices>
+          <p>{filter?.length} Serviço Encontrado</p>
+        </FoundServices>
+      );
+    } else if (filter?.length > 1) {
+      return (
+        <FoundServices>
+          <p>{filter?.length} Serviços Encontrados</p>
+        </FoundServices>
+      );
+    }
+  };
 
   return (
     <>
@@ -104,25 +126,28 @@ const ServiceFilter = () => {
           </Wrapper>
         </Filter>
         {filtrado === 1 ? (
-          <Filtered>
-            <h1 id="filter">Filtrado por:</h1>
-            <Filters
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setFiltrado(0);
-                removeFilter();
-              }}
-            >
-              <ImgWrapper
-                url={x}
-                width="15px"
-                height="15px"
-                margin={"0px 15px 0px 10px"}
-                cursor="pointer"
-              />
-              <h1 id="filtered">{filtragem}</h1>
-            </Filters>
-          </Filtered>
+          <>
+            <Filtered>
+              <h1 id="filter">Filtrado por:</h1>
+              <Filters
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setFiltrado(0);
+                  removeFilter();
+                }}
+              >
+                <ImgWrapper
+                  url={x}
+                  width="15px"
+                  height="15px"
+                  margin={"0px 15px 0px 10px"}
+                  cursor="pointer"
+                />
+                <h1 id="filtered">{filtragem}</h1>
+              </Filters>
+            </Filtered>
+            <Filtered>{servicesNumber()}</Filtered>
+          </>
         ) : (
           ""
         )}
