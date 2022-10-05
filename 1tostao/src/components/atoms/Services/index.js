@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   ServiceWrapper,
@@ -22,12 +22,13 @@ const Services = () => {
   const { service } = useService();
   const { user } = useUserAuth();
 
+
   return (
     <Container>
       <ServiceWrapper>
         {service?.map((item) => {
           return (
-            <Service key={item.id}>
+            <Service key={item.id} onClick={() => console.log(service)}>
               <ServiceTitle>{item.nome}</ServiceTitle>
               <div
                 style={{
@@ -41,7 +42,7 @@ const Services = () => {
                   <Price>R${item.preco}</Price>
                 </ServicePrice>
               </div>
-              <ServiceImage src={service1} />
+              <ServiceImage src={item.img ? item.img : service1} />
 
               <InfoService>
                 <div

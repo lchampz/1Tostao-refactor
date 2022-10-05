@@ -13,52 +13,76 @@ import {
 import MyDropzone from "../../atoms/Dropzone";
 import { useUserAuth } from "../../../request/hooks/Auth";
 import { createService } from "../../../services/InsertService";
+import { useLoading } from "../../../request/hooks/Loading";
 import { useDrop } from "../../../request/hooks/Dropzone";
+import { storage } from "../../../services/Firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const RegisterService = () => {
   const { profile } = useUserAuth();
   const { dropzone } = useDrop();
-
+  const { setLoading } = useLoading();
+  const [ click, setClick ] = useState(false)
+  
   const [data, setData] = useState({
     nome: null,
     autor: profile?.username,
     desc: null,
     entrega: 1,
     categoria: null,
-    img: null,
+    img: "",
     preco: null,
     uid: profile?.uid,
   });
 
-  const newService = (
-    autor,
-    categoria,
-    desc,
-    entrega,
-    img,
-    nome,
-    preco,
-    uid
-  ) => {
-    if (data.nome && data.preco && data.desc && data.categoria) {
-      createService(autor, categoria, desc, entrega, img, nome, preco, uid);
+  useEffect(() => {
+    if(data.preco){
+      createService(
+        data.autor,
+        data.categoria,
+        data.desc,
+        data.entrega,
+        data.img,
+        data.nome,
+        data.preco,
+        data.uid
+      );
     }
+  }, [click]);
+
+  const handleUpload = () => {
+    if (!dropzone) return;
+
+    setLoading(true);
+    const storageRef = ref(storage, `images/${dropzone.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, dropzone);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },
+      (error) => {
+        console.log(error);
+        setLoading(false);
+        return false;
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          setData({ ...data, img: url });
+          console.log(url);
+          setLoading(false);
+          setClick(true)
+        });
+        return true;
+      }
+    );
   };
 
-  const handleSubmit = () => {
-    console.log({
-        autor: data.autor,
-        cat: data.categoria,
-        desc: data.desc,
-        entrega: data.entrega,
-        drop: dropzone,
-        nome: data.nome,
-        preco: data.preco,
-        uid: data.uid
-    }
-        
-      )
-  }
+  const newService = () => {
+    handleUpload();
+  };
 
   return (
     <Wrapper>
@@ -67,10 +91,17 @@ const RegisterService = () => {
         <Label>Nome do serviço:</Label>
         <Input
           placeholder="Nome do serviço"
-          onChange={(e) => setData({ ...data, nome: e.target.value })}
+          onChange={(e) =>
+            setData({
+              ...data,
+              nome: e.target.value,
+              uid: profile?.uid,
+              autor: "teste",
+            })
+          }
         />
         <Label>Imagem do serviço:</Label>
-        <MyDropzone/>
+        <MyDropzone />
         <Label>Descrição do serviço:</Label>
         <Input
           placeholder="Faça uma breve descrição sobre o serviço..."
@@ -92,6 +123,7 @@ const RegisterService = () => {
           >
             <Label>Valor:</Label>
             <Input
+              type={'number'}
               placeholder="Valor do serviço (R$)"
               onChange={(e) => setData({ ...data, preco: e.target.value })}
             />
@@ -112,9 +144,7 @@ const RegisterService = () => {
           Após registrar o serviço é impossível realizar as alterações.{" "}
         </WrapperWarning>
         {data.nome && data.preco && data.desc && data.categoria ? (
-          <BtnRegister
-            onClick={handleSubmit}
-          >
+          <BtnRegister onClick={() => newService()}>
             Registrar serviço
           </BtnRegister>
         ) : (
