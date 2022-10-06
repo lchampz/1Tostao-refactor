@@ -5,18 +5,17 @@ import {
   Filter,
   Filtered,
   FilterMenu,
-  Aplicar,
   Remove,
   Buttons,
   Categorias,
   ApliedFilters,
   Ordenado,
   Titles,
-  Close,
   Title,
   Text,
   Filters,
   DropDown,
+  FoundServices,
   Search,
   Wrapper,
 } from "./styled";
@@ -46,6 +45,7 @@ const ServiceFilter = () => {
     getServicesFiltered,
     removeFilter,
     getServiceSearch,
+    filter,
     getServicesFilteredByPrice,
     sortByPriceMenor,
     getServicesFilteredByTime,
@@ -54,6 +54,28 @@ const ServiceFilter = () => {
   const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
   const [filtragem, setFiltragem] = useState();
+
+  const servicesNumber = () => {
+    if (filter?.length === 0) {
+      return (
+        <FoundServices>
+          <p>{filter?.length} Serviços Encontrados</p>
+        </FoundServices>
+      );
+    } else if (filter?.length === 1) {
+      return (
+        <FoundServices>
+          <p>{filter?.length} Serviço Encontrado</p>
+        </FoundServices>
+      );
+    } else if (filter?.length > 1) {
+      return (
+        <FoundServices>
+          <p>{filter?.length} Serviços Encontrados</p>
+        </FoundServices>
+      );
+    }
+  };
 
   return (
     <>
@@ -104,25 +126,28 @@ const ServiceFilter = () => {
           </Wrapper>
         </Filter>
         {filtrado === 1 ? (
-          <Filtered>
-            <h1 id="filter">Filtrado por:</h1>
-            <Filters
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setFiltrado(0);
-                removeFilter();
-              }}
-            >
-              <ImgWrapper
-                url={x}
-                width="15px"
-                height="15px"
-                margin={"0px 15px 0px 10px"}
-                cursor="pointer"
-              />
-              <h1 id="filtered">{filtragem}</h1>
-            </Filters>
-          </Filtered>
+          <>
+            <Filtered>
+              <h1 id="filter">Filtrado por:</h1>
+              <Filters
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setFiltrado(0);
+                  removeFilter();
+                }}
+              >
+                <ImgWrapper
+                  url={x}
+                  width="15px"
+                  height="15px"
+                  margin={"0px 15px 0px 10px"}
+                  cursor="pointer"
+                />
+                <h1 id="filtered">{filtragem}</h1>
+              </Filters>
+            </Filtered>
+            <Filtered>{servicesNumber()}</Filtered>
+          </>
         ) : (
           ""
         )}
@@ -166,7 +191,12 @@ const ServiceFilter = () => {
             </ApliedFilters>
           )}
           <Title>
-            <Titles onClick={setArrowOrientation} style={{ fontSize: "1.2rem", cursor:"pointer" }}>Ordenar Por</Titles>
+            <Titles
+              onClick={setArrowOrientation}
+              style={{ fontSize: "1.2rem", cursor: "pointer" }}
+            >
+              Ordenar Por
+            </Titles>
             {arrow ? (
               <FontAwesomeIcon
                 className="flecha"
@@ -185,7 +215,7 @@ const ServiceFilter = () => {
           </Title>
           {arrow ? (
             <Ordenado>
-              <h2
+              {/* <h2
                 className="ordenado"
                 onClick={() => {
                   setFiltragem("Mais Recentes");
@@ -194,7 +224,7 @@ const ServiceFilter = () => {
                 }}
               >
                 Mais Recentes
-              </h2>
+              </h2> */}
               {/* <h2 className="ordenado1">Melhor Avaliação</h2> */}
               <h2
                 className="ordenado2"
@@ -223,7 +253,12 @@ const ServiceFilter = () => {
             ""
           )}
           <Title>
-            <Titles onClick={setArrowOrientation2} style={{ fontSize: "1.2rem", cursor:"pointer" }}>Filtrar Por</Titles>
+            <Titles
+              onClick={setArrowOrientation2}
+              style={{ fontSize: "1.2rem", cursor: "pointer" }}
+            >
+              Filtrar Por
+            </Titles>
             {arrow2 ? (
               <FontAwesomeIcon
                 className="flecha"
@@ -243,7 +278,12 @@ const ServiceFilter = () => {
           {arrow2 ? (
             <>
               <Title style={{ marginTop: "1.6rem" }}>
-                <Titles onClick={setArrowOrientation4} style={{ fontSize: "1rem", cursor:"pointer" }}>Categorias</Titles>
+                <Titles
+                  onClick={setArrowOrientation4}
+                  style={{ fontSize: "1rem", cursor: "pointer" }}
+                >
+                  Categorias
+                </Titles>
                 {arrow4 ? (
                   <FontAwesomeIcon
                     className="flecha"
@@ -344,7 +384,12 @@ const ServiceFilter = () => {
                 ""
               )}
               <Title style={{ marginTop: "1rem" }}>
-                <Titles onClick={setArrowOrientation3} style={{ fontSize: "1rem", cursor:"pointer" }}>Tempo de Entrega</Titles>
+                <Titles
+                  onClick={setArrowOrientation3}
+                  style={{ fontSize: "1rem", cursor: "pointer" }}
+                >
+                  Tempo de Entrega
+                </Titles>
                 {arrow3 ? (
                   <FontAwesomeIcon
                     className="flecha"
@@ -427,7 +472,12 @@ const ServiceFilter = () => {
                 ""
               )}
               <Title style={{ marginTop: "0.8rem" }}>
-                <Titles onClick={setArrowOrientation5} style={{ fontSize: "1rem", cursor:"pointer" }}>Preço</Titles>
+                <Titles
+                  onClick={setArrowOrientation5}
+                  style={{ fontSize: "1rem", cursor: "pointer" }}
+                >
+                  Preço
+                </Titles>
                 {arrow5 ? (
                   <FontAwesomeIcon
                     className="flecha"
@@ -527,16 +577,18 @@ const ServiceFilter = () => {
           )}
 
           <Buttons>
-            <Remove
-              onClick={() => {
-                removeFilter();
-                setFiltrado(0);
-                showSideBar();
-              }}
-              style={{ marginBottom: "1rem" }}
-            >
-              Remover Filtros X
-            </Remove>
+            {filtrado === 1 ? (
+              <Remove
+                onClick={() => {
+                  removeFilter();
+                  setFiltrado(0);
+                  showSideBar();
+                }}
+                style={{ marginBottom: "1rem" }}
+              >
+                Remover Filtros X
+              </Remove>
+            ) : null}
           </Buttons>
         </FilterMenu>
       )}
