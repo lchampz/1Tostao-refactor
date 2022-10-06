@@ -15,7 +15,12 @@ const Cards = ({ children, marginTop, color, url, link, alt }) => {
             carouselHover={theme.colors.carouselHover}
             href={link}
           >
-            {children}<img alt={alt} src={url} style={url ? { display: 'none' } : { display: 'flex' }} />
+            {children}
+            <img
+              alt={alt}
+              src={url}
+              style={url ? { display: "none" } : { display: "flex" }}
+            />
           </Link>
         </div>
       </Content>

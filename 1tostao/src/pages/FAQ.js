@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TwoColumn from '../components/templates/TwoColumn';
 import Footer from '../components/organims/Footer/Footer';
 
@@ -9,6 +9,10 @@ import Quests from '../components/molecules/QuestsFAQ'
 
 
 const FAQ = () => {
+
+    useEffect(() => {
+        document.title="1Tostão | FAQ"
+    })
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column'}}>

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 const Dashboard = () => {
+    useEffect(() => {
+        document.title="1Tostão | Dashboard"
+    })
+
     return (
         <div>
             Dashboard
