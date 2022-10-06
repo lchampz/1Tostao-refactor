@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   ServiceWrapper,
@@ -21,7 +21,6 @@ import { useUserAuth } from "../../../request/hooks/Auth";
 const Services = () => {
   const { service, filter } = useService();
   const { user } = useUserAuth();
-  console.log(filter)
   function Filtrar(){
 
  
@@ -51,7 +50,7 @@ const Services = () => {
                   <Item>R${item.preco}</Item>
                 </ServicePrice>
               </div>
-              <ServiceImage alt={item.desc} src={service1} />
+              <ServiceImage alt={item.desc} src={item.img || service1} />
   
               <InfoService>
                 <div
@@ -100,7 +99,7 @@ const Services = () => {
       return(
         service?.map((item) => {
           return (
-            <Service key={item.id}>
+            <Service key={item.id} onClick={() => console.log(service)}>
               <ServiceTitle>{item.nome}</ServiceTitle>
               <div
                 style={{
@@ -115,7 +114,7 @@ const Services = () => {
                 </ServicePrice>
               </div>
 
-              <ServiceImage alt={item.desc} src={service1} />
+              <ServiceImage alt={item.desc} src={item.img || service1} />
 
               <InfoService>
                 <div

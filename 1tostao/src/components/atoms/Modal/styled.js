@@ -29,9 +29,9 @@ export const Wrapper = styled.div`
 `
 
 export const Button = styled.div`
-    width: 50%;
+    width: ${({ oneBtn }) => oneBtn ? '100%' : '50%'};
     height: ${({ size }) => (size ? size : '60%')};
-    border-radius: ${({ left }) => (left ? '0px 0px 0px 40px' : '0px 0px 40px 0px')} ;
+    border-radius: ${({ left, oneBtn }) => oneBtn ? '0px 0px 40px 40px' : (left ? '0px 0px 0px 40px' : '0px 0px 40px 0px')} ;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -44,6 +44,6 @@ export const Button = styled.div`
     transition: all 0.5s ease-in-out;
 
     &:hover {
-        width: 80%;
+        width: ${({ oneBtn }) => oneBtn ? '100%' : '80%'};
     }
 `

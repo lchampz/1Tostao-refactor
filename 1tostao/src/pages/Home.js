@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Header from '../components/molecules/Header/Header.js';
 import CategoryCarroussel from '../components/molecules/CategoryCarroussel'
@@ -13,6 +13,10 @@ import "animate.css/animate.min.css";
 
 const Home = () => {
     const { theme } = useTheme()
+
+    useEffect(() => {
+        document.title="1Tostão | Home"
+    })
 
     return(
         <div>
