@@ -6,6 +6,7 @@ const InputSelect = ({
   options,
   display,
   width,
+  style,
   marginRight,
   marginLeft,
   setValue,
@@ -61,7 +62,7 @@ const InputSelect = ({
       marginBottom={marginBottom}
     >
       <Select
-        styles={customStyles}
+        styles={style || customStyles}
         selectOption={selectOption}
         width={'200px'}
         onChange={onChange}

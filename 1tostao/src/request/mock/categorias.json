@@ -1,0 +1,30 @@
+[
+  {
+    "label": "Aulas",
+    "value": "aulas"
+  },
+  {
+    "label": "Narração",
+    "value": "narracao"
+  },
+  {
+    "label": "Fotografia",
+    "value": "fotografia"
+  },
+  {
+    "label": "Programação",
+    "value": "programacao"
+  },
+  {
+    "label": "Arte",
+    "value": "arte"
+  },
+  {
+    "label": "Edição",
+    "value": "edicao"
+  },
+  {
+    "label": "Outros",
+    "value": "outros"
+  }
+]
