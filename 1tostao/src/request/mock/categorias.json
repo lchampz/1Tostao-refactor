@@ -1,30 +1,30 @@
 [
   {
     "label": "Aulas",
-    "value": "aulas"
+    "value": "Aulas"
   },
   {
     "label": "Narração",
-    "value": "narracao"
+    "value": "Narração"
   },
   {
     "label": "Fotografia",
-    "value": "fotografia"
+    "value": "Fotografia"
   },
   {
     "label": "Programação",
-    "value": "programacao"
+    "value": "Programação"
   },
   {
     "label": "Arte",
-    "value": "arte"
+    "value": "Arte"
   },
   {
     "label": "Edição",
-    "value": "edicao"
+    "value": "Edição"
   },
   {
     "label": "Outros",
-    "value": "outros"
+    "value": "Outros"
   }
 ]
