@@ -122,14 +122,29 @@ export const Text = styled.p`
 export const ServicosEspecializados = styled.div`
   width: 100%;
   border-bottom: 1px solid #fff;
-  height: 60vh;
-  background-color: #403b3b;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d4a49;
 `;
 
 export const TitleEspecializados = styled.h1`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: #eee;
+  font-weight: 500;
   font-size: 1.7rem;
 `;
 
-export const WrapperEspecializados = styled.div``;
+export const WrapperEspecializados = styled.div`
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #24d39a;
+  }
+`;

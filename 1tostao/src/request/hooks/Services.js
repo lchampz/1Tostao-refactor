@@ -8,6 +8,7 @@ export const ServiceContext = createContext({});
 export const ServiceProvider = ({ children }) => {
   const [service, setService] = useState();
   const [filter, setFilter] = useState();
+  const [destaque, setDestaque] = useState();
   const docRef = collection(db, "servicos");
 
   useEffect(() => {
@@ -83,6 +84,7 @@ export const ServiceProvider = ({ children }) => {
         removeFilter,
         sortByPriceMenor,
         sortByPriceMaior,
+        destaque,
         getServicesFilteredByTime,
       }}
     >
