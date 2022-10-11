@@ -7,68 +7,50 @@ export const ServiceContext = createContext({});
 
 export const ServiceProvider = ({ children }) => {
   const [service, setService] = useState();
+  const [serviceDestaque, setServiceDestaque] = useState();
   const [filter, setFilter] = useState();
-  const [destaque, setDestaque] = useState();
   const docRef = collection(db, "servicos");
-
+  // query serviços
   useEffect(() => {
     const getServices = async () => {
       const data = await getDocs(docRef);
       setService(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setServiceDestaque(
+        data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
     };
     getServices();
   }, []);
 
-  const getServicesFiltered = async (filtragem, valor) => {
-    const filtered = query(docRef, where(filtragem, "==", valor));
+  // filtragem serviços
+  const getServicesFiltered = async (filtragem, sinal, valor) => {
+    const filtered = query(docRef, where(filtragem, sinal, valor));
     const servicesFiltered = await getDocs(filtered);
     setFilter(
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
-  const getServicesFilteredByTime = async (valor) => {
-    const filtered = query(docRef, where("entrega", "<=", valor));
-    const servicesFiltered = await getDocs(filtered);
-    setFilter(
-      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    );
-  };
-  const getServicesFilteredByPrice = async (sinal, valor) => {
-    const filtered = query(docRef, where("preco", sinal, valor));
-    const servicesFiltered = await getDocs(filtered);
-    setFilter(
-      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    );
-  };
-
+  // barra de pesquisa
   const getServiceSearch = async (text) => {
     const searched = query(
       docRef,
       where("nome", "<=", text + "\uf8ff"),
       where("nome", ">=", text)
     );
-
     const servicesFiltered = await getDocs(searched);
     setFilter(
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
-
-  const sortByPriceMenor = async () => {
-    const searched = query(docRef, orderBy("preco"));
+  // filtragem maior e menor
+  const sortByPrice = async (variavel) => {
+    const searched = query(docRef, orderBy("preco", variavel));
     const servicesFiltered = await getDocs(searched);
     setFilter(
       servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
   };
-  const sortByPriceMaior = async () => {
-    const searched = query(docRef, orderBy("preco", "desc"));
-    const servicesFiltered = await getDocs(searched);
-    setFilter(
-      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    );
-  };
-
+  // remover filtros
   const removeFilter = () => {
     setFilter(undefined);
   };
@@ -80,12 +62,9 @@ export const ServiceProvider = ({ children }) => {
         filter,
         getServicesFiltered,
         getServiceSearch,
-        getServicesFilteredByPrice,
         removeFilter,
-        sortByPriceMenor,
-        sortByPriceMaior,
-        destaque,
-        getServicesFilteredByTime,
+        serviceDestaque,
+        sortByPrice,
       }}
     >
       {children}

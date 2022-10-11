@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   ServiceWrapper,
@@ -37,13 +37,52 @@ import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 const Services = () => {
-  const { service, filter, destaque } = useService();
-  const { user } = useUserAuth();
+  const { service, filter, serviceDestaque } = useService();
+  const [avalicaoService, setAvaliacaoService] = useState();
 
-  const renderServices = service?.map((item) => {
+  useEffect(() => {
+    const setAvaliacao = async () => {
+      serviceDestaque.forEach((item) => {
+        item["avaliacao"] =
+          (item.nota1 * 1 +
+            item.nota2 * 2 +
+            item.nota3 * 3 +
+            item.nota4 * 4 +
+            item.nota5 * 5) /
+          (item.nota1 + item.nota2 + item.nota3 + item.nota4 + item.nota5);
+        if (isNaN(item.avaliacao)) {
+          item["avaliacao"] = 0;
+        }
+      });
+      setAvaliacaoService(await serviceDestaque);
+    };
+    const setSortAvaliacao = async () => {
+      serviceDestaque.sort((c1, c2) =>
+        c1.avaliacao < c2.avaliacao ? 1 : c1.avaliacao > c2.avaliacao ? -1 : 0
+      );
+      setAvaliacaoService(await serviceDestaque);
+    };
+    setAvaliacao();
+    setSortAvaliacao();
+  });
+
+  const renderServices = avalicaoService?.map((item) => {
     return (
-      <SwiperSlide>
-        <Service style={{ marginBottom: "3rem" }} key={item.id}>
+      <SwiperSlide
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Service
+          style={{
+            marginBottom: "3rem",
+            marginRight: "0",
+            marginLeft: "0",
+          }}
+          key={item.id}
+        >
           <ServiceTitle style={{ color: "#eee" }}>{item.nome}</ServiceTitle>
           <div
             style={{
@@ -281,10 +320,6 @@ const Services = () => {
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                 navigation
                 breakpoints={breakpoints}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: true,
-                }}
                 loop={false}
                 slidesPerView={1}
               >
