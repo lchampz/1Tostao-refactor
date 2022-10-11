@@ -12,7 +12,7 @@ export const Title = styled.div`
   width: ${({ widthh }) => (widthh ? widthh : "auto")};
 
   @media screen and (max-width: 600px) {
-    font-size: 0.9rem;
+    font-size: 1.8rem;
   }
   .cursor {
     background-color: #fff;
