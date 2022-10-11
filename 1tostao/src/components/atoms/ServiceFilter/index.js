@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImgWrapper from "../ImgWrapper";
 import {
   Container,
@@ -46,10 +46,8 @@ const ServiceFilter = () => {
     removeFilter,
     getServiceSearch,
     filter,
-    getServicesFilteredByPrice,
-    sortByPriceMenor,
-    getServicesFilteredByTime,
-    sortByPriceMaior,
+    sortByPrice,
+    service,
   } = useService();
   const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
@@ -77,9 +75,12 @@ const ServiceFilter = () => {
     }
   };
 
+  function removeAllFilters() {
+    removeFilter();
+  }
   return (
     <>
-      <Container>
+      <Container onLoad={removeAllFilters}>
         <h1
           style={{
             fontSize: "2.2rem",
@@ -229,7 +230,7 @@ const ServiceFilter = () => {
               <h2
                 className="ordenado2"
                 onClick={() => {
-                  sortByPriceMenor();
+                  sortByPrice();
                   setFiltragem("Preço Menor-Maior");
                   setFiltrado(1);
                   showSideBar();
@@ -240,7 +241,7 @@ const ServiceFilter = () => {
               <h2
                 className="ordenado3"
                 onClick={() => {
-                  sortByPriceMaior();
+                  sortByPrice("desc");
                   setFiltragem("Preço Maior-Menor");
                   setFiltrado(1);
                   showSideBar();
@@ -305,7 +306,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Arte");
+                      getServicesFiltered("categoria", "==", "Arte");
                       setFiltragem("Arte");
                       setFiltrado(1);
                       showSideBar();
@@ -316,7 +317,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Narração");
+                      getServicesFiltered("categoria", "==", "Narração");
                       setFiltragem("Narração");
                       setFiltrado(1);
                       showSideBar();
@@ -327,7 +328,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Outros");
+                      getServicesFiltered("categoria", "==", "Outros");
                       setFiltragem("Outros");
                       setFiltrado(1);
                       showSideBar();
@@ -338,7 +339,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Fotografia");
+                      getServicesFiltered("categoria", "==", "Fotografia");
                       setFiltragem("Fotografia");
                       setFiltrado(1);
                       showSideBar();
@@ -349,7 +350,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Programação");
+                      getServicesFiltered("categoria", "==", "Programação");
                       setFiltragem("Programação");
                       setFiltrado(1);
                       showSideBar();
@@ -360,7 +361,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Aulas");
+                      getServicesFiltered("categoria", "==", "Aulas");
                       setFiltragem("Aulas");
                       setFiltrado(1);
                       showSideBar();
@@ -371,7 +372,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFiltered("categoria", "Edição");
+                      getServicesFiltered("categoria", "==", "Edição");
                       setFiltragem("Edição");
                       setFiltrado(1);
                       showSideBar();
@@ -411,7 +412,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByTime(1);
+                      getServicesFiltered("entrega", "<=", 1);
                       setFiltragem("Até 1 dia");
                       setFiltrado(1);
                       showSideBar();
@@ -423,7 +424,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByTime(2);
+                      getServicesFiltered("entrega", "<=", 2);
                       setFiltragem("Até 2 dias");
                       setFiltrado(1);
                       showSideBar();
@@ -435,7 +436,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByTime(3);
+                      getServicesFiltered("entrega", "<=", 3);
                       setFiltragem("Até 3 dias");
                       setFiltrado(1);
                       showSideBar();
@@ -447,7 +448,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByTime(7);
+                      getServicesFiltered("entrega", "<=", 7);
                       setFiltragem("Até uma semana");
                       setFiltrado(1);
                       showSideBar();
@@ -459,7 +460,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByTime(30);
+                      getServicesFiltered("entrega", "<=", 30);
                       setFiltragem("Até um mês");
                       setFiltrado(1);
                       showSideBar();
@@ -499,7 +500,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByPrice("<=", 20);
+                      getServicesFiltered("preco", "<=", 20);
                       setFiltragem("Até R$20,00");
                       setFiltrado(1);
                       showSideBar();
@@ -511,7 +512,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByPrice("<=", 40);
+                      getServicesFiltered("preco", "<=", 40);
                       setFiltragem("Até R$40,00");
                       setFiltrado(1);
                       showSideBar();
@@ -523,7 +524,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByPrice("<=", 60);
+                      getServicesFiltered("preco", "<=", 60);
                       setFiltragem("Até R$60,00");
                       setFiltrado(1);
                       showSideBar();
@@ -535,7 +536,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByPrice("<=", 80);
+                      getServicesFiltered("preco", "<=", 80);
                       setFiltragem("Até R$80,00");
                       setFiltrado(1);
                       showSideBar();
@@ -547,7 +548,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByPrice("<=", 100);
+                      getServicesFiltered("preco", "<=", 100);
                       setFiltragem("Até R$100,00");
                       setFiltrado(1);
                       showSideBar();
@@ -559,7 +560,7 @@ const ServiceFilter = () => {
                   <p
                     className="categoria"
                     onClick={() => {
-                      getServicesFilteredByPrice(">", 100);
+                      getServicesFiltered("preco", ">", 100);
                       setFiltragem("Mais de R$100,00");
                       setFiltrado(1);
                       showSideBar();
