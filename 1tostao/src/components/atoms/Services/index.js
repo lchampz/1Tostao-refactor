@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useEffect } from "react";
-=======
 import React, { useCallback, useEffect, useRef, useState } from "react";
->>>>>>> serviceImprove
 import {
   Container,
   ServiceWrapper,
