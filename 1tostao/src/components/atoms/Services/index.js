@@ -19,7 +19,6 @@ import {
 import service1 from "../../../assets/img/service2.png";
 import profilePic from "./../../../assets/img/profile.png";
 import { useService } from "../../../request/hooks/Services.js";
-import { useUserAuth } from "../../../request/hooks/Auth";
 import "swiper/swiper-bundle.min.css";
 // swiper core styles
 import SwiperCore, {
@@ -36,6 +35,7 @@ import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+
 const Services = () => {
   const { service, filter, serviceDestaque } = useService();
   const [avalicaoService, setAvaliacaoService] = useState();
@@ -66,6 +66,58 @@ const Services = () => {
     setSortAvaliacao();
   });
 
+  function Services({
+    nome,
+    preco,
+    img,
+    desc,
+    idKey,
+    autor,
+    nota,
+    categoria,
+    ...restProps
+  }) {
+    return (
+      <Service {...restProps} key={idKey}>
+        <ServiceTitle>{nome}</ServiceTitle>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "250px",
+            justifyContent: "flex-end",
+          }}
+        >
+          <ServicePrice>
+            <Item>R${preco}</Item>
+          </ServicePrice>
+        </div>
+        <ServiceImage alt={desc} src={img || service1} />
+
+        <InfoService>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <ClientImg src={profilePic} />
+            <ClientName>{autor}</ClientName>
+          </div>
+          <p style={{ fontSize: "0.8rem", fontWeight: "bold" }} id="avaliacao">
+            {nota}⭐
+          </p>
+        </InfoService>
+        <div>
+          <ServiceCategory>
+            <Text>{categoria}</Text>
+          </ServiceCategory>
+        </div>
+      </Service>
+    );
+  }
+
   const renderServices = avalicaoService?.map((item) => {
     return (
       <SwiperSlide
@@ -75,69 +127,41 @@ const Services = () => {
           alignItems: "center",
         }}
       >
-        <Service
+        <Services
           style={{
             marginBottom: "3rem",
             marginRight: "0",
             marginLeft: "0",
+            color: "#fff",
           }}
-          key={item.id}
-        >
-          <ServiceTitle style={{ color: "#eee" }}>{item.nome}</ServiceTitle>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "250px",
-              justifyContent: "flex-end",
-            }}
-          >
-            <ServicePrice>
-              <Item>R${item.preco}</Item>
-            </ServicePrice>
-          </div>
-
-          <ServiceImage alt={item.desc} src={item.img || service1} />
-
-          <InfoService>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <ClientImg src={profilePic} />
-              <ClientName style={{ color: "#eee" }}>{item.autor}</ClientName>
-            </div>
-            <p id="avaliacao" style={{ color: "#eee", fontSize: "0.8rem" }}>
-              {(item.nota1 ||
-                item.nota2 ||
-                item.nota3 ||
-                item.nota4 ||
-                item.nota5) > 0
-                ? (
-                    (item.nota1 * 1 +
-                      item.nota2 * 2 +
-                      item.nota3 * 3 +
-                      item.nota4 * 4 +
-                      item.nota5 * 5) /
-                    (item.nota1 +
-                      item.nota2 +
-                      item.nota3 +
-                      item.nota4 +
-                      item.nota5)
-                  ).toFixed(1)
-                : "0 Avaliações"}
-              ⭐
-            </p>
-          </InfoService>
-          <div>
-            <ServiceCategory>
-              <Text>{item.categoria}</Text>
-            </ServiceCategory>
-          </div>
-        </Service>
+          idKey={item.id}
+          nome={item.nome}
+          preco={item.preco}
+          img={item.img || service1}
+          autor={item.autor}
+          desc={item.desc}
+          categoria={item.categoria}
+          nota={
+            (item.nota1 ||
+              item.nota2 ||
+              item.nota3 ||
+              item.nota4 ||
+              item.nota5) > 0
+              ? (
+                  (item.nota1 * 1 +
+                    item.nota2 * 2 +
+                    item.nota3 * 3 +
+                    item.nota4 * 4 +
+                    item.nota5 * 5) /
+                  (item.nota1 +
+                    item.nota2 +
+                    item.nota3 +
+                    item.nota4 +
+                    item.nota5)
+                ).toFixed(1)
+              : "0 Avaliações"
+          }
+        />
       </SwiperSlide>
     );
   });
@@ -154,97 +178,16 @@ const Services = () => {
       } else {
         return filter?.map((item) => {
           return (
-            <Service key={item.id}>
-              <ServiceTitle>{item.nome}</ServiceTitle>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  width: "250px",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <ServicePrice>
-                  <Item>R${item.preco}</Item>
-                </ServicePrice>
-              </div>
-              <ServiceImage alt={item.desc} src={item.img || service1} />
-
-              <InfoService>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <ClientImg src={profilePic} />
-                  <ClientName>{item.autor}</ClientName>
-                </div>
-                <p id="avaliacao">
-                  {(item.nota1 ||
-                    item.nota2 ||
-                    item.nota3 ||
-                    item.nota4 ||
-                    item.nota5) > 0
-                    ? (
-                        (item.nota1 * 1 +
-                          item.nota2 * 2 +
-                          item.nota3 * 3 +
-                          item.nota4 * 4 +
-                          item.nota5 * 5) /
-                        (item.nota1 +
-                          item.nota2 +
-                          item.nota3 +
-                          item.nota4 +
-                          item.nota5)
-                      ).toFixed(1)
-                    : "0 Avaliações"}
-                  ⭐
-                </p>
-              </InfoService>
-              <div>
-                <ServiceCategory>
-                  <Text>{item.categoria}</Text>
-                </ServiceCategory>
-              </div>
-            </Service>
-          );
-        });
-      }
-    } else {
-      return service?.map((item) => {
-        return (
-          <Service key={item.id}>
-            <ServiceTitle>{item.nome}</ServiceTitle>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "250px",
-                justifyContent: "flex-end",
-              }}
-            >
-              <ServicePrice>
-                <Item>R${item.preco}</Item>
-              </ServicePrice>
-            </div>
-
-            <ServiceImage alt={item.desc} src={item.img || service1} />
-
-            <InfoService>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <ClientImg src={profilePic} />
-                <ClientName>{item.autor}</ClientName>
-              </div>
-              <p id="avaliacao">
-                {(item.nota1 ||
+            <Services
+              idKey={item.id}
+              nome={item.nome}
+              preco={item.preco}
+              img={item.img || service1}
+              autor={item.autor}
+              desc={item.desc}
+              categoria={item.categoria}
+              nota={
+                (item.nota1 ||
                   item.nota2 ||
                   item.nota3 ||
                   item.nota4 ||
@@ -261,16 +204,44 @@ const Services = () => {
                         item.nota4 +
                         item.nota5)
                     ).toFixed(1)
-                  : "0 Avaliações"}
-                ⭐
-              </p>
-            </InfoService>
-            <div>
-              <ServiceCategory>
-                <Text>{item.categoria}</Text>
-              </ServiceCategory>
-            </div>
-          </Service>
+                  : "0 Avaliações"
+              }
+            />
+          );
+        });
+      }
+    } else {
+      return service?.map((item) => {
+        return (
+          <Services
+            idKey={item.id}
+            nome={item.nome}
+            preco={item.preco}
+            img={item.img || service1}
+            autor={item.autor}
+            desc={item.desc}
+            categoria={item.categoria}
+            nota={
+              (item.nota1 ||
+                item.nota2 ||
+                item.nota3 ||
+                item.nota4 ||
+                item.nota5) > 0
+                ? (
+                    (item.nota1 * 1 +
+                      item.nota2 * 2 +
+                      item.nota3 * 3 +
+                      item.nota4 * 4 +
+                      item.nota5 * 5) /
+                    (item.nota1 +
+                      item.nota2 +
+                      item.nota3 +
+                      item.nota4 +
+                      item.nota5)
+                  ).toFixed(1)
+                : "0 Avaliações"
+            }
+          />
         );
       });
     }

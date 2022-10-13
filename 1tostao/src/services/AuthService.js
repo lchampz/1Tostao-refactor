@@ -1,35 +1,42 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import db, { auth } from "./Firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 async function createUserFirestore(
-    email, password,
-    state, cpf,
-    name, rg,
-    tell, uid,
-    username, lastname,
-    niver, city
+  email,
+  password,
+  state,
+  cpf,
+  name,
+  rg,
+  tell,
+  uid,
+  username,
+  lastname,
+  niver,
+  city
 ) {
   try {
-      const docRef = await addDoc(collection(db, "users"), {
-          email: email,
-          senha: password,
-          estado: state,
-          cpf: cpf,
-          nome: name,
-          rg: rg,
-          uid: uid,
-          username: username,
-          sobrenome: lastname,
-          ADM: false,
-          tell: tell,
-          niver: niver,
-          cidade: city,
-          firstAcces: true,
-      }
-    )
-    console.log('[SUCCESS] ID: ', docRef.id)
-    ;
+    const docRef = await addDoc(collection(db, "users"), {
+      email: email,
+      senha: password,
+      estado: state,
+      cpf: cpf,
+      nome: name,
+      rg: rg,
+      uid: uid,
+      username: username,
+      sobrenome: lastname,
+      ADM: false,
+      tell: tell,
+      niver: niver,
+      cidade: city,
+      firstAcces: true,
+    });
+    console.log("[SUCCESS] ID: ", docRef.id);
   } catch (e) {
     console.log("[ERROR]: ", e);
   }
@@ -71,4 +78,3 @@ export async function createUser(
     console.log(err);
   }
 }
-
