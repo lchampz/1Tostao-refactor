@@ -221,9 +221,9 @@ const HeaderUser = ({
                     <ServiceCard
                       style={{
                         marginBottom: "3rem",
-                        marginRight: "0",
                         marginLeft: "0",
                         color: "#fff",
+                        marginRight: "2.2rem",
                       }}
                       idKey={item.id}
                       nome={item.nome}
