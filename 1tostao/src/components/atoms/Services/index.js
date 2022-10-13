@@ -35,6 +35,7 @@ import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import ServiceCard from "../ServiceCard";
 
 const Services = () => {
   const { service, filter, serviceDestaque } = useService();
@@ -66,58 +67,6 @@ const Services = () => {
     setSortAvaliacao();
   });
 
-  function Services({
-    nome,
-    preco,
-    img,
-    desc,
-    idKey,
-    autor,
-    nota,
-    categoria,
-    ...restProps
-  }) {
-    return (
-      <Service {...restProps} key={idKey}>
-        <ServiceTitle>{nome}</ServiceTitle>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            width: "250px",
-            justifyContent: "flex-end",
-          }}
-        >
-          <ServicePrice>
-            <Item>R${preco}</Item>
-          </ServicePrice>
-        </div>
-        <ServiceImage alt={desc} src={img || service1} />
-
-        <InfoService>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <ClientImg src={profilePic} />
-            <ClientName>{autor}</ClientName>
-          </div>
-          <p style={{ fontSize: "0.8rem", fontWeight: "bold" }} id="avaliacao">
-            {nota}⭐
-          </p>
-        </InfoService>
-        <div>
-          <ServiceCategory>
-            <Text>{categoria}</Text>
-          </ServiceCategory>
-        </div>
-      </Service>
-    );
-  }
-
   const renderServices = avalicaoService?.map((item) => {
     return (
       <SwiperSlide
@@ -127,7 +76,7 @@ const Services = () => {
           alignItems: "center",
         }}
       >
-        <Services
+        <ServiceCard
           style={{
             marginBottom: "3rem",
             marginRight: "0",
@@ -178,7 +127,7 @@ const Services = () => {
       } else {
         return filter?.map((item) => {
           return (
-            <Services
+            <ServiceCard
               idKey={item.id}
               nome={item.nome}
               preco={item.preco}
@@ -213,7 +162,7 @@ const Services = () => {
     } else {
       return service?.map((item) => {
         return (
-          <Services
+          <ServiceCard
             idKey={item.id}
             nome={item.nome}
             preco={item.preco}
