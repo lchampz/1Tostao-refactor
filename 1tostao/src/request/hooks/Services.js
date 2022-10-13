@@ -2,14 +2,17 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 import db from "../../services/Firebase";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { useUserAuth } from "./Auth";
 
 export const ServiceContext = createContext({});
 
 export const ServiceProvider = ({ children }) => {
   const [service, setService] = useState();
+  const [serviceUser, setServiceUser] = useState();
   const [serviceDestaque, setServiceDestaque] = useState();
   const [filter, setFilter] = useState();
   const docRef = collection(db, "servicos");
+  const { user, profile } = useUserAuth();
   // query serviços
   useEffect(() => {
     const getServices = async () => {
@@ -21,6 +24,12 @@ export const ServiceProvider = ({ children }) => {
     };
     getServices();
   }, []);
+
+  const getServicesUser = async (uid) => {
+    const filtered = query(docRef, where("uid", "==", uid));
+    const data = await getDocs(filtered);
+    setServiceUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
 
   // filtragem serviços
   const getServicesFiltered = async (filtragem, sinal, valor) => {
@@ -63,6 +72,8 @@ export const ServiceProvider = ({ children }) => {
         getServicesFiltered,
         removeFilter,
         serviceDestaque,
+        serviceUser,
+        getServicesUser,
         getServiceSearch,
         sortByPrice,
       }}

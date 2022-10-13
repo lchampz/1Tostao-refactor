@@ -39,6 +39,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUserAuth } from "../../../request/hooks/Auth.js";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../../../services/CreateGoogleAuth";
+import { useService } from "../../../request/hooks/Services";
+import Services from "../Services";
+import service1 from "../../../assets/img/service2.png";
+import ServiceCard from "../ServiceCard";
 
 const HeaderUser = ({
   width,
@@ -53,7 +57,11 @@ const HeaderUser = ({
   const { logOut, user, profile, checkUndefined, check } = useUserAuth();
   const navigate = useNavigate();
   const [tab, setTab] = useState(1);
+  const { serviceUser, getServicesUser } = useService();
 
+  useEffect(() => {
+    getServicesUser(user?.uid);
+  });
   useEffect(() => {
     const Redirect = () => {
       if (!user) {
@@ -201,42 +209,53 @@ const HeaderUser = ({
               </select>
             </JobsFilter>
             <JobsWrapper>
-              <Job>
-                <JobImage src={profilePic} />
-                <div className="numbers">
-                  <FontAwesomeIcon className="heart" icon={faHeart} />
-                  <JobLikes>10</JobLikes>
-                  <JobComments>10</JobComments>
-                  <FontAwesomeIcon className="comment" icon={faComment} />
+              {serviceUser.length === 0 ? (
+                <div
+                  style={{ height: "50vh", color: "#fff", marginTop: "1.6rem" }}
+                >
+                  <h1>Você ainda não tem serviços!</h1>
                 </div>
-              </Job>
-              <Job>
-                <JobImage src={profilePic} />
-                <div className="numbers">
-                  <FontAwesomeIcon className="heart" icon={faHeart} />
-                  <JobLikes>10</JobLikes>
-                  <JobComments>10</JobComments>
-                  <FontAwesomeIcon className="comment" icon={faComment} />
-                </div>
-              </Job>
-              <Job>
-                <JobImage src={profilePic} />
-                <div className="numbers">
-                  <FontAwesomeIcon className="heart" icon={faHeart} />
-                  <JobLikes>10</JobLikes>
-                  <JobComments>10</JobComments>
-                  <FontAwesomeIcon className="comment" icon={faComment} />
-                </div>
-              </Job>
-              <Job>
-                <JobImage src={profilePic} />
-                <div className="numbers">
-                  <FontAwesomeIcon className="heart" icon={faHeart} />
-                  <JobLikes>10</JobLikes>
-                  <JobComments>10</JobComments>
-                  <FontAwesomeIcon className="comment" icon={faComment} />
-                </div>
-              </Job>
+              ) : (
+                serviceUser?.map((item) => {
+                  return (
+                    <ServiceCard
+                      style={{
+                        marginBottom: "3rem",
+                        marginRight: "0",
+                        marginLeft: "0",
+                        color: "#fff",
+                      }}
+                      idKey={item.id}
+                      nome={item.nome}
+                      preco={item.preco}
+                      img={item.img || service1}
+                      autor={item.autor}
+                      desc={item.desc}
+                      categoria={item.categoria}
+                      nota={
+                        (item.nota1 ||
+                          item.nota2 ||
+                          item.nota3 ||
+                          item.nota4 ||
+                          item.nota5) > 0
+                          ? (
+                              (item.nota1 * 1 +
+                                item.nota2 * 2 +
+                                item.nota3 * 3 +
+                                item.nota4 * 4 +
+                                item.nota5 * 5) /
+                              (item.nota1 +
+                                item.nota2 +
+                                item.nota3 +
+                                item.nota4 +
+                                item.nota5)
+                            ).toFixed(1)
+                          : "0 Avaliações"
+                      }
+                    />
+                  );
+                })
+              )}
             </JobsWrapper>
             <Pagination>
               <ul className="pagination">
