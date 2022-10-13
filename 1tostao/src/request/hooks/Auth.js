@@ -10,7 +10,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../../services/Firebase";
 import db from "../../services/Firebase";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import { collection, getDocs, where, query, addDoc } from "firebase/firestore";
+import { createUser } from "../../services/CreateGoogleAuth";
 
 export const AuthContext = createContext({});
 
@@ -22,15 +23,26 @@ export const AuthProvider = ({ children }) => {
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
-  function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
-  }
   function logOut() {
     return signOut(auth);
   }
-  function googleSignIn() {
-    const googleAuthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleAuthProvider);
+
+  async function Validate(email, name, uid) {
+    let check = undefined;
+    const docRef = query(collection(db, "users"), where("email", "==", email));
+    const querySnapshot = await getDocs(docRef);
+    querySnapshot.forEach((doc) => {
+      check = doc.data();
+    });
+    if (check !== undefined) {
+      console.log("Este email ja está cadastrado!");
+      console.log(check);
+      check = undefined;
+    } else {
+      createUser(email, name, uid);
+      console.log(check);
+      check = undefined;
+    }
   }
 
   const getUsers = async () => {
@@ -41,6 +53,12 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  function googleSignIn() {
+    const googleAuthProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleAuthProvider).then((results) => {
+      Validate(results.user.email, results.user.displayName, results.user.uid);
+    });
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       console.log("Auth", currentuser);
@@ -64,7 +82,6 @@ export const AuthProvider = ({ children }) => {
         user,
         getUsers,
         logIn,
-        signUp,
         logOut,
         googleSignIn,
       }}

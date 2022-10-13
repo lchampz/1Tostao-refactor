@@ -44,14 +44,22 @@ const ServiceFilter = () => {
   const {
     getServicesFiltered,
     removeFilter,
-    getServiceSearch,
     filter,
     sortByPrice,
     service,
+    getServiceSearch,
   } = useService();
   const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
+  const [search, setSearch] = useState();
   const [filtragem, setFiltragem] = useState();
+
+  // const filteredServices = service.filter((item) => {
+  //   return (
+  //     item.nome.toLowerCase().includes(search) ||
+  //     item.autor.toLowerCase().includes(search)
+  //   );
+  // });
 
   const servicesNumber = () => {
     if (filter?.length === 0) {
@@ -86,7 +94,7 @@ const ServiceFilter = () => {
             fontSize: "2.2rem",
             color: "#eee",
             marginTop: "1rem",
-            marginBottom: "-2.5rem",
+            marginBottom: "-3.5rem",
             marginLeft: "0",
           }}
         >
