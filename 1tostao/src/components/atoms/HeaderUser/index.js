@@ -209,7 +209,7 @@ const HeaderUser = ({
               </select>
             </JobsFilter>
             <JobsWrapper>
-              {serviceUser.length === 0 ? (
+              {serviceUser?.length === 0 ? (
                 <div
                   style={{ height: "50vh", color: "#fff", marginTop: "1.6rem" }}
                 >
