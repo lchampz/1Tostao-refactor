@@ -34,7 +34,7 @@ export const ServiceProvider = ({ children }) => {
   const getServiceSearch = async (text) => {
     const searched = query(
       docRef,
-      where("nome", "<=", text + "\uf8ff"),
+      where("nome", "<=", text + "~"),
       where("nome", ">=", text)
     );
     const servicesFiltered = await getDocs(searched);
@@ -61,9 +61,9 @@ export const ServiceProvider = ({ children }) => {
         service,
         filter,
         getServicesFiltered,
-        getServiceSearch,
         removeFilter,
         serviceDestaque,
+        getServiceSearch,
         sortByPrice,
       }}
     >
