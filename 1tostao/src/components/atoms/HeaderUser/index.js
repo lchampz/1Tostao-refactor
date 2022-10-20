@@ -111,9 +111,9 @@ const HeaderUser = ({
             marginT={marginT}
             marginLe={marginLe}
           >
-            {user && user.displayName
-              ? user && user.displayName
-              : profile && profile.username}
+            {user && user?.displayName
+              ? user && user?.displayName
+              : profile && profile?.username}
           </Username>
           <Mensagem>Enviar mensagem</Mensagem>
           {profile ? (
@@ -209,13 +209,7 @@ const HeaderUser = ({
               </select>
             </JobsFilter>
             <JobsWrapper>
-              {serviceUser?.length === 0 ? (
-                <div
-                  style={{ height: "50vh", color: "#fff", marginTop: "1.6rem" }}
-                >
-                  <h1>Você ainda não tem serviços!</h1>
-                </div>
-              ) : (
+              {serviceUser?.length !== 0 ? (
                 serviceUser?.map((item) => {
                   return (
                     <ServiceCard
@@ -255,6 +249,12 @@ const HeaderUser = ({
                     />
                   );
                 })
+              ) : (
+                <div
+                  style={{ height: "50vh", color: "#fff", marginTop: "1.6rem" }}
+                >
+                  <h1>Você ainda não tem serviços!</h1>
+                </div>
               )}
             </JobsWrapper>
             <Pagination>
@@ -297,9 +297,9 @@ const HeaderUser = ({
               <AboutInfo>
                 <h1 className="title">
                   Sobre{" "}
-                  {user && user.displayName
-                    ? user && user.displayName
-                    : profile && profile.username}
+                  {user && user?.displayName
+                    ? user && user?.displayName
+                    : profile && profile?.username}
                 </h1>
                 <p className="desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -319,15 +319,15 @@ const HeaderUser = ({
                   </div>
                   <div className="infos">
                     <p className="infoC">
-                      {profile && profile.tell
-                        ? profile && profile.tell
+                      {profile && profile?.tell
+                        ? profile && profile?.tell
                         : "(**)*****-****"}
                     </p>
-                    <p className="infoC">{user && user.email}</p>
+                    <p className="infoC">{user && user?.email}</p>
                     <p className="infoC">
-                      {user && user.displayName
-                        ? user && user.displayName
-                        : profile && profile.username}
+                      {user && user?.displayName
+                        ? user && user?.displayName
+                        : profile && profile?.username}
                     </p>
                   </div>
                 </div>
@@ -359,9 +359,9 @@ const HeaderUser = ({
                       marginT={"1.5rem"}
                       marginLe={"1rem"}
                     >
-                      {user && user.displayName
-                        ? user && user.displayName
-                        : profile && profile.username}
+                      {user && user?.displayName
+                        ? user && user?.displayName
+                        : profile && profile?.username}
                     </Username>
                   </UserAva>
                   <p className="data">02 de dezembro de 2022</p>
@@ -389,9 +389,9 @@ const HeaderUser = ({
                       marginT={"1.5rem"}
                       marginLe={"1rem"}
                     >
-                      {user && user.displayName
-                        ? user && user.displayName
-                        : profile && profile.username}
+                      {user && user?.displayName
+                        ? user && user?.displayName
+                        : profile && profile?.username}
                     </Username>
                   </UserAva>
                   <p className="data">02 de dezembro de 2022</p>

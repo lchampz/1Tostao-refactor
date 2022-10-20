@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [profile, setProfile] = useState();
   const [service, setService] = useState();
+  const [users, setUsers] = useState({});
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
@@ -53,6 +54,12 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const getAllUsers = async () => {
+    const docRef = collection(db, "users");
+    const data = await getDocs(docRef);
+    setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider).then((results) => {
@@ -84,6 +91,8 @@ export const AuthProvider = ({ children }) => {
         logIn,
         logOut,
         googleSignIn,
+        users,
+        getAllUsers,
       }}
     >
       {children}

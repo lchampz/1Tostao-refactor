@@ -95,6 +95,9 @@ const Menu = ({ padding }) => {
           <Pages onClick={() => navigate(`/`)}>Home</Pages>
           <Pages onClick={() => navigate(`/servicos`)}>Serviços</Pages>
           <Pages onClick={() => navigate(`/about`)}>Sobre nós</Pages>
+          {profile?.ADM === true ? (
+            <Pages onClick={() => navigate(`/adm`)}>Admin</Pages>
+          ) : null}
         </Header>
         <Theme config={config} bg={style.bg} color={style.color}>
           <Pages className="tema" onClick={changeTheme}>
@@ -188,6 +191,16 @@ const Menu = ({ padding }) => {
           >
             Sobre nós
           </PagesMenu>
+          {profile?.ADM === true ? (
+            <PagesMenu
+              onClick={() => {
+                setMobileMenu();
+                navigate(`/adm`);
+              }}
+            >
+              Admin
+            </PagesMenu>
+          ) : null}
           {user ? (
             <SubmenuLogged />
           ) : (
