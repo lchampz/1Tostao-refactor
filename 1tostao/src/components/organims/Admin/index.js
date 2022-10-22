@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 
 import {
   Container,
@@ -20,7 +20,6 @@ import {
 
 import ImgWrapper from "../../atoms/ImgWrapper";
 import lupa from "../../../assets/img/lupa.png";
-
 import { useUserAuth } from "../../../request/hooks/Auth";
 import { useService } from "../../../request/hooks/Services";
 import ServicesTable from "../../atoms/ServicesTable";
@@ -72,6 +71,7 @@ const Administracao = () => {
               </Infos>
             </Card>
           </Info>
+
           <Search>
             <div style={{ width: "20%" }}></div>
             <Wrapper>

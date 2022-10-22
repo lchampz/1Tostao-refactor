@@ -68,9 +68,6 @@ const ServicesTable = ({ valuee, ...restProps }) => {
             border: "none",
           }}
         >
-          <div style={{ cursor: "pointer", backgroundColor: "#0075FF" }}>
-            <img alt={"editar"} width={"25px"} src={editar} />
-          </div>
           <div
             onClick={() => {
               setValue(item);
@@ -90,8 +87,8 @@ const ServicesTable = ({ valuee, ...restProps }) => {
       {visible === 1 ? (
         <div
           style={{
-            width: "100vh",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",

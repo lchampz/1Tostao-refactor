@@ -42,6 +42,15 @@ export const Modal = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  @media screen and (max-width: 600px) {
+    width: 450px;
+    height: 250px;
+  }
+  @media screen and (max-width: 460px) {
+    width: 300px;
+    height: 250px;
+  }
 `;
 export const Content = styled.div`
   width: 70%;
@@ -58,6 +67,9 @@ export const Sure = styled.div`
   flex-direction: column;
   img {
     width: 30%;
+    @media screen and (max-width: 600px) {
+      width: 20%;
+    }
   }
   h1 {
     font-weight: bold;
@@ -91,6 +103,13 @@ export const Buttons = styled.div`
     cursor: pointer;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
       rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    @media screen and (max-width: 600px) {
+      width: 125px;
+      height: 50px;
+    }
+    @media screen and (max-width: 460px) {
+      margin-right: 1rem;
+    }
     &:hover {
       background-color: #d1d1d1;
       border: 3px solid black;
@@ -110,6 +129,10 @@ export const Buttons = styled.div`
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
       rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     color: #eee;
+    @media screen and (max-width: 600px) {
+      width: 125px;
+      height: 50px;
+    }
 
     &:hover {
       background-color: #d1d1d1;

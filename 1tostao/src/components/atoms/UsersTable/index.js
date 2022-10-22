@@ -11,13 +11,10 @@ import {
   Buttons,
   Content,
 } from "./styled";
-import moment from "moment";
 import deleteX from "../../../assets/img/deleteX.png";
 import lixo from "../../../assets/img/lixo.png";
 import editar from "../../../assets/img/editar.png";
 
-import db from "../../../services/Firebase";
-import { deleteDoc, doc } from "firebase/firestore";
 const UsersTable = ({ ...restProps }) => {
   const { users, deleteUser } = useUserAuth();
   const [visible, setVisible] = useState();
@@ -30,17 +27,13 @@ const UsersTable = ({ ...restProps }) => {
     }
   }, [visible]);
   const rows = users?.map((item, id) => {
-    var t = new Date();
-    t.setSeconds(item.date);
-    var measureDateSaying = moment(t).format("L");
-
     return (
       <>
         <Linha key={id}>
           <Elemento>{item.nome}</Elemento>
           <Elemento>{item.email}</Elemento>
           <Elemento>{item.username}</Elemento>
-          <Elemento>{item.date}</Elemento>
+          <Elemento>{item.date.substring(0, 15)}</Elemento>
           <Elemento>{item.tell}</Elemento>
           <Elemento
             style={{
@@ -52,14 +45,6 @@ const UsersTable = ({ ...restProps }) => {
               border: "none",
             }}
           >
-            <div
-              style={{
-                cursor: "pointer",
-                backgroundColor: "#0075FF",
-              }}
-            >
-              <img alt={"editar"} width={"25px"} src={editar} />
-            </div>
             <div
               onClick={() => {
                 setValue(item);
@@ -83,8 +68,8 @@ const UsersTable = ({ ...restProps }) => {
       {visible === 1 ? (
         <div
           style={{
-            width: "100vh",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
