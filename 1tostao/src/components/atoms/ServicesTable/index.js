@@ -104,7 +104,7 @@ const ServicesTable = ({ valuee, ...restProps }) => {
                 <img src={deleteX} alt={"delete user"} />
                 <h1>Você tem certeza?</h1>
                 <p>
-                  Você tem certeza que deseja excluir esse usuário? Atenção,
+                  Você tem certeza que deseja excluir esse serviço? Atenção,
                   essa ação não é reversível!
                 </p>
               </Sure>
