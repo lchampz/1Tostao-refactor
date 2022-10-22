@@ -1,49 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  Container,
-  ServiceWrapper,
   Service,
   Item,
   ServicePrice,
   InfoService,
   ClientImg,
   ClientName,
-  TitleEspecializados,
   ServiceTitle,
-  ServicosEspecializados,
   Text,
-  WrapperEspecializados,
   ServiceImage,
   ServiceCategory,
 } from "./styled";
+
 import service1 from "../../../assets/img/service2.png";
 import profilePic from "./../../../assets/img/profile.png";
-import "swiper/swiper-bundle.min.css";
-// swiper core styles
-
-import "swiper/swiper.min.css";
-
-// modules styles
-import "swiper/components/navigation/navigation.min.css";
-import "swiper/components/pagination/pagination.min.css";
-import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import { useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ServiceCard = ({
-  idKey,
   nome,
+  idKey,
   preco,
   desc,
   img,
   autor,
   nota,
+  uid,
   categoria,
   children,
+  click,
+  loading,
   ...restProps
 }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <Service {...restProps} key={idKey}>
-        <ServiceTitle>{nome}</ServiceTitle>
+      <Service
+        {...restProps}
+        key={idKey}
+        onClick={() => {
+          navigate(`/service/${uid}`)
+          window.location.reload(false);
+        }}
+      >
+        <ServiceTitle>{loading ? (
+          <Skeleton
+            baseColor="rgb(1, 160, 138)"
+            highlightColor="rgb(0, 224, 190)"
+          />
+        ) : (
+          nome
+        )}</ServiceTitle>
         <div
           style={{
             display: "flex",
@@ -56,7 +64,15 @@ const ServiceCard = ({
             <Item>R${preco}</Item>
           </ServicePrice>
         </div>
+        {loading ? (
+        <Skeleton
+          style={{ width: "250px", height: "150px" }}
+          baseColor="rgb(1, 160, 138)"
+          highlightColor="rgb(0, 224, 190)"
+        />
+      ) : (
         <ServiceImage alt={desc} src={img || service1} />
+      )}
 
         <InfoService>
           <div
@@ -66,11 +82,16 @@ const ServiceCard = ({
               alignItems: "center",
             }}
           >
-            <ClientImg src={profilePic} />
-            <ClientName>{autor}</ClientName>
+            {loading ? null : (
+            <>
+              <ClientImg src={profilePic} />
+
+              <ClientName style={{ color: "#eee" }}>{autor}</ClientName>
+            </>
+          )}
           </div>
           <p style={{ fontSize: "0.8rem", fontWeight: "bold" }} id="avaliacao">
-            {nota}⭐
+            {loading ? <Skeleton /> : `${nota}⭐`}
           </p>
         </InfoService>
         <div>

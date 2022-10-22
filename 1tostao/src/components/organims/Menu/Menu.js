@@ -70,11 +70,7 @@ const Menu = ({ padding }) => {
   const setMobileMenu = () => setClassMenu(!classMenu);
 
   const toggleConfig = () => {
-    if (config === true) {
-      setConfig(false);
-    } else {
-      setConfig(true);
-    }
+    setConfig(!config)
   };
 
   return (
