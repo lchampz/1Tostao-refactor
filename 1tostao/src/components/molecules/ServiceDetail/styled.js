@@ -159,7 +159,7 @@ export const Footer = styled.div`
         display: flex;
         padding: 1rem;
         align-items: center;
-        min-width: 300px;
+        min-width: 400px;
         min-height: 80px;
         padding-left: 1rem;
         margin-bottom: 3rem;
@@ -186,6 +186,12 @@ export const Footer = styled.div`
             border: 3px solid rgba(36, 211, 154, 1);
             transition: all 0.4s linear;
         }
+
+        .title {
+            white-space: wrap;
+            font-size: 1rem;
+            
+        }
         margin-top: 6rem;
     }
 
@@ -193,8 +199,15 @@ export const Footer = styled.div`
 
 export const OcultContent = styled.div`
     overflow: hidden;
+    justify-content: justify;
     padding-top: ${({ visibility }) => visibility ? '1rem' : '0'};
     opacity: ${({ visibility }) => visibility ? '1' : '0'};
     max-height: ${({ display }) => display ? '500px' : '0'};
     transition: all 0.4s ease-in;
+    
+`
+
+export const Title = styled.div`
+    font-size: 1.5rem;
+    color: white;
 `

@@ -7,10 +7,11 @@ import {
   Box,
   Footer,
   OcultContent,
+  Title,
 } from "./styled";
 import { getDataFromService } from "../../../services/getServiceData";
-import docIcon from '../../../assets/img/docGreenIcon.svg'
-import starIcon from '../../../assets/img/starGreenIcon.svg'
+import docIcon from "../../../assets/img/docGreenIcon.svg";
+import starIcon from "../../../assets/img/starGreenIcon.svg";
 
 const ServiceDetail = () => {
   const [data, setData] = useState();
@@ -28,9 +29,6 @@ const ServiceDetail = () => {
   const visibilityTest = (item) =>
     item.content === "desc" ? visible.desc : visible.aval;
 
-  const lero =
-    "Caros amigos, a execução dos pontos do programa nos obriga à análise do fluxo de informações. Por outro lado, a competitividade nas transações comerciais representa uma abertura para a melhoria dos métodos utilizados na avaliação de resultados. Todavia, o comprometimento entre as equipes exige a precisão e a definição do sistema de participação geral. No entanto, não podemos esquecer que a estrutura atual da organização acarreta um processo de reformulação e modernização das formas de ação.";
-
   const style = (item) =>
     visibilityTest(item)
       ? { rotate: "270deg", color: "#24D39A", fontSize: "40px" }
@@ -42,14 +40,14 @@ const ServiceDetail = () => {
       icon: docIcon,
       content: "desc",
       visible: visible.desc,
-      marginBottom: '2px' 
+      marginBottom: "2px",
     },
     {
       title: "AVALIAÇÕES DOS USUÁRIOS",
       icon: starIcon,
       content: "avaliacao",
       visible: visible.aval,
-      marginBottom: '5px'
+      marginBottom: "5px",
     },
   ]);
 
@@ -79,15 +77,15 @@ const ServiceDetail = () => {
     switch (i) {
       case 0:
         setVisible({ ...visible, desc: !visible.desc });
-        
-          setDisplay({ ...display, desc: !display.desc });
-        
+
+        setDisplay({ ...display, desc: !display.desc });
+
         break;
       case 1:
         setVisible({ ...visible, aval: !visible.aval });
-        
-          setDisplay({ ...display, aval: !display.aval });
-        
+
+        setDisplay({ ...display, aval: !display.aval });
+
         break;
     }
   };
@@ -126,15 +124,23 @@ const ServiceDetail = () => {
           return (
             <div className={"wrapperBox"}>
               <div>
-                <span style={{ display: 'flex', alignItems: 'center'}}>
-                  <img src={item.icon} style={{ width: "25px", height: "25px", marginRight: '1rem', marginBottom: item.marginBottom}}/>
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img
+                    src={item.icon}
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      marginRight: "1rem",
+                      marginBottom: item.marginBottom,
+                    }}
+                  />
                   <p className={"title"}>{item.title}</p>
                 </span>
                 <OcultContent
                   display={displayTest(item)}
                   visibility={visibilityTest(item)}
                 >
-                  {item.content === "desc" ? lero : null}
+                  {item.content === "desc" ? data?.desc : null}
                 </OcultContent>
               </div>
 
@@ -154,6 +160,17 @@ const ServiceDetail = () => {
           );
         })}
       </Footer>
+      <Line />
+      <span
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          marginTop: "1rem",
+        }}
+      >
+        <Title>Serviços Relacionados</Title>
+      </span>
     </Wrapper>
   );
 };
