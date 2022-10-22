@@ -84,6 +84,7 @@ const Services = () => {
             color: "#fff",
           }}
           idKey={item.id}
+          uid={item.id}
           nome={item.nome}
           preco={item.preco}
           img={item.img || service1}
@@ -129,6 +130,7 @@ const Services = () => {
           return (
             <ServiceCard
               idKey={item.id}
+              uid={item.id}
               nome={item.nome}
               preco={item.preco}
               img={item.img || service1}
@@ -169,6 +171,7 @@ const Services = () => {
             img={item.img || service1}
             autor={item.autor}
             desc={item.desc}
+            uid={item.id}
             categoria={item.categoria}
             nota={
               (item.nota1 ||

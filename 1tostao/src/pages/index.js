@@ -11,3 +11,4 @@ export { default as Dashboard } from './Dashboard';
 export { default as Send } from './Send';
 export { default as Account } from './Account';
 export { default as RegisterService } from './RegisterService';
+export { default as ServiceDetail } from './ServiceDetail'
