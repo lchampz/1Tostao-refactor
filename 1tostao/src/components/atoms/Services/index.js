@@ -17,6 +17,7 @@ import {
   ServiceCategory,
 } from "./styled";
 import service1 from "../../../assets/img/service2.png";
+import { useNavigate } from "react-router-dom";
 import profilePic from "./../../../assets/img/profile.png";
 import { useService } from "../../../request/hooks/Services.js";
 import { useUserAuth } from "../../../request/hooks/Auth";
@@ -37,13 +38,14 @@ import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 const Services = () => {
+  const navigate = useNavigate();
   const { service, filter, destaque } = useService();
   const { user } = useUserAuth();
 
   const renderServices = service?.map((item) => {
     return (
       <SwiperSlide>
-        <Service style={{ marginBottom: "3rem" }} key={item.id}>
+        <Service style={{ marginBottom: "3rem" }} key={item.id} onClick={() => navigate(`/service/${item.uid}`)}>
           <ServiceTitle style={{ color: "#eee" }}>{item.nome}</ServiceTitle>
           <div
             style={{
@@ -176,7 +178,7 @@ const Services = () => {
     } else {
       return service?.map((item) => {
         return (
-          <Service key={item.id}>
+          <Service key={item.id} onClick={() => navigate(`/service/${item.id}`)}>
             <ServiceTitle>{item.nome}</ServiceTitle>
             <div
               style={{
