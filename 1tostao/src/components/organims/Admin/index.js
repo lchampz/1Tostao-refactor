@@ -35,10 +35,12 @@ const Administracao = () => {
     const Redirect = () => {
       if (profile?.ADM === false) {
         navigate("/");
+      } else if (!user) {
+        navigate("/");
       }
     };
     Redirect();
-  }, [profile]);
+  }, [profile, user]);
 
   function clickedUser() {
     let element = document.getElementById("scrollToUser");
