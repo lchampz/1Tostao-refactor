@@ -1,4 +1,4 @@
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, where, limit } from "firebase/firestore";
 import db from "./Firebase";
 
 const servicesRef = collection(db, "servicos");
@@ -12,5 +12,22 @@ export async function getDataFromService(uid) {
     }
   });
 
-  return data.filter(function (i) { return i});
+  return data.filter(function (i) {
+    return i;
+  });
+}
+
+export async function getServiceWithCategory(category, range) {
+  const q = range
+    ? query(servicesRef, where("categoria", "==", category), limit(range))
+    : query(servicesRef, where("categoria", "==", category));
+
+  const response = await getDocs(q);
+  const data = response.docs.map((doc) => {
+    return { info: doc.data(), id: doc.id };
+  });
+
+  return data.filter(function (i) {
+    return i;
+  });
 }

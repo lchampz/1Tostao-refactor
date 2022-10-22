@@ -8,13 +8,20 @@ import {
   Footer,
   OcultContent,
   Title,
+  RelationatedServices,
 } from "./styled";
-import { getDataFromService } from "../../../services/getServiceData";
+import {
+  getDataFromService,
+  getServiceWithCategory,
+} from "../../../services/getServiceData";
 import docIcon from "../../../assets/img/docGreenIcon.svg";
 import starIcon from "../../../assets/img/starGreenIcon.svg";
+import Services from "../../atoms/ServiceCard";
+import { useLoading } from "../../../request/hooks/Loading";
 
 const ServiceDetail = () => {
   const [data, setData] = useState();
+  const { loading, setLoading } = useLoading();
   const [visible, setVisible] = useState({
     desc: false,
     aval: false,
@@ -23,6 +30,8 @@ const ServiceDetail = () => {
     desc: false,
     aval: false,
   });
+  const [service, setService] = useState([]);
+  const [render, setRender] = useState(false);
 
   const displayTest = (item) =>
     item.content === "desc" ? display.desc : display.aval;
@@ -34,6 +43,15 @@ const ServiceDetail = () => {
       ? { rotate: "270deg", color: "#24D39A", fontSize: "40px" }
       : { rotate: "90deg", color: "#24D39A", fontSize: "40px" };
 
+  const renderLoading = () => {
+    return (
+      <>
+        <Services loading={true} />
+        <Services loading={true} />
+        <Services loading={true} />
+      </>
+    );
+  };
   const [cardData] = useState([
     {
       title: "DESCRIÇÃO DO SERVIÇO",
@@ -57,21 +75,38 @@ const ServiceDetail = () => {
   const url = getCurrentURL();
   const serviceId = url.substr(url.lastIndexOf("/") + 1);
 
+  useEffect(() => {
+    reqServicesData(getCategory);
+  }, []);
+ 
   useEffect(async () => {
-    const response = await getDataFromService(serviceId);
+    const responseData = await getServiceWithCategory(data?.categoria, 3);
+    setService(responseData);
+  }, [render])
 
+  const reqServicesData = async (callback) => {
+    setLoading(true);
+    const response = await getDataFromService(serviceId);
     setData({
       nome: response[0].nome,
       categoria: response[0].categoria,
       img: response[0].img,
       desc: response[0].desc,
-      cat: response[0].cat,
       entrega: response[0].entrega,
       preco: response[0].preco,
       autor: response[0].autor,
       uid: response[0].uid,
     });
-  }, []);
+
+    setTimeout(() => {
+      callback();
+      setLoading(false);
+    }, 1500);
+  };
+
+  const getCategory = async () => {
+    setRender(true);
+  };
 
   const handleShow = (i) => {
     switch (i) {
@@ -171,6 +206,31 @@ const ServiceDetail = () => {
       >
         <Title>Serviços Relacionados</Title>
       </span>
+      <RelationatedServices>
+        {!render ? (
+          renderLoading()
+        ) : (
+          service?.map((item) => {
+            return (
+              <Services
+                uid={item.id}
+                nome={item.info.nome}
+                desc={item.info.desc}
+                img={item.info.img}
+                preco={item.info.preco}
+                autor={item.info.autor}
+                categoria={item.info.categoria}
+                nota1={item.info.nota1}
+                nota2={item.info.nota2}
+                nota3={item.info.nota3}
+                nota4={item.info.nota4}
+                nota5={item.info.nota5}
+                loading={loading}
+              />
+            );
+          })
+        )}
+      </RelationatedServices>
     </Wrapper>
   );
 };

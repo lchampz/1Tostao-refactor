@@ -211,3 +211,14 @@ export const Title = styled.div`
     font-size: 1.5rem;
     color: white;
 `
+
+export const RelationatedServices = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+    }
+
+`
