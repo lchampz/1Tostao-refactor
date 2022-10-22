@@ -67,7 +67,7 @@ const Services = () => {
     setSortAvaliacao();
   });
 
-  const renderServices = avalicaoService?.map((item) => {
+  const renderServices = avalicaoService?.slice(0, 8).map((item) => {
     return (
       <SwiperSlide
         style={{

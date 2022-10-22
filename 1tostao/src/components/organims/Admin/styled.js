@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Header = styled.div`
@@ -132,6 +132,16 @@ export const Pesquisa = styled.input`
 
 // export const UserType = styled.h1``;
 
-export const Users = styled.div``;
+export const Users = styled.div`
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+`;
 
-export const Services = styled.div``;
+export const Services = styled.div`
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+`;

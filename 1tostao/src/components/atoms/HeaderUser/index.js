@@ -61,7 +61,7 @@ const HeaderUser = ({
 
   useEffect(() => {
     getServicesUser(user?.uid);
-  });
+  }, []);
   useEffect(() => {
     const Redirect = () => {
       if (!user) {
