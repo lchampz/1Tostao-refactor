@@ -14,8 +14,9 @@ import {
   Account,
   Send,
   RegisterService,
-  ServiceDetail
+  ServiceDetail,
 } from "./pages";
+import Admin from "./pages/Admin";
 
 const Rotas = () => {
   const routes = [
@@ -31,7 +32,12 @@ const Rotas = () => {
     { path: "/dashboard", name: "Dashboard", element: <Dashboard /> },
     { path: "/support/send", name: "SendEmail", element: <Send /> },
     { path: "/support/myaccount", name: "Account", element: <Account /> },
-    { path: "/service/:id", name: "Service Detail", element: <ServiceDetail /> },
+    { path: "/adm", name: "Admin", element: <Admin /> },
+    {
+      path: "/service/:id",
+      name: "Service Detail",
+      element: <ServiceDetail />,
+    },
     {
       path: "/profile/registerService",
       name: "RegisterService",
