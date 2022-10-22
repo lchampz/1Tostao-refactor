@@ -30,7 +30,9 @@ const UsersTable = ({ ...restProps }) => {
     }
   }, [visible]);
   const rows = users?.map((item, id) => {
-    let measureDateSaying = moment().format("L");
+    var t = new Date();
+    t.setSeconds(item.date);
+    var measureDateSaying = moment(t).format("L");
 
     return (
       <>
@@ -38,7 +40,7 @@ const UsersTable = ({ ...restProps }) => {
           <Elemento>{item.nome}</Elemento>
           <Elemento>{item.email}</Elemento>
           <Elemento>{item.username}</Elemento>
-          <Elemento>{measureDateSaying}</Elemento>
+          <Elemento>{item.date}</Elemento>
           <Elemento>{item.tell}</Elemento>
           <Elemento
             style={{

@@ -14,7 +14,7 @@ async function createUserFirestore(email, name, uid) {
       cidade: "",
       niver: null,
       uid: uid,
-      date: new Date(),
+      date: new Date().toString(),
       username: name,
       sobrenome: "",
       ADM: false,

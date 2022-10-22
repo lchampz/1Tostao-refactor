@@ -28,7 +28,7 @@ async function createUserFirestore(
       nome: name,
       rg: rg,
       uid: uid,
-      date: new Date(),
+      date: new Date().toString(),
       username: username,
       sobrenome: lastname,
       ADM: false,
