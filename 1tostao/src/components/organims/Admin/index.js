@@ -88,16 +88,14 @@ const Administracao = () => {
               />
             </Wrapper>
           </Search>
-
-          <Users>
-            <div style={{ width: "20%" }}></div>
-            <UsersTable id={"scrollToUser"} />
-          </Users>
-          <Services>
-            <div style={{ width: "20%" }}></div>
-            <ServicesTable id={"scrollToService"} />
-          </Services>
         </Header>
+
+        <Users>
+          <UsersTable id={"scrollToUser"} />
+        </Users>
+        <Services>
+          <ServicesTable id={"scrollToService"} />
+        </Services>
       </Container>
     </>
   );

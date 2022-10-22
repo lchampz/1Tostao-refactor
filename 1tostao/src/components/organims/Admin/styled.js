@@ -137,9 +137,11 @@ export const Users = styled.div`
   justify-content: space-around;
   display: flex;
   flex-direction: row;
+  overflow-x: auto;
 `;
 
 export const Services = styled.div`
+  overflow-x: auto;
   width: 100%;
   justify-content: space-around;
   display: flex;

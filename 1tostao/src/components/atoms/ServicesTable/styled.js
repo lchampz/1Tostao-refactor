@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Tabela = styled.table`
-  width: 80%;
+  width: 90%;
   height: 100%;
   border: 1px solid #eee;
   text-align: center;
