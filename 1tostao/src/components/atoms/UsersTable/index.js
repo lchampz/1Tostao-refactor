@@ -15,7 +15,7 @@ import deleteX from "../../../assets/img/deleteX.png";
 import lixo from "../../../assets/img/lixo.png";
 import editar from "../../../assets/img/editar.png";
 
-const UsersTable = ({ ...restProps }) => {
+const UsersTable = ({ array, ...restProps }) => {
   const { users, deleteUser } = useUserAuth();
   const [visible, setVisible] = useState();
   const [value, setValue] = useState();
@@ -26,7 +26,8 @@ const UsersTable = ({ ...restProps }) => {
       element.scrollIntoView({ block: "center" });
     }
   }, [visible]);
-  const rows = users?.map((item, id) => {
+
+  const rows = array?.map((item, id) => {
     return (
       <>
         <Linha key={id}>

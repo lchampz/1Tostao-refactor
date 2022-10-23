@@ -54,13 +54,6 @@ const ServiceFilter = () => {
   const [search, setSearch] = useState();
   const [filtragem, setFiltragem] = useState();
 
-  // const filteredServices = service.filter((item) => {
-  //   return (
-  //     item.nome.toLowerCase().includes(search) ||
-  //     item.autor.toLowerCase().includes(search)
-  //   );
-  // });
-
   const servicesNumber = () => {
     if (filter?.length === 0) {
       return (
@@ -114,7 +107,7 @@ const ServiceFilter = () => {
               onChange={(e) => {
                 getServiceSearch(e.target.value);
               }}
-              placeholder="Encontre o seu serviço..."
+              placeholder="Procure um serviço por nome, categoria ou freelancer..."
             />
 
             <DropDown onClick={showSideBar}>

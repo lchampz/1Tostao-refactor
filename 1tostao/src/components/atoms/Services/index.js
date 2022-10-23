@@ -38,7 +38,8 @@ import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import ServiceCard from "../ServiceCard";
 
 const Services = () => {
-  const { service, filter, serviceDestaque } = useService();
+  const { service, filter, serviceDestaque, search, searchValue } =
+    useService();
   const [avalicaoService, setAvaliacaoService] = useState();
 
   useEffect(() => {
@@ -116,26 +117,63 @@ const Services = () => {
     );
   });
   function Filtrar() {
-    if (filter !== undefined) {
-      if (filter.length === 0) {
-        return (
-          <div style={{ height: "50vh" }}>
-            <h1 style={{ marginTop: "2rem", marginBottom: "2rem" }}>
-              Não há serviços com essa filtragem!
-            </h1>
-          </div>
-        );
+    if (searchValue === undefined) {
+      if (filter !== undefined) {
+        if (filter.length === 0) {
+          return (
+            <div style={{ height: "50vh" }}>
+              <h1 style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+                Não há serviços com essa filtragem!
+              </h1>
+            </div>
+          );
+        } else {
+          return filter?.map((item) => {
+            return (
+              <ServiceCard
+                idKey={item.id}
+                uid={item.id}
+                nome={item.nome}
+                preco={item.preco}
+                img={item.img || service1}
+                autor={item.autor}
+                desc={item.desc}
+                categoria={item.categoria}
+                nota={
+                  (item.nota1 ||
+                    item.nota2 ||
+                    item.nota3 ||
+                    item.nota4 ||
+                    item.nota5) > 0
+                    ? (
+                        (item.nota1 * 1 +
+                          item.nota2 * 2 +
+                          item.nota3 * 3 +
+                          item.nota4 * 4 +
+                          item.nota5 * 5) /
+                        (item.nota1 +
+                          item.nota2 +
+                          item.nota3 +
+                          item.nota4 +
+                          item.nota5)
+                      ).toFixed(1)
+                    : "0 Avaliações"
+                }
+              />
+            );
+          });
+        }
       } else {
-        return filter?.map((item) => {
+        return service?.map((item) => {
           return (
             <ServiceCard
               idKey={item.id}
-              uid={item.id}
               nome={item.nome}
               preco={item.preco}
               img={item.img || service1}
               autor={item.autor}
               desc={item.desc}
+              uid={item.id}
               categoria={item.categoria}
               nota={
                 (item.nota1 ||
@@ -161,8 +199,16 @@ const Services = () => {
           );
         });
       }
+    } else if (searchValue.length === 0) {
+      return (
+        <div style={{ height: "50vh" }}>
+          <h1 style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+            Não há serviços com essa filtragem!
+          </h1>
+        </div>
+      );
     } else {
-      return service?.map((item) => {
+      return searchValue?.map((item) => {
         return (
           <ServiceCard
             idKey={item.id}
@@ -216,9 +262,12 @@ const Services = () => {
       spaceBetween: 8,
     },
   };
+  useEffect(() => {
+    console.log(searchValue);
+  }, [searchValue]);
   return (
     <>
-      {filter !== undefined ? null : (
+      {filter !== undefined || searchValue !== undefined ? null : (
         <ServicosEspecializados>
           <div
             style={{
