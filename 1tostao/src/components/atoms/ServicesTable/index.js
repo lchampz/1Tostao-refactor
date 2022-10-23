@@ -16,7 +16,7 @@ import db from "../../../services/Firebase";
 import lixo from "../../../assets/img/lixo.png";
 import editar from "../../../assets/img/editar.png";
 import { deleteDoc, doc } from "firebase/firestore";
-const ServicesTable = ({ valuee, ...restProps }) => {
+const ServicesTable = ({ array, valuee, ...restProps }) => {
   const { service } = useService();
   const [visible, setVisible] = useState();
   const [value, setValue] = useState();
@@ -27,30 +27,12 @@ const ServicesTable = ({ valuee, ...restProps }) => {
       element.scrollIntoView({ block: "center" });
     }
   }, [visible]);
-  useEffect(() => {
-    const setAvaliacao = async () => {
-      service.forEach((item) => {
-        item["avaliacao"] = (
-          (item.nota1 * 1 +
-            item.nota2 * 2 +
-            item.nota3 * 3 +
-            item.nota4 * 4 +
-            item.nota5 * 5) /
-          (item.nota1 + item.nota2 + item.nota3 + item.nota4 + item.nota5)
-        ).toFixed(1);
-        if (isNaN(item.avaliacao)) {
-          item["avaliacao"] = 0;
-        }
-      });
-    };
-    setAvaliacao();
-  });
 
   const deleteService = async (val) => {
     await deleteDoc(doc(db, "servicos", val.id));
     window.location.reload();
   };
-  const rows = service?.map((item) => {
+  const rows = array?.map((item) => {
     return (
       <Linha>
         <Elemento>{item.nome}</Elemento>

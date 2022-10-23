@@ -11,8 +11,12 @@ export const ServiceProvider = ({ children }) => {
   const [serviceUser, setServiceUser] = useState();
   const [serviceDestaque, setServiceDestaque] = useState();
   const [filter, setFilter] = useState();
+  const [search, setSearch] = useState();
+  const [searchValue, setSearchValue] = useState(undefined);
+  const [searchShow, setSearchShow] = useState();
   const docRef = collection(db, "servicos");
   const { user, profile } = useUserAuth();
+
   // query serviços
   useEffect(() => {
     const getServices = async () => {
@@ -40,17 +44,23 @@ export const ServiceProvider = ({ children }) => {
     );
   };
   // barra de pesquisa
-  const getServiceSearch = async (text) => {
-    const searched = query(
-      docRef,
-      where("nome", "<=", text + "~"),
-      where("nome", ">=", text)
-    );
-    const servicesFiltered = await getDocs(searched);
-    setFilter(
-      servicesFiltered.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    );
+  const getServiceSearch = (text) => {
+    setSearch(text);
+    if (text !== "") {
+      setSearchValue(
+        service?.filter((person) => {
+          return (
+            person.nome.toLowerCase().includes(search.toLowerCase()) ||
+            person.categoria.toLowerCase().includes(search.toLowerCase()) ||
+            person.autor.toLowerCase().includes(search.toLowerCase())
+          );
+        })
+      );
+    } else if (text === "") {
+      setSearchValue(undefined);
+    }
   };
+
   // filtragem maior e menor
   const sortByPrice = async (variavel) => {
     const searched = query(docRef, orderBy("preco", variavel));
@@ -62,6 +72,7 @@ export const ServiceProvider = ({ children }) => {
   // remover filtros
   const removeFilter = () => {
     setFilter(undefined);
+    setSearchValue(undefined);
   };
 
   return (
@@ -76,6 +87,8 @@ export const ServiceProvider = ({ children }) => {
         getServicesUser,
         getServiceSearch,
         sortByPrice,
+        search,
+        searchValue,
       }}
     >
       {children}
