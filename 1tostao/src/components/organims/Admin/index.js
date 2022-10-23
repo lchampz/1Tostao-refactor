@@ -77,8 +77,9 @@ const Administracao = () => {
 
   const filteredTable = users?.filter((person) => {
     return (
-      person.nome.toLowerCase().includes(searchValue.toLowerCase()) ||
-      person.email.toLowerCase().includes(searchValue.toLowerCase())
+      person.nome.toLowerCase().includes(searchValue?.toLowerCase()) ||
+      person.email.toLowerCase().includes(searchValue?.toLowerCase()) ||
+      person.username.toLowerCase().includes(searchValue?.toLowerCase())
     );
   });
 
@@ -103,9 +104,9 @@ const Administracao = () => {
 
   const filteredTableService = service?.filter((person) => {
     return (
-      person.nome.toLowerCase().includes(valueService.toLowerCase()) ||
-      person.categoria.toLowerCase().includes(valueService.toLowerCase()) ||
-      person.autor.toLowerCase().includes(valueService.toLowerCase())
+      person.nome.toLowerCase().includes(valueService?.toLowerCase()) ||
+      person.categoria.toLowerCase().includes(valueService?.toLowerCase()) ||
+      person.autor.toLowerCase().includes(valueService?.toLowerCase())
     );
   });
   const handleChangeService = (e) => {
@@ -122,7 +123,9 @@ const Administracao = () => {
     if (!showService) {
       return <ServicesTable array={service} id={"scrollToService"} />;
     } else {
-      return <ServicesTable array={filteredTableService} id={"scrollToUser"} />;
+      return (
+        <ServicesTable array={filteredTableService} id={"scrollToService"} />
+      );
     }
   }
 
