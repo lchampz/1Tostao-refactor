@@ -151,6 +151,7 @@ const HeaderUser = ({
                       }}
                       idKey={item.id}
                       nome={item.nome}
+                      uid={item.uid}
                       preco={item.preco}
                       img={item.img || service1}
                       autor={item.autor}
