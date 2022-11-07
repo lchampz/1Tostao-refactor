@@ -23,7 +23,7 @@ import Modal from "../../atoms/Modal";
 import cat from "../../../request/mock/categorias.json";
 import IntlCurrencyInput from "react-intl-currency-input";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import check from '../../../assets/img/checkIcon.png'
+import check from "../../../assets/img/checkIcon.png";
 
 const RegisterService = () => {
   const navigate = useNavigate();
@@ -206,7 +206,9 @@ const RegisterService = () => {
           type="range"
           min="1"
           max="30"
-          onChange={(e) => setData({ ...data, entrega: e.target.value })}
+          onChange={(e) =>
+            setData({ ...data, entrega: parseInt(e.target.value) })
+          }
         />
         <Delivery>
           {data.entrega}
@@ -233,8 +235,13 @@ const RegisterService = () => {
         }}
         oneBtn
       >
-        <img src={check} style={{ width: '80px', height: '80px',  marginTop: '30px' }} />
-        <p style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '50px' }}>Seu serviço foi criado!</p>
+        <img
+          src={check}
+          style={{ width: "80px", height: "80px", marginTop: "30px" }}
+        />
+        <p style={{ fontSize: "18px", fontWeight: "bold", marginTop: "50px" }}>
+          Seu serviço foi criado!
+        </p>
       </Modal>
     </Wrapper>
   );

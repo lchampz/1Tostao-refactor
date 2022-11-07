@@ -348,10 +348,10 @@ export const Remove = styled.h1`
 
 export const FoundServices = styled.div`
   color: #fff;
+  width: auto;
   border: 1px solid #fff;
   height: 30px;
-  min-width: 200px;
-  max-width: 100%;
+
   display: flex;
   flex-direction: row;
   border-radius: 1rem;

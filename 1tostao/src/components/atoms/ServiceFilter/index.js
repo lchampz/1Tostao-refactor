@@ -49,28 +49,30 @@ const ServiceFilter = () => {
     service,
     getServiceSearch,
   } = useService();
-  const [border, setBorder] = useState();
   const [filtrado, setFiltrado] = useState(0);
-  const [search, setSearch] = useState();
   const [filtragem, setFiltragem] = useState();
 
   const servicesNumber = () => {
     if (filter?.length === 0) {
       return (
         <FoundServices>
-          <p>{filter?.length} Serviços Encontrados</p>
+          <p style={{ margin: "10px" }}>
+            {filter?.length} Serviços Encontrados
+          </p>
         </FoundServices>
       );
     } else if (filter?.length === 1) {
       return (
         <FoundServices>
-          <p>{filter?.length} Serviço Encontrado</p>
+          <p style={{ margin: "10px" }}>{filter?.length} Serviço Encontrado</p>
         </FoundServices>
       );
     } else if (filter?.length > 1) {
       return (
         <FoundServices>
-          <p>{filter?.length} Serviços Encontrados</p>
+          <p style={{ margin: "10px" }}>
+            {filter?.length} Serviços Encontrados
+          </p>
         </FoundServices>
       );
     }

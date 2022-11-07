@@ -24,6 +24,7 @@ import iconUser from "../../../assets/icons/userIcon.png";
 import window from "../../../assets/icons/anotherWindow.png";
 import git from "../../../assets/icons/gitIconGreen.png";
 import tt from "../../../assets/icons/twitterIconGreen.png";
+import { useUserAuth } from "../../../request/hooks/Auth.js";
 import mail from "../../../assets/icons/mailIconGreen.png";
 import insta from "../../../assets/icons/instaIconGreen.png";
 import ImgWrapper from "../ImgWrapper";
@@ -32,7 +33,16 @@ import Carousel from "react-elastic-carousel";
 
 const images = require("../../../request/mock/imgs.json");
 
-const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
+const Submenu = ({
+  imgUser,
+  instagram,
+  email,
+  github,
+  name,
+  twitter,
+  ...restProps
+}) => {
+  const { logOut } = useUserAuth();
   const [visible, setVisible] = useState(false);
   const img = iconUser;
   const navigate = useNavigate();
@@ -42,6 +52,15 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
   };
   const PrevArrow = ({ children }) => {
     return <Arrow onClick={() => slider.current.slidePrev()}>{children}</Arrow>;
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const renderCards = images.map((img, i) => {
@@ -79,7 +98,7 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
     );
   };
   return (
-    <Wrapper>
+    <Wrapper {...restProps}>
       <Icon display={!visible} onClick={() => setVisible(!visible)}>
         <ImgWrapper
           width="2rem"
@@ -191,13 +210,8 @@ const Submenu = ({ imgUser, instagram, email, github, name, twitter }) => {
                   url={window}
                 />
               </Infobox>
-              <Infobox
-                onClick={() => {
-                  navigate(`/dashboard`);
-                  setVisible(false);
-                }}
-              >
-                Dashboard
+              <Infobox onClick={handleLogout}>
+                Logout
                 <ImgWrapper
                   margin={"-24px 0px 0px 210px"}
                   width="1.6rem"

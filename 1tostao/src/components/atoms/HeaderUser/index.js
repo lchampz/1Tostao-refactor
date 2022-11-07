@@ -54,31 +54,22 @@ const HeaderUser = ({
   marginT,
   marginB,
 }) => {
-  const { logOut, user, profile, checkUndefined, check } = useUserAuth();
+  const { logOut, user, profile } = useUserAuth();
   const navigate = useNavigate();
   const [tab, setTab] = useState(1);
   const { serviceUser, getServicesUser } = useService();
 
   useEffect(() => {
-    getServicesUser(user?.uid);
-  }, []);
-  useEffect(() => {
-    const Redirect = () => {
-      if (!user) {
-        navigate("/");
-      }
-    };
-    Redirect();
-  });
-
-  const handleLogout = async () => {
-    try {
-      await logOut();
-      navigate("/");
-    } catch (error) {
-      console.log(error.message);
+    if (!user) {
+      return navigate("/");
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      return getServicesUser(user?.uid);
+    }
+  }, [user]);
 
   function switchTab(param) {
     switch (param) {
@@ -115,7 +106,6 @@ const HeaderUser = ({
               ? user && user?.displayName
               : profile && profile?.username}
           </Username>
-          <Mensagem>Enviar mensagem</Mensagem>
           {profile ? (
             <Contratar onClick={() => navigate("/profile/registerService")}>
               Cadastrar Serviço
@@ -148,66 +138,6 @@ const HeaderUser = ({
         </AboutUser>
         {tab === 1 ? (
           <Jobs>
-            <JobsFilter>
-              <select className="seletor">
-                <option className="option" value="0">
-                  Todas Categorias
-                </option>
-                <option className="option" value="1">
-                  Fotografia
-                </option>
-                <option className="option" value="2">
-                  Programação
-                </option>
-                <option className="option" value="3">
-                  Artes
-                </option>
-                <option className="option" value="4">
-                  Edição
-                </option>
-                <option className="option" value="5">
-                  Aulas
-                </option>
-                <option className="option" value="6">
-                  Desenhos
-                </option>
-                <option className="option" value="7">
-                  Narração
-                </option>
-                <option className="option" value="8">
-                  Produção Audio-Visual
-                </option>
-              </select>
-              <select className="seletor">
-                <option className="option" value="0">
-                  Mais Populares
-                </option>
-                <option className="option" value="1">
-                  Fotografia
-                </option>
-                <option className="option" value="2">
-                  Programação
-                </option>
-                <option className="option" value="3">
-                  Artes
-                </option>
-                <option className="option" value="4">
-                  Edição
-                </option>
-                <option className="option" value="5">
-                  Aulas
-                </option>
-                <option className="option" value="6">
-                  Desenhos
-                </option>
-                <option className="option" value="7">
-                  Narração
-                </option>
-                <option className="option" value="8">
-                  Produção Audio-Visual
-                </option>
-              </select>
-            </JobsFilter>
             <JobsWrapper>
               {serviceUser?.length !== 0 ? (
                 serviceUser?.map((item) => {
@@ -257,39 +187,6 @@ const HeaderUser = ({
                 </div>
               )}
             </JobsWrapper>
-            <Pagination>
-              <ul className="pagination">
-                <li>
-                  <a href="#">«</a>
-                </li>
-                <li>
-                  <a className="active" href="#">
-                    1
-                  </a>
-                </li>
-                <li>
-                  <a href="#">2</a>
-                </li>
-                <li>
-                  <a href="#">3</a>
-                </li>
-                <li>
-                  <a href="#">4</a>
-                </li>
-                <li>
-                  <a href="#">5</a>
-                </li>
-                <li>
-                  <a href="#">6</a>
-                </li>
-                <li>
-                  <a href="#">7</a>
-                </li>
-                <li>
-                  <a href="#">»</a>
-                </li>
-              </ul>
-            </Pagination>
           </Jobs>
         ) : (
           <About>
@@ -307,7 +204,9 @@ const HeaderUser = ({
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat.{" "}
                 </p>
-                <p className="data">Membro desde: 15 de março de 2022</p>
+                <p className="data">
+                  Membro desde: {profile.date.substring(0, 15)}
+                </p>
               </AboutInfo>
               <AboutContact>
                 <h1 className="title">Contato</h1>
@@ -333,7 +232,7 @@ const HeaderUser = ({
                 </div>
               </AboutContact>
             </AboutInfos>
-            <Avaliatons>
+            {/* <Avaliatons>
               <Title>
                 <h1 className="title">Avaliações(139)</h1>
               </Title>
@@ -397,12 +296,10 @@ const HeaderUser = ({
                   <p className="data">02 de dezembro de 2022</p>
                 </WrapperAvaliation>
               </Reviews>
-            </Avaliatons>
+            </Avaliatons> */}
           </About>
         )}
       </Wrapper>
-
-      <button onClick={handleLogout}>Logout</button>
     </>
   );
 };

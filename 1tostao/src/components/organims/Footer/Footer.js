@@ -26,8 +26,21 @@ const Footer = ({ width, margintop, border, size, color, needMargin }) => {
               </p>
               <div>
                 <img src={face} className="img" alt="facebook" />
-                <img src={ig} className="img" alt="instagram" />
-                <img src={git} className="img" alt="github" />
+                <a
+                  href={"https://www.instagram.com/1tostao_oficial/"}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={ig} className="img" alt="instagram" />
+                </a>
+                <a
+                  href={"https://github.com/lchampz/1Tostao-refactor"}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={git} className="img" alt="github" />
+                </a>
+
                 <img src={linkedin} className="img" alt="linkedin" />
               </div>
             </div>

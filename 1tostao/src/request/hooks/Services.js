@@ -75,6 +75,8 @@ export const ServiceProvider = ({ children }) => {
     setSearchValue(undefined);
   };
 
+  //filtrar cards
+
   return (
     <ServiceContext.Provider
       value={{

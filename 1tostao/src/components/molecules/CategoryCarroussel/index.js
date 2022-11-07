@@ -55,7 +55,9 @@ const CategoryCarroussel = ({ titleColor, border }) => {
           alt={img.alt}
           className={"Card"}
           url={img.url}
-          link={img.link}
+          click={() => {
+            navigate("/servicos");
+          }}
         >
           {img.nome}
         </Card>

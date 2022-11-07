@@ -39,8 +39,16 @@ const Menu = ({ padding }) => {
     color: "#FFFFFF",
   });
   const [logo, setLogo] = useState(logoWhite);
-  const { user, profile } = useUserAuth();
+  const { user, profile, logOut } = useUserAuth();
 
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const changeTheme = () => {
     setTheme(theme.name === "white" ? themes[1] : themes[0]);
   };
@@ -70,7 +78,7 @@ const Menu = ({ padding }) => {
   const setMobileMenu = () => setClassMenu(!classMenu);
 
   const toggleConfig = () => {
-    setConfig(!config)
+    setConfig(!config);
   };
 
   return (
@@ -187,6 +195,35 @@ const Menu = ({ padding }) => {
           >
             Sobre nós
           </PagesMenu>
+          {user ? (
+            <>
+              <PagesMenu
+                onClick={() => {
+                  setMobileMenu();
+                  navigate(`/profile`);
+                }}
+              >
+                Perfil
+              </PagesMenu>
+              <PagesMenu
+                onClick={() => {
+                  setMobileMenu();
+                  navigate(`/support`);
+                }}
+              >
+                Suporte
+              </PagesMenu>
+              <PagesMenu
+                onClick={() => {
+                  setMobileMenu();
+                  handleLogout();
+                }}
+              >
+                Logout
+              </PagesMenu>
+            </>
+          ) : null}
+
           {profile?.ADM === true ? (
             <PagesMenu
               onClick={() => {
@@ -197,6 +234,9 @@ const Menu = ({ padding }) => {
               Admin
             </PagesMenu>
           ) : null}
+          {/* <PagesMenu>
+            <SubmenuLogged style={{ position: "absolute" }} />
+          </PagesMenu> */}
           {user ? (
             <SubmenuLogged />
           ) : (
