@@ -36,26 +36,31 @@ export async function insertComment(
         await updateDoc(update, {
           nota1: increment(1),
         });
+        break;
 
       case 2:
         await updateDoc(update, {
           nota2: increment(1),
         });
+        break;
 
       case 3:
         await updateDoc(update, {
           nota3: increment(1),
         });
+        break;
 
       case 4:
         await updateDoc(update, {
           nota4: increment(1),
         });
+        break;
 
       case 5:
         await updateDoc(update, {
           nota5: increment(1),
         });
+        break;
     }
   } catch (e) {
     console.log("[ERROR]: ", e);
