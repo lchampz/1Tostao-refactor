@@ -1,7 +1,16 @@
-import { addDoc, collection, query, getDocs, where, } from "firebase/firestore";
-import db from "./Firebase"; 
+import {
+  addDoc,
+  collection,
+  query,
+  getDocs,
+  where,
+  updateDoc,
+  doc,
+  increment,
+} from "firebase/firestore";
+import db from "./Firebase";
 
-export async function insertComment (
+export async function insertComment(
   autor,
   idServico,
   desc,
@@ -16,9 +25,43 @@ export async function insertComment (
       desc: desc,
       nota: nota,
       uidAutor: uidAutor,
-      data: data
+      data: data,
     });
     console.log("[SUCCESS] ID: ", docRef.id);
+
+    const update = doc(db, "servicos", idServico);
+
+    switch (nota) {
+      case 1:
+        await updateDoc(update, {
+          nota1: increment(1),
+        });
+        break;
+
+      case 2:
+        await updateDoc(update, {
+          nota2: increment(1),
+        });
+        break;
+
+      case 3:
+        await updateDoc(update, {
+          nota3: increment(1),
+        });
+        break;
+
+      case 4:
+        await updateDoc(update, {
+          nota4: increment(1),
+        });
+        break;
+
+      case 5:
+        await updateDoc(update, {
+          nota5: increment(1),
+        });
+        break;
+    }
   } catch (e) {
     console.log("[ERROR]: ", e);
   }
@@ -37,4 +80,3 @@ export const getComments = async (serviceUid) => {
     return i;
   });
 };
-

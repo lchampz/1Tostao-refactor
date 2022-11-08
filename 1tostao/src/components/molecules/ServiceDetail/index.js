@@ -170,7 +170,7 @@ const ServiceDetail = () => {
       aval.desc,
       aval.star,
       profile?.uid,
-      today.toLocaleDateString()
+      today.toLocaleDateString(),
     ).then(() => {
       window.location.reload(false);
     });
