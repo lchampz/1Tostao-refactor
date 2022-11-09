@@ -27,19 +27,18 @@ import Modal from "../ModalConfirm";
 import { createUser } from "../../../services/AuthService";
 import { useUserAuth } from "../../../request/hooks/Auth";
 
-
 const CardRegister = ({}) => {
-  const {user} = useUserAuth();
-  
-  useEffect(() => {
-    const Redirect = () => {
-      if(user){
-        navigate("/profile")
-    }
-    }
-    Redirect();
-});
+  const { user } = useUserAuth();
 
+  const Redirect = () => {
+    if (!user) {
+      return console.log("deslogado");
+    }
+    navigate("/profile");
+  };
+  useEffect(() => {
+    Redirect();
+  }, [user]);
   const [tab, setTab] = useState(1);
   const [data, setData] = useState({
     user: null,
@@ -65,16 +64,14 @@ const CardRegister = ({}) => {
   const navigate = useNavigate();
   const { regexTypes } = useRegex();
   const [code, setCode] = useState(undefined);
-  const [ visible, setVisible ] = useState(false)
-  const [ valid, setValid ] = useState({
+  const [visible, setVisible] = useState(false);
+  const [valid, setValid] = useState({
     num: false,
     length: false,
     min: false,
     masc: false,
-    especial: false
-  })
-
-
+    especial: false,
+  });
 
   useEffect(() => {
     setData({
@@ -96,16 +93,16 @@ const CardRegister = ({}) => {
   }, []);
 
   const isValid = (pass) => {
-    let password = data.pass || '' 
+    let password = data.pass || "";
 
     setValid({
       num: regexTypes.num.test(pass),
       min: regexTypes.min.test(pass),
       especial: regexTypes.especial.test(pass),
       masc: regexTypes.masc.test(pass),
-      length: password.length >= 7
-    })
-  }
+      length: password.length >= 7,
+    });
+  };
 
   const isNull = (value) => {
     if (value === null || !value || value === undefined || value === "") {
@@ -212,7 +209,6 @@ const CardRegister = ({}) => {
     return [day, month, year].join("/");
   };
 
-
   return (
     <>
       <Container bgImg={bg}>
@@ -282,10 +278,9 @@ const CardRegister = ({}) => {
               value={data.pass}
               type={"password"}
               onChange={(e) => {
-                  setData({ ...data, pass: e.target.value })
-                  isValid(e.target.value)
-                }
-              }
+                setData({ ...data, pass: e.target.value });
+                isValid(e.target.value);
+              }}
               placeholder="Digite sua senha"
               tooltip
               onFocus={() => setVisible(true)}
@@ -376,7 +371,9 @@ const CardRegister = ({}) => {
             {tab === 1 ? "Avançar" : "Finalizar!"}
           </Button>
           {tab !== 1 ? null : (
-            <p className="login" onClick={() => navigate(`/login`)}>Já tem uma conta? Entrar</p>
+            <p className="login" onClick={() => navigate(`/login`)}>
+              Já tem uma conta? Entrar
+            </p>
           )}
         </Wrapper>
         <Modal
@@ -396,10 +393,9 @@ const CardRegister = ({}) => {
               data.lastname,
               data.birthday,
               data.city
-            )
-            navigate(`/login`)
-          }
-          }
+            );
+            navigate(`/login`);
+          }}
         />
       </Container>
     </>

@@ -39,7 +39,7 @@ const Menu = ({ padding }) => {
     color: "#FFFFFF",
   });
   const [logo, setLogo] = useState(logoWhite);
-  const { user, profile, logOut } = useUserAuth();
+  const { user, profile, logOut, setProfile } = useUserAuth();
 
   const handleLogout = async () => {
     try {
