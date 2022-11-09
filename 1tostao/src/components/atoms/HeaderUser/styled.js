@@ -69,9 +69,7 @@ export const Contratar = styled.button`
 
   @media (max-width: 900px) {
     margin-right: 0rem;
-  }
-  @media (max-width: 310px) {
-    margin-left: 1.8rem;
+    margin-left: 3rem;
   }
 
   &:hover {

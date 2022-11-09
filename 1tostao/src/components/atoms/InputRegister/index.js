@@ -23,6 +23,7 @@ const InputRegister = ({
   mascValid,
   minValid,
   numValid,
+  ...restProps
 }) => {
   return (
     <>
@@ -35,7 +36,6 @@ const InputRegister = ({
             onFocus={onFocus}
             onBlur={onBlur}
             marginBottom={marginBottom}
-         
             display={display}
             icon={icon}
             value={value}
@@ -43,10 +43,13 @@ const InputRegister = ({
             className="input"
             onChange={onChange}
             placeholder={placeholder}
+            {...restProps}
           />
           <WrapperTooltip visible={visible}>
             <ReqPass valid={charValid || false}>- Mínimo 8 caracteres</ReqPass>
-            <ReqPass valid={especialValid || false}>- Um caractere especial</ReqPass>
+            <ReqPass valid={especialValid || false}>
+              - Um caractere especial
+            </ReqPass>
             <ReqPass valid={mascValid || false}>- uma letra maiuscula</ReqPass>
             <ReqPass valid={minValid || false}>- Uma letra minuscula</ReqPass>
             <ReqPass valid={numValid || false}>- Um número</ReqPass>

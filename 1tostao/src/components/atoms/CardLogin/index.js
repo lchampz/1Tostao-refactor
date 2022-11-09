@@ -16,31 +16,35 @@ import Email from "../../../assets/icons/email.png";
 import Lock from "../../../assets/icons/padlock.png";
 import InputRegister from "../InputRegister/index.js";
 import { useUserAuth } from "../../../request/hooks/Auth.js";
+import { auth } from "../../../services/Firebase";
 
 const CardLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(false);
   const [error, setError] = useState("");
   const { logIn, googleSignIn, user, check, profile } = useUserAuth();
   const navigate = useNavigate();
 
+  const Redirect = () => {
+    if (!user) {
+      return console.log("deslogado");
+    }
+    navigate("/profile");
+  };
   useEffect(() => {
-    const Redirect = () => {
-      if (user) {
-        navigate("/profile");
-      }
-    };
     Redirect();
-  });
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+
     try {
       await logIn(email, password);
       navigate("/profile");
     } catch (err) {
       setError(err.message);
+      setMessage(true);
     }
   };
 
@@ -57,7 +61,7 @@ const CardLogin = () => {
   return (
     <>
       <Container bgImg={bg}>
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Wrapper>
             <ImgWrapper
               url={Logo}
@@ -66,27 +70,61 @@ const CardLogin = () => {
               margin={"30px 155px 0px 0px"}
             />
             <TextLogin>Login</TextLogin>
-            <WrapperInput>
-              <InputRegister
-                label={"Email"}
-                type="email"
-                marginRight="72%"
-                placeholder="Email"
-                icon={Email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <InputRegister
-                label={"Senha"}
-                type="password"
-                marginRight="71%"
-                placeholder="Senha"
-                icon={Lock}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </WrapperInput>
-            <Botao onClick={handleSubmit} type="Submit">
-              Login
-            </Botao>
+            {message === false ? null : (
+              <div
+                style={{
+                  marginTop: "1rem",
+                  width: "300px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <p
+                  style={{
+                    color: "red",
+                    fontWeight: "bold",
+                    marginBottom: "-1rem",
+                  }}
+                >
+                  Erro ao fazer login! Email ou senha incorretos!
+                </p>
+              </div>
+            )}
+            <form
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+              onSubmit={handleSubmit}
+            >
+              <WrapperInput>
+                <InputRegister
+                  label={"Email"}
+                  type="email"
+                  marginRight="72%"
+                  placeholder="Email"
+                  icon={Email}
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <InputRegister
+                  label={"Senha"}
+                  type="password"
+                  marginRight="71%"
+                  placeholder="Senha"
+                  icon={Lock}
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </WrapperInput>
+
+              <Botao type="Submit">Login</Botao>
+            </form>
             <p className="login" onClick={() => navigate(`/register`)}>
               Não tem uma conta? Registre-se
             </p>
