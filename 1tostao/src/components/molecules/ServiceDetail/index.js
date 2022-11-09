@@ -27,6 +27,8 @@ import { useUserAuth } from "../../../request/hooks/Auth";
 import { insertComment, getComments } from "../../../services/commentRequest";
 
 const ServiceDetail = () => {
+  const apiUrl = 'https://payment-1tostao-api.vercel.app'
+
   const { profile } = useUserAuth();
   const today = new Date();
   const repeatStar = Loop(5);
@@ -64,7 +66,7 @@ const ServiceDetail = () => {
     star: null,
     desc: null,
   });
-  const [ comments, setComments ] = useState();
+  const [comments, setComments] = useState();
 
   const displayTest = (item) =>
     item.content === "desc" ? display.desc : display.aval;
@@ -110,15 +112,15 @@ const ServiceDetail = () => {
 
   useEffect(async () => {
     const responseData = await getServiceWithCategory(data?.categoria, 3);
-    const rateResponse = await getComments(serviceId)
+    const rateResponse = await getComments(serviceId);
     setService(responseData);
-    setComments(rateResponse)
+    setComments(rateResponse);
   }, [render]);
 
   const reqServicesData = async (callback) => {
     setLoading(true);
     const response = await getDataFromService(serviceId);
-    
+
     setData({
       nome: response[0].nome,
       categoria: response[0].categoria,
@@ -143,7 +145,6 @@ const ServiceDetail = () => {
 
   const getCategory = async () => {
     setRender(true);
-    
   };
 
   const handleShow = (i) => {
@@ -170,7 +171,7 @@ const ServiceDetail = () => {
       aval.desc,
       aval.star,
       profile?.uid,
-      today.toLocaleDateString(),
+      today.toLocaleDateString()
     ).then(() => {
       window.location.reload(false);
     });
@@ -207,7 +208,9 @@ const ServiceDetail = () => {
             </div>
             <p style={{ color: "#B3B3B3", fontSize: "12px" }}>
               (
-              {`${comments?.length} comentário${comments?.length > 1 ? "s" : ""}`}
+              {`${comments?.length} comentário${
+                comments?.length > 1 ? "s" : ""
+              }`}
               )
             </p>
           </div>
@@ -269,6 +272,38 @@ const ServiceDetail = () => {
     );
   };
 
+  const payment = () => {
+    fetch(`${apiUrl}/v1/pagarProduto`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        url: url,
+        items: [
+          {
+            id: 1,
+            quantity: 1,
+            priceInCents: parseInt(data?.preco * 100),
+            name: data?.nome,
+            
+          },
+        ],
+      }),
+    })
+      .then(async (res) => {
+        if (res.ok) return res.json();
+        const json = await res.json();
+        return await Promise.reject(json);
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((err) => {
+        console.error(err.error);
+      });
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -294,7 +329,9 @@ const ServiceDetail = () => {
                 {data?.preco.toLocaleString("PT").includes(",") ? null : ",00"}
               </p>
             </span>
-            <div className={"btn"}>Contratar</div>
+            <div className={"btn"} onClick={payment}>
+              Contratar
+            </div>
             {profile ? (
               <span className={"avalie"} onClick={() => setPopupVisible(true)}>
                 Avalie o serviço!
