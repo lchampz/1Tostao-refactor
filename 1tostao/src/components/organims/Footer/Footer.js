@@ -40,8 +40,6 @@ const Footer = ({ width, margintop, border, size, color, needMargin }) => {
                 >
                   <img src={git} className="img" alt="github" />
                 </a>
-
-                <img src={linkedin} className="img" alt="linkedin" />
               </div>
             </div>
 
@@ -54,9 +52,6 @@ const Footer = ({ width, margintop, border, size, color, needMargin }) => {
                 <li className="li" onClick={() => navigate(`/support`)}>
                   Suporte
                 </li>
-                <li className="li" onClick={() => navigate(`/faq`)}>
-                  FAQ
-                </li>
               </ul>
             </div>
 
@@ -66,7 +61,9 @@ const Footer = ({ width, margintop, border, size, color, needMargin }) => {
                 <li onClick={() => navigate("/about")} className="li">
                   Sobre nós
                 </li>
-                <li className="li">Ajude-nos</li>
+                <li className="li" onClick={() => navigate(`/faq`)}>
+                  FAQ
+                </li>
               </ul>
             </div>
           </div>
