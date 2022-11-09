@@ -122,9 +122,14 @@ export const Box = styled.div`
     cursor: pointer;
     font-weight: bold;
     margin-bottom: 1rem;
+    
+    transition: all 0.2s ease;
   }
 
   .btn:hover {
+    border: 3px solid rgba(36, 211, 154, 1);
+    color: rgba(36, 211, 154, 1);
+    background-color: transparent;
   }
 
   .avalie {
