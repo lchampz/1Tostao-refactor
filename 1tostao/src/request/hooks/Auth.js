@@ -24,7 +24,7 @@ import { createUser } from "../../services/CreateGoogleAuth";
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [profile, setProfile] = useState();
   const [service, setService] = useState();
   const [users, setUsers] = useState();
@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
+
   function logOut() {
     return signOut(auth);
   }
