@@ -73,6 +73,32 @@ export const Input = styled.input`
     outline: none;
 `
 
+export const TextArea = styled.textarea`
+    width: 375px;
+    height: 200px;
+    border-radius: 8px;
+    
+    border: 3px solid #353131;
+    background-color: #525252; 
+    color: white;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 15px;
+    padding: 15px;
+    resize: none;
+    outline: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    @media screen and (max-width:500px) {
+        width: 320px;
+        
+    }
+    @media screen and (max-width:430px) {
+        width: 270px;
+        
+    }
+`
+
 export const Label = styled.span`
     color: ${({ color }) => (color ? color : '#24d39a')};
     padding-left: 2px;
@@ -104,7 +130,7 @@ export const Button = styled.div`
     width: 170px;
     height: 40px;
     background-color: ${({ disabled }) => (!disabled ? '#24d39a' : 'rgba(36, 211, 154, 0.5)')} ;
-    color: #828282;
+    color: ${({ disabled }) => (disabled ? '#828282' : 'white')};;
     margin-top: 1rem;
     border-radius: 40px;
     display: flex;

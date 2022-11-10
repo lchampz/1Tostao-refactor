@@ -76,11 +76,10 @@ export const AuthProvider = ({ children }) => {
     getAllUsers();
   }, []);
 
-  function googleSignIn() {
+  async function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleAuthProvider).then((results) => {
-      Validate(results.user.email, results.user.displayName, results.user.uid);
-    });
+    const results = await signInWithPopup(auth, googleAuthProvider);
+    Validate(results.user.email, results.user.displayName, results.user.uid);
   }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {

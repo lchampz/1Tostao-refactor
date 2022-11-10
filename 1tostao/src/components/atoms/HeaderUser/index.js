@@ -200,13 +200,12 @@ const HeaderUser = ({
                     : profile && profile?.username}
                 </h1>
                 <p className="desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
+                {user && user?.desc
+              ? user && user?.desc
+              : profile && profile?.desc}
                 </p>
                 <p className="data">
-                  Membro desde: {profile.date.substring(0, 15)}
+                  Membro desde: {profile?.date.substring(0, 15)}
                 </p>
               </AboutInfo>
               <AboutContact>
