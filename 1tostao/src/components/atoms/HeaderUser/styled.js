@@ -10,7 +10,6 @@ export const Banner = styled.div`
   background: ${({ bgImg }) => (bgImg ? "url(" + bgImg + ")" : "")};
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed;
   background-size: cover;
 `;
 
@@ -142,7 +141,9 @@ export const AboutInfo = styled.div`
   border-bottom: 1px solid #808080;
   border-right: 1px solid #808080;
   width: 60%;
-  height: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
   @media screen and (max-width: 900px) {
     width: 100%;
     border-right: 0px;
@@ -155,14 +156,16 @@ export const AboutInfo = styled.div`
   .desc {
     color: #bdbebd;
     margin-top: 1.3rem;
-    margin-left: 3rem;
+
     margin-right: 6rem;
     font-size: 1.1rem;
+    width: 90%;
+    height: auto;
     max-height: 100px;
     max-width: 65rem;
+    word-wrap: break-word;
     text-align: justify;
     text-justify: inter-word;
-
     @media (max-width: 520px) {
       font-size: 0.8rem;
     }
@@ -172,9 +175,9 @@ export const AboutInfo = styled.div`
   }
   .data {
     color: #24d39a;
-    margin-left: 3rem;
+    margin-bottom: 1rem;
+
     font-size: 1rem;
-    margin-top: 5rem;
   }
 `;
 export const AboutContact = styled.div`
@@ -182,7 +185,7 @@ export const AboutContact = styled.div`
   border-top: 1px solid #808080;
   border-bottom: 1px solid #808080;
   width: 40%;
-  height: 300px;
+  height: 350px;
   @media screen and (max-width: 900px) {
     width: 100%;
   }

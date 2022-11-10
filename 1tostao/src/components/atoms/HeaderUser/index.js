@@ -54,10 +54,23 @@ const HeaderUser = ({
   marginT,
   marginB,
 }) => {
-  const { logOut, user, profile } = useUserAuth();
+  const { user, profile, updateBio } = useUserAuth();
   const navigate = useNavigate();
   const [tab, setTab] = useState(1);
+  const [bio, setBio] = useState(false);
+  const [doc, setDoc] = useState();
+  const [bioValue, setBioValue] = useState("");
+
   const { serviceUser, getServicesUser } = useService();
+
+  function handleBio() {
+    if (bioValue.length === 0) {
+      return alert("Preencha o campo por favor!");
+    }
+    updateBio(profile, bioValue);
+    setBio(false);
+    setBioValue("");
+  }
 
   useEffect(() => {
     if (!user) {
@@ -193,21 +206,105 @@ const HeaderUser = ({
           <About>
             <AboutInfos>
               <AboutInfo>
-                <h1 className="title">
-                  Sobre{" "}
-                  {user && user?.displayName
-                    ? user && user?.displayName
-                    : profile && profile?.username}
-                </h1>
-                <p className="desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
-                </p>
-                <p className="data">
-                  Membro desde: {profile.date.substring(0, 15)}
-                </p>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <h1 className="title">
+                    Sobre{" "}
+                    {user && user?.displayName
+                      ? user && user?.displayName
+                      : profile && profile?.username}
+                  </h1>
+
+                  {bio === false ? (
+                    <>
+                      <button
+                        onClick={() => setBio(true)}
+                        style={{
+                          marginRight: "2rem",
+                          marginTop: "2rem",
+                          cursor: "pointer",
+                          width: "120px",
+                          height: "2.1rem",
+                          borderRadius: "5px",
+                          border: "none",
+
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                          background: "#24d39a",
+                        }}
+                      >
+                        Alterar Bio
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleBio();
+                      }}
+                      style={{
+                        marginRight: "2rem",
+                        marginTop: "2rem",
+                        cursor: "pointer",
+                        width: "120px",
+                        height: "2.1rem",
+                        borderRadius: "5px",
+                        border: "none",
+                        fontWeight: "bold",
+                        fontSize: "1rem",
+                        background: "#24d39a",
+                      }}
+                    >
+                      Confirmar
+                    </button>
+                  )}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    height: "100%",
+                    marginLeft: "3rem",
+                  }}
+                >
+                  {bio === false ? (
+                    <p className="desc">
+                      {profile?.bio || "Você não tem uma biografia!"}{" "}
+                    </p>
+                  ) : (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        height: "100%",
+                      }}
+                    >
+                      <textarea
+                        maxLength="340"
+                        placeholder="Escreva sua biologia!"
+                        autoFocus={true}
+                        onChange={(e) => setBioValue(e.target.value.toString())}
+                        value={bioValue}
+                        style={{
+                          height: "80%",
+                          width: "90%",
+                          backgroundColor: "#717171",
+                          border: "4px solid gray",
+                          color: "#fff",
+                          fontSize: "1.1rem",
+                          textAlign: "start",
+                          resize: "none",
+                          borderRadius: "9px",
+                        }}
+                      ></textarea>
+                    </div>
+                  )}
+
+                  <p className="data">
+                    Membro desde: {profile.date.substring(0, 15)}
+                  </p>
+                </div>
               </AboutInfo>
               <AboutContact>
                 <h1 className="title">Contato</h1>

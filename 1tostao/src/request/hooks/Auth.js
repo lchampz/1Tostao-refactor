@@ -18,6 +18,9 @@ import {
   addDoc,
   deleteDoc,
   doc,
+  setDoc,
+  updateDoc,
+  getDoc,
 } from "firebase/firestore";
 import { createUser } from "../../services/CreateGoogleAuth";
 
@@ -25,7 +28,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState([]);
   const [service, setService] = useState();
   const [users, setUsers] = useState();
 
@@ -62,7 +65,10 @@ export const AuthProvider = ({ children }) => {
       );
       const querySnapshot = await getDocs(docRef);
       querySnapshot.forEach((doc) => {
-        setProfile(doc.data());
+        doc["doc"] = doc.id;
+      });
+      querySnapshot.forEach((doc) => {
+        setProfile({ ...doc.data(), id: doc.id });
       });
     };
     getUsers();
@@ -72,6 +78,12 @@ export const AuthProvider = ({ children }) => {
     await deleteDoc(doc(db, "users", val.id));
     window.location.reload();
   };
+  async function updateBio(val, value) {
+    const docRef = doc(db, "users", val.id);
+    await updateDoc(docRef, {
+      bio: value,
+    });
+  }
   useEffect(() => {
     const getAllUsers = async () => {
       const docRef = collection(db, "users");
@@ -107,6 +119,7 @@ export const AuthProvider = ({ children }) => {
         googleSignIn,
         users,
         deleteUser,
+        updateBio,
       }}
     >
       {children}

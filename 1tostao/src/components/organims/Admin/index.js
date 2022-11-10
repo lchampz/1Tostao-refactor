@@ -37,16 +37,14 @@ const Administracao = () => {
 
   useEffect(() => {
     const Redirect = () => {
-      if (!user) {
-        return navigate("/");
-      }
       if (profile?.ADM === false) {
-        return navigate("/");
+        navigate("/");
+      } else if (!user) {
+        navigate("/");
       }
-      console.log("adm");
     };
     Redirect();
-  }, []);
+  }, [profile, user]);
 
   useEffect(() => {
     const setAvaliacao = async () => {
