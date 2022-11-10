@@ -54,14 +54,19 @@ export const AuthProvider = ({ children }) => {
       check = undefined;
     }
   }
-
-  const getUsers = async () => {
-    const docRef = query(collection(db, "users"), where("uid", "==", user.uid));
-    const querySnapshot = await getDocs(docRef);
-    querySnapshot.forEach((doc) => {
-      setProfile(doc.data());
-    });
-  };
+  useEffect(() => {
+    const getUsers = async () => {
+      const docRef = query(
+        collection(db, "users"),
+        where("uid", "==", user?.uid)
+      );
+      const querySnapshot = await getDocs(docRef);
+      querySnapshot.forEach((doc) => {
+        setProfile(doc.data());
+      });
+    };
+    getUsers();
+  }, [profile, user?.uid]);
 
   const deleteUser = async (val) => {
     await deleteDoc(doc(db, "users", val.id));
@@ -91,14 +96,12 @@ export const AuthProvider = ({ children }) => {
     };
   }, [user]);
 
-  getUsers();
   return (
     <AuthContext.Provider
       value={{
         profile,
         service,
         user,
-        getUsers,
         logIn,
         logOut,
         googleSignIn,

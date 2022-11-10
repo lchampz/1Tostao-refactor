@@ -20,12 +20,11 @@ const Cookies = () => {
         onAccept={getCookieConsentValue}
         style={{
           background: "#fff",
-          height: "20vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           color: "#000",
-          fontSize: "1.1rem",
+          fontSize: "1.15rem",
         }}
         buttonStyle={{
           color: "#fff",

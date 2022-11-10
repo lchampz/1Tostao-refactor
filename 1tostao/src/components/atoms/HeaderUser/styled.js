@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   height: 100%;
 `;
 export const Banner = styled.div`
-  height: 60vh;
+  height: 40vh;
   width: 100%;
   background: ${({ bgImg }) => (bgImg ? "url(" + bgImg + ")" : "")};
   background-repeat: no-repeat;
