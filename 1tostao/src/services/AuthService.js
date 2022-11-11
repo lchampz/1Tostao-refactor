@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import db, { auth } from "./Firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 
 async function createUserFirestore(
   email,
@@ -20,7 +20,7 @@ async function createUserFirestore(
   city
 ) {
   try {
-    const docRef = await addDoc(collection(db, "users"), {
+    const docRef = await setDoc(doc(db, "users", uid), {
       email: email,
       senha: password,
       estado: state,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Wrapper, Card, Title, WrapperCards, Content } from './styled'
-import user from '../../../assets/icons/userIconGreen.png'
+import userIcon from '../../../assets/icons/userIconGreen.png'
 import email from '../../../assets/icons/emailIconGreen.png'
 import ImgWrapper from '../ImgWrapper'
 import { useTheme } from "../../../request/hooks/Theme";
@@ -19,7 +19,7 @@ const CardSupport = () => {
                 { user ? (
                 <Card bgColor={theme.colors.cardSupportBg} onClick={() => navigate(`/support/myaccount`)}>
                     <Content color={theme.colors.fontColor}>
-                        <ImgWrapper margin={'0px 0px 35px 0px'} url={user} alt={'userImg'}/>
+                        <ImgWrapper margin={'0px 0px 35px 0px'} url={userIcon} alt={'userImg'}/>
                         <p>Minha conta</p>
                     </Content>
                 </Card>
