@@ -50,9 +50,10 @@
   "scripts": {
     "front": "react-scripts start",
     "server": "cd api && nodemon express.js",
-    "start:build": "cd api && nodemon express.js",
-    "start:run": "react-scripts start",
-    "start": "concurrently npm:start:*",
+    "all:build": "cd api && nodemon express.js",
+    "all:run": "react-scripts start",
+    "all": "concurrently npm:all:*",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

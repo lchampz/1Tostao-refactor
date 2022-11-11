@@ -98,14 +98,14 @@ const HeaderUser = ({
 
   return (
     <>
-      <Banner bgImg={panic} />
+      <Banner bgImg={profile?.banner} />
       <Wrapper>
         <MenuImg>
           <UserImg
             width={width}
             position={"absolute"}
             marginL={marginL}
-            src={profilePic}
+            src={profile?.imgPerfil}
           />
         </MenuImg>
         <MenuUser>
