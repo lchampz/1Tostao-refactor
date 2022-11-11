@@ -194,6 +194,7 @@ const RegisterService = () => {
               component={Input}
               currency="BRL"
               max="1000"
+              min="5"
               placeholder="Valor do serviço (R$)"
               config={currencyConfig}
               onChange={handleChange}
