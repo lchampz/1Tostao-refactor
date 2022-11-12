@@ -67,6 +67,9 @@ const HeaderUser = ({
     if (bioValue.length === 0) {
       return alert("Preencha o campo por favor!");
     }
+    if (bioValue.length > 350) {
+      return alert("Use até 350 caracteres!");
+    }
     updateBio(profile, bioValue);
     setBio(false);
     setBioValue("");
@@ -238,25 +241,53 @@ const HeaderUser = ({
                       </button>
                     </>
                   ) : (
-                    <button
-                      onClick={() => {
-                        handleBio();
-                      }}
+                    <div
                       style={{
-                        marginRight: "2rem",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        flexWrap: "wrap",
+                        marginRight: "5%",
+                        marginBottom: "-0.5rem",
                         marginTop: "2rem",
-                        cursor: "pointer",
-                        width: "120px",
-                        height: "2.1rem",
-                        borderRadius: "5px",
-                        border: "none",
-                        fontWeight: "bold",
-                        fontSize: "1rem",
-                        background: "#24d39a",
                       }}
                     >
-                      Confirmar
-                    </button>
+                      <button
+                        onClick={() => {
+                          setBio(false);
+                        }}
+                        style={{
+                          cursor: "pointer",
+                          width: "120px",
+                          height: "2.1rem",
+                          borderRadius: "5px",
+                          marginBottom: "1rem",
+                          border: "none",
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                          background: "red",
+                        }}
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleBio();
+                        }}
+                        style={{
+                          marginLeft: "1rem",
+                          cursor: "pointer",
+                          width: "120px",
+                          height: "2.1rem",
+                          borderRadius: "5px",
+                          border: "none",
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                          background: "#24d39a",
+                        }}
+                      >
+                        Confirmar
+                      </button>
+                    </div>
                   )}
                 </div>
                 <div
@@ -281,7 +312,7 @@ const HeaderUser = ({
                       }}
                     >
                       <textarea
-                        maxLength="340"
+                        maxLength="350"
                         placeholder="Escreva sua biologia!"
                         autoFocus={true}
                         onChange={(e) => setBioValue(e.target.value.toString())}

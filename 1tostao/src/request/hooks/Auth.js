@@ -28,7 +28,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState();
   const [service, setService] = useState();
   const [users, setUsers] = useState();
 
@@ -65,14 +65,11 @@ export const AuthProvider = ({ children }) => {
       );
       const querySnapshot = await getDocs(docRef);
       querySnapshot.forEach((doc) => {
-        doc["doc"] = doc.id;
-      });
-      querySnapshot.forEach((doc) => {
         setProfile({ ...doc.data(), id: doc.id });
       });
     };
     getUsers();
-  }, [profile, user?.uid]);
+  }, [profile, user]);
 
   const deleteUser = async (val) => {
     await deleteDoc(doc(db, "users", val.id));
