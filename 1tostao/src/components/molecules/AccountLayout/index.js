@@ -14,11 +14,21 @@ import {
 import { useUserAuth } from "../../../request/hooks/Auth";
 import ModalSave from "../../atoms/ModalSave";
 import ModalAlter from "../../atoms/ModalAlter";
-import ModalDelete from "../../atoms/ModalDelete";
-import { updateUser } from "../../../services/updateUser";
+import {
+  updateUser,
+  updateUserProfileBanner,
+  updateUserProfileImg,
+  deleteUserAcc,
+} from "../../../services/updateUser";
+import { useNavigate } from "react-router-dom";
+import { useLoading } from "../../../request/hooks/Loading";
+import { storage } from "../../../services/Firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const AccountLayout = () => {
   const { user, profile } = useUserAuth();
+  const navigate = useNavigate();
+  const { setLoading } = useLoading();
   const [uid, setUid] = useState();
   const [clicked, setClicked] = useState(false);
   const [hover, setHover] = useState({
@@ -37,10 +47,12 @@ const AccountLayout = () => {
     imgProfile: {
       file: user?.photoURL || profile?.imgPerfil,
       url: user?.photoURL || profile?.imgPerfil,
+      changed: false,
     },
     banner: {
       file: user?.banner || profile?.banner,
       url: user?.banner || profile?.banner,
+      changed: false,
     },
   });
   const [visible, setVisible] = useState({
@@ -48,6 +60,18 @@ const AccountLayout = () => {
     alter: false,
     delete: false,
   });
+  const [credentials, setCredentials] = useState({
+    email: "",
+    pass: "",
+  });
+
+  const condition = 
+    data?.username != profile?.username ||
+    data?.name != profile?.nome ||
+    data?.tell != profile?.tell ||
+    data.imgProfile.changed || data.banner.changed ||
+    data?.tell != profile?.tell ||
+    data?.lastName != profile?.sobrenome
 
   useEffect(async () => {
     setUid(user.uid);
@@ -60,12 +84,17 @@ const AccountLayout = () => {
         imgProfile: {
           file: img.profile,
           url: URL.createObjectURL(img.profile),
+          changed: true,
         },
       });
     if (img.banner)
       setData({
         ...data,
-        banner: { file: img.banner, url: URL.createObjectURL(img.banner) },
+        banner: {
+          file: img.banner,
+          url: URL.createObjectURL(img.banner),
+          changed: true,
+        },
       });
   }, [img]);
 
@@ -94,16 +123,97 @@ const AccountLayout = () => {
     );
   };
 
-  const update = () => {
-    updateUser(
-      uid,
-      data.lastName,
-      data.tell,
-      data.username,
-      data.name,
-      data.banner.url,
-      data.imgProfile.url
+  const delAcc = () => {
+    deleteUserAcc(uid, credentials.pass);
+    navigate("/");
+    setVisible({ ...visible, delete: false });
+  };
+
+  const handleUpload = () => {
+    setLoading(true);
+    const storageProfileRef = ref(
+      storage,
+      `images/perfil/${data.imgProfile.file}`
     );
+    const storageBannerRef = ref(storage, `images/banner/${data.banner.file}`);
+
+    const uploadTaskProfile = uploadBytesResumable(
+      storageProfileRef,
+      data.imgProfile.file
+    );
+    const uploadTaskBanner = uploadBytesResumable(
+      storageBannerRef,
+      data.banner.file
+    );
+
+    uploadTaskProfile.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },
+      (error) => {
+        console.log(error);
+        setLoading(false);
+      },
+      () => {
+        getDownloadURL(uploadTaskProfile.snapshot.ref).then((url) => {
+          update("profile", url);
+        });
+      }
+    );
+
+    uploadTaskBanner.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },
+      (error) => {
+        console.log(error);
+        setLoading(false);
+        setVisible({ ...visible, save: false });
+      },
+      () => {
+        getDownloadURL(uploadTaskBanner.snapshot.ref).then((url) => {
+          setLoading(false);
+          update("banner", url);
+          setVisible({ ...visible, save: false });
+        });
+      }
+    );
+
+    navigate("/profile");
+  };
+
+  const update = (switcher, img) => {
+    updateUser(uid, data.lastName, data.tell, data.username, data.name);
+
+    switch (switcher) {
+      case "profile":
+        if (data.imgProfile.changed) {
+          updateUserProfileImg(uid, img);
+          setData({
+            ...data,
+            imgProfile: {
+              changed: false,
+            },
+          });
+        }
+        break;
+
+      case "banner":
+        if (data.banner.changed) {
+          updateUserProfileBanner(uid, img);
+          setData({
+            ...data,
+            banner: {
+              changed: false,
+            },
+          });
+        }
+        break;
+    }
   };
 
   return (
@@ -156,14 +266,14 @@ const AccountLayout = () => {
             >
               <div>+</div>
               {user?.photoURL || profile?.imgPerfil ? (
-                <img src={data?.imgProfile.url} />
+                <img src={data?.imgProfile?.url} />
               ) : null}
             </IconEmpty>
           </label>
 
           <Label>Alterar Banner</Label>
 
-          <label htmlFor="selectBanner">
+          <label for="selectBanner">
             <IconEmpty
               width="550px"
               height="150px"
@@ -173,36 +283,22 @@ const AccountLayout = () => {
             >
               <div>+</div>
               {user?.banner || profile?.banner ? (
-                <img src={data?.banner.url} />
+                <img src={data?.banner?.url} />
               ) : null}
             </IconEmpty>
           </label>
         </WrapperInputs>
         <WrapperBtns>
-          {data?.username != profile?.username ||
-          data?.name != profile?.nome ||
-          data?.tell != profile?.tell ||
-          data?.banner.url != profile?.banner.url ||
-          data?.imgProfile.url != profile?.imgProfile.url ||
-          data?.tell != profile?.tell ||
-          data?.lastName != profile?.sobrenome ? (
-            <Button
-              onClick={() => {
-                setVisible({ ...visible, save: true });
-                setClicked(!clicked);
-              }}
-            >
-              Salvar
-            </Button>
-          ) : (
-            <Button disabled>Salvar</Button>
-          )}
-          <AlterBtn
-            onClick={() => setVisible({ ...visible, alter: true })}
-            color={"#E4D54B"}
+          <Button
+            disabled={!condition}
+            onClick={() => { 
+             !condition || setVisible({ ...visible, save: true });
+              setClicked(!clicked) 
+            }}
           >
-            Alterar minha senha
-          </AlterBtn>
+            Salvar
+          </Button>
+
           <AlterBtn
             onClick={() => setVisible({ ...visible, delete: true })}
             color={"#E44B4B"}
@@ -212,16 +308,29 @@ const AccountLayout = () => {
         </WrapperBtns>
       </WrapperItems>
       <ModalSave
-        cancel={() => setVisible({ ...visible, save: false })}
-        confirm={update}
+        cancel={() => {
+          setVisible({ ...visible, save: false });
+          setLoading(false);
+        }}
+        confirm={handleUpload}
         display={visible.save}
       />
       <ModalAlter
-        cancel={() => setVisible({ ...visible, alter: false })}
-        display={visible.alter}
-      />
-      <ModalDelete
-        cancel={() => setVisible({ ...visible, delete: false })}
+        onChangePass={(e) =>
+          setCredentials({ ...credentials, pass: e.target.value })
+        }
+        onChangeEmail={(e) =>
+          setCredentials({ ...credentials, email: e.target.value })
+        }
+        pass={credentials.pass}
+        email={credentials.email}
+        cancel={() => {
+          setVisible({ ...visible, delete: false });
+          setLoading(false);
+        }}
+        disabled={credentials.pass && credentials.email ? false : true}
+        confirm={credentials.pass && credentials.email ? delAcc : null}
+        labelBntConfirm={"Deletar"}
         display={visible.delete}
       />
     </Wrapper>

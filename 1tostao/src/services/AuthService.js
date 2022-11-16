@@ -38,6 +38,8 @@ async function createUserFirestore(
       tell: tell,
       niver: niver,
       cidade: city,
+      banner: '',
+      imgPerfil: '',
       firstAcces: true,
     });
     console.log("[SUCCESS] ID: ", docRef.id);
