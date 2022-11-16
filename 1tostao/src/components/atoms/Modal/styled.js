@@ -40,10 +40,12 @@ export const Button = styled.div`
     color: white;
     cursor: pointer;
     font-weight: bold;
-    background-color: ${({ bgColor }) => (bgColor ? bgColor : '#24D39A')};
+    background-color: ${({ bgColor, disabled }) => disabled ? '#303030' : (bgColor ? bgColor : '#24D39A')};
     transition: all 0.5s ease-in-out;
+    opacity: ${({ disabled }) => disabled ? '0.8' : null};
 
     &:hover {
-        width: ${({ oneBtn }) => oneBtn ? '100%' : '80%'};
+        width: ${({ oneBtn, disabled }) => disabled ? '' :(oneBtn ? '100%' : '80%')};
+        opacity: ${({ disabled }) => disabled ? '0.8' : null};
     }
 `
