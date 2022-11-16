@@ -12,6 +12,8 @@ async function createUserFirestore(email, name, uid) {
       rg: "",
       tell: "",
       bio: "",
+      imgPerfil: "",
+      banner: "",
       cidade: "",
       niver: null,
       uid: uid,

@@ -42,7 +42,7 @@ const Submenu = ({
   twitter,
   ...restProps
 }) => {
-  const { logOut } = useUserAuth();
+  const { logOut, user, profile } = useUserAuth();
   const [visible, setVisible] = useState(false);
   const img = iconUser;
   const navigate = useNavigate();
@@ -97,6 +97,15 @@ const Submenu = ({
       </Row>
     );
   };
+  function handleProfilePicture() {
+    if (user?.photoURL) {
+      return user?.photoURL;
+    } else if (profile?.imgPerfil !== "") {
+      return profile?.imgPerfil;
+    } else {
+      return img;
+    }
+  }
   return (
     <Wrapper {...restProps}>
       <Icon display={!visible} onClick={() => setVisible(!visible)}>
@@ -105,7 +114,7 @@ const Submenu = ({
           height="2rem"
           margin="0px 50px 0px 0px"
           cursor={"pointer"}
-          url={img}
+          url={handleProfilePicture()}
         />
       </Icon>
       <StickyMenu display={visible}>
@@ -113,7 +122,11 @@ const Submenu = ({
           <Close onClick={() => setVisible(!visible)}>X</Close>
           <WrapperHeader>
             <Profile>
-              <ImgWrapper width="4rem" height="4rem" url={img} />
+              <ImgWrapper
+                width="4rem"
+                height="4rem"
+                url={handleProfilePicture()}
+              />
               <Name>{name || "username"}</Name>
             </Profile>
             <Row>

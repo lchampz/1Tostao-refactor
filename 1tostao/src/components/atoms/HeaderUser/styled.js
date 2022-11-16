@@ -7,10 +7,6 @@ export const Wrapper = styled.div`
 export const Banner = styled.div`
   height: 40vh;
   width: 100%;
-  background: ${({ bgImg }) => (bgImg ? "url(" + bgImg + ")" : "")};
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
 `;
 
 export const MenuImg = styled.div`

@@ -98,17 +98,41 @@ const HeaderUser = ({
         break;
     }
   }
+  function handleProfilePicture() {
+    if (user?.photoURL) {
+      return user?.photoURL;
+    } else if (profile?.imgPerfil !== "") {
+      return profile?.imgPerfil;
+    } else {
+      return profilePic;
+    }
+  }
 
   return (
     <>
-      <Banner bgImg={profile?.banner} />
+      <Banner>
+        <img
+          style={{
+            height: "auto",
+            width: "100%",
+            maxHeight: "100%",
+            objectFit: "fill",
+          }}
+          alt="profilePicture"
+          src={
+            profile?.banner !== ""
+              ? profile?.banner
+              : "https://wallpapercrafter.com/sizes/1920x1080/1146-gradient-color-faded-blue-4k.jpg"
+          }
+        />
+      </Banner>
       <Wrapper>
         <MenuImg>
           <UserImg
             width={width}
             position={"absolute"}
             marginL={marginL}
-            src={profile?.imgPerfil}
+            src={handleProfilePicture()}
           />
         </MenuImg>
         <MenuUser>

@@ -54,20 +54,31 @@ const AccountLayout = () => {
   }, [clicked]);
 
   useEffect(() => {
-    if(img.profile) setData({ ...data, imgProfile: { file: img.profile, url: URL.createObjectURL(img.profile)} });
-    if(img.banner) setData({ ...data, banner: { file: img.banner, url: URL.createObjectURL(img.banner)} });
+    if (img.profile)
+      setData({
+        ...data,
+        imgProfile: {
+          file: img.profile,
+          url: URL.createObjectURL(img.profile),
+        },
+      });
+    if (img.banner)
+      setData({
+        ...data,
+        banner: { file: img.banner, url: URL.createObjectURL(img.banner) },
+      });
   }, [img]);
 
   const inputsFile = () => {
-    return(
+    return (
       <>
-      <input
+        <input
           style={{ display: "none" }}
           type="file"
           id="selectProfile"
           onChange={(e) => {
             console.log(e.target.files[0]);
-            setImg({...img, profile:e.target.files[0]});
+            setImg({ ...img, profile: e.target.files[0] });
           }}
         />
         <input
@@ -76,11 +87,12 @@ const AccountLayout = () => {
           id="selectBanner"
           onChange={(e) => {
             console.log(e.target.files[0]);
-            setImg({...img, banner:e.target.files[0]});
+            setImg({ ...img, banner: e.target.files[0] });
           }}
-        /></>
-    )
-  }
+        />
+      </>
+    );
+  };
 
   const update = () => {
     updateUser(
@@ -91,7 +103,6 @@ const AccountLayout = () => {
       data.name,
       data.banner.url,
       data.imgProfile.url
-      
     );
   };
 
@@ -131,12 +142,11 @@ const AccountLayout = () => {
         </WrapperInputs>
 
         {inputsFile()}
-        
-        <WrapperInputs className={"secondWrapper"} marginTop={"2rem"}>
 
+        <WrapperInputs className={"secondWrapper"} marginTop={"2rem"}>
           <Label>Alterar Foto de Perfil</Label>
 
-          <label for="selectProfile">
+          <label htmlFor="selectProfile">
             <IconEmpty
               hover={hover}
               width="150px"
@@ -145,23 +155,27 @@ const AccountLayout = () => {
               onMouseLeave={() => setHover({ ...hover, perfil: false })}
             >
               <div>+</div>
-              {user?.photoURL || profile?.imgPerfil ? <img src={data?.imgProfile.url} />: null}
+              {user?.photoURL || profile?.imgPerfil ? (
+                <img src={data?.imgProfile.url} />
+              ) : null}
             </IconEmpty>
           </label>
 
           <Label>Alterar Banner</Label>
 
-          <label for="selectBanner">
-          <IconEmpty
-            width="550px"
-            height="150px"
-            resWidth="350px"
-            onMouseEnter={() => setHover({ ...hover, banner: true })}
-            onMouseLeave={() => setHover({ ...hover, banner: false })}
-          >
-            <div>+</div>
-            {user?.banner || profile?.banner ? <img src={data?.banner.url} />: null}
-          </IconEmpty>
+          <label htmlFor="selectBanner">
+            <IconEmpty
+              width="550px"
+              height="150px"
+              resWidth="350px"
+              onMouseEnter={() => setHover({ ...hover, banner: true })}
+              onMouseLeave={() => setHover({ ...hover, banner: false })}
+            >
+              <div>+</div>
+              {user?.banner || profile?.banner ? (
+                <img src={data?.banner.url} />
+              ) : null}
+            </IconEmpty>
           </label>
         </WrapperInputs>
         <WrapperBtns>

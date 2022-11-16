@@ -30,6 +30,8 @@ async function createUserFirestore(
       uid: uid,
       date: new Date().toLocaleDateString().toString(),
       bio: "",
+      imgPerfil: "",
+      banner: "",
       username: username,
       sobrenome: lastname,
       ADM: false,
