@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import aboutUs from '../../../assets/img/aboutUs.png'
 import { useNavigate } from 'react-router-dom';
 import graph from '../../../assets/img/graph.png'
-import {Container, Title, Img, CenterBorda, Text,Row, Column, Sobre, Borda, Video, Orientation} from './styled'
+import {Container, Title, Img, CenterBorda, Text,Row, Column, Sobre, Borda, Video, Orientation, Iframe} from './styled'
 
-const About= ( marginB, marginR, marginL, flex) => {
-
+const About = (marginT, marginB, marginR, marginL, flex) => {
 
     return ( 
     <>
@@ -34,8 +33,6 @@ const About= ( marginB, marginR, marginL, flex) => {
                         <br/>
                         <About.Text>✅ Não recolhemos taxas a cada trabalho/projeto realizado. Compensando muito mais para o  Freelancer.</About.Text>
                         <br/>
-                        <About.Text>✅ Mensalidades fixas</About.Text>
-                        <br/>
                         <About.Text>✅ Segurança e sigilo</About.Text>
                 </div>
                 <Row>
@@ -48,7 +45,9 @@ const About= ( marginB, marginR, marginL, flex) => {
                 <Borda/>
             </CenterBorda>
             <Video>
-                <About.Title marginB="4rem">Confira mais benefícios</About.Title>
+                <About.Title marginT="-3rem">Vídeo em destaque</About.Title>
+                {/* só trocar a src do vídeo */}
+                    <Iframe src="https://www.youtube.com/embed/qigIYJWsyWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Iframe>
             </Video>
         </Container>
     </> 
@@ -60,7 +59,7 @@ About.Title = function AboutTitle({ children, ...restProps }) {
     return <Title {...restProps}>{children}</Title>;
   };
 About.Text = function AboutText({ children, ...restProps }) {
-      return <Text {...restProps}>{children}</Text>;
+    return <Text {...restProps}>{children}</Text>;
 };
 About.Img = function AboutImg({ children, ...restProps }) {
     return <Img {...restProps}>{children}</Img>;
