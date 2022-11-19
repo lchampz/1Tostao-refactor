@@ -47,7 +47,7 @@ const About = (marginT, marginB, marginR, marginL, flex) => {
             <Video>
                 <About.Title marginT="-3rem">Vídeo em destaque</About.Title>
                 {/* só trocar a src do vídeo */}
-                    <Iframe src="https://www.youtube.com/embed/qigIYJWsyWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Iframe>
+                    <Iframe src="https://www.youtube.com/embed/uQG403fl-Fc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Iframe>
             </Video>
         </Container>
     </> 
