@@ -34,11 +34,14 @@ import { useUserAuth } from "../../../request/hooks/Auth";
 import cat from "../../../request/mock/categorias.json";
 import InputSelect from "../../atoms/Select";
 import { insertComment, getComments } from "../../../services/commentRequest";
-import { updateService } from "../../../services/updateService";
+import { updateService, deleteService } from "../../../services/updateService";
+import ModalDelete from "../../atoms/ModalDelete";
+import { useNavigate } from "react-router-dom";
 
 const ServiceDetail = () => {
   const apiUrl = "https://payment-1tostao-api.vercel.app";
 
+  const navigate = useNavigate();
   const { user, profile } = useUserAuth();
   const today = new Date();
   const repeatStar = Loop(5);
@@ -72,7 +75,10 @@ const ServiceDetail = () => {
       marginBottom: "5px",
     },
   ]);
-  const [popupVisible, setPopupVisible] = useState(false);
+  const [popupVisible, setPopupVisible] = useState({
+    aval: false,
+    del: false,
+  });
   const [aval, setAval] = useState({
     star: null,
     desc: null,
@@ -428,11 +434,11 @@ const ServiceDetail = () => {
               })}
         </RelationatedServices>
         <ModalAvaliation
-          display={popupVisible}
+          display={popupVisible.aval}
           title={"Avaliação"}
           labelBnt={"Avaliar!"}
           disabled={!aval.desc || !aval.star}
-          close={() => setPopupVisible(false)}
+          close={() => setPopupVisible({ ...popupVisible, aval: false })}
           confirm={InsertRate}
         >
           <Input
@@ -528,6 +534,11 @@ const ServiceDetail = () => {
               {newValue?.entrega}
               <b> Dia{newValue?.entrega > 1 ? "s" : ""}</b>
             </Delivery>
+            <ModalDelete
+              display={popupVisible.del}
+              cancel={() => setPopupVisible({ ...popupVisible, del: false })}
+              confirm={delService}
+            />
           </WrapperForm>
         </Footer>
       </>
@@ -577,6 +588,14 @@ const ServiceDetail = () => {
     setTimeout(() => {
       window.location.reload();
     }, 1000);
+  };
+
+  const delService = () => {
+    deleteService(serviceId);
+
+    setPopupVisible({ ...popupVisible, del: false });
+
+    navigate("/servicos");
   };
 
   return (
@@ -629,8 +648,19 @@ const ServiceDetail = () => {
             <div className={"btn"} onClick={edit ? saveInfo : payment}>
               {edit ? "Salvar" : "Contratar"}
             </div>
+            {edit ? (
+              <div
+                className="delete"
+                onClick={() => setPopupVisible({ ...popupVisible, del: true })}
+              >
+                Excluir serviço
+              </div>
+            ) : null}
             {profile && data.uid != profile.uid && data.uid != user.uid ? (
-              <span className={"avalie"} onClick={() => setPopupVisible(true)}>
+              <span
+                className={"avalie"}
+                onClick={() => setPopupVisible({ ...popupVisible, aval: true })}
+              >
                 Avalie o serviço!
               </span>
             ) : null}

@@ -1,4 +1,4 @@
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, deleteDoc } from "firebase/firestore";
 import db from "./Firebase";
 
 export const updateService = async (uid, name, desc, preco, entrega, cat) => {
@@ -11,4 +11,8 @@ export const updateService = async (uid, name, desc, preco, entrega, cat) => {
     nome: name,
     categoria: cat,
   });
+};
+
+export const deleteService = (uid) => {
+  deleteDoc(doc(db, "servicos", uid));
 };

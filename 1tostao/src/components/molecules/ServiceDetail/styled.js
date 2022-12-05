@@ -132,6 +132,33 @@ export const Box = styled.div`
     background-color: transparent;
   }
 
+  .delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: #e44b3e;
+    color: white;
+    width: 80%;
+
+    margin: 0 auto;
+    margin-top: 1.8rem;
+    padding: 0.8rem;
+    border: 3px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    transition: all 0.2s ease;
+  }
+
+  .delete:hover {
+    border: 3px solid #e44b3e;
+    color: #e44b3e;
+    background-color: transparent;
+  }
+
   .avalie {
     font-weight: bold;
     transition: all 0.3s ease-in;
@@ -283,7 +310,7 @@ export const WrapperComments = styled.div`
   }
 
   .desc {
-    font-wheight: bold;
+    font-weight: bold;
     color: white;
   }
 
