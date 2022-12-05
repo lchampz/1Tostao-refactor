@@ -87,6 +87,10 @@ const HeaderUser = ({
     }
   }, [user]);
 
+  useEffect(() => {
+    console.log(serviceUser);
+  }, []);
+
   function switchTab(param) {
     switch (param) {
       case 1:
@@ -191,7 +195,7 @@ const HeaderUser = ({
                       }}
                       idKey={item.id}
                       nome={item.nome}
-                      uid={item.uid}
+                      uid={item.id}
                       preco={item.preco}
                       img={item.img || service1}
                       autor={item.autor}
