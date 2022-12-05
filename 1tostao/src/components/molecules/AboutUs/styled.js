@@ -18,7 +18,7 @@ export const Sobre = styled.div`
 
 export const Borda = styled.div`
   border: 1px solid #fff;
-  width: 80%;
+  width: 60%;
 `;
 
 export const Video = styled.div`
@@ -27,6 +27,7 @@ export const Video = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: column;
+  margin: 8px;
 `;
 
 export const Orientation = styled.div`
@@ -44,6 +45,7 @@ export const Orientation = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: ${({ marginB }) => (marginB ? marginB : "2rem")};
+  margin-top: ${({ marginT }) => (marginT ? marginT: "0rem")};
   font-size: 4rem;
   font-weight: bold;
   color: #24d39a;
@@ -74,11 +76,11 @@ export const Text = styled.p`
   width: 500px;
   line-height: 1.6;
   @media screen and (max-width: 550px) {
-    font-size: 0.7rem;
+    font-size: 1rem;
     width: 350px;
   }
   @media screen and (max-width: 375px) {
-    font-size: 0.7rem;
+    font-size: 1rem;
     width: 275px;
   }
 `;
@@ -101,5 +103,21 @@ export const Column = styled.div`
   margin-left: 6rem;
   @media screen and (max-width: 1150px) {
     margin-left: 0;
+  }
+`;
+
+export const Iframe = styled.iframe`
+  width:1280px;
+  height:720px;
+  border-radius:5px;
+
+  @media screen and (max-width:1280px){
+    width:100%;
+    height:720px;
+  }
+
+  @media screen and (max-width:500px){
+    width:100%;
+    height:200px;
   }
 `;
