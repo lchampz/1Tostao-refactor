@@ -24,8 +24,10 @@ import { useNavigate } from "react-router-dom";
 import { useLoading } from "../../../request/hooks/Loading";
 import { storage } from "../../../services/Firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useTheme } from "../../../request/hooks/Theme";
 
 const AccountLayout = () => {
+  const { theme } = useTheme();
   const { user, profile } = useUserAuth();
   const navigate = useNavigate();
   const { setLoading } = useLoading();
@@ -65,13 +67,14 @@ const AccountLayout = () => {
     pass: "",
   });
 
-  const condition = 
+  const condition =
     data?.username != profile?.username ||
     data?.name != profile?.nome ||
     data?.tell != profile?.tell ||
-    data.imgProfile.changed || data.banner.changed ||
+    data.imgProfile.changed ||
+    data.banner.changed ||
     data?.tell != profile?.tell ||
-    data?.lastName != profile?.sobrenome
+    data?.lastName != profile?.sobrenome;
 
   useEffect(async () => {
     setUid(user.uid);
@@ -218,12 +221,14 @@ const AccountLayout = () => {
 
   return (
     <Wrapper>
-      <Title>Minha conta</Title>
+      <Title color={theme.colors.fontColor}>Minha conta</Title>
 
       <WrapperItems>
         <WrapperInputs>
           <Label>Alterar Nome</Label>
           <Input
+            bgColor={theme.colors.input}
+            color={theme.colors.fontColor}
             placeholder={"Alterar nome..."}
             value={data?.name}
             onChange={(e) => setData({ ...data, name: e.target.value })}
@@ -231,6 +236,8 @@ const AccountLayout = () => {
 
           <Label>Alterar Sobrenome</Label>
           <Input
+            bgColor={theme.colors.input}
+            color={theme.colors.fontColor}
             placeholder={"Alterar sobrenome..."}
             value={data?.lastName}
             onChange={(e) => setData({ ...data, lastName: e.target.value })}
@@ -238,6 +245,8 @@ const AccountLayout = () => {
 
           <Label>Alterar Telefone</Label>
           <Input
+            bgColor={theme.colors.input}
+            color={theme.colors.fontColor}
             placeholder={"Alterar telefone..."}
             value={data?.tell}
             onChange={(e) => setData({ ...data, tell: e.target.value })}
@@ -245,6 +254,8 @@ const AccountLayout = () => {
 
           <Label>Alterar Username</Label>
           <Input
+            bgColor={theme.colors.input}
+            color={theme.colors.fontColor}
             placeholder={"Alterar username..."}
             value={data?.username}
             onChange={(e) => setData({ ...data, username: e.target.value })}
@@ -258,6 +269,7 @@ const AccountLayout = () => {
 
           <label htmlFor="selectProfile">
             <IconEmpty
+              bgColor={theme.colors.emptyIcon}
               hover={hover}
               width="150px"
               height="150px"
@@ -275,6 +287,7 @@ const AccountLayout = () => {
 
           <label for="selectBanner">
             <IconEmpty
+              bgColor={theme.colors.emptyIcon}
               width="550px"
               height="150px"
               resWidth="350px"
@@ -291,9 +304,9 @@ const AccountLayout = () => {
         <WrapperBtns>
           <Button
             disabled={!condition}
-            onClick={() => { 
-             !condition || setVisible({ ...visible, save: true });
-              setClicked(!clicked) 
+            onClick={() => {
+              !condition || setVisible({ ...visible, save: true });
+              setClicked(!clicked);
             }}
           >
             Salvar

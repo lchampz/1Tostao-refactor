@@ -60,8 +60,8 @@ export const Input = styled.input`
   height: 30px;
   border-radius: 8px;
   border: 3px solid #353131;
-  background-color: #525252;
-  color: white;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#525252")};
+  color: ${({ color }) => (color ? color : "white")};
   font-weight: bold;
   margin-top: 5px;
   font-size: 15px;
@@ -86,7 +86,7 @@ export const Label = styled.span`
 export const IconEmpty = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  background-color: #525252;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#525252")};
   margin-top: 1rem;
   display: flex;
   justify-content: center;
@@ -104,9 +104,9 @@ export const IconEmpty = styled.div`
     transition: all 0.5s ease-in-out;
   }
 
-  .file{
+  .file {
     background-color: red;
-    display:none;
+    display: none;
   }
 
   img {
