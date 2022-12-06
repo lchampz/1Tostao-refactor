@@ -122,13 +122,40 @@ export const Box = styled.div`
     cursor: pointer;
     font-weight: bold;
     margin-bottom: 1rem;
-    
+
     transition: all 0.2s ease;
   }
 
   .btn:hover {
     border: 3px solid rgba(36, 211, 154, 1);
     color: rgba(36, 211, 154, 1);
+    background-color: transparent;
+  }
+
+  .delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: #e44b3e;
+    color: white;
+    width: 80%;
+
+    margin: 0 auto;
+    margin-top: 1.8rem;
+    padding: 0.8rem;
+    border: 3px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    transition: all 0.2s ease;
+  }
+
+  .delete:hover {
+    border: 3px solid #e44b3e;
+    color: #e44b3e;
     background-color: transparent;
   }
 
@@ -283,7 +310,7 @@ export const WrapperComments = styled.div`
   }
 
   .desc {
-    font-wheight: bold;
+    font-weight: bold;
     color: white;
   }
 
@@ -308,5 +335,100 @@ export const Input = styled.textarea`
   margin-bottom: 0.5rem;
   &::placeholder {
     font-weight: bold;
+  }
+`;
+
+export const WrapperForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #222026;
+
+  padding-left: 30px;
+  min-width: 20rem;
+  width: 100%;
+
+  border: 3px solid #24d39a;
+  margin-top: 2rem;
+
+  label {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+`;
+
+export const InputEdit = styled.input`
+  background-color: #222026;
+  border: 2px solid #24d39a;
+  margin-top: 1rem;
+  padding: 10px;
+  color: white;
+`;
+
+export const TextAreaEdit = styled.textarea`
+  padding: 10px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  margin-top: 1rem;
+  background-color: #222026;
+  border: 2px solid #24d39a;
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 300px;
+  min-height: 100px;
+  &::placeholder {
+    font-weight: bold;
+  }
+`;
+
+export const Slider = styled.input`
+  margin-top: 1rem;
+  -webkit-appearance: none;
+  width: 96.5%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin-bottom: 1rem;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04aa6d;
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04aa6d;
+    cursor: pointer;
+  }
+`;
+
+export const Delivery = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: #04aa6d;
+  margin-bottom: 1rem;
+
+  b {
+    margin-left: 10px;
+    color: white;
   }
 `;
