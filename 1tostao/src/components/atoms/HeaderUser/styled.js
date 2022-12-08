@@ -3,6 +3,7 @@ import avaliacoes from "../../../assets/img/avaliacoes.png";
 
 export const Wrapper = styled.div`
   height: 100%;
+  color: ${({ color }) => (color ? color : "white")};
 `;
 export const Banner = styled.div`
   height: 40vh;
@@ -16,13 +17,13 @@ export const MenuImg = styled.div`
 `;
 export const MenuUser = styled.div`
   display: flex;
+  color: ${({ color }) => (color ? color : "white")};
   @media (max-width: 900px) {
     display: block;
   }
 `;
 export const Username = styled.p`
   font-size: 1.5rem;
-  color: #eee;
   margin-left: ${({ marginLe }) => (marginLe ? marginLe : "17rem")};
   margin-bottom: ${({ marginB }) => (marginB ? marginB : "1rem")};
   margin-top: ${({ marginT }) => (marginT ? marginT : "1.3rem")};
@@ -81,7 +82,6 @@ export const Mensagem = styled.button`
   margin-left: 0.9rem;
   border-radius: 10px;
   height: 1.5rem;
-  color: #a9a9a9;
   font-weight: 100;
   background-color: #474a51;
   border: none;
@@ -101,7 +101,6 @@ export const Mensagem = styled.button`
 
   &:hover {
     cursor: pointer;
-    color: #eeeeee;
   }
 `;
 
@@ -118,6 +117,7 @@ export const Sections = styled.h2`
   }
 `;
 export const AboutUser = styled.div`
+  color: ${({ color }) => (color ? color : "white")};
   margin-top: 3rem;
   display: flex;
 `;
@@ -125,6 +125,7 @@ export const AboutUser = styled.div`
 
 export const About = styled.div``;
 export const AboutInfos = styled.div`
+  color: ${({ color }) => (color ? color : "white")};
   display: flex;
   @media screen and (max-width: 900px) {
     flex-direction: column;
@@ -150,8 +151,8 @@ export const AboutInfo = styled.div`
     font-size: 1.4rem;
   }
   .desc {
-    color: #bdbebd;
     margin-top: 1.3rem;
+    color: ${({ color }) => (color ? color : "white")};
 
     margin-right: 6rem;
     font-size: 1.1rem;
@@ -200,6 +201,7 @@ export const AboutContact = styled.div`
     flex-direction: column;
   }
   .infoC {
+    color: ${({ color }) => (color ? color : "white")};
     &:first-child {
       margin-top: 0.8rem;
     }
@@ -265,7 +267,6 @@ export const Reviews = styled.div`
   flex-direction: column;
 
   .data {
-    color: #fff;
     font-size: 1rem;
     white-space: nowrap;
     font-style: italic;
@@ -326,7 +327,6 @@ export const JobsFilter = styled.div`
   .seletor {
     cursor: pointer;
     background-color: #747474;
-    color: #fff;
     width: 225px;
     font-size: 1.3rem;
     border-radius: 5px;
@@ -370,13 +370,11 @@ export const Job = styled.div`
   }
   .comment {
     font-size: 1.1rem;
-    color: #a9a9a9;
   }
 `;
 
 export const JobComments = styled.p`
   font-size: 1.1rem;
-  color: #fff;
   margin-right: 5px;
 `;
 
@@ -392,7 +390,6 @@ export const JobImage = styled.img`
 
 export const JobLikes = styled.p`
   font-size: 1.1rem;
-  color: #fff;
   margin-right: 12.4rem;
   margin-left: 5px;
   margin-bottom: 3rem;
@@ -425,7 +422,6 @@ export const Pagination = styled.div`
   }
 
   ul.pagination li a {
-    color: #fff;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -434,7 +430,6 @@ export const Pagination = styled.div`
 
   ul.pagination li a.active {
     background-color: #24d39a;
-    color: white;
     border-radius: 5px;
   }
 

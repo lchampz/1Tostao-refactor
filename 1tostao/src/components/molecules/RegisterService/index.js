@@ -10,12 +10,14 @@ import {
   Slider,
   Delivery,
   Container,
+  InputPrice,
 } from "./styled";
 import MyDropzone from "../../atoms/Dropzone";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../../request/hooks/Auth";
 import { createService } from "../../../services/InsertService";
 import { useLoading } from "../../../request/hooks/Loading";
+import { useTheme } from "../../../request/hooks/Theme";
 import { useDrop } from "../../../request/hooks/Dropzone";
 import { storage } from "../../../services/Firebase";
 import InputSelect from "../../atoms/Select";
@@ -27,6 +29,7 @@ import check from "../../../assets/img/checkIcon.png";
 
 const RegisterService = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const { profile } = useUserAuth();
   const { dropzone } = useDrop();
   const [display, setDisplay] = useState(false);
@@ -58,7 +61,7 @@ const RegisterService = () => {
   const customStyles = {
     singleValue: (base) => ({
       ...base,
-      color: "white",
+      color: theme.colors.fontColor,
     }),
 
     control: (provided) => ({
@@ -66,7 +69,7 @@ const RegisterService = () => {
       width: "15rem",
       height: "3.3rem",
       border: "3px solid #24D39A",
-      backgroundColor: "#292929",
+      backgroundColor: "transparent",
       color: "#24D39A !important",
       boxShadow: "none",
     }),
@@ -89,12 +92,12 @@ const RegisterService = () => {
     }),
     multiValueLabel: (styles) => ({
       ...styles,
-      color: "white",
+      color: theme.colors.fontColor,
     }),
     multiValue: (styles) => {
       return {
         ...styles,
-        color: "white",
+        color: theme.colors.fontColor,
       };
     },
   };
@@ -153,11 +156,14 @@ const RegisterService = () => {
   };
 
   return (
-    <Wrapper>
-      <WrapperTitle>Registre um novo serviço</WrapperTitle>
-      <WrapperForm>
+    <Wrapper color={theme.colors.fontColor}>
+      <WrapperTitle color={theme.colors.fontColor}>
+        Registre um novo serviço
+      </WrapperTitle>
+      <WrapperForm color={theme.colors.fontColor}>
         <Label>Nome do serviço:</Label>
         <Input
+          color={theme.colors.fontColor}
           placeholder="Nome do serviço"
           onChange={(e) =>
             setData({
@@ -172,10 +178,11 @@ const RegisterService = () => {
         <MyDropzone />
         <Label>Descrição do serviço:</Label>
         <Input
+          color={theme.colors.fontColor}
           placeholder="Faça uma breve descrição sobre o serviço..."
           onChange={(e) => setData({ ...data, desc: e.target.value })}
         />
-        <Container>
+        <Container color={theme.colors.fontColor}>
           <div className="box">
             <Label>Categoria:</Label>
 
@@ -191,7 +198,7 @@ const RegisterService = () => {
             <Label>Valor:</Label>
 
             <IntlCurrencyInput
-              component={Input}
+              component={theme.name === "dark" ? Input : InputPrice}
               currency="BRL"
               max="1000"
               min="5"
@@ -211,15 +218,19 @@ const RegisterService = () => {
             setData({ ...data, entrega: parseInt(e.target.value) })
           }
         />
-        <Delivery>
+        <Delivery color={theme.colors.fontColor}>
           {data.entrega}
           <p> Dia{data.entrega > 1 ? "s" : ""}</p>
         </Delivery>
-        <WrapperWarning>
-          Após registrar o serviço é impossível realizar as alterações.{" "}
+        <WrapperWarning color={theme.colors.fontColor}>
+          Após registrar o serviço é impossível realizar alteração no campo de
+          imagem.{" "}
         </WrapperWarning>
         {data.nome && data.preco && data.desc && data.categoria ? (
-          <BtnRegister onClick={() => newService()}>
+          <BtnRegister
+            onClick={() => newService()}
+            color={theme.colors.fontColor}
+          >
             Registrar serviço
           </BtnRegister>
         ) : (

@@ -40,6 +40,7 @@ import { useUserAuth } from "../../../request/hooks/Auth.js";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../../../services/CreateGoogleAuth";
 import { useService } from "../../../request/hooks/Services";
+import { useTheme } from "../../../request/hooks/Theme";
 import Services from "../Services";
 import service1 from "../../../assets/img/service2.png";
 import ServiceCard from "../ServiceCard";
@@ -56,6 +57,7 @@ const HeaderUser = ({
 }) => {
   const { user, profile, updateBio } = useUserAuth();
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const [tab, setTab] = useState(1);
   const [bio, setBio] = useState(false);
   const [doc, setDoc] = useState();
@@ -130,7 +132,7 @@ const HeaderUser = ({
           }
         />
       </Banner>
-      <Wrapper>
+      <Wrapper color={theme.colors.fontColor}>
         <MenuImg>
           <UserImg
             width={width}
@@ -139,7 +141,7 @@ const HeaderUser = ({
             src={handleProfilePicture()}
           />
         </MenuImg>
-        <MenuUser>
+        <MenuUser color={theme.colors.fontColor}>
           <Username
             marginMedia={marginMedia}
             marginB={marginB}
@@ -158,12 +160,12 @@ const HeaderUser = ({
             <Contratar>Contratar</Contratar>
           )}
         </MenuUser>
-        <AboutUser>
+        <AboutUser color={theme.colors.fontColor}>
           <Sections
             onClick={() => switchTab(1)}
             style={
               tab === 1
-                ? { borderBottom: "1px solid #eee" }
+                ? { borderBottom: `1px solid ${theme.colors.border}` }
                 : { border: "none" }
             }
           >
@@ -172,7 +174,7 @@ const HeaderUser = ({
           <Sections
             style={
               tab === 2
-                ? { borderBottom: "1px solid #eee" }
+                ? { borderBottom: `1px solid ${theme.colors.border}` }
                 : { border: "none" }
             }
             onClick={() => switchTab(2)}
@@ -236,7 +238,7 @@ const HeaderUser = ({
         ) : (
           <About>
             <AboutInfos>
-              <AboutInfo>
+              <AboutInfo color={theme.colors.fontColor}>
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
@@ -365,7 +367,7 @@ const HeaderUser = ({
                   </p>
                 </div>
               </AboutInfo>
-              <AboutContact>
+              <AboutContact color={theme.colors.fontColor}>
                 <h1 className="title">Contato</h1>
                 <div className="contacts">
                   <div className="redesS">

@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  color: ${({ color }) => (color ? color : "white")};
 `;
 
 export const WrapperTitle = styled.div`
@@ -16,12 +17,13 @@ export const WrapperTitle = styled.div`
   width: 80%;
   margin-top: 5rem;
   font-weight: bold;
-  color: white;
+  color: ${({ color }) => (color ? color : "white")};
   height: 4rem;
   border: 3px solid #24d39a;
 `;
 
 export const WrapperForm = styled.div`
+  color: ${({ color }) => (color ? color : "white")};
   display: flex;
   flex-direction: column;
 
@@ -33,7 +35,6 @@ export const WrapperForm = styled.div`
 `;
 
 export const Label = styled.label`
-  color: white;
   margin-top: 0.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -44,11 +45,26 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  color: ${({ color }) => (color ? color : "white")};
   width: 93%;
-  color: white;
   border: 3px solid #24d39a;
   padding: 1rem;
-  background-color: #292929;
+  background-color: transparent;
+  margin-bottom: 1rem;
+
+  ::placeholder {
+    font-weight: thin;
+    font-size: 14px;
+    font-style: italic;
+  }
+`;
+
+export const InputPrice = styled.input`
+  color: black;
+  width: 93%;
+  border: 3px solid #24d39a;
+  padding: 1rem;
+  background-color: transparent;
   margin-bottom: 1rem;
 
   ::placeholder {
@@ -59,6 +75,7 @@ export const Input = styled.input`
 `;
 
 export const WrapperWarning = styled.label`
+  color: ${({ color }) => (color ? color : "white")};
   border: 3px solid #24d39a;
   width: 96.5%;
   height: 4rem;
@@ -66,7 +83,6 @@ export const WrapperWarning = styled.label`
   align-items: center;
   text-align: center;
   justify-content: center;
-  color: white;
   font-weight: bold;
 `;
 
@@ -80,7 +96,7 @@ export const BtnRegister = styled.label`
   justify-content: center;
   text-align: center;
   margin: 0 auto;
-  color: ${({ disabled }) => (disabled ? "#808080" : "white")};
+  color: ${({ disabled, color }) => (disabled ? "#808080" : color)};
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 2rem;
@@ -89,6 +105,7 @@ export const BtnRegister = styled.label`
 
   &:hover {
     border: ${({ disabled }) => (disabled ? "" : "3px solid white")};
+    color: #24d39a;
   }
 `;
 
@@ -134,16 +151,17 @@ export const Delivery = styled.div`
 
   p {
     margin-left: 10px;
-    color: white;
+    color: ${({ color }) => (color ? color : "white")};
   }
 `;
 
 export const Container = styled.div`
+  color: ${({ color }) => (color ? color : "white")};
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 
-  .box{
+  .box {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -153,8 +171,8 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
 
-    .box{
-        width: 100%;
+    .box {
+      width: 100%;
     }
   }
 `;

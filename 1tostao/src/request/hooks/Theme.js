@@ -21,6 +21,9 @@ export const themes = [
       cardSupportBg: "#FFFFFF",
       emptyIcon: "#E5E5E5",
       input: "white",
+      form: "#ffffff",
+      formField: "#F1F1F1",
+      boxService: "#E5E5E5",
     },
   },
   {
@@ -42,6 +45,9 @@ export const themes = [
       cardSupportBg: "#525252",
       emptyIcon: "#525252",
       input: "#525252",
+      form: "#525252",
+      formField: "#717171",
+      boxService: "rgba(34, 32, 38, 1)",
     },
   },
 ];

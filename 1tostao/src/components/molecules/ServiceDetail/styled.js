@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 
 export const Header = styled.div`
   display: flex;
+  color: ${({ color }) => (color ? color : "white")};
   width: 100%;
   align-items: center;
   align-content: center;
@@ -39,6 +40,7 @@ export const Line = styled.div`
 
 export const Body = styled.div`
   display: flex;
+  color: ${({ color }) => (color ? color : "white")};
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -71,7 +73,8 @@ export const Box = styled.div`
   }
 
   .wrapperInfo {
-    background-color: rgba(34, 32, 38, 1);
+    background-color: ${({ bgColor }) =>
+      bgColor ? bgColor : "rgba(34, 32, 38, 1)"};
     color: white;
     width: 100%;
     min-width: 300px;
@@ -138,7 +141,7 @@ export const Box = styled.div`
     justify-content: center;
     align-content: center;
     background-color: #e44b3e;
-    color: white;
+    color: ${({ color }) => (color ? color : "white")};
     width: 80%;
 
     margin: 0 auto;
@@ -189,8 +192,9 @@ export const Footer = styled.div`
   transition: all 0.4s linear;
 
   .wrapperBox {
-    background-color: rgba(34, 32, 38, 1);
-    color: white;
+    background-color: ${({ bgColor }) =>
+      bgColor ? bgColor : "rgba(34, 32, 38, 1)"};
+    color: ${({ color }) => (color ? color : "white")};
     width: 100%;
     display: flex;
     padding: 1rem;
@@ -212,8 +216,9 @@ export const Footer = styled.div`
 
   @media (max-width: 900px) {
     .wrapperBox {
-      background-color: rgba(34, 32, 38, 1);
-      color: white;
+      background-color: ${({ bgColor }) =>
+        bgColor ? bgColor : "rgba(34, 32, 38, 1)"};
+      color: ${({ color }) => (color ? color : "white")};
       width: 100%;
       min-height: 80px;
 
@@ -242,7 +247,7 @@ export const OcultContent = styled.div`
 
 export const Title = styled.div`
   font-size: 1.5rem;
-  color: white;
+  color: ${({ color }) => (color ? color : "white")};
 `;
 
 export const RelationatedServices = styled.div`
@@ -279,7 +284,8 @@ export const WrapperComments = styled.div`
   .line {
     width: 100%;
     height: 15px;
-    background-color: #b3b3b3;
+    background-color: ${({ bgColor }) =>
+      bgColor ? bgColor : "rgba(34, 32, 38, 1)"};
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -342,7 +348,7 @@ export const WrapperForm = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background-color: #222026;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#222026")};
 
   padding-left: 30px;
   min-width: 20rem;
@@ -362,16 +368,16 @@ export const WrapperForm = styled.div`
 `;
 
 export const InputEdit = styled.input`
-  background-color: #222026;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#222026")};
   border: 2px solid #24d39a;
   margin-top: 1rem;
   padding: 10px;
-  color: white;
+  color: ${({ color }) => (color ? color : "white")};
 `;
 
 export const TextAreaEdit = styled.textarea`
   padding: 10px;
-  color: white;
+  color: ${({ color }) => (color ? color : "white")};
   font-family: "Poppins", sans-serif;
   margin-top: 1rem;
   background-color: #222026;
@@ -429,6 +435,6 @@ export const Delivery = styled.div`
 
   b {
     margin-left: 10px;
-    color: white;
+    color: ${({ color }) => (color ? color : "white")};
   }
 `;

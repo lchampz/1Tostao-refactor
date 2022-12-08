@@ -22,6 +22,7 @@ import {
   getServiceWithCategory,
 } from "../../../services/getServiceData";
 import docIcon from "../../../assets/img/docGreenIcon.svg";
+import { useTheme } from "../../../request/hooks/Theme";
 import settings from "../../../assets/icons/settings-icon.png";
 import starIcon from "../../../assets/img/starGreenIcon.svg";
 import blackStarIcon from "../../../assets/icons/blackStar.png";
@@ -41,6 +42,7 @@ import { useNavigate } from "react-router-dom";
 const ServiceDetail = () => {
   const apiUrl = "https://payment-1tostao-api.vercel.app";
 
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const { user, profile } = useUserAuth();
   const today = new Date();
@@ -181,6 +183,10 @@ const ServiceDetail = () => {
   const serviceId = url.substr(url.lastIndexOf("/") + 1);
 
   useEffect(() => {
+    console.log(comments)
+  }, [comments ])
+
+  useEffect(() => {
     reqServicesData(getCategory);
   }, []);
 
@@ -189,6 +195,7 @@ const ServiceDetail = () => {
     const rateResponse = await getComments(serviceId);
     setService(responseData);
     setComments(rateResponse);
+    console.log(comments);
   }, [render]);
 
   const reqServicesData = async (callback) => {
@@ -322,7 +329,7 @@ const ServiceDetail = () => {
                       width: "100%",
                     }}
                   >
-                    <span className={"desc"}>{comments[i]?.info.desc}</span>
+                    <span className={"desc"}>{comments[i]?.desc}</span>
                     <div
                       className={"autor"}
                       style={{ fontSize: "10px", marginLeft: "5px" }}
@@ -360,7 +367,10 @@ const ServiceDetail = () => {
   const renderBody = () => {
     return (
       <>
-        <Footer>
+        <Footer
+          color={theme.colors.fontColor}
+          bgColor={theme.colors.boxService}
+        >
           {cardData.map((item, i) => {
             return (
               <div className={"wrapperBox"}>
@@ -412,9 +422,9 @@ const ServiceDetail = () => {
             marginTop: "1rem",
           }}
         >
-          <Title>Serviços Relacionados</Title>
+          <Title color={theme.colors.fontColor}>Serviços Relacionados</Title>
         </span>
-        <RelationatedServices>
+        <RelationatedServices color={theme.colors.fontColor}>
           {!render
             ? renderLoading()
             : service?.map((item) => {
@@ -442,6 +452,7 @@ const ServiceDetail = () => {
           confirm={InsertRate}
         >
           <Input
+            color={theme.colors.fontColor}
             onChange={(e) => setAval({ ...aval, desc: e.target.value })}
             placeholder={"Deixe seu comentário..."}
           />
@@ -483,8 +494,8 @@ const ServiceDetail = () => {
   const renderEdit = () => {
     return (
       <>
-        <Footer>
-          <WrapperForm>
+        <Footer color={theme.colors.fontColor}>
+          <WrapperForm color={theme.colors.fontColor}>
             <label>EDIÇÃO</label>
             <p>Nome do Serviço:</p>
             <InputEdit
@@ -495,6 +506,7 @@ const ServiceDetail = () => {
             />
             <p>Descrição:</p>
             <TextAreaEdit
+              color={theme.colors.fontColor}
               value={newValue?.desc}
               onChange={(e) =>
                 setNewValue({ ...newValue, desc: e.target.value })
@@ -530,7 +542,7 @@ const ServiceDetail = () => {
               }
             />
 
-            <Delivery>
+            <Delivery color={theme.colors.fontColor}>
               {newValue?.entrega}
               <b> Dia{newValue?.entrega > 1 ? "s" : ""}</b>
             </Delivery>
@@ -599,15 +611,15 @@ const ServiceDetail = () => {
   };
 
   return (
-    <Wrapper>
-      <Header>
+    <Wrapper color={theme.colors.fontColor}>
+      <Header color={theme.colors.fontColor}>
         <span>
           <img src={data?.img} className={"icon"} />@{data?.autor}
         </span>
       </Header>
       <Line />
-      <Body>
-        <Box>
+      <Body color={theme.colors.fontColor}>
+        <Box color={theme.colors.fontColor}>
           <p className={"title"}>{data?.nome}</p>
           <img src={data?.img} className={"imgContainer"} />
         </Box>

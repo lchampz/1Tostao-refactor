@@ -6,8 +6,9 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+  color: ${({ color }) => (color ? color : "white")};
   flex-direction: column;
-  background-color: #403b3b;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#403b3b")};
 `;
 export const Sobre = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ export const Sobre = styled.div`
 `;
 
 export const Borda = styled.div`
-  border: 1px solid #fff;
+  border: 1px solid ${({ bgColor }) => (bgColor ? bgColor : "white")};
   width: 60%;
 `;
 
@@ -45,7 +46,7 @@ export const Orientation = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: ${({ marginB }) => (marginB ? marginB : "2rem")};
-  margin-top: ${({ marginT }) => (marginT ? marginT: "0rem")};
+  margin-top: ${({ marginT }) => (marginT ? marginT : "0rem")};
   font-size: 4rem;
   font-weight: bold;
   color: #24d39a;
@@ -72,7 +73,7 @@ export const Img = styled.img`
 
 export const Text = styled.p`
   overflow-wrap: break-word;
-  color: #fff;
+
   width: 500px;
   line-height: 1.6;
   @media screen and (max-width: 550px) {
@@ -107,17 +108,17 @@ export const Column = styled.div`
 `;
 
 export const Iframe = styled.iframe`
-  width:1280px;
-  height:720px;
-  border-radius:5px;
+  width: 1280px;
+  height: 720px;
+  border-radius: 5px;
 
-  @media screen and (max-width:1280px){
-    width:100%;
-    height:720px;
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+    height: 720px;
   }
 
-  @media screen and (max-width:500px){
-    width:100%;
-    height:200px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 200px;
   }
 `;
