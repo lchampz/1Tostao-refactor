@@ -183,8 +183,8 @@ const ServiceDetail = () => {
   const serviceId = url.substr(url.lastIndexOf("/") + 1);
 
   useEffect(() => {
-    console.log(comments)
-  }, [comments ])
+    console.log(comments);
+  }, [comments]);
 
   useEffect(() => {
     reqServicesData(getCategory);
@@ -611,43 +611,21 @@ const ServiceDetail = () => {
   };
 
   return (
-    <Wrapper color={theme.colors.fontColor}>
-      <Header color={theme.colors.fontColor}>
+    <Wrapper>
+      <Header>
         <span>
           <img src={data?.img} className={"icon"} />@{data?.autor}
         </span>
       </Header>
       <Line />
-      <Body color={theme.colors.fontColor}>
-        <Box color={theme.colors.fontColor}>
+      <Body>
+        <Box>
           <p className={"title"}>{data?.nome}</p>
           <img src={data?.img} className={"imgContainer"} />
         </Box>
         <Box>
           <div className={"wrapperInfo"}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p className={"bold"} style={{ marginLeft: "30px" }}>
-                ÚLTIMOS DETALHES
-              </p>
-              {data?.uid === profile?.uid || data?.uid === user?.uid ? (
-                <img
-                  onClick={() => setEdit(!edit)}
-                  src={settings}
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    marginTop: "27px",
-                    marginRight: "30px",
-                    cursor: "pointer",
-                  }}
-                />
-              ) : null}
-            </div>
+            <p className={"bold"}>ÚLTIMOS DETALHES</p>
             <span className={"content"}>
               <p>
                 Prazo: {data?.entrega} dia{data?.entrega > 1 ? "s" : null}
@@ -657,29 +635,126 @@ const ServiceDetail = () => {
                 {data?.preco.toLocaleString("PT").includes(",") ? null : ",00"}
               </p>
             </span>
-            <div className={"btn"} onClick={edit ? saveInfo : payment}>
-              {edit ? "Salvar" : "Contratar"}
+            <div className={"btn"} onClick={payment}>
+              Contratar
             </div>
-            {edit ? (
-              <div
-                className="delete"
-                onClick={() => setPopupVisible({ ...popupVisible, del: true })}
-              >
-                Excluir serviço
-              </div>
-            ) : null}
-            {profile && data.uid != profile.uid && data.uid != user.uid ? (
-              <span
-                className={"avalie"}
-                onClick={() => setPopupVisible({ ...popupVisible, aval: true })}
-              >
+            {profile ? (
+              <span className={"avalie"} onClick={() => setPopupVisible(true)}>
                 Avalie o serviço!
               </span>
             ) : null}
           </div>
         </Box>
       </Body>
-      {edit ? renderEdit() : renderBody()}
+      <Footer>
+        {cardData.map((item, i) => {
+          return (
+            <div className={"wrapperBox"}>
+              <div style={{ width: "100%" }}>
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img
+                    src={item.icon}
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      marginRight: "1rem",
+                      marginBottom: item.marginBottom,
+                    }}
+                  />
+                  <p className={"title"}>{item.title}</p>
+                </span>
+                <OcultContent
+                  display={displayTest(item)}
+                  visibility={visibilityTest(item)}
+                >
+                  {item.content === "desc" ? data?.desc : renderComments(data)}
+                </OcultContent>
+              </div>
+
+              <span
+                onClick={() => handleShow(i)}
+                style={{
+                  width: "10%",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  paddingRight: "1rem",
+                  cursor: "pointer",
+                }}
+              >
+                <p style={style(item)}>{">"}</p>
+              </span>
+            </div>
+          );
+        })}
+      </Footer>
+      <Line />
+      <span
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          marginTop: "1rem",
+        }}
+      >
+        <Title>Serviços Relacionados</Title>
+      </span>
+      <RelationatedServices>
+        {!render
+          ? renderLoading()
+          : service?.map((item) => {
+              return (
+                <Services
+                  uid={item.id}
+                  nome={item.info.nome}
+                  desc={item.info.desc}
+                  img={item.info.img}
+                  preco={item.info.preco}
+                  autor={item.info.autor}
+                  categoria={item.info.categoria}
+                  nota={renderAval(item)}
+                  loading={loading}
+                />
+              );
+            })}
+      </RelationatedServices>
+      <ModalAvaliation
+        display={popupVisible}
+        title={"Avaliação"}
+        labelBnt={"Avaliar!"}
+        disabled={!aval.desc || !aval.star}
+        close={() => setPopupVisible(false)}
+        confirm={InsertRate}
+      >
+        <Input
+          onChange={(e) => setAval({ ...aval, desc: e.target.value })}
+          placeholder={"Deixe seu comentário..."}
+        />
+        <p style={{ marginTop: "1rem", color: "black" }}>
+          Como você avalia esse serviço?
+        </p>
+        <span style={{ display: "flex", marginTop: "1rem" }}>
+          {repeatStar.map((i) => {
+            return (
+              <img
+                key={i}
+                src={aval.star > i ? starIcon : blackStarIcon}
+                onClick={() => setAval({ ...aval, star: i + 1 })}
+                style={{
+                  width: "25px",
+                  height: "25px",
+                  marginRight: "2px",
+                  cursor: "pointer",
+                }}
+              />
+            );
+          })}
+        </span>
+        <span
+          style={{ marginTop: "1rem", marginBottom: "1rem", color: "black" }}
+        >
+          {aval.star ?? "0"} de 5 estrelas
+        </span>
+      </ModalAvaliation>
     </Wrapper>
   );
 };
