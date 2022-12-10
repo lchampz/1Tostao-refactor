@@ -183,10 +183,6 @@ const ServiceDetail = () => {
   const serviceId = url.substr(url.lastIndexOf("/") + 1);
 
   useEffect(() => {
-    console.log(comments);
-  }, [comments]);
-
-  useEffect(() => {
     reqServicesData(getCategory);
   }, []);
 
@@ -195,7 +191,6 @@ const ServiceDetail = () => {
     const rateResponse = await getComments(serviceId);
     setService(responseData);
     setComments(rateResponse);
-    console.log(comments);
   }, [render]);
 
   const reqServicesData = async (callback) => {
@@ -308,7 +303,7 @@ const ServiceDetail = () => {
           </div>
         </div>
         <div className={"comments"}>
-          {comments?.map((i) => {
+          {comments?.map((item, i) => {
             let starAval = Loop(comments[i]?.info.nota);
             return (
               <>
@@ -329,7 +324,7 @@ const ServiceDetail = () => {
                       width: "100%",
                     }}
                   >
-                    <span className={"desc"}>{comments[i]?.desc}</span>
+                    <span className={"desc"}>{comments[i]?.info.desc}</span>
                     <div
                       className={"autor"}
                       style={{ fontSize: "10px", marginLeft: "5px" }}
@@ -364,136 +359,108 @@ const ServiceDetail = () => {
     );
   };
 
-  const renderBody = () => {
-    return (
-      <>
-        <Footer
-          color={theme.colors.fontColor}
-          bgColor={theme.colors.boxService}
-        >
-          {cardData.map((item, i) => {
-            return (
-              <div className={"wrapperBox"}>
-                <div style={{ width: "100%" }}>
-                  <span style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                      src={item.icon}
-                      style={{
-                        width: "25px",
-                        height: "25px",
-                        marginRight: "1rem",
-                        marginBottom: item.marginBottom,
-                      }}
-                    />
-                    <p className={"title"}>{item.title}</p>
-                  </span>
-                  <OcultContent
-                    display={displayTest(item)}
-                    visibility={visibilityTest(item)}
-                  >
-                    {item.content === "desc"
-                      ? data?.desc
-                      : renderComments(data)}
-                  </OcultContent>
-                </div>
-
-                <span
-                  onClick={() => handleShow(i)}
-                  style={{
-                    width: "10%",
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    paddingRight: "1rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  <p style={style(item)}>{">"}</p>
-                </span>
-              </div>
-            );
-          })}
-        </Footer>
-        <Line />
-        <span
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "center",
-            marginTop: "1rem",
-          }}
-        >
-          <Title color={theme.colors.fontColor}>Serviços Relacionados</Title>
-        </span>
-        <RelationatedServices color={theme.colors.fontColor}>
-          {!render
-            ? renderLoading()
-            : service?.map((item) => {
-                return (
-                  <Services
-                    uid={item.id}
-                    nome={item.info.nome}
-                    desc={item.info.desc}
-                    img={item.info.img}
-                    preco={item.info.preco}
-                    autor={item.info.autor}
-                    categoria={item.info.categoria}
-                    nota={renderAval(item)}
-                    loading={loading}
-                  />
-                );
-              })}
-        </RelationatedServices>
-        <ModalAvaliation
-          display={popupVisible.aval}
-          title={"Avaliação"}
-          labelBnt={"Avaliar!"}
-          disabled={!aval.desc || !aval.star}
-          close={() => setPopupVisible({ ...popupVisible, aval: false })}
-          confirm={InsertRate}
-        >
-          <Input
-            color={theme.colors.fontColor}
-            onChange={(e) => setAval({ ...aval, desc: e.target.value })}
-            placeholder={"Deixe seu comentário..."}
-          />
-          <p style={{ marginTop: "1rem", color: "black" }}>
-            Como você avalia esse serviço?
-          </p>
-          <span style={{ display: "flex", marginTop: "1rem" }}>
-            {repeatStar.map((i) => {
-              return (
-                <img
-                  key={i}
-                  src={aval.star > i ? starIcon : blackStarIcon}
-                  onClick={() => setAval({ ...aval, star: i + 1 })}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginRight: "2px",
-                    cursor: "pointer",
-                  }}
-                />
-              );
-            })}
-          </span>
-          <span
-            style={{ marginTop: "1rem", marginBottom: "1rem", color: "black" }}
-          >
-            {aval.star ?? "0"} de 5 estrelas
-          </span>
-        </ModalAvaliation>
-      </>
-    );
-  };
-
   const handleChange = (event, value) => {
     event.preventDefault();
     setNewValue({ ...newValue, preco: value });
   };
 
-  const renderEdit = () => {
-    return (
-      <>
+  const delService = () => {
+    deleteService(serviceId);
+
+    setPopupVisible({ ...popupVisible, del: false });
+
+    navigate("/servicos");
+  };
+  const payment = () => {
+    fetch(`${apiUrl}/v1/pagarProduto`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        url: url,
+        items: [
+          {
+            id: 1,
+            quantity: 1,
+            priceInCents: parseInt(data?.preco * 100),
+            name: data?.nome,
+          },
+        ],
+      }),
+    })
+      .then(async (res) => {
+        if (res.ok) return res.json();
+        const json = await res.json();
+        return await Promise.reject(json);
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((err) => {
+        console.error(err.error);
+      });
+  };
+
+  return (
+    <Wrapper>
+      <Header>
+        <span>
+          <img src={data?.img} className={"icon"} />@{data?.autor}
+        </span>
+      </Header>
+      <Line />
+      <Body>
+        <Box>
+          <p className={"title"}>{data?.nome}</p>
+          <img src={data?.img} className={"imgContainer"} />
+        </Box>
+        <Box>
+          <div className={"wrapperInfo"}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <p className={"bold"} style={{ marginLeft: "30px" }}>
+                ÚLTIMOS DETALHES
+              </p>
+              {data?.uid === profile?.uid || data?.uid === user?.uid ? (
+                <img
+                  onClick={() => setEdit(!edit)}
+                  src={settings}
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    marginTop: "27px",
+                    marginRight: "30px",
+                    cursor: "pointer",
+                  }}
+                />
+              ) : null}
+            </div>
+            <span className={"content"}>
+              <p>
+                Prazo: {data?.entrega} dia{data?.entrega > 1 ? "s" : null}
+              </p>
+              <p>
+                <b>R$</b> {data?.preco.toLocaleString("PT")}
+                {data?.preco.toLocaleString("PT").includes(",") ? null : ",00"}
+              </p>
+            </span>
+            <div className={"btn"} onClick={payment}>
+              Contratar
+            </div>
+            {profile ? (
+              <span className={"avalie"} onClick={() => setPopupVisible(true)}>
+                Avalie o serviço!
+              </span>
+            ) : null}
+          </div>
+        </Box>
+      </Body>
+      {edit ? (
         <Footer color={theme.colors.fontColor}>
           <WrapperForm color={theme.colors.fontColor}>
             <label>EDIÇÃO</label>
@@ -529,7 +496,7 @@ const ServiceDetail = () => {
               style={customStyles}
               placeholder="Selecione uma categoria"
               options={cat}
-              value={newValue.categoria}
+              value={newValue?.categoria}
               onChange={(e) => setNewValue({ ...newValue, categoria: e.value })}
             />
 
@@ -553,208 +520,125 @@ const ServiceDetail = () => {
             />
           </WrapperForm>
         </Footer>
-      </>
-    );
-  };
+      ) : (
+        <>
+          <Footer>
+            {cardData.map((item, i) => {
+              return (
+                <div className={"wrapperBox"}>
+                  <div style={{ width: "100%" }}>
+                    <span style={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={item.icon}
+                        style={{
+                          width: "25px",
+                          height: "25px",
+                          marginRight: "1rem",
+                          marginBottom: item.marginBottom,
+                        }}
+                      />
+                      <p className={"title"}>{item.title}</p>
+                    </span>
+                    <OcultContent
+                      display={displayTest(item)}
+                      visibility={visibilityTest(item)}
+                    >
+                      {item.content === "desc"
+                        ? data?.desc
+                        : renderComments(data)}
+                    </OcultContent>
+                  </div>
 
-  const payment = () => {
-    fetch(`${apiUrl}/v1/pagarProduto`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        url: url,
-        items: [
-          {
-            id: 1,
-            quantity: 1,
-            priceInCents: parseInt(data?.preco * 100),
-            name: data?.nome,
-          },
-        ],
-      }),
-    })
-      .then(async (res) => {
-        if (res.ok) return res.json();
-        const json = await res.json();
-        return await Promise.reject(json);
-      })
-      .then(({ url }) => {
-        window.location = url;
-      })
-      .catch((err) => {
-        console.error(err.error);
-      });
-  };
-
-  const saveInfo = () => {
-    updateService(
-      serviceId,
-      newValue.nome,
-      newValue.desc,
-      newValue.preco,
-      newValue.entrega,
-      newValue.categoria
-    );
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  };
-
-  const delService = () => {
-    deleteService(serviceId);
-
-    setPopupVisible({ ...popupVisible, del: false });
-
-    navigate("/servicos");
-  };
-
-  return (
-    <Wrapper>
-      <Header>
-        <span>
-          <img src={data?.img} className={"icon"} />@{data?.autor}
-        </span>
-      </Header>
-      <Line />
-      <Body>
-        <Box>
-          <p className={"title"}>{data?.nome}</p>
-          <img src={data?.img} className={"imgContainer"} />
-        </Box>
-        <Box>
-          <div className={"wrapperInfo"}>
-            <p className={"bold"}>ÚLTIMOS DETALHES</p>
-            <span className={"content"}>
-              <p>
-                Prazo: {data?.entrega} dia{data?.entrega > 1 ? "s" : null}
-              </p>
-              <p>
-                <b>R$</b> {data?.preco.toLocaleString("PT")}
-                {data?.preco.toLocaleString("PT").includes(",") ? null : ",00"}
-              </p>
-            </span>
-            <div className={"btn"} onClick={payment}>
-              Contratar
-            </div>
-            {profile ? (
-              <span className={"avalie"} onClick={() => setPopupVisible(true)}>
-                Avalie o serviço!
-              </span>
-            ) : null}
-          </div>
-        </Box>
-      </Body>
-      <Footer>
-        {cardData.map((item, i) => {
-          return (
-            <div className={"wrapperBox"}>
-              <div style={{ width: "100%" }}>
-                <span style={{ display: "flex", alignItems: "center" }}>
+                  <span
+                    onClick={() => handleShow(i)}
+                    style={{
+                      width: "10%",
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      paddingRight: "1rem",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <p style={style(item)}>{">"}</p>
+                  </span>
+                </div>
+              );
+            })}
+          </Footer>
+          <Line />
+          <span
+            style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            <Title>Serviços Relacionados</Title>
+          </span>
+          <RelationatedServices>
+            {!render
+              ? renderLoading()
+              : service?.map((item) => {
+                  return (
+                    <Services
+                      uid={item.id}
+                      nome={item.info.nome}
+                      desc={item.info.desc}
+                      img={item.info.img}
+                      preco={item.info.preco}
+                      autor={item.info.autor}
+                      categoria={item.info.categoria}
+                      nota={renderAval(item)}
+                      loading={loading}
+                    />
+                  );
+                })}
+          </RelationatedServices>
+          <ModalAvaliation
+            display={popupVisible.aval}
+            title={"Avaliação"}
+            labelBnt={"Avaliar!"}
+            disabled={!aval.desc || !aval.star}
+            close={() => setPopupVisible(false)}
+            confirm={InsertRate}
+          >
+            <Input
+              onChange={(e) => setAval({ ...aval, desc: e.target.value })}
+              placeholder={"Deixe seu comentário..."}
+            />
+            <p style={{ marginTop: "1rem", color: "black" }}>
+              Como você avalia esse serviço?
+            </p>
+            <span style={{ display: "flex", marginTop: "1rem" }}>
+              {repeatStar.map((i) => {
+                return (
                   <img
-                    src={item.icon}
+                    key={i}
+                    src={aval.star > i ? starIcon : blackStarIcon}
+                    onClick={() => setAval({ ...aval, star: i + 1 })}
                     style={{
                       width: "25px",
                       height: "25px",
-                      marginRight: "1rem",
-                      marginBottom: item.marginBottom,
+                      marginRight: "2px",
+                      cursor: "pointer",
                     }}
                   />
-                  <p className={"title"}>{item.title}</p>
-                </span>
-                <OcultContent
-                  display={displayTest(item)}
-                  visibility={visibilityTest(item)}
-                >
-                  {item.content === "desc" ? data?.desc : renderComments(data)}
-                </OcultContent>
-              </div>
-
-              <span
-                onClick={() => handleShow(i)}
-                style={{
-                  width: "10%",
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  paddingRight: "1rem",
-                  cursor: "pointer",
-                }}
-              >
-                <p style={style(item)}>{">"}</p>
-              </span>
-            </div>
-          );
-        })}
-      </Footer>
-      <Line />
-      <span
-        style={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "center",
-          marginTop: "1rem",
-        }}
-      >
-        <Title>Serviços Relacionados</Title>
-      </span>
-      <RelationatedServices>
-        {!render
-          ? renderLoading()
-          : service?.map((item) => {
-              return (
-                <Services
-                  uid={item.id}
-                  nome={item.info.nome}
-                  desc={item.info.desc}
-                  img={item.info.img}
-                  preco={item.info.preco}
-                  autor={item.info.autor}
-                  categoria={item.info.categoria}
-                  nota={renderAval(item)}
-                  loading={loading}
-                />
-              );
-            })}
-      </RelationatedServices>
-      <ModalAvaliation
-        display={popupVisible}
-        title={"Avaliação"}
-        labelBnt={"Avaliar!"}
-        disabled={!aval.desc || !aval.star}
-        close={() => setPopupVisible(false)}
-        confirm={InsertRate}
-      >
-        <Input
-          onChange={(e) => setAval({ ...aval, desc: e.target.value })}
-          placeholder={"Deixe seu comentário..."}
-        />
-        <p style={{ marginTop: "1rem", color: "black" }}>
-          Como você avalia esse serviço?
-        </p>
-        <span style={{ display: "flex", marginTop: "1rem" }}>
-          {repeatStar.map((i) => {
-            return (
-              <img
-                key={i}
-                src={aval.star > i ? starIcon : blackStarIcon}
-                onClick={() => setAval({ ...aval, star: i + 1 })}
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  marginRight: "2px",
-                  cursor: "pointer",
-                }}
-              />
-            );
-          })}
-        </span>
-        <span
-          style={{ marginTop: "1rem", marginBottom: "1rem", color: "black" }}
-        >
-          {aval.star ?? "0"} de 5 estrelas
-        </span>
-      </ModalAvaliation>
+                );
+              })}
+            </span>
+            <span
+              style={{
+                marginTop: "1rem",
+                marginBottom: "1rem",
+                color: "black",
+              }}
+            >
+              {aval.star ?? "0"} de 5 estrelas
+            </span>
+          </ModalAvaliation>
+        </>
+      )}
     </Wrapper>
   );
 };
