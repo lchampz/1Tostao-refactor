@@ -356,7 +356,7 @@ const ServiceDetail = () => {
                     })}
                   </div>
                 </div>
-                <span className={"autor"}>{comments[0]?.info.autor}</span>
+                <span className={"autor"}>{comments[i]?.info.autor}</span>
               </>
             );
           })}
