@@ -75,7 +75,7 @@ export const Box = styled.div`
   .wrapperInfo {
     background-color: ${({ bgColor }) =>
       bgColor ? bgColor : "rgba(34, 32, 38, 1)"};
-    color: white;
+    color: ${({ color }) => (color ? color : "white")};
     width: 100%;
     min-width: 300px;
     min-height: 300px;
@@ -260,13 +260,23 @@ export const RelationatedServices = styled.div`
   }
 `;
 
+export const TitleComments = styled.div`
+  color: ${({ color }) => (color ? color : "white")};
+`;
+
 export const WrapperComments = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  color: ${({ color }) => (color ? color : "white")};
+
+  .title {
+    color: ${({ color }) => (color ? color : "white")};
+  }
 
   .headerGrades {
     display: flex;
+    color: ${({ color }) => (color ? color : "white")};
   }
 
   .grade {
@@ -317,11 +327,11 @@ export const WrapperComments = styled.div`
 
   .desc {
     font-weight: bold;
-    color: white;
+    color: ${({ color }) => (color ? color : "white")};
   }
 
   .autor {
-    color: #b3b3b3;
+    color: ${({ color }) => (color ? color : "white")};
     font-weight: bold;
     font-size: 11px;
     margin-bottom: 3px;
@@ -347,6 +357,7 @@ export const Input = styled.textarea`
 export const WrapperForm = styled.div`
   display: flex;
   flex-direction: column;
+  color: ${({ color }) => (color ? color : "white")};
   padding: 1rem;
   background-color: ${({ bgColor }) => (bgColor ? bgColor : "#222026")};
 
@@ -368,11 +379,15 @@ export const WrapperForm = styled.div`
 `;
 
 export const InputEdit = styled.input`
-  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#222026")};
+  background-color: transparent;
   border: 2px solid #24d39a;
   margin-top: 1rem;
   padding: 10px;
   color: ${({ color }) => (color ? color : "white")};
+`;
+
+export const InputEditThemed = styled(InputEdit)`
+  color: black;
 `;
 
 export const TextAreaEdit = styled.textarea`
@@ -380,7 +395,7 @@ export const TextAreaEdit = styled.textarea`
   color: ${({ color }) => (color ? color : "white")};
   font-family: "Poppins", sans-serif;
   margin-top: 1rem;
-  background-color: #222026;
+  background-color: transparent;
   border: 2px solid #24d39a;
   max-width: 100%;
   min-width: 100%;

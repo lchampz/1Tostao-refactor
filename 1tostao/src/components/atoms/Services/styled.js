@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  background-color: #403b3b;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#403b3b")};
   padding-bottom: 2rem;
   justify-content: center;
   padding-top: 1rem;
@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const ServiceWrapper = styled.div`
   width: 85%;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#403b3b")};
   color: #eee;
   display: flex;
   flex-direction: row;
@@ -121,18 +122,20 @@ export const Text = styled.p`
 `;
 export const ServicosEspecializados = styled.div`
   width: 100%;
-  border-bottom: 1px solid #fff;
+  border-bottom: ${({ border }) =>
+    border ? `1px solid black` : "1px solid white"};
+  border-top: ${({ border }) => (border ? `1px solid black` : null)};
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #4d4a49;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#4d4a49")};
 `;
 
 export const TitleEspecializados = styled.h1`
   margin-top: 1.5rem;
-  color: #eee;
+  color: ${({ color }) => (color ? color : "white")};
   font-weight: 500;
   font-size: 1.7rem;
 `;
@@ -141,6 +144,7 @@ export const WrapperEspecializados = styled.div`
   width: 85%;
   display: flex;
   justify-content: center;
+
   align-items: center;
 
   .swiper-button-prev,

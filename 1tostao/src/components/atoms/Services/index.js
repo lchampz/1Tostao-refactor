@@ -17,6 +17,7 @@ import {
   ServiceCategory,
 } from "./styled";
 import service1 from "../../../assets/img/service2.png";
+import { useTheme } from "../../../request/hooks/Theme";
 import profilePic from "./../../../assets/img/profile.png";
 import { useService } from "../../../request/hooks/Services.js";
 import "swiper/swiper-bundle.min.css";
@@ -38,6 +39,8 @@ import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import ServiceCard from "../ServiceCard";
 
 const Services = () => {
+  const { theme } = useTheme();
+
   const { service, filter, serviceDestaque, search, searchValue } =
     useService();
   const [avalicaoService, setAvaliacaoService] = useState();
@@ -268,7 +271,10 @@ const Services = () => {
   return (
     <>
       {filter !== undefined || searchValue !== undefined ? null : (
-        <ServicosEspecializados>
+        <ServicosEspecializados
+          border={theme.name === "dark" ? false : true}
+          bgColor={theme.colors.servicesProminence}
+        >
           <div
             style={{
               display: "flex",
@@ -276,7 +282,9 @@ const Services = () => {
               alignItems: "center",
             }}
           >
-            <TitleEspecializados>Serviços em destaque</TitleEspecializados>
+            <TitleEspecializados color={theme.colors.fontColor}>
+              Serviços em destaque
+            </TitleEspecializados>
           </div>
           <div
             style={{
@@ -301,8 +309,10 @@ const Services = () => {
           </div>
         </ServicosEspecializados>
       )}
-      <Container>
-        <ServiceWrapper>{Filtrar()}</ServiceWrapper>
+      <Container bgColor={theme.colors.bgServices}>
+        <ServiceWrapper bgColor={theme.colors.bgServices}>
+          {Filtrar()}
+        </ServiceWrapper>
       </Container>
     </>
   );

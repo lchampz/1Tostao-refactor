@@ -21,6 +21,7 @@ import {
 } from "./styled";
 import lupa from "../../../assets/img/lupa.png";
 import filterr from "../../../assets/img/filter.png";
+import { useTheme } from "../../../request/hooks/Theme";
 import downArrow from "../../../assets/img/downArrow.png";
 import x from "../../../assets/img/delete.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,6 +30,7 @@ import { useService } from "../../../request/hooks/Services";
 import { reload } from "firebase/auth";
 
 const ServiceFilter = () => {
+  const { theme } = useTheme();
   const [sideBar, setSideBar] = useState(false);
   const [arrow, setArrow] = useState(false);
   const [arrow2, setArrow2] = useState(false);
@@ -55,7 +57,10 @@ const ServiceFilter = () => {
   const servicesNumber = () => {
     if (filter?.length === 0) {
       return (
-        <FoundServices>
+        <FoundServices
+          bgColor={theme.colors.bgServices}
+          color={theme.colors.fontColor}
+        >
           <p style={{ margin: "10px" }}>
             {filter?.length} Serviços Encontrados
           </p>
@@ -63,13 +68,19 @@ const ServiceFilter = () => {
       );
     } else if (filter?.length === 1) {
       return (
-        <FoundServices>
+        <FoundServices
+          bgColor={theme.colors.bgServices}
+          color={theme.colors.fontColor}
+        >
           <p style={{ margin: "10px" }}>{filter?.length} Serviço Encontrado</p>
         </FoundServices>
       );
     } else if (filter?.length > 1) {
       return (
-        <FoundServices>
+        <FoundServices
+          bgColor={theme.colors.bgServices}
+          color={theme.colors.fontColor}
+        >
           <p style={{ margin: "10px" }}>
             {filter?.length} Serviços Encontrados
           </p>
@@ -83,11 +94,15 @@ const ServiceFilter = () => {
   }
   return (
     <>
-      <Container onLoad={removeAllFilters}>
+      <Container
+        onLoad={removeAllFilters}
+        bgColor={theme.colors.bgServices}
+        color={theme.colors.fontColor}
+      >
         <h1
           style={{
             fontSize: "2.2rem",
-            color: "#eee",
+            color: theme.colors.fontColor,
             marginTop: "1rem",
             marginBottom: "-3.5rem",
             marginLeft: "0",
@@ -95,8 +110,8 @@ const ServiceFilter = () => {
         >
           Serviços
         </h1>
-        <Filter>
-          <Wrapper>
+        <Filter color={theme.colors.fontColor}>
+          <Wrapper border={theme.colors.border}>
             <ImgWrapper
               url={lupa}
               width="25px"
@@ -105,6 +120,7 @@ const ServiceFilter = () => {
               cursor="pointer"
             />
             <Search
+              color={theme.colors.fontColor}
               type="text"
               onChange={(e) => {
                 getServiceSearch(e.target.value);
@@ -112,7 +128,11 @@ const ServiceFilter = () => {
               placeholder="Procure um serviço por nome, categoria ou freelancer..."
             />
 
-            <DropDown onClick={showSideBar}>
+            <DropDown
+              onClick={showSideBar}
+              border={theme.colors.border}
+              color={theme.colors.fontColor}
+            >
               <ImgWrapper
                 url={filterr}
                 width="25px"
@@ -131,9 +151,10 @@ const ServiceFilter = () => {
         </Filter>
         {filtrado === 1 ? (
           <>
-            <Filtered>
+            <Filtered color={theme.colors.fontColor}>
               <h1 id="filter">Filtrado por:</h1>
               <Filters
+                border={theme.colors.border}
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   setFiltrado(0);

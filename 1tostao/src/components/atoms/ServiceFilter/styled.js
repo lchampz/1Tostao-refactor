@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #403b3b;
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#403b3b")};
   width: 100%;
   height: 350px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  color: ${({ color }) => (color ? color : "white")};
 
   border-bottom: 1px solid #eee;
 `;
@@ -27,12 +28,12 @@ export const Filter = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid #f8f8f8;
+  border: ${({ border }) => `1px solid ${border}`};
   height: 40px;
   border-radius: 1.2rem;
   align-items: center;
   max-width: 80%;
-
+  color: ${({ color }) => (color ? color : "white")};
   @media screen and (max-width: 480px) {
     flex-wrap: wrap;
   }
@@ -51,7 +52,7 @@ export const Search = styled.input`
   border: none;
   font-size: 1rem;
   width: 825px;
-  color: #f8f8f8;
+  color: ${({ color }) => (color ? color : "white")};
 
   background-color: rgba(1, 1, 1, 0);
 
@@ -59,7 +60,7 @@ export const Search = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: #d1d1d1;
+    color: ${({ color }) => (color ? color : "white")};
   }
 
   @media screen and (min-width: 1281px) {
@@ -71,9 +72,9 @@ export const Search = styled.input`
   }
 `;
 export const DropDown = styled.div`
-  border-left: 1px solid #f8f8f8;
+  border-left: ${({ border }) => `1px solid ${border}`};
   height: 2.5rem;
-  color: #f8f8f8;
+  color: ${({ color }) => (color ? color : "white")};
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -99,7 +100,7 @@ export const Filtered = styled.div`
   align-items: center;
   width: 80%;
   flex-wrap: wrap;
-  color: #fff;
+  color: ${({ color }) => (color ? color : "white")};
   @media screen and (max-width: 480px) {
     margin-top: 2rem;
     padding-top: 1rem;
@@ -111,7 +112,7 @@ export const Filtered = styled.div`
   }
 `;
 export const Filters = styled.div`
-  border: 1px solid #fff;
+  border: ${({ border }) => `1px solid ${border}`};
   border-width: 100%;
   flex-direction: row;
   display: flex;
@@ -347,9 +348,9 @@ export const Remove = styled.h1`
 `;
 
 export const FoundServices = styled.div`
-  color: #fff;
+  color: ${({ color }) => (color ? color : "white")};
   width: auto;
-  border: 1px solid #fff;
+  border: 1px solid ${({ color }) => (color ? color : "white")};
   height: 30px;
 
   display: flex;

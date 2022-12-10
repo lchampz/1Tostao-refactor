@@ -16,6 +16,8 @@ import {
   Slider,
   Delivery,
   TextAreaEdit,
+  TitleComments,
+  InputEditThemed,
 } from "./styled";
 import {
   getDataFromService,
@@ -103,7 +105,7 @@ const ServiceDetail = () => {
   const customStyles = {
     singleValue: (base) => ({
       ...base,
-      color: "white",
+      color: theme.colors.fontColor,
     }),
 
     control: (provided) => ({
@@ -266,7 +268,11 @@ const ServiceDetail = () => {
 
   const renderComments = (grade) => {
     return (
-      <WrapperComments scroll={comments?.length > 3}>
+      <WrapperComments
+        bgColor={theme.colors.boxService}
+        scroll={comments?.length > 3}
+        color={theme.colors.fontColor}
+      >
         <div className={"headerGrades"}>
           <span
             className={
@@ -293,7 +299,7 @@ const ServiceDetail = () => {
                 );
               })}
             </div>
-            <p style={{ color: "#B3B3B3", fontSize: "12px" }}>
+            <p style={{ color: theme.colors.fontColor, fontSize: "12px" }}>
               (
               {`${comments?.length} comentário${
                 comments?.length > 1 ? "s" : ""
@@ -371,6 +377,21 @@ const ServiceDetail = () => {
 
     navigate("/servicos");
   };
+
+  const saveInfo = () => {
+    updateService(
+      serviceId,
+      newValue.nome,
+      newValue.desc,
+      newValue.preco,
+      newValue.entrega,
+      newValue.categoria
+    );
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+
   const payment = () => {
     fetch(`${apiUrl}/v1/pagarProduto`, {
       method: "POST",
@@ -403,19 +424,19 @@ const ServiceDetail = () => {
   };
 
   return (
-    <Wrapper>
-      <Header>
+    <Wrapper color={theme.colors.fontColor}>
+      <Header color={theme.colors.fontColor}>
         <span>
           <img src={data?.img} className={"icon"} />@{data?.autor}
         </span>
       </Header>
       <Line />
-      <Body>
-        <Box>
+      <Body color={theme.colors.fontColor}>
+        <Box bgColor={theme.colors.boxService} color={theme.colors.fontColor}>
           <p className={"title"}>{data?.nome}</p>
           <img src={data?.img} className={"imgContainer"} />
         </Box>
-        <Box>
+        <Box bgColor={theme.colors.boxService} color={theme.colors.fontColor}>
           <div className={"wrapperInfo"}>
             <div
               style={{
@@ -449,11 +470,22 @@ const ServiceDetail = () => {
                 {data?.preco.toLocaleString("PT").includes(",") ? null : ",00"}
               </p>
             </span>
-            <div className={"btn"} onClick={payment}>
-              Contratar
+            <div className={"btn"} onClick={edit ? saveInfo : payment}>
+              {edit ? "Salvar" : "Contratar"}
             </div>
-            {profile ? (
-              <span className={"avalie"} onClick={() => setPopupVisible(true)}>
+            {edit ? (
+              <div
+                className="delete"
+                onClick={() => setPopupVisible({ ...popupVisible, del: true })}
+              >
+                Excluir serviço
+              </div>
+            ) : null}
+            {profile && data.uid != profile.uid && data.uid != user.uid ? (
+              <span
+                className={"avalie"}
+                onClick={() => setPopupVisible({ ...popupVisible, aval: true })}
+              >
                 Avalie o serviço!
               </span>
             ) : null}
@@ -461,11 +493,18 @@ const ServiceDetail = () => {
         </Box>
       </Body>
       {edit ? (
-        <Footer color={theme.colors.fontColor}>
-          <WrapperForm color={theme.colors.fontColor}>
+        <Footer
+          bgColor={theme.colors.boxService}
+          color={theme.colors.fontColor}
+        >
+          <WrapperForm
+            bgColor={theme.colors.boxService}
+            color={theme.colors.fontColor}
+          >
             <label>EDIÇÃO</label>
             <p>Nome do Serviço:</p>
             <InputEdit
+              color={theme.colors.fontColor}
               value={newValue?.nome}
               onChange={(e) =>
                 setNewValue({ ...newValue, nome: e.target.value })
@@ -481,7 +520,7 @@ const ServiceDetail = () => {
             />
             <p>Preço:</p>
             <IntlCurrencyInput
-              component={InputEdit}
+              component={theme.name === "dark" ? InputEdit : InputEditThemed}
               currency="BRL"
               max="1000"
               min="5"
@@ -522,7 +561,10 @@ const ServiceDetail = () => {
         </Footer>
       ) : (
         <>
-          <Footer>
+          <Footer
+            color={theme.colors.fontColor}
+            bgColor={theme.colors.boxService}
+          >
             {cardData.map((item, i) => {
               return (
                 <div className={"wrapperBox"}>
@@ -537,7 +579,9 @@ const ServiceDetail = () => {
                           marginBottom: item.marginBottom,
                         }}
                       />
-                      <p className={"title"}>{item.title}</p>
+                      <TitleComments color={theme.colors.fontColor}>
+                        {item.title}
+                      </TitleComments>
                     </span>
                     <OcultContent
                       display={displayTest(item)}
@@ -574,9 +618,9 @@ const ServiceDetail = () => {
               marginTop: "1rem",
             }}
           >
-            <Title>Serviços Relacionados</Title>
+            <Title color={theme.colors.fontColor}>Serviços Relacionados</Title>
           </span>
-          <RelationatedServices>
+          <RelationatedServices color={theme.colors.fontColor}>
             {!render
               ? renderLoading()
               : service?.map((item) => {
@@ -600,7 +644,7 @@ const ServiceDetail = () => {
             title={"Avaliação"}
             labelBnt={"Avaliar!"}
             disabled={!aval.desc || !aval.star}
-            close={() => setPopupVisible(false)}
+            close={() => setPopupVisible({ ...popupVisible, aval: false })}
             confirm={InsertRate}
           >
             <Input

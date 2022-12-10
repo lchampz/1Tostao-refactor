@@ -24,6 +24,8 @@ export const themes = [
       form: "#ffffff",
       formField: "#F1F1F1",
       boxService: "#E5E5E5",
+      servicesProminence: "#E5E5E5",
+      bgServices: "#F1F1F1",
     },
   },
   {
@@ -48,6 +50,8 @@ export const themes = [
       form: "#525252",
       formField: "#717171",
       boxService: "rgba(34, 32, 38, 1)",
+      servicesProminence: "#4d4a49",
+      bgServices: "#403b3b",
     },
   },
 ];
