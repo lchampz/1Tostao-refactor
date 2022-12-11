@@ -115,6 +115,7 @@ const Submenu = ({
           margin="0px 50px 0px 0px"
           cursor={"pointer"}
           url={handleProfilePicture()}
+          style={{ borderRadius: "1rem" }}
         />
       </Icon>
       <StickyMenu display={visible}>

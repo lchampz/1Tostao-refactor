@@ -30,6 +30,7 @@ import Services from "../../atoms/ServiceCard";
 import { useLoading } from "../../../request/hooks/Loading";
 import { Loop } from "../../../request/utils/loop";
 import ModalAvaliation from "../../atoms/ModalAvaliation";
+import profilePic from "./../../../assets/img/profile.png";
 import { useUserAuth } from "../../../request/hooks/Auth";
 import cat from "../../../request/mock/categorias.json";
 import InputSelect from "../../atoms/Select";
@@ -602,7 +603,7 @@ const ServiceDetail = () => {
     <Wrapper>
       <Header>
         <span>
-          <img src={data?.img} className={"icon"} />@{data?.autor}
+          <img src={profilePic} className={"icon"} />@{data?.autor}
         </span>
       </Header>
       <Line />
