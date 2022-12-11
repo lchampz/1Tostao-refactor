@@ -1,37 +1,37 @@
 [
-    {
-        "id": "0",
-        "quest": "Como eu entro em contato com o suporte?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    },
-    {
-        "id": "1",
-        "quest": "Qual é a vantagem do 1Tostão?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    },
-    {
-        "id": "2",
-        "quest": "Como faço para me tornar parceiro?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    },
-    {
-        "id": "3",
-        "quest": "Qual é a vantagem do 1Tostão?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    },
-    {
-        "id": "4",
-        "quest": "Como eu entro em contato com o suporte?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    },
-    {
-        "id": "5",
-        "quest": "Como faço para me tornar parceiro?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    },
-    {
-        "id": "6",
-        "quest": "Qual é a vantagem do 1Tostão?",
-        "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    }
-  ]
+  {
+    "id": "0",
+    "quest": "Como eu entro em contato com o suporte?",
+    "answer": "Você pode entrar em contato com o suporte ao clicar na opção Suporte na parte inferior da página."
+  },
+  {
+    "id": "1",
+    "quest": "Qual é a vantagem do 1Tostão?",
+    "answer": "O 1Tostão tem seu diferencial porque ele não cobra nada do seu primeiro serviço. "
+  },
+  {
+    "id": "2",
+    "quest": "Como faço para me tornar parceiro?",
+    "answer": "Você pode tentar uma parceria entrando em contato conosco na aba Suporte."
+  },
+  {
+    "id": "3",
+    "quest": "De onde saiu a idéia do 1Tostão?",
+    "answer": "Essa ideia surgiu da vontade de 5 jovens que queriam mostrar pro mundo que qualquer um pode trabalhar e ganhar dinheiro."
+  },
+  {
+    "id": "4",
+    "quest": "Como eu entro em contato com o suporte?",
+    "answer": "lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    "id": "5",
+    "quest": "Quais são as categorias dos serviços?",
+    "answer": "Os serviços estão divididos em 7 categorias, sendo elas: Arte, Narração, Outros, Fotografia, Programação, Aulas e Edição."
+  },
+  {
+    "id": "6",
+    "quest": "O 1Tostão possui redes sociais?",
+    "answer": "Sim! Você pode acessa-lás clicando no link das redes sociais na parte inferior da página."
+  }
+]

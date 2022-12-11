@@ -25,7 +25,6 @@ const Footer = ({ width, margintop, border, size, color, needMargin }) => {
                 seu cliente? Para ser 1Tostão basta um clique.
               </p>
               <div>
-                <img src={face} className="img" alt="facebook" />
                 <a
                   href={"https://www.instagram.com/1tostao_oficial/"}
                   target="_blank"
